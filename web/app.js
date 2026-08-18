@@ -26,10 +26,11 @@ const state = {
   matches: null,         // Map fundId -> {score, why} from a dropped PDF
 };
 
-// Words that carry no identifying power when matching fund names.
-const STOP = new Set(("the a an of and for to in on fund funds etf etfs class " +
-  "series pool pools portfolio portfolios trust corporate corp inc ltd limited " +
-  "investments investment management capital asset").split(" "));
+// Only true function words and legal suffixes. Content words stay, even the
+// ones that feel generic: stripping "corporate" once made
+// "...Short Term Corporate Bond Index ETF" and "...Short Term Bond Index ETF"
+// reduce to identical token sets, and every search for one matched the other.
+const STOP = new Set("the a an of and for to in on inc ltd ltee limited".split(" "));
 
 const norm = (s) => (s || "").toLowerCase().replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
 const tokens = (s) => norm(s).split(" ").filter((t) => t && !STOP.has(t) && t.length > 1);
@@ -234,9 +235,13 @@ async function readPdf(file) {
  * tokens are present. Over-matching here would be worse than under-matching:
  * a wrong fund quietly filed is a bigger problem than one you had to look up.
  */
-function identify(text) {
-  const flat = norm(text);
-  const words = new Set(flat.split(" "));
+export function identify(text) {
+  // Match on contiguous token runs, not bag-of-words overlap. Fund families
+  // name products in nested series, so one fund's name is routinely a subset of
+  // another's ("Short Term Bond" inside "Short Term Corporate Bond"). Set
+  // overlap treats those as the same fund; requiring the tokens to appear in
+  // order, adjacent, does not.
+  const docStr = ` ${tokens(text).join(" ")} `;
   const upper = text.toUpperCase();
   const hits = new Map();
 
@@ -251,15 +256,9 @@ function identify(text) {
     }
 
     const toks = tokens(fund.name);
-    if (toks.length >= 2) {
-      const present = toks.filter((t) => words.has(t)).length;
-      const ratio = present / toks.length;
-      if (ratio >= 0.7 && present >= 2) {
-        score += 5 + present;
-        why.push(`name (${present}/${toks.length} terms)`);
-      } else if (flat.includes(norm(fund.name))) {
-        score += 12; why.push("exact name");
-      }
+    if (toks.length >= 2 && docStr.includes(` ${toks.join(" ")} `)) {
+      score += 6 + Math.min(toks.length, 6);
+      why.push("full name");
     }
 
     if (score > 0) hits.set(fund.id, { score, why: why.join(", ") });
