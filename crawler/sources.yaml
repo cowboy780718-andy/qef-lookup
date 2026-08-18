@@ -1,0 +1,251 @@
+# QEF / PFIC statement source registry
+#
+# Adding a family = adding a block here. No code changes required.
+#
+#   mode: static   -> plain HTTP fetch (fast, cheap)
+#   mode: browser  -> rendered with headless Chromium (JS-built document lists)
+#   fye:           -> fund fiscal year end, "MM-DD", or "varies" if mixed/unknown.
+#                     The crawler always prefers the period it reads out of the PDF;
+#                     this is only a fallback and a sanity check.
+#   link_include:  -> regexes; a PDF link must match one to be considered
+#   link_exclude:  -> regexes; overrides include
+
+defaults:
+  link_include:
+    - '(?i)pfic'
+    - '(?i)qef'
+  link_exclude:
+    - '(?i)(faq|q-and-a|q_and_a|overview|sample|guide|brochure)'
+
+families:
+
+  # ---------- Tier A: static HTML, direct PDF links ----------
+
+  - id: mackenzie
+    name: Mackenzie Investments
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://www.mackenzieinvestments.com/en/legal-and-privacy/passive-foreign-investment-company-statements
+    link_include: ['(?i)/pfic/pfic-\d{4}-.+\.pdf']
+    notes: >-
+      Most predictable publisher found. URL form:
+      /content/dam/mackenzie/en/pfic/pfic-{YEAR}-{CODE}-en.pdf
+      Both EN and FR posted; we take EN. Statements are not mailed to investors.
+
+  - id: tdam
+    name: TD Asset Management
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://www.td.com/ca/en/asset-management/resources/pfic-reporting
+    link_include: ['(?i)/pfic/.+\.pdf', '(?i)mftpfic.+\.pdf']
+    notes: >-
+      Path root has moved between years (/content/dam/tdcom/... and
+      /ca/en/asset-management/documents/...). Both are matched; content
+      verification decides what is real.
+
+  - id: vanguard-ca
+    name: Vanguard Investments Canada
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://www.vanguard.ca/en/tools-and-resources/tax-centre
+    link_include: ['(?i)_PFIC.*\.pdf', '(?i)pfic-[A-Z]{2,5}\.pdf']
+    notes: >-
+      Two hosts in play: fund-docs.vanguard.com (older) and
+      www.vanguard.ca/content/dam/... (current). Ticker embedded in filename.
+
+  - id: russell-ca
+    name: Russell Investments Canada
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://russellinvestments.com/content/ri/ca/en/legal/pfic.html
+    link_include: ['(?i)/\d{4}/pfic/.+\.pdf', '(?i)pfic.*\.pdf']
+    notes: Year is a path segment - /legal/{YEAR}/pfic/. Fund code often prefixes the filename.
+
+  - id: ci-gam
+    name: CI Global Asset Management
+    country: CA
+    mode: static
+    fye: "03-31"
+    hub: https://funds.cifinancial.com/en/funds/pfic-documents
+    link_include: ['(?i)Passive_Foreign_Investment_Company.+\.pdf']
+    notes: >-
+      Hub is ~17MB and links the entire CI document catalog (~15k PDFs), so the
+      include filter is doing heavy lifting. Fund identity lives in an opaque
+      numeric path segment, so identity must come from PDF text, not the URL.
+
+  - id: mawer
+    name: Mawer Investment Management
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://www.mawer.com/documents
+    link_include: ['(?i)pfic']
+    notes: >-
+      Served from an Azure CDN. Path changed between years:
+      2023 -> /assets/documents/{fund}-pfic-reporting-dec-31-2023.pdf
+      2024 -> /assets/documents/pfic/{fund}-pfic-reporting-2024.pdf
+
+  - id: cibc
+    name: CIBC Asset Management
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance/etf-pfic-annual-statement.html
+    link_include: ['(?i)pfic-etf-.+\.pdf', '(?i)pfic.+\.pdf']
+    notes: >-
+      IMPORTANT: CIBC-branded mutual funds, CIBC Index Funds, Managed Portfolios
+      and Axiom Portfolios receive NO statement. Renaissance and Imperial Pools do
+      (see the renaissance family). Seeded as negatives in negatives.yaml.
+
+  - id: blackrock-ishares-ca
+    name: BlackRock / iShares Canada
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://www.blackrock.com/ca/investors/en/resources/tax-information-centre
+    link_include: ['(?i)pfic-stmt-\d{4}-.+\.pdf']
+    derive:
+      kind: ticker_list_pdf
+      list_url: https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-fund-list-en-ca.pdf
+      pair_pattern: '(iShares(?:(?!iShares).)*?(?:ETF|Portfolio)(?:\s*\([^)]*\))?)\s+([A-Z]{2,5})(?=\s|$)'
+      url_templates:
+        - https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-{year}-{ticker_lower}-env1.pdf
+        - https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-{year}-{ticker_lower}-en-v1.pdf
+      years_back: 5
+    notes: >-
+      The tax centre links only the "Fund List - PFIC Statements" roster, never
+      the statements themselves, so this family is derived: read the roster for
+      fund/ticker pairs, then probe the statement path per ticker and year.
+      Two filename shapes are in use (-env1 and -en-v1) and BlackRock alternates
+      between them inconsistently across years and funds, so both are tried.
+      Misses are cached, so only the first run is expensive.
+
+  - id: capitalgroup-ca
+    name: Capital Group Canada
+    country: CA
+    mode: static
+    access: manual
+    fye: "varies"
+    hub: https://www.capitalgroup.com/advisor/ca/en/service/tax-centre.html
+    notes: >-
+      NOT CRAWLED, by their instruction. capitalgroup.com/robots.txt carries a
+      blanket `Disallow: /content`, and every document including the PFIC
+      statements lives under /content/dam/. They do publish statements - the
+      tax centre states they are provided for all of their funds - so this is a
+      crawling restriction, not an availability one. The tool deep-links the tax
+      centre and you fetch by hand. Revisit if robots.txt changes.
+
+  - id: fidelity-ca
+    name: Fidelity Investments Canada
+    country: CA
+    mode: static
+    fye: "varies"
+    hub: https://www.fidelity.ca/en/pfic_etf_statements/
+    link_include: ['(?i)/pfic/\d{4}/.+\.pdf', '(?i)pfic_\d{4}_.+\.pdf']
+    notes: >-
+      Reports per unit PER DAY - unit-days must be computed to file.
+      Some funds run to April 30. Personalized statements are available on
+      request for non-ETF series, which cannot be crawled.
+
+  - id: ia-clarington
+    name: iA Clarington Investments
+    country: CA
+    mode: browser
+    fye: "12-31"
+    hub: https://iaclarington.com/applicationsandforms/pficstatements
+    notes: >-
+      Needs a browser twice over. The raw HTML carries a stale 2021/2022 link
+      list that now 404s; JavaScript replaces it with the current year on load.
+      The PDFs themselves also reject non-browser TLS, answering requests/curl
+      with a 404 HTML page while serving Chromium the real file.
+
+  - id: renaissance
+    name: Renaissance Investments (CIBC)
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://www.renaissanceinvestments.ca/reporting-governance/pfic
+    notes: >-
+      Covers Renaissance funds, Renaissance Private Pools and Imperial Pools.
+      Renaissance HISA and Money Market funds are excluded by the manager.
+
+  # ---------- Tier B: JavaScript-rendered document lists ----------
+
+  - id: rbc-gam
+    name: RBC Global Asset Management / PH&N
+    country: CA
+    mode: browser
+    fye: "06-30"
+    hub: https://www.rbcgam.com/en/ca/products/pfic-reporting
+    notes: >-
+      Fund family -> fund -> series cascading menus, PDF revealed per selection.
+      Series A, D, F, FT, H, I, O. Years 2021-2025 confirmed available.
+      June 30 fiscal year end - do NOT assume December.
+
+  - id: bmo-gam
+    name: BMO Global Asset Management
+    country: CA
+    mode: browser
+    fye: "06-30"
+    hub: https://bmogam.com/ca-en/resources/legal-and-regulatory-documents/pfic/
+    pdf_host: https://bmogamhub.com/system/files/
+    notes: June 30 fiscal year end for most funds. PDFs live on bmogamhub.com.
+
+  - id: manulife-im
+    name: Manulife Investment Management
+    country: CA
+    mode: browser
+    fye: "12-31"
+    hub: https://www.manulifeim.com/retail/ca/en/regulatory/passive-foreign-investment-company-pfic
+    notes: >-
+      NOT login-gated. Rejects non-browser user agents with 403; serves 200 to a
+      full browser header set. Per-fund landing pages under
+      /retail/ca/en/resources/all/regulatory/{fund}-pfic-annual-information-statements
+
+  - id: globalx-ca
+    name: Global X Investments Canada (formerly Horizons)
+    country: CA
+    mode: browser
+    fye: "12-31"
+    hub: https://www.globalx.ca/pfic
+    notes: >-
+      WordPress; PDFs under /wp-content/uploads/{YYYY}/{MM}/.
+      Reports per unit PER DAY. Many funds renamed from Horizons to Global X,
+      so the alias table matters here.
+
+  - id: purpose
+    name: Purpose Investments
+    country: CA
+    mode: browser
+    fye: "12-31"
+    hub: https://www.purposeinvest.com/funds
+    doc_root: https://documents.purposeinvest.com/Docs/BNC/pfic/en/
+    notes: >-
+      The bookmarked page was a single fund page, not a hub. Real repository is
+      documents.purposeinvest.com/Docs/BNC/pfic/en/{Fund Name} PFIC {YYYY-MM-DD}.pdf
+
+  - id: sunlife-gi
+    name: Sun Life Global Investments
+    country: CA
+    mode: browser
+    fye: "12-31"
+    hub: https://www.sunlifeglobalinvestments.com/en/resources/regulatory-documents/
+    notes: Roughly 17 funds covered. Bot-blocks plain HTTP fetches.
+
+  - id: pimco-ca
+    name: PIMCO Canada
+    country: CA
+    mode: browser
+    fye: "varies"
+    hub: https://www.pimco.com/ca/en/resources/tax-center
+
+  - id: dimensional-ca
+    name: Dimensional Fund Advisors Canada
+    country: CA
+    mode: browser
+    fye: "varies"
+    hub: https://www.dimensional.com/ca-en/document-center

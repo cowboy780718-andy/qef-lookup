@@ -1,0 +1,3120 @@
+{
+ "generated": "2026-08-18T20:19:08+00:00",
+ "stats": {
+  "families": 1,
+  "families_ok": 1,
+  "funds": 68,
+  "statements": 232,
+  "years": [
+   2025,
+   2024,
+   2023,
+   2022
+  ]
+ },
+ "families": [
+  {
+   "id": "blackrock-ishares-ca",
+   "name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "mode": "static",
+   "fye": "12-31",
+   "hub": "https://www.blackrock.com/ca/investors/en/resources/tax-information-centre",
+   "notes": "The tax centre links only the \"Fund List - PFIC Statements\" roster, never the statements themselves, so this family is derived: read the roster for fund/ticker pairs, then probe the statement path per ticker and year. Two filename shapes are in use (-env1 and -en-v1) and BlackRock alternates between them inconsistently across years and funds, so both are tried. Misses are cached, so only the first run is expensive."
+  }
+ ],
+ "funds": [
+  {
+   "id": "blackrock-ishares-ca::ishares-0-5-year-tips-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares 0-5 Year TIPS Bond Index ETF",
+   "tickers": [
+    "XSTP"
+   ],
+   "statements": [
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xstp-en-v1.pdf",
+     "bytes": 227069,
+     "sha256": "fd3680bcc54e0ea3",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xstp-env1.pdf",
+     "bytes": 232064,
+     "sha256": "ea7d956b426465d3",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-0-5-year-tips-bond-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares 0-5 Year TIPS Bond Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XSTH"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xsth-env1.pdf",
+     "bytes": 223895,
+     "sha256": "c1c8247ef50b484c",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xsth-en-v1.pdf",
+     "bytes": 233470,
+     "sha256": "6163975847199356",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xsth-env1.pdf",
+     "bytes": 233258,
+     "sha256": "4909de10b0aa755b",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-1-10-year-laddered-corporate-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares 1-10 Year Laddered Corporate Bond Index ETF",
+   "tickers": [
+    "CBH"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-cbh-en-v1.pdf",
+     "bytes": 374444,
+     "sha256": "9fb2edc9f6dd1d18",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-cbh-env1.pdf",
+     "bytes": 237091,
+     "sha256": "bc294775e2e885fe",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-cbh-env1.pdf",
+     "bytes": 231487,
+     "sha256": "73101fc1d34186b1",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-cbh-env1.pdf",
+     "bytes": 232732,
+     "sha256": "f89cbd6f978f36bf",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-1-5-year-laddered-corporate-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares 1-5 Year Laddered Corporate Bond Index ETF",
+   "tickers": [
+    "CBO"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-cbo-env1.pdf",
+     "bytes": 218656,
+     "sha256": "83df242309d641df",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-cbo-env1.pdf",
+     "bytes": 229669,
+     "sha256": "edb98a0d3c474247",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-cbo-env1.pdf",
+     "bytes": 232829,
+     "sha256": "086fd73fbf9efe59",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-1-5-year-u-s-ig-corporate-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares 1-5 Year U.S. IG Corporate Bond Index ETF",
+   "tickers": [
+    "XSHU"
+   ],
+   "statements": [
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xshu-en-v1.pdf",
+     "bytes": 233371,
+     "sha256": "eb33c2c46aa8fe68",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xshu-en-v1.pdf",
+     "bytes": 241879,
+     "sha256": "acbea2e4daa0e2be",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-1-5-year-u-s-ig-corporate-bond-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares 1-5 Year U.S. IG Corporate Bond Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XIGS"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xigs-env1.pdf",
+     "bytes": 375656,
+     "sha256": "3d21b928241c8b78",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xigs-env1.pdf",
+     "bytes": 233282,
+     "sha256": "39113960c51308a9",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xigs-env1.pdf",
+     "bytes": 233903,
+     "sha256": "85f95cd7dec54cc6",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-canadian-corporate-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Canadian Corporate Bond Index ETF",
+   "tickers": [
+    "XCB"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xcb-env1.pdf",
+     "bytes": 370055,
+     "sha256": "913815bf7f76492d",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xcb-env1.pdf",
+     "bytes": 220529,
+     "sha256": "878c27aadee7566d",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xcb-env1.pdf",
+     "bytes": 231823,
+     "sha256": "db0f780e6490656d",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xcb-env1.pdf",
+     "bytes": 227812,
+     "sha256": "73c5abeb7371a872",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-canadian-financial-monthly-income-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Canadian Financial Monthly Income ETF",
+   "tickers": [
+    "FIE"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-fie-env1.pdf",
+     "bytes": 412461,
+     "sha256": "8d419b6fc0507588",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-fie-env1.pdf",
+     "bytes": 222599,
+     "sha256": "9d940ce4a78273e0",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-fie-env1.pdf",
+     "bytes": 231466,
+     "sha256": "7ff46992e0d13df2",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-fie-env1.pdf",
+     "bytes": 234439,
+     "sha256": "b84a970f0b8c8899",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-canadian-select-dividend-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Canadian Select Dividend Index ETF",
+   "tickers": [
+    "XDV"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xdv-en-v1.pdf",
+     "bytes": 368034,
+     "sha256": "48fcc1cc69642a51",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xdv-en-v1.pdf",
+     "bytes": 228321,
+     "sha256": "4d8f9d0cc4842351",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xdv-en-v1.pdf",
+     "bytes": 226626,
+     "sha256": "e445f5c7cdc1e9b4",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-balanced-etf-portfolio",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core Balanced ETF Portfolio",
+   "tickers": [
+    "XBAL"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xbal-env1.pdf",
+     "bytes": 416643,
+     "sha256": "77d65cffbf1b09a2",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xbal-env1.pdf",
+     "bytes": 227616,
+     "sha256": "b87017edbd6a1da0",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xbal-env1.pdf",
+     "bytes": 240612,
+     "sha256": "841a5d8d902f262c",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xbal-env1.pdf",
+     "bytes": 243707,
+     "sha256": "ca2592cf2ca7573b",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-canadian-15-year-federal-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core Canadian 15+ Year Federal Bond Index ETF",
+   "tickers": [
+    "XFLB"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xflb-env1.pdf",
+     "bytes": 373349,
+     "sha256": "5a0f102201500c00",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-canadian-government-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core Canadian Government Bond Index ETF",
+   "tickers": [
+    "XGB"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xgb-en-v1.pdf",
+     "bytes": 369198,
+     "sha256": "0e853fd20dd450ed",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xgb-env1.pdf",
+     "bytes": 218947,
+     "sha256": "1f5f3fd583a03994",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-canadian-long-term-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core Canadian Long Term Bond Index ETF",
+   "tickers": [
+    "XLB"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xlb-env1.pdf",
+     "bytes": 371112,
+     "sha256": "f329c143525ba069",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xlb-env1.pdf",
+     "bytes": 220120,
+     "sha256": "e42e8958263b738c",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xlb-env1.pdf",
+     "bytes": 226003,
+     "sha256": "be24316d4ef85cf3",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xlb-env1.pdf",
+     "bytes": 229349,
+     "sha256": "88c034538c0b27ad",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-canadian-short-term-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core Canadian Short Term Bond Index ETF",
+   "tickers": [
+    "XSB"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xsb-en-v1.pdf",
+     "bytes": 369467,
+     "sha256": "814b37f96c2cb9dd",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xsb-en-v1.pdf",
+     "bytes": 225719,
+     "sha256": "025dcd0d2fe72c3a",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xsb-env1.pdf",
+     "bytes": 226826,
+     "sha256": "4a62fa728a691f9c",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-canadian-short-term-corporate-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core Canadian Short Term Corporate Bond Index ETF",
+   "tickers": [
+    "XSH"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xsh-env1.pdf",
+     "bytes": 369080,
+     "sha256": "fe3032604bf55191",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xsh-env1.pdf",
+     "bytes": 218979,
+     "sha256": "a62b32985103acdb",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xsh-en-v1.pdf",
+     "bytes": 226685,
+     "sha256": "e98745505e4bbc40",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xsh-env1.pdf",
+     "bytes": 227958,
+     "sha256": "0aa4a1bc4fb7ec73",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-canadian-universe-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core Canadian Universe Bond Index ETF",
+   "tickers": [
+    "XBB"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xbb-en-v1.pdf",
+     "bytes": 370012,
+     "sha256": "6bf329d44b6c36a5",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xbb-env1.pdf",
+     "bytes": 218351,
+     "sha256": "b06fb64a114ba9ef",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xbb-env1.pdf",
+     "bytes": 239005,
+     "sha256": "e560fb577d8c64eb",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xbb-env1.pdf",
+     "bytes": 226503,
+     "sha256": "ece391079cbe5608",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-conservative-balanced-etf-portfolio",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core Conservative Balanced ETF Portfolio",
+   "tickers": [
+    "XCNS"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xcns-en-v1.pdf",
+     "bytes": 416453,
+     "sha256": "f88b892c37b4956e",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xcns-en-v1.pdf",
+     "bytes": 237410,
+     "sha256": "2a6a0cd50fd031d2",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xcns-en-v1.pdf",
+     "bytes": 237154,
+     "sha256": "e79a3459797d543b",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-equity-etf-portfolio",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core Equity ETF Portfolio",
+   "tickers": [
+    "XEQT"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xeqt-en-v1.pdf",
+     "bytes": 416281,
+     "sha256": "874c49dd01c7ebb3",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xeqt-env1.pdf",
+     "bytes": 226566,
+     "sha256": "fe38d511ad25990d",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xeqt-en-v1.pdf",
+     "bytes": 235774,
+     "sha256": "83926459f7fb27be",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xeqt-en-v1.pdf",
+     "bytes": 236343,
+     "sha256": "ff0d60f166efc988",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-growth-etf-portfolio",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core Growth ETF Portfolio",
+   "tickers": [
+    "XGRO"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xgro-env1.pdf",
+     "bytes": 412743,
+     "sha256": "9a55a4485f4a1867",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xgro-env1.pdf",
+     "bytes": 227350,
+     "sha256": "0c48c6a9df20e6c3",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xgro-env1.pdf",
+     "bytes": 235241,
+     "sha256": "f70dcfb7c9dba23d",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xgro-env1.pdf",
+     "bytes": 238647,
+     "sha256": "298e1ba6eb3655d5",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-income-balanced-etf-portfolio",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core Income Balanced ETF Portfolio",
+   "tickers": [
+    "XINC"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xinc-en-v1.pdf",
+     "bytes": 416258,
+     "sha256": "2e6d1025b3c2ef7f",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xinc-env1.pdf",
+     "bytes": 229935,
+     "sha256": "33ee34eea4e2c244",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xinc-env1.pdf",
+     "bytes": 238242,
+     "sha256": "e21a97695683be73",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xinc-env1.pdf",
+     "bytes": 238511,
+     "sha256": "530eafd4517148db",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-msci-canadian-quality-dividend-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core MSCI Canadian Quality Dividend Index ETF",
+   "tickers": [
+    "XDIV"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xdiv-env1.pdf",
+     "bytes": 372407,
+     "sha256": "9fa72a7f4e0b4d9c",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xdiv-env1.pdf",
+     "bytes": 221883,
+     "sha256": "56d9e6d557c8d96e",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xdiv-en-v1.pdf",
+     "bytes": 229638,
+     "sha256": "57c21368edd0a010",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xdiv-en-v1.pdf",
+     "bytes": 226448,
+     "sha256": "8b8e5f3704551da8",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-msci-eafe-imi-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core MSCI EAFE IMI Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XFH"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xfh-en-v1.pdf",
+     "bytes": 404526,
+     "sha256": "525fbd6de69c4f8b",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xfh-env1.pdf",
+     "bytes": 218732,
+     "sha256": "1be18982f7661c69",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xfh-en-v1.pdf",
+     "bytes": 231693,
+     "sha256": "a37c8429ab025708",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xfh-en-v1.pdf",
+     "bytes": 229515,
+     "sha256": "0d78e30adf46acf7",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-msci-global-quality-dividend-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core MSCI Global Quality Dividend Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XDGH"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xdgh-en-v1.pdf",
+     "bytes": 412843,
+     "sha256": "dbf8498fc42aba4a",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xdgh-env1.pdf",
+     "bytes": 222550,
+     "sha256": "ac143d0683259f1a",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xdgh-en-v1.pdf",
+     "bytes": 235571,
+     "sha256": "35f26e57cabefc26",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xdgh-en-v1.pdf",
+     "bytes": 236325,
+     "sha256": "4fdaea43290941c4",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-msci-us-quality-dividend-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core MSCI US Quality Dividend Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XDUH"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xduh-en-v1.pdf",
+     "bytes": 414319,
+     "sha256": "cb8fcc38a0b0dc24",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xduh-env1.pdf",
+     "bytes": 224837,
+     "sha256": "62883b6961c3f92b",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xduh-en-v1.pdf",
+     "bytes": 234246,
+     "sha256": "47fea55a0f246195",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xduh-en-v1.pdf",
+     "bytes": 235334,
+     "sha256": "e169c7fcb436c47d",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-s-p-500-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core S&P 500 Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XSP"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xsp-en-v1.pdf",
+     "bytes": 372897,
+     "sha256": "06c3ff159d5ba3e9",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xsp-en-v1.pdf",
+     "bytes": 233006,
+     "sha256": "921d72962c0b8349",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xsp-env1.pdf",
+     "bytes": 227995,
+     "sha256": "0ea54142190d8acf",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-s-p-total-u-s-stock-market-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core S&P Total U.S. Stock Market Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XTOH"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xtoh-en-v1.pdf",
+     "bytes": 374588,
+     "sha256": "1d6251083a56ea94",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-s-p-u-s-total-market-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core S&P U.S. Total Market Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XUH"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xuh-en-v1.pdf",
+     "bytes": 413293,
+     "sha256": "c85036f27c6ee17b",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xuh-env1.pdf",
+     "bytes": 227777,
+     "sha256": "300a50b3c20ec44b",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xuh-en-v1.pdf",
+     "bytes": 236776,
+     "sha256": "5560fee5ac099018",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xuh-env1.pdf",
+     "bytes": 235996,
+     "sha256": "bc2ba271e5d77ddc",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-core-s-p-tsx-capped-composite-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Core S&P/TSX Capped Composite Index ETF",
+   "tickers": [
+    "XIC"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xic-env1.pdf",
+     "bytes": 371974,
+     "sha256": "4f9bb7a01c624845",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xic-env1.pdf",
+     "bytes": 219880,
+     "sha256": "78d6451dbeb921d2",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xic-env1.pdf",
+     "bytes": 236396,
+     "sha256": "0b99f61bdf1b54d5",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xic-env1.pdf",
+     "bytes": 229093,
+     "sha256": "843a1706863b023e",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-advanced-1-5-year-canadian-corporate-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Advanced 1-5 Year Canadian Corporate Bond Index ETF",
+   "tickers": [
+    "XSHG"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xshg-env1.pdf",
+     "bytes": 377512,
+     "sha256": "4b06d612c0c3dae3",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xshg-env1.pdf",
+     "bytes": 224841,
+     "sha256": "7362339fb874cb8f",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xshg-en-v1.pdf",
+     "bytes": 233357,
+     "sha256": "e25e4047d6ef1579",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xshg-env1.pdf",
+     "bytes": 232080,
+     "sha256": "fe062a317c513279",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-advanced-canadian-corporate-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Advanced Canadian Corporate Bond Index ETF",
+   "tickers": [
+    "XCBG"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xcbg-env1.pdf",
+     "bytes": 374585,
+     "sha256": "3a0b59bc28edf131",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xcbg-env1.pdf",
+     "bytes": 224046,
+     "sha256": "08816a62583f81c5",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xcbg-env1.pdf",
+     "bytes": 230774,
+     "sha256": "b4ee14b520a3eca5",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xcbg-env1.pdf",
+     "bytes": 226745,
+     "sha256": "95f10f2aab17a35e",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-advanced-msci-canada-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Advanced MSCI Canada Index ETF",
+   "tickers": [
+    "XCSR"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xcsr-en-v1.pdf",
+     "bytes": 371133,
+     "sha256": "0fcd0eab8444cb3f",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xcsr-env1.pdf",
+     "bytes": 220336,
+     "sha256": "1f48c1be447aab5f",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xcsr-en-v1.pdf",
+     "bytes": 227978,
+     "sha256": "0d52b62070f7f2fc",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xcsr-en-v1.pdf",
+     "bytes": 234079,
+     "sha256": "f1f3539eaf610973",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-advanced-msci-eafe-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Advanced MSCI EAFE Index ETF",
+   "tickers": [
+    "XDSR"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xdsr-env1.pdf",
+     "bytes": 368602,
+     "sha256": "7a100cd89493d639",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xdsr-env1.pdf",
+     "bytes": 220442,
+     "sha256": "7d6723d4ce847319",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xdsr-en-v1.pdf",
+     "bytes": 227943,
+     "sha256": "7ccb647584ab8f20",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xdsr-en-v1.pdf",
+     "bytes": 228302,
+     "sha256": "7bd0b5d028e7d18e",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-advanced-msci-usa-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Advanced MSCI USA Index ETF",
+   "tickers": [
+    "XUSR"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xusr-env1.pdf",
+     "bytes": 373841,
+     "sha256": "35fe43e4036c3f68",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xusr-en-v1.pdf",
+     "bytes": 228033,
+     "sha256": "5794232769562cb5",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xusr-env1.pdf",
+     "bytes": 226777,
+     "sha256": "290f7754c0939276",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-aware-canadian-short-term-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Aware Canadian Short Term Bond Index ETF",
+   "tickers": [
+    "XSTB"
+   ],
+   "statements": [
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xstb-env1.pdf",
+     "bytes": 219592,
+     "sha256": "32d0c211355af591",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2023
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-aware-msci-canada-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Aware MSCI Canada Index ETF",
+   "tickers": [
+    "XESG"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xesg-en-v1.pdf",
+     "bytes": 370967,
+     "sha256": "37ff3b45ca77533d",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xesg-env1.pdf",
+     "bytes": 216810,
+     "sha256": "3dd01622010fb4aa",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xesg-en-v1.pdf",
+     "bytes": 233299,
+     "sha256": "c4c5b72e6cd7f53c",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xesg-en-v1.pdf",
+     "bytes": 225654,
+     "sha256": "484bf3b7b0d6d65e",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-aware-msci-eafe-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Aware MSCI EAFE Index ETF",
+   "tickers": [
+    "XSEA"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xsea-env1.pdf",
+     "bytes": 370787,
+     "sha256": "71aea4f97c402331",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xsea-env1.pdf",
+     "bytes": 217558,
+     "sha256": "5a1f1dfcde81b8e5",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xsea-en-v1.pdf",
+     "bytes": 227984,
+     "sha256": "f438dc8c747821c6",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xsea-env1.pdf",
+     "bytes": 226003,
+     "sha256": "af8faeec097bc74c",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-aware-msci-emerging-markets-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Aware MSCI Emerging Markets Index ETF",
+   "tickers": [
+    "XSEM"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xsem-en-v1.pdf",
+     "bytes": 371053,
+     "sha256": "ee5280e5a6a61290",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xsem-env1.pdf",
+     "bytes": 222669,
+     "sha256": "2e83a22013cc42fc",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xsem-en-v1.pdf",
+     "bytes": 228879,
+     "sha256": "58f1b0ddd7063f99",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xsem-env1.pdf",
+     "bytes": 228573,
+     "sha256": "d80303f0557c6dd1",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-aware-msci-usa-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Aware MSCI USA Index ETF",
+   "tickers": [
+    "XSUS"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xsus-env1.pdf",
+     "bytes": 368577,
+     "sha256": "43a4273a6703a970",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xsus-env1.pdf",
+     "bytes": 216549,
+     "sha256": "cb9bb60e9eee8de9",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xsus-en-v1.pdf",
+     "bytes": 227246,
+     "sha256": "fabeeb75ed613782",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xsus-env1.pdf",
+     "bytes": 232789,
+     "sha256": "90040379b9e53807",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-canadian-aggregate-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Canadian Aggregate Bond Index ETF",
+   "tickers": [
+    "XSAB"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xsab-en-v1.pdf",
+     "bytes": 370073,
+     "sha256": "e492be3b94507eda",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xsab-env1.pdf",
+     "bytes": 219438,
+     "sha256": "4e59acecfe5fb366",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xsab-en-v1.pdf",
+     "bytes": 229866,
+     "sha256": "a7050c037b7dc44b",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xsab-env1.pdf",
+     "bytes": 228868,
+     "sha256": "dcb5dc5e7345fce1",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-esg-canadian-short-term-bond-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares ESG Canadian Short Term Bond Index ETF",
+   "tickers": [
+    "XSTB"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xstb-env1.pdf",
+     "bytes": 368019,
+     "sha256": "10b8051148a61b0b",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xstb-env1.pdf",
+     "bytes": 224885,
+     "sha256": "f4ff44ede4b21b88",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-flexible-monthly-income-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Flexible Monthly Income ETF (CAD-Hedged)",
+   "tickers": [
+    "XFLX"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xflx-env1.pdf",
+     "bytes": 410387,
+     "sha256": "335907fcf67a8f7a",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-global-agriculture-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Global Agriculture Index ETF",
+   "tickers": [
+    "COW"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-cow-en-v1.pdf",
+     "bytes": 373747,
+     "sha256": "e4f9c8a15f6cc39a",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-cow-env1.pdf",
+     "bytes": 231122,
+     "sha256": "e2a0edbb3609a2d6",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-cow-env1.pdf",
+     "bytes": 233742,
+     "sha256": "ffd7ef6ea1524d17",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-global-government-bond-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Global Government Bond Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XGGB"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xggb-en-v1.pdf",
+     "bytes": 376385,
+     "sha256": "56a12b43f481b5b3",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xggb-env1.pdf",
+     "bytes": 227873,
+     "sha256": "60145445efd49181",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xggb-env1.pdf",
+     "bytes": 232150,
+     "sha256": "ebd638520d257055",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xggb-env1.pdf",
+     "bytes": 229469,
+     "sha256": "bd69078bd1f16d20",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-global-healthcare-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Global Healthcare Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XHC"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xhc-en-v1.pdf",
+     "bytes": 372013,
+     "sha256": "dab7079d24bdfc99",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xhc-env1.pdf",
+     "bytes": 232432,
+     "sha256": "64183171b1fd3645",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xhc-env1.pdf",
+     "bytes": 231734,
+     "sha256": "a5855e9889731961",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-global-monthly-dividend-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Global Monthly Dividend Index ETF (CAD-Hedged)",
+   "tickers": [
+    "CYH"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-cyh-en-v1.pdf",
+     "bytes": 375174,
+     "sha256": "6400a83ea7f701e7",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-cyh-env1.pdf",
+     "bytes": 221465,
+     "sha256": "85b6ea3042994cab",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-cyh-env1.pdf",
+     "bytes": 231575,
+     "sha256": "09b17c0e74ebc6c0",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-cyh-env1.pdf",
+     "bytes": 233286,
+     "sha256": "db02c8de15e4d0fa",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-msci-eafe-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares MSCI EAFE Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XIN"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xin-en-v1.pdf",
+     "bytes": 371180,
+     "sha256": "2267259319cc7d10",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xin-env1.pdf",
+     "bytes": 221150,
+     "sha256": "8e1905eec6c79864",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xin-env1.pdf",
+     "bytes": 229894,
+     "sha256": "0bf8c9f9c63b6ab1",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xin-env1.pdf",
+     "bytes": 228013,
+     "sha256": "3aa45cbc3206e449",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-msci-min-vol-canada-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares MSCI Min Vol Canada Index ETF",
+   "tickers": [
+    "XMV"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xmv-env1.pdf",
+     "bytes": 368271,
+     "sha256": "bdd19bfd3fdc32f7",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xmv-env1.pdf",
+     "bytes": 215099,
+     "sha256": "3dee61737ab80a51",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xmv-env1.pdf",
+     "bytes": 223302,
+     "sha256": "2e37fc02099da405",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xmv-env1.pdf",
+     "bytes": 225111,
+     "sha256": "53f1533822b3398b",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-msci-min-vol-eafe-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares MSCI Min Vol EAFE Index ETF",
+   "tickers": [
+    "XMI"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xmi-env1.pdf",
+     "bytes": 369350,
+     "sha256": "ad0f810f52f6148e",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xmi-env1.pdf",
+     "bytes": 213356,
+     "sha256": "8296f842453df11b",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xmi-env1.pdf",
+     "bytes": 222771,
+     "sha256": "8e57a6d2c57f128c",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xmi-env1.pdf",
+     "bytes": 224798,
+     "sha256": "ea1b7cb67c9629fa",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-msci-min-vol-eafe-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares MSCI Min Vol EAFE Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XML"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xml-env1.pdf",
+     "bytes": 369927,
+     "sha256": "9e4c58434ad58f1d",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xml-env1.pdf",
+     "bytes": 231149,
+     "sha256": "e4729bf2fee29b8c",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xml-env1.pdf",
+     "bytes": 229909,
+     "sha256": "b64d96b16ef43469",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-msci-min-vol-emerging-markets-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares MSCI Min Vol Emerging Markets Index ETF",
+   "tickers": [
+    "XMM"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xmm-en-v1.pdf",
+     "bytes": 371602,
+     "sha256": "56bf9091a7ec08f8",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xmm-env1.pdf",
+     "bytes": 220189,
+     "sha256": "7b701ffb8613813a",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xmm-env1.pdf",
+     "bytes": 233110,
+     "sha256": "8a45ee5a85ad534a",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xmm-env1.pdf",
+     "bytes": 228693,
+     "sha256": "768dbe0df37fc070",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-msci-min-vol-global-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares MSCI Min Vol Global Index ETF",
+   "tickers": [
+    "XMW"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xmw-en-v1.pdf",
+     "bytes": 370795,
+     "sha256": "69989e734d2ca062",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xmw-env1.pdf",
+     "bytes": 219278,
+     "sha256": "d7c896766b914a6d",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xmw-env1.pdf",
+     "bytes": 230140,
+     "sha256": "5eb45f6cf49f9bc7",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xmw-env1.pdf",
+     "bytes": 229432,
+     "sha256": "3b9d4db696909693",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-msci-min-vol-global-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares MSCI Min Vol Global Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XMY"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xmy-env1.pdf",
+     "bytes": 374204,
+     "sha256": "72ced64263d61dff",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xmy-env1.pdf",
+     "bytes": 220060,
+     "sha256": "64eb15ee0a185496",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xmy-env1.pdf",
+     "bytes": 232753,
+     "sha256": "b25b615c9d385339",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xmy-env1.pdf",
+     "bytes": 233073,
+     "sha256": "219db408c2f0bacd",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-msci-min-vol-usa-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares MSCI Min Vol USA Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XMS"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xms-en-v1.pdf",
+     "bytes": 403298,
+     "sha256": "24e1842839450d60",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xms-env1.pdf",
+     "bytes": 231892,
+     "sha256": "bdbfed71e663c4c4",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xms-env1.pdf",
+     "bytes": 232187,
+     "sha256": "ebb488c727f48c13",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-msci-world-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares MSCI World Index ETF",
+   "tickers": [
+    "XWD"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xwd-en-v1.pdf",
+     "bytes": 406250,
+     "sha256": "c8256a9f1218cc17",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xwd-env1.pdf",
+     "bytes": 218407,
+     "sha256": "7477a698cad781bf",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xwd-en-v1.pdf",
+     "bytes": 227981,
+     "sha256": "37b9d839b468c59a",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xwd-env1.pdf",
+     "bytes": 228286,
+     "sha256": "e4adefa9544031dc",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-nasdaq-100-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares NASDAQ 100 Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XQQ"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xqq-env1.pdf",
+     "bytes": 373724,
+     "sha256": "1f9e01ea6975ef1b",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xqq-env1.pdf",
+     "bytes": 223749,
+     "sha256": "511614e8fbde87ff",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xqq-en-v1.pdf",
+     "bytes": 232282,
+     "sha256": "b30646da916a3755",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xqq-env1.pdf",
+     "bytes": 231886,
+     "sha256": "e4de9a263cc23916",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-premium-money-market-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares Premium Money Market ETF",
+   "tickers": [
+    "CMR"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-cmr-en-v1.pdf",
+     "bytes": 370177,
+     "sha256": "4bb0d411c2e223e9",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-cmr-env1.pdf",
+     "bytes": 216112,
+     "sha256": "1eeb5307f4ac456d",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-s-p-500-3-capped-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares S&P 500 3% Capped Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XSPC"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xspc-en-v1.pdf",
+     "bytes": 378563,
+     "sha256": "fb0b8b431007efcc",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xspc-env1.pdf",
+     "bytes": 220075,
+     "sha256": "ff7f6b4b40a2ffd4",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-s-p-tsx-60-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares S&P/TSX 60 Index ETF",
+   "tickers": [
+    "XIU"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xiu-en-v1.pdf",
+     "bytes": 368235,
+     "sha256": "0c5e1bdaad424b51",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xiu-env1.pdf",
+     "bytes": 218137,
+     "sha256": "fbb7eef04dc5cebe",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xiu-env1.pdf",
+     "bytes": 228661,
+     "sha256": "1cfdd1a12cc6a6fc",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xiu-env1.pdf",
+     "bytes": 225489,
+     "sha256": "9bad4d76c77efb87",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-s-p-tsx-canadian-dividend-aristocrats-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares S&P/TSX Canadian Dividend Aristocrats Index ETF",
+   "tickers": [
+    "CDZ"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-cdz-en-v1.pdf",
+     "bytes": 371142,
+     "sha256": "8f1b330cd01e0b42",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-cdz-env1.pdf",
+     "bytes": 218168,
+     "sha256": "cdce8d8ee4d0b825",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-cdz-env1.pdf",
+     "bytes": 231385,
+     "sha256": "94ebf33b8f15fa24",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-cdz-env1.pdf",
+     "bytes": 232753,
+     "sha256": "9a06fe8ec5b0327c",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-s-p-tsx-canadian-preferred-share-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares S&P/TSX Canadian Preferred Share Index ETF",
+   "tickers": [
+    "CPD"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-cpd-en-v1.pdf",
+     "bytes": 373049,
+     "sha256": "3fd4b16b15c6410b",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-cpd-env1.pdf",
+     "bytes": 223088,
+     "sha256": "122411c014c8d92c",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-cpd-env1.pdf",
+     "bytes": 236321,
+     "sha256": "866bf8a9da034f2c",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-cpd-env1.pdf",
+     "bytes": 231012,
+     "sha256": "7187c96242aafac3",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-s-p-tsx-capped-energy-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares S&P/TSX Capped Energy Index ETF",
+   "tickers": [
+    "XEG"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xeg-env1.pdf",
+     "bytes": 376419,
+     "sha256": "7f2e51890dc157dd",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xeg-env1.pdf",
+     "bytes": 220447,
+     "sha256": "84e0fbaf9d5fb044",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xeg-en-v1.pdf",
+     "bytes": 229742,
+     "sha256": "be75086300bc51e1",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xeg-en-v1.pdf",
+     "bytes": 230953,
+     "sha256": "493f6a780f7d812f",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-s-p-tsx-capped-financials-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares S&P/TSX Capped Financials Index ETF",
+   "tickers": [
+    "XFN"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xfn-env1.pdf",
+     "bytes": 372077,
+     "sha256": "a2a98d8ad82c4210",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xfn-env1.pdf",
+     "bytes": 218045,
+     "sha256": "f9239310581ed7a4",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xfn-en-v1.pdf",
+     "bytes": 228196,
+     "sha256": "190e6a05fe240f45",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xfn-en-v1.pdf",
+     "bytes": 227503,
+     "sha256": "7c69dc4b57c8e180",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-s-p-tsx-capped-materials-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares S&P/TSX Capped Materials Index ETF",
+   "tickers": [
+    "XMA"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xma-en-v1.pdf",
+     "bytes": 370862,
+     "sha256": "6d284105a1577b14",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-s-p-tsx-capped-reit-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares S&P/TSX Capped REIT Index ETF",
+   "tickers": [
+    "XRE"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xre-en-v1.pdf",
+     "bytes": 373657,
+     "sha256": "db512391399d3429",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xre-en-v1.pdf",
+     "bytes": 227329,
+     "sha256": "6bd396b2bbe37ae2",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xre-env1.pdf",
+     "bytes": 233148,
+     "sha256": "4512cd1ccf4a2d9f",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-s-p-tsx-composite-high-dividend-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares S&P/TSX Composite High Dividend Index ETF",
+   "tickers": [
+    "XEI"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xei-env1.pdf",
+     "bytes": 374232,
+     "sha256": "18b839f38ef304a2",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xei-env1.pdf",
+     "bytes": 222815,
+     "sha256": "42d6b572b5991091",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xei-en-v1.pdf",
+     "bytes": 231117,
+     "sha256": "2a7469f27a3418df",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xei-en-v1.pdf",
+     "bytes": 230657,
+     "sha256": "371a532e09271746",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-s-p-tsx-global-gold-index-etf",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares S&P/TSX Global Gold Index ETF",
+   "tickers": [
+    "XGD"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xgd-en-v1.pdf",
+     "bytes": 371601,
+     "sha256": "4c868cb2dad39193",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xgd-env1.pdf",
+     "bytes": 220674,
+     "sha256": "28933332b5f04885",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xgd-env1.pdf",
+     "bytes": 232765,
+     "sha256": "c85bb0ef11aa4c9f",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xgd-env1.pdf",
+     "bytes": 226401,
+     "sha256": "e56bffcbb66b2c53",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-u-s-aggregate-bond-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares U.S. Aggregate Bond Index ETF (CAD-Hedged)",
+   "tickers": [
+    "XAGH"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-xagh-en-v1.pdf",
+     "bytes": 376019,
+     "sha256": "b04440b7d58f05f3",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-xagh-env1.pdf",
+     "bytes": 222376,
+     "sha256": "667c176fd4ed1856",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-xagh-env1.pdf",
+     "bytes": 229225,
+     "sha256": "3d862e37283bfe37",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-xagh-env1.pdf",
+     "bytes": 229499,
+     "sha256": "f39b01bf9d93e1db",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "blackrock-ishares-ca::ishares-us-dividend-growers-index-etf-cad-hedged",
+   "family": "blackrock-ishares-ca",
+   "family_name": "BlackRock / iShares Canada",
+   "country": "CA",
+   "name": "iShares US Dividend Growers Index ETF (CAD-Hedged)",
+   "tickers": [
+    "CUD"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2025-cud-env1.pdf",
+     "bytes": 373648,
+     "sha256": "049ee3cf034acc2a",
+     "confidence": 14
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2024-cud-env1.pdf",
+     "bytes": 224356,
+     "sha256": "d97f85b139419abb",
+     "confidence": 14
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2023-cud-env1.pdf",
+     "bytes": 231001,
+     "sha256": "2d294405ba553627",
+     "confidence": 14
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.blackrock.com/ca/investors/en/literature/tax-information/pfic-stmt-2022-cud-env1.pdf",
+     "bytes": 232746,
+     "sha256": "ee872d988ed8c7bb",
+     "confidence": 14
+    }
+   ],
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  }
+ ],
+ "negatives": [
+  {
+   "scope": "CIBC-branded mutual funds, CIBC Index Funds, CIBC Managed Portfolios, Axiom Portfolios",
+   "family": "cibc",
+   "finding": "not_offered",
+   "evidence": "https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance.html",
+   "verified": "2026-08-18",
+   "verified_by": "manual",
+   "note": "Manager states unitholders of these funds will not receive PFIC Annual Information Statements. Sister brands Renaissance and Imperial Pools DO receive them - same bank, opposite answer. This is the canonical case for why the register exists."
+  },
+  {
+   "scope": "Renaissance HISA, Renaissance Money Market funds",
+   "family": "renaissance",
+   "finding": "not_offered",
+   "evidence": "https://www.renaissanceinvestments.ca/reporting-governance/pfic",
+   "verified": "2026-08-18",
+   "verified_by": "manual"
+  },
+  {
+   "scope": "All funds held inside RRSPs and RRIFs",
+   "family": "*",
+   "finding": "not_offered",
+   "evidence": "https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance.html",
+   "verified": "2026-08-18",
+   "verified_by": "manual",
+   "note": "Managers generally do not issue statements for registered retirement accounts. Note this is about the manager's publishing practice only, and is not a conclusion about the treaty position or reporting obligation for any particular account type. TFSAs and RESPs are NOT covered by this exclusion and generally do need PFIC reporting."
+  },
+  {
+   "scope": "Fidelity Canada non-ETF mutual fund series",
+   "family": "fidelity-ca",
+   "finding": "offered_on_request",
+   "evidence": "https://www.fidelity.ca/en/pfic_etf_statements/",
+   "verified": "2026-08-18",
+   "verified_by": "manual",
+   "note": "Only ETF and ETF Series statements are published on the website. Personalized statements for other series are issued on request, so absence from the index is not evidence that none can be obtained - call the manager."
+  }
+ ],
+ "health": [
+  {
+   "id": "blackrock-ishares-ca",
+   "name": "BlackRock / iShares Canada",
+   "mode": "static",
+   "hub": "https://www.blackrock.com/ca/investors/en/resources/tax-information-centre",
+   "checked": "2026-08-18",
+   "status": "ok",
+   "statements": 232,
+   "candidates": 720,
+   "message": "",
+   "derived_names": 72,
+   "pdf_mode": "browser"
+  }
+ ]
+}

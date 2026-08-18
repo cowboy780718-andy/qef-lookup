@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QEF Statement Lookup</title>
+<meta name="description" content="Find and bulk-download PFIC Annual Information Statements for Form 8621.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📑</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <h1>QEF Statement Lookup</h1>
+    <p class="sub">PFIC Annual Information Statements for Form 8621 &mdash; search, select, download in bulk.</p>
+    <div class="stats" id="stats"><span class="muted">Loading index&hellip;</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ---------- identify ---------- -->
+  <section class="panel">
+    <div class="findrow">
+      <div class="findcol grow">
+        <label for="q">Search by fund name, ticker or fund code</label>
+        <input id="q" type="search" autocomplete="off" spellcheck="false"
+               placeholder="e.g. XSH, VFV, RBF556, &ldquo;global dividend&rdquo;, Mackenzie">
+        <div class="hint" id="qhint">Partial names are fine. Multiple terms, one per line, are searched together.</div>
+      </div>
+
+      <div class="findcol">
+        <label>Or drop a client document</label>
+        <div id="drop" class="drop" tabindex="0" role="button"
+             aria-label="Drop a PDF holdings statement or T3 here to identify funds">
+          <strong>Drop a PDF here</strong>
+          <span>bank statement, T3, brokerage report</span>
+          <span class="privacy">Parsed in this browser &mdash; never uploaded</span>
+          <input type="file" id="file" accept="application/pdf" hidden multiple>
+        </div>
+      </div>
+    </div>
+    <div id="dropstatus" class="dropstatus" hidden></div>
+  </section>
+
+  <!-- ---------- filters ---------- -->
+  <section class="panel filters">
+    <div class="frow">
+      <div class="fgroup grow">
+        <label>Fund tax year</label>
+        <div id="years" class="chips"></div>
+        <div class="hint">
+          Filters on the <strong>fund&rsquo;s</strong> tax year end, not the calendar year.
+          BMO and RBC run to 30&nbsp;June, CI to 31&nbsp;March.
+        </div>
+      </div>
+      <div class="fgroup">
+        <label for="famsel">Fund family</label>
+        <select id="famsel"><option value="">All families</option></select>
+      </div>
+      <div class="fgroup">
+        <label for="periodfrom">Custom period end</label>
+        <div class="range">
+          <input type="date" id="periodfrom" aria-label="Period end from">
+          <span>to</span>
+          <input type="date" id="periodto" aria-label="Period end to">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- tabs ---------- -->
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="results" role="tab">Statements</button>
+    <button class="tab" data-tab="negatives" role="tab">Not offered</button>
+    <button class="tab" data-tab="health" role="tab">Source health</button>
+  </nav>
+
+  <section id="tab-results" class="tabpane">
+    <div class="listhead">
+      <label class="ck"><input type="checkbox" id="selall"> Select all shown</label>
+      <span id="count" class="muted"></span>
+    </div>
+    <div id="results" class="results"></div>
+  </section>
+
+  <section id="tab-negatives" class="tabpane" hidden>
+    <p class="lead">
+      Funds and fund ranges confirmed <strong>not</strong> to publish a QEF statement.
+      A finding here is a working-paper result: it means the question was researched
+      and answered, so it never needs researching again.
+    </p>
+    <div id="negatives"></div>
+  </section>
+
+  <section id="tab-health" class="tabpane" hidden>
+    <p class="lead">
+      Every source is re-checked on each crawl. A family that breaks shows here and
+      opens a GitHub issue automatically.
+    </p>
+    <div id="health"></div>
+  </section>
+
+</main>
+
+<!-- ---------- selection tray ---------- -->
+<div id="tray" class="tray" hidden>
+  <div class="wrap trayinner">
+    <span id="traycount"></span>
+    <div class="traybtns">
+      <button id="btnzip" class="primary">Download ZIP</button>
+      <button id="btnopen">Open in tabs</button>
+      <button id="btncsv">Manifest CSV</button>
+      <button id="btnclear" class="ghost">Clear</button>
+    </div>
+  </div>
+  <div id="progress" class="progress" hidden><div id="bar"></div><span id="ptext"></span></div>
+</div>
+
+<footer class="foot wrap">
+  <p>
+    Index built by an automated nightly crawl of fund company websites. Documents are
+    served from each manager&rsquo;s own site; nothing is rehosted here.
+    <strong>Always confirm the statement matches the fund, series and period before filing.</strong>
+  </p>
+  <p class="muted" id="built"></p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.mjs" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js" type="module"></script>
+</body>
+</html>

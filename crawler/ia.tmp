@@ -1,0 +1,417 @@
+ <!DOCTYPE html> <html lang="en" user-role="Other"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>
+	404
+</title> <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js" type="text/javascript" integrity="sha512-Meww2sXqNHxI1+5Dyh/9KAtvI9RZSA4c1K2k5iL02oiPO/RH3Q30L3M1albtqMg50u4gRTYdV4EXOQqXEI336A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> <script src="/iaclarington/IACCommon/Resources/Scripts/iac.init.js?v=6448" type="text/javascript"></script> <script>
+        initializeGlobalIACObject(
+            `{"PUBUrl":"https://iaclarington.com","SHUBUrl":"https://saleshub.iaclarington.com","FDSUrl":"https://fds2.iaclarington.com","CCMUrl":"https://ccm.ifglobalproducts.com","IACUrl":"https://iac.ifglobalproducts.com","InvestiaSSOUrl":"https://login.iaclarington.com/sso/saml2/0oa5pmhngh0eKBL6f697?fromURI=https%3a%2f%2fiaclarington.com/fr/carrefour-des-conseillers/ouverture-de-session/LoginExternalProvider/OpenID","IAPWSSOUrl":"https://login.iaclarington.com/sso/saml2/0oa5pmg8x0ACXIEX3697?fromURI=https%3a%2f%2fiaclarington.com/fr/carrefour-des-conseillers/ouverture-de-session/LoginExternalProvider/OpenID","IndallSSOUrl":"https://login.iaclarington.com/sso/saml2/0oa5d772hl4KzUOH7697?fromURI=https%3a%2f%2fiaclarington.com/fr/carrefour-des-conseillers/ouverture-de-session/LoginExternalProvider/OpenID","OktaUrl":"https://login.iaclarington.com"}`,
+            false,
+            `/advisor-hub/login`,
+            `/Sitefinity/SignOut?sts_signout=true`
+        );
+    </script> <script src="/ScriptResource.axd?d=6DQe8ARl7A9TiuWej5ttCmXdaDgCSf9dfXnAe57DGDhJsNXFW4sGxewinq7CXBgx7hxzQECOajAEhdSp8s9U77urr7PgqhBf1_4gkJGzpJmNwaJdRcFRM-lP1UYgEPDOdUMdiAXHM6SLcQHjSZa8ytrHaI6MM6opRl3Lr6X-iGLZk5zDEF9QXQYqll4T6gZF0&amp;t=70cd71e" type="text/javascript"></script><script src="/ScriptResource.axd?d=74FHISOx3fOPKwLxL0RMYgDqM6L9u6BhCpppuG0bI5cmKBAvysoj0n5XyNQlxsC8KT6BghnyGN2KX6eXweQUBayLX-wlZNECpL22YRD8NHTpXtkguaZBrFZDLb1ttLPuxm-I3r0npOnJU2QHQZ3HbvXat5BvoJSNg7kGnTE_yjCV-xfxB7E0fGiy4Hvy_H8T0&amp;t=70cd71e" type="text/javascript"></script><script src="/ScriptResource.axd?d=BipRCKUteAIr0PTUVR7xo8I4pCcvjdbQfz9pkyvhcTWOU4RtYrObwDI6N5gOge_UmmMh_WHo51HJzlIa5CwbJYaGbL37cj9uxKHnzlUaqGjwHQWOXE0pfUmVXsQ5WFySZtIkAeBetTHNUEflqj-8yaqh2oE6JSA1pm_qMvggAxrWeFWPj36Whwtu-cuf4s6r0&amp;t=70cd71e" type="text/javascript"></script><script src="/ResourcePackages/Bootstrap4/assets/dist/js/popper.min.js" type="text/javascript"></script><script src="/ResourcePackages/Bootstrap4/assets/dist/js/bootstrap.min.js" type="text/javascript"></script><script src="/iaclarington/IACCommon/Resources/Scripts/iac.helpers.js?v=6448" type="text/javascript"></script><script src="/iaclarington/Scripts/iac.common.js?v=6448" type="text/javascript"></script><script src="/iaclarington/IACCommon/Resources/Scripts/iac.menu.js?v=6448" type="text/javascript"></script><script src="/iaclarington/Scripts/Vendors/gtm.datalayer.js" type="text/javascript"></script><link href="https://cdn.jsdelivr.net/npm/@fontsource/montserrat@5.1.0/latin.min.css" rel="stylesheet" type="text/css" /><link href="https://cdn.jsdelivr.net/npm/@fontsource/open-sans@5.1.0/latin.min.css" rel="stylesheet" type="text/css" /><link href="/ResourcePackages/Bootstrap4/assets/dist/css/main.min.css" rel="stylesheet" type="text/css" /><link href="/iaclarington/Styles/css/iac.main.css?v=6448" rel="stylesheet" type="text/css" /><link href="/iaclarington/Styles/css/project.master.min.css?v=6448" rel="stylesheet" type="text/css" /><link href="/iaclarington/Styles/css/StyleWidgets/iac.template.base.css?v=6448" rel="stylesheet" type="text/css" /><link href="/iaclarington/Styles/css/StyleWidgets/iac.page.fontawesomesvgfix.css" rel="stylesheet" type="text/css" /> <script>
+        (() => { iac.utility.validateUserProfile("/advisor-hub/user/profile_advisor/profile_advisor_edit", "/auth/registered", "To navigate Advisor Hub as an Advisor, you must provide us with your information."); })();
+    </script> <meta name="robots" content="noindex" /><meta property="og:title" content="404" /><meta property="og:url" content="https://iaclarington.com/error/404" /><meta property="og:type" content="website" /><meta property="og:site_name" content="IA Clarington" /><link href="/iaclarington/Styles/css/StyleWidgets/iac.page.404.css" media="all" rel="stylesheet" type="text/css" /><meta name="Generator" content="Sitefinity 15.4.8631.0 DX" /><link rel="canonical" href="https://iaclarington.com/error/404" /><script type="application/json" id="sf-insight-metadata">
+	{"contentMetadata":"{\"Id\":\"228f1298-6dec-6388-bcc1-ff0200f88fcc\",\"ContentType\":\"Page\",\"Title\":\"404\",\"CanonicalTitle\":\"404\",\"CanonicalUrl\":\"https://iaclarington.com/error/404\",\"Language\":\"en\",\"CreatedOn\":\"2023-02-21T20:50:30Z\",\"ModifiedOn\":\"2026-02-09T15:47:56Z\",\"SiteId\":\"714fae9d-6367-49ee-9589-17fc411f66ea\",\"SiteName\":\"IA Clarington\",\"PageId\":\"228f1298-6dec-6388-bcc1-ff0200f88fcc\"}","videosMetadata":"[]"}
+</script><script type="application/json" id="sf-insight-settings">
+	{"apiServerUrl":"https://api.insight.sitefinity.com/","apiKey":"231b3a0c-a162-f8ad-6cc1-dda462b82c18","applicationName":"Website","trackingCookieDomain":"","keepDecTrackingCookieOnTrackingConsentRejection":false,"slidingExpirationForTrackingCookie":false,"maxAgeForTrackingCookieInDays":365,"trackYouTubeVideos":true,"crossDomainTrackingEntries":["iaclarington.com"],"strategy":"Persist|True","docsHrefTestExpressions":[".*\\/docs\\/.+\\.{1}.+((\\?|\\\u0026)sfvrsn=.+){1}$",".+((\\?|\\\u0026)sf_dm_key=.+){1}$"],"sessionLengthInMinutes":30,"trackVimeoVideos":true,"useSecureCookies":true}
+</script><script type="text/javascript" src="/WebResource.axd?d=HtQyXelCu6mzSPcVcvK_BvUs_HgivijE5DOesNo80vkq2nVTyvWm7iqxhGkLKUplau3VnLJ-zcnKUx2ZuOaZmHLqO2CDC3Djcb1wFZIuwCAhDPpzSQ1bmFSB71jTyS0-3fSeOnP1_fFMje0pIcpSmn8Is0NvmFpvYFK5-hrrVAPa5cIDOCVf4MZissKlU-WpSuXImbpv9JIf00UrrVj1-wkC3pB-hBvuZkTrvz57RhY1&amp;t=639153514740000000">
+
+</script><script src="https://cdn.insight.sitefinity.com/sdk/sitefinity-insight-client.min.3.1.44.js" crossorigin="" async="async">
+
+</script><meta property="og:image" content="https://iaclarington.com/images/default-source/developer-images/iaclarington-logo-og-en.png" /></head> <body id="PublicWrapper"> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XZHHKP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>  <div class="sfPublicWrapper"> <div class="page-wrap"> <div id="iac-header" role="banner"> <div class="header-warning"> 
+
+        <div id="usertermsandconditions" class="iac-dismissable" role="alert" aria-live="assertive">
+            <div class="iac-window iac-modal w-800px h-600px">
+                        <div class="window-header">
+            <h2 class="text-darkblue">Terms & Conditions</h2>
+        </div>
+        <div class="window-content border">
+                <span>
+                    <p>By clicking "Accept," you confirm that you are an Investia or iA Private Wealth Advisor and that you have read the terms detailed below. This site is not intended for and must not be accessed by or shared with any person who is not an Investia or iA Private Wealth Advisor.</p><p>This site is operated by IA Clarington Investments Inc (&ldquo;iA Clarington&rdquo;) and is for information purposes only. It does not constitute an offer to sell or a solicitation of an offer to buy any security or investment or advisory service, or a recommendation of any such security or service, that may be referenced on or through this site. No representation is given that the securities, products, or services discussed on, or accessible through, this website are suitable for any particular investor. You acknowledge that the provision of any information through this site shall not constitute or be considered investment advice. This site should not be considered as communicating any invitation or inducement to engage in investment activity in any jurisdiction.</p><p>In accessing and using this site you acknowledge that you have read, understood, and agree to accept and be bound by the terms and conditions set out herein, which may be modified by us from time to time without notice, by posting changes within the site. If you do not accept any of the terms, please discontinue use of this site and any of its associated pages.</p>
+                </span>
+
+        </div>
+        <div class="window-footer align-self-end">
+            <button autofocus type="button" class="modal-close iac-dismiss iac-elite-btn btn-input w-75px" style="box-sizing: content-box;">Accept</button>
+        </div>
+
+                <input id="usertermsandconditions_blp" type="hidden" value="[&quot;/advisor-hub/user/account-notification&quot;,&quot;/fr/carrefour-des-conseilles/user/notification-de-compte&quot;,&quot;/auth/registered&quot;,&quot;/advisor-hub/user/profile_advisor&quot;,&quot;/fr/carrefour-des-conseilles/user/profil_conseiller&quot;,&quot;/advisor-hub/user/profile_advisor/profile_advisor_edit&quot;,&quot;/fr/carrefour-des-conseilles/user/profil_conseiller/profil_conseiller_edit&quot;]"/>
+            </div>
+        </div>
+        <script type="module" async>
+            const blacklistedPagesForBypassingPopup = JSON.parse($("#usertermsandconditions_blp").val() ?? []);
+
+            import 'https://kendo.cdn.telerik.com/2022.3.1109/js/jszip.min.js';import 'https://kendo.cdn.telerik.com/2022.3.1109/mjs/kendo.window.js';
+import '/kendo-ui-license.js';
+
+            import "/iaclarington/IACCommon/Resources/Scripts/iac.ES6.api.js?v=6448";
+
+            $(document).ready(() => {
+                // DEVNOTE: Checking this on client ensures we don't execute unnecessary /GetTerms on every page load.
+                //          If this cookie exists, this means they have already seen the popup and it should have already
+                //          been synced to their profile.
+                const modalId = "usertermsandconditions";
+                const popupCookie = Cookies.get(modalId);
+                const userAlreadyAcceptedTerms = popupCookie == "true";
+                const pageBypassesPopup = blacklistedPagesForBypassingPopup.find(x => x == location.pathname);
+                if (userAlreadyAcceptedTerms || pageBypassesPopup) return;
+
+                iac.service.execute("GET", `/iac/terms?executionMode=AffiliateAdvisorsOnly&cookieId=usertermsandconditions`).then(resp => {
+                    const popupIsRequired = resp.CustomResponse == 1;
+                    if (popupIsRequired) {
+                        // DEVNOTE: iac-dismissable already handles the showing/hiding of the wrapper container on page load - but
+                        //          it doesn't handle the body overlay or the scrollbar. Therefore, we still need to call openModal().
+                        iac.utility.openModal(modalId);
+
+                        // DEVNOTE: iac-dismissable already handles the cookie-setting. This is only for profile persistence.
+                        const syncWithProfile = "True" == "True";
+                        if (syncWithProfile) {
+                            $(`#${modalId} .modal-close`).on("click", (e) => {
+                                iac.service.execute("POST", `/iac/terms`, { TermsAccepted: true, CookieId: modalId, SyncWithProfile: syncWithProfile });
+                            });
+                        }
+                    }
+                    else {
+                        $(`#${modalId}`).remove();
+                    }
+                });
+            });
+        </script>
+
+
+
+<div id="Es6FeatureDetection" class="iac-hide">
+    <div class="alert alert-danger mb-0 mt-0 br-0" role='alert' aria-live='assertive'>
+        <div class="container">
+            <p><strong>Oops! It looks like your browser doesn't support some of the features needed to view this website.</strong><br />Your experience may differ compared to newer, up-to-date web browsers. Please switch to another web browser if available.</p>
+        </div>
+    </div>
+</div>
+<script>
+    (function () {
+        var alertId = 'Es6FeatureDetection';
+        try {
+            // Arrow functions (CHR: 45, EDG: 12, SAF: 10, FF: 22, OP: 32)
+            new Function('(a = 0) => a');
+
+            // Let and const (CHR: 49, EDG: 12, SAF: 11, FF: 36, OP: 36)
+            eval('let x = 1; const y = 2;');
+
+            // Template literals (CHR: 41, EDG: 13, SAF: 9.1, FF: 34, OP: 29)
+            eval('`template literal`');
+
+            // Default parameters (CHR: 49, EDG: 14, SAF: 10, FF: 15, OP: 36)
+            new Function('function f(a = 0) { return a; }');
+
+            // Destructuring (CHR: 49, EDG: 14, SAF: 8, FF: 41, OP: 36)
+            eval('let {a, b} = {a: 1, b: 2};');
+
+            // Spread operator (CHR: 46, EDG: 12, SAF: 8, FF: 16, OP: 37)
+            eval('let arr = [...[1, 2, 3]];');
+
+            // Classes (CHR: 49, EDG: 13, SAF: 9, FF: 45, OP: 36)
+            eval('class MyClass {}');
+
+            // Promises (CHR: 33, EDG: 12, SAF: 7.1, FF: 29, OP: 20)
+            new Promise(function () { });
+        } catch (ex) {
+            if (typeof jQuery !== 'undefined') {
+                $('#' + alertId).show();
+            } else {
+                var alert = document.getElementById(alertId);
+                alert.style.display = 'block';
+            }
+        }
+    })();
+</script>
+
+ </div> <div class="header-main iac-showhide"> <div class="header-bar"></div> <div class="container header-content"> <div class="form-row align-items-center"> <div class="col-auto iac-logo-container alt"> 
+ </div> <div class="col iac-skiptocontent-container"> <a href="#content" class="skip-to-content" tab-index="1">Skip to content</a> </div> <div class="col-auto iac-utilitymenu-container iac-target iac-hide iac-showhide"> 
+<div id="SiteUtilityMenu_TA483E6FB035_Col00" class="sf_colsIn d-flex iac-topnav-base" data-sf-element="Container" data-placeholder-label="TopNav Base">
+
+<a class="iac-link-utilitymenu" href="/contact-us">Contact us</a>
+
+
+        <a href="javascript:void(0);" onclick="openLink('fr'); return false;" class=" iac-languagelink iac-link-utilitymenu" aria-label="fran&#231;ais"><span lang=fr>FR</span></a>
+
+
+
+
+
+
+</div>
+ </div> <div class="col-12 iac-newrow"></div> <div class="col-auto iac-logo-container main"> 
+
+<div >
+    <div ><a href="/" class="iac-logo"><img src="/iaclarington/images/iac-logo-en-v3.svg" alt="iaclarington.com - home" /></a></div>    
+</div> </div> <div class="col header-nav"> <div class="iac-sitenav-container iac-target iac-hide"> <nav id="iac-nav" class="navbar" data-toggle="affix" aria-label="Primary navigation menu"> <div id="iacmainnavigation" class=""> 
+
+<div >
+    <div ><ul class="navbar-nav flex-wrap w-100" aria-label="Navigation menu" role="list"><li class="nav-item dropdown" role="listitem"><a data-toggle="dropdown" id="pricePerformance" class="nav-link dropdown-toggle shadow-none" href="javascript:void(0)" aria-expanded="false" role="button" aria-haspopup="true" aria-label="Price & performance dropdown menu">Price &amp; <br data-sf-ec-immutable="" />Performance</a>
+ <div class="dropdown-menu w-100" aria-labelledby="pricePerformance"><div class="row"><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/price-performance/grids/daily-prices?ff=230;237;83" class="main-nav-link">Price &amp; performance</a>
+ <ul role="list"><li role="listitem"><a href="/price-performance/grids/performance?campaign=ratings&amp;ff=300;301;83" aria-label="Morningstar 4 and 5 Star Funds" class="main-nav-link">Morningstar 4 and 5-Star Funds</a>
+ </li><li role="listitem"><a href="/price-performance/grids/daily-prices?ff=108;83" aria-label="Price & performance - Active ETF Series" class="main-nav-link">Active ETF Series</a>
+ </li><li role="listitem"><a href="/price-performance/grids/daily-prices?ff=17;83" aria-label="Price & performance - Corporate class" class="main-nav-link">Corporate class</a>
+ </li><li role="listitem"><a href="/price-performance/grids/daily-prices?ff=45;83" aria-label="Price & performance - Inhance SRI funds" class="main-nav-link">Inhance SRI funds</a>
+ </li></ul></li></ul></div><div class="col-md-3"><ul role="list"><li class="main-nav-empty" role="listitem"><ul role="list"><li role="listitem"><a href="/price-performance/grids/daily-prices?ff=76;83" aria-label="Price & performance - Managed solutions" class="main-nav-link">Managed solutions</a>
+ </li><li role="listitem"><a href="/price-performance/grids/daily-prices?ff=15;83" aria-label="Price & performance - Mutual fund trusts" class="main-nav-link">Mutual fund trusts</a>
+ </li><li role="listitem"><a href="/price-performance/grids/fund-codes?ff=83" aria-label="Price & performance - Fund codes" class="main-nav-link">Fund codes</a>
+ </li><li role="listitem"><a href="/price-performance/grids/compare?cf=" aria-label="Price & performance - Fund compare tool" class="main-nav-link">Fund compare tool</a>
+ </li></ul></li></ul></div><div class="col-md"><ul role="list"><li role="listitem"><a href="/products-services/regulatory-documents" aria-label="Regulatory documents" class="main-nav-link">Regulatory documents</a>
+ <ul role="list"><li role="listitem"><a href="/products-services/regulatory-documents" aria-label="Regulatory documents - Prospectus" class="main-nav-link">Prospectus</a>
+ </li><li role="listitem"><a href="/price-performance/grids/documents" aria-label="Regulatory documents - Fund Facts" class="main-nav-link">Fund Facts</a>
+ </li><li role="listitem"><a href="/price-performance/grids/documents" aria-label="Regulatory documents - Financial statements" class="main-nav-link">Financial statements</a>
+ </li><li role="listitem"><a href="/price-performance/grids/documents" aria-label="Regulatory documents - Management
+            Reports of Fund Performance" class="main-nav-link">Management Reports of Fund Performance</a>
+ </li><li role="listitem"><a href="/price-performance/grids/documents" aria-label="Regulatory documents - Top 25 holdings" class="main-nav-link">Top 25 holdings</a>
+ </li></ul></li></ul></div></div></div></li><li class="dropdown nav-item"><a data-toggle="dropdown" id="productsServices" class="nav-link dropdown-toggle" href="javascript:void(0)" aria-expanded="false" role="button" aria-haspopup="true" aria-label="Products & services dropdown menu">Products &amp; <br data-sf-ec-immutable="" />Services
+ </a>
+ <div class="dropdown-menu w-100" aria-labelledby="productsServices"><div class="row"><div class="col-md-3"><ul role="list"><li><a href="/products-services/mutual-funds" class="main-nav-link">Mutual funds</a>
+ <ul role="list"><li role="listitem"><a href="/products-services/distributions-calculator" class="main-nav-link">Distributions calculator</a>
+ </li></ul></li><li><a href="/products-services/managed-solutions" class="main-nav-link">Managed solutions</a>
+ <ul role="list"><li role="listitem"><a href="/products-services/managed-solutions/ia-wealth-managed-portfolios" class="main-nav-link">iA Wealth Managed Portfolios</a>
+ </li><li role="listitem"><a href="/products-services/socially-responsible-investing" class="main-nav-link">IA Clarington Inhance SRI Portfolios</a>
+ </li></ul></li><li role="listitem"><a href="/redirecting-pages/kyp" class="main-nav-link lock-link" target="_blank">Know Your Product (KYP)</a>
+ </li></ul></div><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/products-services/guaranteed-investment-funds" class="main-nav-link">Guaranteed solutions</a>
+ </li><li role="listitem"><a href="/products-services/socially-responsible-investing" class="main-nav-link">Socially Responsible Investing (SRI)</a>
+ </li><li role="listitem"><a href="/products-services/tax-efficient-investing" class="main-nav-link">Tax-efficient investing</a>
+ <ul role="list"><li role="listitem"><a href="/products-services/tax-efficient-investing/corporate-class" class="main-nav-link">Corporate class</a>
+ </li><li role="listitem"><a href="/products-services/tax-efficient-investing/payout-options-series-t" class="main-nav-link">Payout options</a>
+ </li><li role="listitem"><a href="/products-services/tax-efficient-investing/tax-advantaged-accounts" class="main-nav-link">Tax-advantaged accounts</a>
+ </li></ul></li></ul></div><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/products-services/tax-estate-planning" class="main-nav-link">Tax &amp; Estate Planning</a>
+ </li></ul></div><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/products-services/service-and-purchase-options" class="main-nav-link">Service &amp; purchase options</a>
+ <ul role="list"><li role="listitem"><a href="/products-services/service-and-purchase-options/etf" class="main-nav-link">Active ETF Series</a>
+ </li><li role="listitem"><a href="/products-services/service-and-purchase-options/series-options" class="main-nav-link">Series options</a>
+ </li><li role="listitem"><a href="/elite-pricing" class="main-nav-link">High net worth (Elite Pricing)</a>
+ </li><li role="listitem"><a href="/products-services/service-and-purchase-options/dollar-cost-averaging" class="main-nav-link">Dollar-cost averaging</a>
+ </li><li role="listitem"><a href="/products-services/service-and-purchase-options/passive-foreign-investment" class="main-nav-link">Passive Foreign Investment Company (PFIC)</a>
+ </li></ul></li><li role="listitem"><a href="/products-services/total-cost-reporting" class="main-nav-link">Total Cost Reporting
+                            </a>
+ </li><li role="listitem"><a href="/products-services/regulatory-documents" class="main-nav-link">Regulatory documents</a>
+ </li></ul></div></div></div></li><li role="listitem" class="dropdown nav-item"><a data-toggle="dropdown" id="portfolioManagers" class="nav-link dropdown-toggle" href="javascript:void(0)" aria-expanded="false" role="button" aria-haspopup="true" aria-label="Portfolio managers dropdown menu">Portfolio <br data-sf-ec-immutable="" />Managers</a>
+ <div class="dropdown-menu w-100" aria-labelledby="portfolioManagers"><div class="row"><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/portfolio-managers/agile-investment-management" class="main-nav-link" data-sf-ec-immutable="">Agile Investment Management LLC</a>
+ <ul role="list"><li role="listitem"><a href="/portfolio-managers/agile-investment-management/dan-janis" class="main-nav-link" data-sf-ec-immutable="">Dan Janis</a>
+ </li><li role="listitem"><a href="/portfolio-managers/agile-investment-management/peter-azzinaro" class="main-nav-link" data-sf-ec-immutable="">Peter Azzinaro</a>
+ </li><li role="listitem"><a href="/portfolio-managers/agile-investment-management/noelle-corum" class="main-nav-link" data-sf-ec-immutable="">Noelle Corum</a>
+ </li><li role="listitem"><a href="/portfolio-managers/agile-investment-management/richard-cochinos" class="main-nav-link" data-sf-ec-immutable="">Richard Cochinos</a>
+ </li><li role="listitem"><a href="/portfolio-managers/agile-investment-management/charles-tomes" class="main-nav-link" data-sf-ec-immutable="">Charles C. Tomes</a>
+ </li></ul></li></ul></div><div class="col-md-3"><ul role="list"><li><a href="/portfolio-managers/ia-global-asset-management-inc" class="main-nav-link" data-sf-ec-immutable="">iA Global Asset Management Inc.</a>
+ <ul role="list"><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/jean-rene-adam" class="main-nav-link" data-sf-ec-immutable="">Jean-Ren&eacute; Adam</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/tej-rai" class="main-nav-link" data-sf-ec-immutable="">Tej Rai</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/alex-bellefleur" class="main-nav-link" data-sf-ec-immutable="">Alex Bellefleur</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/dan-bastasic" class="main-nav-link" data-sf-ec-immutable="">Dan Bastasic</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/matthew-kurbat" class="main-nav-link" data-sf-ec-immutable="">Matthew Kurbat</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/sebastien-vaillancourt" class="main-nav-link" data-sf-ec-immutable="">S&eacute;bastien Vaillancourt</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/nicolas-caron" class="main-nav-link" data-sf-ec-immutable="">Nicolas Caron</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/david-caron" class="main-nav-link" data-sf-ec-immutable="">David Caron</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/maxime-houde" class="main-nav-link" data-sf-ec-immutable="">Maxime Houde</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/saniun-haque" class="main-nav-link" data-sf-ec-immutable="">Saniun Haque</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/dan-rohinton" class="main-nav-link" data-sf-ec-immutable="">Dan Rohinton</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/oliver-shao" class="main-nav-link" data-sf-ec-immutable="">Oliver Shao</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/dominic-siciliano" class="main-nav-link" data-sf-ec-immutable="">Dominic Siciliano</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/alexandre-morin" class="main-nav-link" data-sf-ec-immutable="">Alexandre Morin</a>
+ </li><li role="listitem"><a href="/portfolio-managers/ia-global-asset-management-inc/pier-andre-blanchet" class="main-nav-link" data-sf-ec-immutable="">Pier-Andr&eacute; Blanchet</a>
+ </li></ul></li></ul></div><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/portfolio-managers/loomis-sayles-and-company" class="main-nav-link" data-sf-ec-immutable="">Loomis, Sayles &amp; Company, L.P.
+                            </a>
+ <ul role="list"><li role="listitem"><a href="/portfolio-managers/loomis-sayles-and-company/aziz-v-hamzaogullari" class="main-nav-link" data-sf-ec-immutable="">Aziz V. Hamzaogullari</a>
+ </li><li role="listitem"><a href="/portfolio-managers/loomis-sayles-and-company/brian-kennedy" class="main-nav-link" data-sf-ec-immutable="">Brian P. Kennedy</a>
+ </li><li role="listitem"><a href="/portfolio-managers/loomis-sayles-and-company/david-rolley" class="main-nav-link" data-sf-ec-immutable="">David W. Rolley</a>
+ </li><li role="listitem"><a href="/portfolio-managers/loomis-sayles-and-company/eileen-riley" class="main-nav-link" data-sf-ec-immutable="">Eileen N. Riley</a>
+ </li><li role="listitem"><a href="/portfolio-managers/loomis-sayles-and-company/lee-rosenbaum" class="main-nav-link" data-sf-ec-immutable="">Lee Rosenbaum</a>
+ </li><li role="listitem"><a href="/portfolio-managers/loomis-sayles-and-company/matthew-eagan" class="main-nav-link" data-sf-ec-immutable="">Matthew J. Eagan</a>
+ </li><li role="listitem"><a href="/portfolio-managers/loomis-sayles-and-company/eric-williams" class="main-nav-link" data-sf-ec-immutable="">Eric Williams</a>
+ </li><li role="listitem"><a href="/portfolio-managers/loomis-sayles-and-company/peter-sheehan" class="main-nav-link" data-sf-ec-immutable="">Peter S. Sheehan</a>
+ </li></ul></li></ul></div><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/portfolio-managers/qv-investors-inc" class="main-nav-link" data-sf-ec-immutable="">QV Investors Inc.</a>
+ <ul role="list"><li role="listitem"><a href="/portfolio-managers/qv-investors-inc/richard-fortin" class="main-nav-link" data-sf-ec-immutable="">Richard Fortin</a>
+ </li><li role="listitem"><a href="/portfolio-managers/qv-investors-inc/mathew-hermary" class="main-nav-link" data-sf-ec-immutable="">Mathew Hermary</a>
+ </li><li role="listitem"><a href="/portfolio-managers/qv-investors-inc/joe-jugovic" class="main-nav-link" data-sf-ec-immutable="">Joe Jugovic</a>
+ </li><li role="listitem"><a href="/portfolio-managers/qv-investors-inc/amit-shah" class="main-nav-link" data-sf-ec-immutable="">Amit Shah</a>
+ </li><li role="listitem"><a href="/portfolio-managers/qv-investors-inc/derek-nichol" class="main-nav-link" data-sf-ec-immutable="">Derek Nichol</a>
+ </li></ul></li><li role="listitem"><a href="/portfolio-managers/vancity-investment-management-ltd" class="main-nav-link" data-sf-ec-immutable="">Vancity Investment Management Ltd.</a>
+ <ul role="list"><li role="listitem"><a href="/portfolio-managers/vancity-investment-management-ltd/jeffrey-adams" class="main-nav-link" data-sf-ec-immutable="">Jeffrey Adams</a>
+ </li><li role="listitem"><a href="/portfolio-managers/vancity-investment-management-ltd/wes-dearborn" class="main-nav-link" data-sf-ec-immutable="">Wes Dearborn</a>
+ </li><li role="listitem"><a href="/portfolio-managers/vancity-investment-management-ltd/charan-sanghera" class="main-nav-link" data-sf-ec-immutable="">Charan Sanghera</a>
+ </li><li role="listitem"><a href="/portfolio-managers/vancity-investment-management-ltd/marc-sheard" class="main-nav-link" data-sf-ec-immutable="">Marc Sheard</a>
+ </li><li role="listitem"><a href="/portfolio-managers/vancity-investment-management-ltd/mary-tsang" class="main-nav-link" data-sf-ec-immutable="">Mary Tsang</a>
+ </li><li role="listitem"><a href="/portfolio-managers/vancity-investment-management-ltd/jeffrey-lew" class="main-nav-link" data-sf-ec-immutable="">Jeffrey Lew</a>
+ </li><li role="listitem"><a href="/portfolio-managers/vancity-investment-management-ltd/mike-harvey" class="main-nav-link" data-sf-ec-immutable="">Mike Harvey</a>
+ </li></ul></li></ul></div></div></div></li><li class="dropdown nav-item"><a data-toggle="dropdown" id="activeInsights" href="javascript:void(0)" aria-expanded="false" role="button" aria-haspopup="true" class="nav-link dropdown-toggle" aria-label="Active insights dropdown menu">Active <br data-sf-ec-immutable="" />Insights</a>
+ <div class="dropdown-menu w-100" aria-labelledby="activeInsights"><div class="row"><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/activeinsights/market-insights" class="main-nav-link">Market insights</a>
+ <ul role="list"><li role="listitem"><a class="main-nav-link" href="/activeinsights/market-insights/-in-category/categories/active-insights/reports" data-sf-ec-immutable="">Reports</a>
+ </li><li role="listitem"><a class="main-nav-link" href="/activeinsights/market-insights/-in-category/categories/active-insights/videos" data-sf-ec-immutable="">Videos</a>
+ </li><li role="listitem"><a class="main-nav-link" href="/activeinsights/market-insights/-in-category/categories/active-insights/webcasts" data-sf-ec-immutable="">Webcasts</a>
+ </li><li role="listitem"><a class="main-nav-link" href="/activeinsights/market-insights/-in-category/categories/active-insights/ce-credits" data-sf-ec-immutable="">CE Credits</a>
+ </li></ul></li></ul></div><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/activeinsights/investor-insights" class="main-nav-link">Investor insights</a>
+ </li><li role="listitem"><a href="/activeinsights/quarterly-commentaries" class="main-nav-link">Quarterly commentaries</a>
+ </li></ul></div><div class="col-md-3"><div data-sfref="[images|OpenAccessDataProvider]c7d9eb97-6dec-6388-bcc1-ff0000f88fcc" class="sf-Image-wrapper mt-4"><a href="/advisor-hub/user/register_advisor" class="main-nav-link"><img src="/images/default-source/campaign/campaign-touts/accesstout_eng.png?sfvrsn=562290d3_20" alt="Sign up for exclusive advisor content - Register now" /></a>
+ </div></div></div></div></li><li class="dropdown nav-item"><a data-toggle="dropdown" id="applicationsForms" class="nav-link dropdown-toggle" href="javascript:void(0)" aria-expanded="false" role="button" aria-haspopup="true" aria-label="Applications & forms dropdown menu">Applications <br data-sf-ec-immutable="" />&amp; Forms</a>
+ <div class="dropdown-menu w-100" aria-labelledby="applicationsForms"><div class="row"><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/applicationsandforms/account-setup" class="main-nav-link">Account setup</a>
+ </li><li role="listitem"><a href="/applicationsandforms/resp-forms" class="main-nav-link">RESP forms</a>
+ </li><li role="listitem"><a href="/applicationsandforms/locked-in-accounts" class="main-nav-link">Locked-in accounts</a>
+ </li></ul></div><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/applicationsandforms/distributions-and-tax-information" class="main-nav-link">Distributions &amp; tax information</a>
+ </li><li role="listitem"><a href="/applicationsandforms/pficstatements" class="main-nav-link">PFIC Annual Information Statements</a>
+ </li></ul></div><div class="col-md-3"><ul role="list"><li role="listitem"><a href="/products-services/tax-efficient-investing/tax-advantaged-accounts/qrops#qrops-forms" class="main-nav-link">Qualifying Recognised Overseas Pension Scheme (QROPS)</a>
+ </li></ul></div><div class="col-md-3">&nbsp;</div></div></div></li></ul></div>    
+</div> </div> </nav> </div> <div class="iac-search-container iac-target iac-hide" role="search"> 
+
+
+
+<div class="form-inline">
+
+    <div class="form-group sf-search-input-wrapper" role="search">
+        <input type="search" title="Search input" placeholder="Search" id="44b0a61b-b6e7-42ff-9a23-4739af10f44e" class="form-control" value="" aria-autocomplete="both" aria-describedby='SearchInfo-1'/>
+        <button type="button" aria-label="Search" class="btn btn-default" id="a2a7a4cc-3796-4b1e-a15e-1dc0995ff620" >
+            <i class="far fa-search"></i>
+        </button>
+        <span id='SearchInfo-1' aria-hidden="true" hidden>When autocomplete results are available use up and down arrows to review and enter to select.</span>
+    </div>
+	
+	<input type="hidden" data-sf-role="resultsUrl" value="/search-results" />
+    <input type="hidden" data-sf-role="indexCatalogue" value="search-all" />
+    <input type="hidden" data-sf-role="disableSuggestions" value='false' />
+    <input type="hidden" data-sf-role="minSuggestionLength" value="3" />
+    <input type="hidden" data-sf-role="suggestionFields" value="Title,Description,Content,SummaryField,BlogAuthor,Tags" />
+    <input type="hidden" data-sf-role="language" value="en" />
+    <input type="hidden" data-sf-role="siteId" value="714fae9d-6367-49ee-9589-17fc411f66ea" />
+    <input type="hidden" data-sf-role="suggestionsRoute" value="/restapi/search/suggestions" />
+    <input type="hidden" data-sf-role="searchTextBoxId" value='#44b0a61b-b6e7-42ff-9a23-4739af10f44e' />
+    <input type="hidden" data-sf-role="searchButtonId" value='#a2a7a4cc-3796-4b1e-a15e-1dc0995ff620' />
+    <input type="hidden" data-sf-role="scoringSettings" value='' />
+    <input type="hidden" data-sf-role="searchInAllSitesInTheIndex" value='' />
+</div>
+
+ </div> </div> <div class="col-auto iac-trigger-container"> <button type="button" class="iac-trigger"> <div class="iac-open"> <em class="fal fa-bars" aria-hidden="true"></em> <span class="sr-only">Open navigation menu</span> </div> <div class="iac-close"> <em class="fal fa-times" aria-hidden="true"></em> <span class="sr-only">Close navigation menu</span> </div> </button> </div> </div> </div> </div> </div> <div id="content" class="content-area"> <div class="bkg-img"> <!--BackgoundImage--> <div class="bkg-gradient"></div> </div> <div id="contents"> <div id="breadcrumb" class="container"> <div class="row"> <div class="col-sm-12"> 
+ </div> </div> </div><!-- /.container for breadcrumb --> <div id="pageheader" class="container"> <div class="row"> <div class="col-sm-12 page-header"> 
+
+<div >
+    <div ></div>    
+</div> </div> </div> </div><!-- /.container for page-header --> <div id="pagecontent" class="container"> <div id="iac-heroimage" class="hero-img en"> 
+ </div> <div class="main-content" role="main"> 
+
+<div >
+    <div ><h1>404</h1><p>Our apologies, the page you are looking for no longer exists!</p><p><a href="/">Click here</a>&nbsp;to be taken back to our Home Page</p><br /><p>D&eacute;sol&eacute;, cette page n&rsquo;existe plus.</p><p><a href="/fr/">Cliquez ici</a> pour retourner &agrave; la page d&rsquo;accueil de note site Web.</p></div>    
+</div> </div> </div><!-- /.container for main-content --> </div> <div class="clearfix"></div> </div> </div> <div class="footer" role="contentinfo"> <div class="col-auto iac-backtotop-container"> <a href="#contents" class="iac-backtotop" onclick="iac.utility.backToTop(event)" aria-label="Back to top"> <div class="backtotop-icon"> <i class="far fa-long-arrow-up" aria-hidden="true"></i> </div> </a> </div> <div class="container footer-content"> <div class="footer-navigation"> <div class="row align-items-start"> <div class="col-12 col-md-4 footer-nav1"> 
+
+<div>
+    <ul>
+    <li class="">
+        <a class="" href="/about-us" target="_self">About Us</a>
+    </li>
+    <li class="">
+        <a class="" href="/contact-us" target="_self">Contact us</a>
+    </li>
+    <li class="">
+        <a class="" href="https://ia.ca/jobs/jobs-available" target="_blank">Careers</a>
+    </li>
+    </ul>
+</div>
+
+
+
+
+ </div> <div class="col-12 col-md-4 footer-nav2"> 
+
+<div>
+    <ul>
+    <li class="">
+        <a class="" href="/advisor-hub/account-inquiry" target="_self">Advisor account inquiry</a>
+    </li>
+    <li class="">
+        <a class="" href="/price-performance/grids/daily-prices" target="_self">Fund finder</a>
+    </li>
+    <li class="">
+        <a class="" href="/about-us/press-releases" target="_self">Press releases</a>
+    </li>
+    <li class="">
+        <a class="" href="/about-us/advisor-events" target="_self">Advisor events</a>
+    </li>
+    </ul>
+</div>
+
+
+
+
+ </div> <div class="col-12 col-md-4 footer-nav3"> <ul> 
+
+
+
+
+    <li class="">
+        <a class="" href="/compliance-regulatory/legal" target="_self">Legal / terms of use</a>
+    </li>
+    <li class="">
+        <a class="" href="https://ia.ca/privacy-policy" target="_blank">Privacy</a>
+    </li>
+    <li class="">
+        <a class="" href="/multi-factor-authentication" target="_self">Multi-Factor Authentication</a>
+    </li>
+    <li class="">
+        <a class="" href="https://ia.ca/accessibility" target="_blank">Accessibility</a>
+    </li>
+
+
+
+
+
+<li class="cookiepreferences">
+    <a href="javascript:showConsentPreferencesPopup();">Cookie preferences</a>
+</li> </ul> </div> </div> </div> <hr class="iac-hr d-block d-md-none" /> <div class="row"> <div class="col socialstrip"> 
+
+<div >
+    <div ><a class="linkedin" href="http://linkedin.com/company/91065" target="_blank" aria-label="LinkedIn"><em class="fab fa-linkedin-in"></em></a></div>    
+</div> </div> </div> <hr class="iac-hr" /> <div class="callouts"> 
+
+<div>
+    <ul>
+    <li class="">
+        <a class="" href="/products-services/regulatory-documents" target="_self">Prospectus</a>
+    </li>
+    <li class="">
+        <a class="" href="/docs/default-source/mf-compliance/irc-report-to-securityholders-en.pdf" target="_blank">IRC report to security holders</a>
+    </li>
+    <li class="">
+        <a class="" href="/compliance-regulatory/proxy-voting" target="_self">Proxy voting</a>
+    </li>
+    <li class="">
+        <a class="" href="/compliance-regulatory/unclaimed-property" target="_self">Unclaimed property</a>
+    </li>
+    <li class="">
+        <a class="" href="/disclaimers-and-important-information" target="_self">Disclaimers and important information</a>
+    </li>
+    <li class="">
+        <a class="" href="/compliance-regulatory/glossary" target="_self">Glossary</a>
+    </li>
+    <li class="">
+        <a class="" href="/compliance-regulatory/complaints" target="_self">Complaints</a>
+    </li>
+    </ul>
+</div>
+
+
+
+
+ </div> <hr class="iac-hr" /> <div class="disclaimer"> 
+
+<div >
+    <div ><p>Commissions, trailing commissions, management fees, brokerage fees and expenses all may be associated with mutual fund investments, including investments in exchange-traded series of mutual funds. Please read the prospectus before investing. Mutual funds are not guaranteed, their values change frequently and past performance may not be repeated. Trademarks displayed herein that are not owned by Industrial Alliance Insurance and Financial Services Inc. are the property of and trademarked by the corresponding company and are used for illustrative purposes only.</p><p>The iA Clarington Funds are managed by IA Clarington Investments Inc. iA Clarington and the iA Clarington logo, and iA Wealth and the iA Wealth logo, are trademarks of Industrial Alliance Insurance and Financial Services Inc. and are used under license.</p></div>    
+</div> </div> <div class="investedinyou">
+                    Get ahead
+                </div> <div class="row copyright"> <div class="col-12"> 
+
+&copy; 2026 IA Clarington Investments Inc. </div> </div> </div> </div> </div> <script src="/iaclarington/Scripts/Vendors/acton.beacon.js" type="text/javascript"></script><script src="/ResourcePackages/Bootstrap4/MVC/Scripts/LanguageSelector/language-selector.js?v=1" type="text/javascript"></script><script src="/iaclarington/SitefinityCustomizations/iac.searchbox.SF15.3.js?v=6448" type="text/javascript"></script> <script src="https://kit.fontawesome.com/37d49ddb85.js" crossorigin="anonymous"></script> 
+<div id="PageScripts_TA483E6FB036_Col00" class="sf_colsIn container-fluid" data-sf-element="Container" data-placeholder-label="Container"><div class="row" data-sf-element="Row">
+    <div id="PageScripts_TA483E6FB024_Col00" class="sf_colsIn col-6" data-sf-element="Column 1" data-placeholder-label="IAC Scripts">
+    </div>
+     <div id="PageScripts_TA483E6FB024_Col01" class="sf_colsIn col-6" data-sf-element="Column 2" data-placeholder-label="IAC Styles">
+    </div>
+     <div id="PageScripts_TA483E6FB024_Col02" class="sf_colsIn col-6" data-sf-element="Column 3" data-placeholder-label="Vendor Scripts">
+    </div>
+     <div id="PageScripts_TA483E6FB024_Col03" class="sf_colsIn col-6" data-sf-element="Column 4" data-placeholder-label="Others">
+    </div>
+</div>
+
+</div>
+<script type="application/json" id="PersonalizationTracker">
+	{"IsPagePersonalizationTarget":false,"IsUrlPersonalizationTarget":false,"PageId":"228f1298-6dec-6388-bcc1-ff0200f88fcc"}
+</script><script type="text/javascript" src="/WebResource.axd?d=NjxTqR2bqTw1rewxxlkHPvZOEgKzsktgzJRANlgsQgNdxszspH9GMtNCghkyNpWr0Z6VKO6FnYlSQSObPYMYGsgnilrWJckk3yBnQf4NmxUTtuHSnG0UoPuJdhXRYnM8qwh8m3cfZGe5KMkWf0iKyRlOt5D4a8MaecTGVreKWyguA3kBHsNNEC-UBISwTBJLcWpo_pECKPBE0Q1l80E0jZXgRr2E47m2a0F-YloQv3E1&amp;t=639153515680000000">
+
+</script><input data-sf-role='fr' type='hidden' value='https://iaclarington.com/fr/error/404'> <!--Rendered at: 2026-08-14 20:30:21:833 +00:00--> </body> </html>

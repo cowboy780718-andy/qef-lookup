@@ -1,0 +1,74 @@
+# Negative findings register
+#
+# "No QEF statement exists for this fund" is a research result with the same
+# working-paper value as a found PDF. Recording it here means the question is
+# answered once, for every client, permanently.
+#
+# Each entry needs:
+#   scope        - what the finding covers (fund family, a fund range, one fund)
+#   finding      - not_offered | offered_on_request | registered_only | unreachable
+#   evidence     - a URL a reviewer can open, or a documented statement by the manager
+#   verified     - ISO date the finding was last confirmed
+#   verified_by  - crawler | manual
+#
+# The crawler re-checks `evidence` on each run and flags entries whose source
+# page has changed, so a negative cannot silently go stale.
+
+negatives:
+
+  - scope: CIBC-branded mutual funds, CIBC Index Funds, CIBC Managed Portfolios, Axiom Portfolios
+    family: cibc
+    finding: not_offered
+    evidence: https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance.html
+    verified: 2026-08-18
+    verified_by: manual
+    note: >-
+      Manager states unitholders of these funds will not receive PFIC Annual
+      Information Statements. Sister brands Renaissance and Imperial Pools DO
+      receive them - same bank, opposite answer. This is the canonical case for
+      why the register exists.
+
+  - scope: Renaissance HISA, Renaissance Money Market funds
+    family: renaissance
+    finding: not_offered
+    evidence: https://www.renaissanceinvestments.ca/reporting-governance/pfic
+    verified: 2026-08-18
+    verified_by: manual
+
+  - scope: All funds held inside RRSPs and RRIFs
+    family: '*'
+    finding: not_offered
+    evidence: https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance.html
+    verified: 2026-08-18
+    verified_by: manual
+    note: >-
+      Managers generally do not issue statements for registered retirement
+      accounts. Note this is about the manager's publishing practice only, and
+      is not a conclusion about the treaty position or reporting obligation for
+      any particular account type. TFSAs and RESPs are NOT covered by this
+      exclusion and generally do need PFIC reporting.
+
+  - scope: Fidelity Canada non-ETF mutual fund series
+    family: fidelity-ca
+    finding: offered_on_request
+    evidence: https://www.fidelity.ca/en/pfic_etf_statements/
+    verified: 2026-08-18
+    verified_by: manual
+    note: >-
+      Only ETF and ETF Series statements are published on the website.
+      Personalized statements for other series are issued on request, so absence
+      from the index is not evidence that none can be obtained - call the manager.
+
+  - scope: Capital Group Canada - all funds
+    family: capitalgroup-ca
+    finding: manual_only
+    evidence: https://www.capitalgroup.com/robots.txt
+    verified: 2026-08-18
+    verified_by: crawler
+    note: >-
+      Capital Group DOES publish PFIC Annual Information Statements for its
+      Canadian funds - this is not a "no statement" finding. But
+      capitalgroup.com/robots.txt sets a blanket `Disallow: /content`, and every
+      document lives under /content/dam/, so the crawler will not fetch them.
+      Open the tax centre and download by hand. If robots.txt is relaxed, drop
+      the `access: manual` flag in sources.yaml and this entry.
