@@ -79,7 +79,7 @@ HEADERS = {
 }
 
 # Bump when SIGNALS/scoring/parsers change, to invalidate cached verdicts.
-VERIFY_VERSION = 3
+VERIFY_VERSION = 4
 
 # Oldest tax year worth indexing. Anything earlier is left on the issuer's own
 # site: the UI points you there rather than pretending the year does not exist.
@@ -326,7 +326,13 @@ _NAME_LEAD = [
 
 # CI Global's covering-letter layout puts the name in a table, after a run of
 # repeated column headers that the text layer duplicates.
-_NAME_TABLE = re.compile(r"(?:Distributions\s+){1,4}([A-Z][^()\n]{3,90}?)\s*\(", re.I)
+# CI's covering-letter layout puts the fund in a table, with the series in
+# parentheses immediately after the name. The series is not decoration: CI
+# issues roughly 30 documents per fund per year, one per series, identical
+# except for the series code and the per-unit figures. Dropping it merged them
+# into ~30 indistinguishable rows and made picking the right one impossible.
+_NAME_TABLE = re.compile(
+    r"(?:Distributions\s+){1,4}([A-Z][^()\n]{3,90}?)\s*\(([^()\n]{1,28})\)", re.I)
 
 # RBC and TD lead with the fund name, then the document title. RBC's includes
 # the series ("... Fund - Series F"), which matters: different series carry
@@ -467,10 +473,19 @@ def parse_fund_name(text: str, extra_pattern: str | None = None) -> str | None:
         if (n := _clean_name(chunk)):
             return n
 
-    # 3. CI-style table layout.
+    # 3. CI-style table layout. Carry the series through, formatted the way RBC
+    #    writes it so both families read alike in the UI.
     m = _NAME_TABLE.search(flat)
     if m and (n := _clean_name(m.group(1))):
-        return n
+        series = re.sub(r"\s+", " ", m.group(2)).strip()
+        if not series or series.lower() in ("the", "fund", "usd", "cad"):
+            return n
+        # CI writes series codes ("AT5") and descriptive labels
+        # ("ETF C$ Series") in the same slot. Keep the label verbatim; format
+        # a bare code the way RBC writes it so both read alike.
+        if "series" in series.lower() or " " in series:
+            return f"{n} ({series})"
+        return f"{n} - Series {series.upper()}"
     return None
 
 
