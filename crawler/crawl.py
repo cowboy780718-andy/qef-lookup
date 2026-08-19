@@ -61,7 +61,7 @@ OUT = REPO / "web" / "data" / "index.json"
 # a stated policy. We therefore send a normal browser UA (these are public
 # documents a person can download by hand from the same URL) but we do NOT
 # hide: every request carries X-Crawler and From headers naming the project,
-# we obey robots.txt, and we rate-limit to one request per host per second.
+# we obey robots.txt, and we rate-limit per host (honouring Crawl-delay).
 # If a manager wants us gone, a robots.txt rule will do it.
 BOT_ID = "QEFLookupBot/1.0 (+https://github.com/qef-lookup)"
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -79,7 +79,7 @@ HEADERS = {
 }
 
 # Bump when SIGNALS/scoring/parsers change, to invalidate cached verdicts.
-VERIFY_VERSION = 2
+VERIFY_VERSION = 3
 
 # Oldest tax year worth indexing. Anything earlier is left on the issuer's own
 # site: the UI points you there rather than pretending the year does not exist.
@@ -88,13 +88,19 @@ VERIFY_VERSION = 2
 # downloaded at all.
 SINCE_YEAR = 2015
 
-PER_HOST_DELAY = 1.0          # seconds between requests to the same host
+# Default spacing between requests to one host, in seconds. A host's own
+# Crawl-delay always wins where it publishes one (see _host_delay). None of
+# these publishers currently sets one, and ~3/sec of static PDF fetches is
+# negligible for the CDNs actually serving them - but CI Global lists ~15,000
+# documents, and at 1/sec that alone is four hours of nightly crawling.
+PER_HOST_DELAY = 0.34
 MAX_WORKERS = 6
 TIMEOUT = 45
 
 _host_lock = defaultdict(threading.Lock)
 _host_last = defaultdict(float)
 _robots: dict[str, robotparser.RobotFileParser] = {}
+_host_delays: dict[str, float] = {}
 _robots_lock = threading.Lock()
 
 
@@ -102,10 +108,15 @@ _robots_lock = threading.Lock()
 # polite fetching
 # --------------------------------------------------------------------------
 
+def _host_delay(host: str) -> float:
+    """Spacing for this host: its published Crawl-delay, else the default."""
+    return _host_delays.get(host, PER_HOST_DELAY)
+
+
 def _throttle(url: str) -> None:
     host = urlparse.urlsplit(url).netloc
     with _host_lock[host]:
-        wait = PER_HOST_DELAY - (time.monotonic() - _host_last[host])
+        wait = _host_delay(host) - (time.monotonic() - _host_last[host])
         if wait > 0:
             time.sleep(wait)
         _host_last[host] = time.monotonic()
@@ -126,6 +137,14 @@ def robots_allows(url: str) -> bool:
             except Exception:
                 rp.parse([])
             _robots[base] = rp
+            # Respect a published Crawl-delay, taking the stricter of the rule
+            # for this crawler by name and the catch-all.
+            delays = [d for d in (rp.crawl_delay(BOT_ID), rp.crawl_delay("*"))
+                      if d is not None]
+            if delays:
+                _host_delays[parts.netloc] = max(float(max(delays)), PER_HOST_DELAY)
+                print(f"    robots.txt Crawl-delay for {parts.netloc}: "
+                      f"{_host_delays[parts.netloc]}s")
     try:
         # Honour both a rule naming this crawler specifically and the "*" rules
         # that our browser-shaped UA would fall under. Either one can veto.
@@ -279,11 +298,58 @@ PERIOD_PATTERNS = [
     re.compile(r"as\s+at\s+(" + "|".join(MONTHS) + r")\s+(\d{1,2}),?\s+(\d{4})", re.I),
 ]
 
-FUNDNAME_PATTERNS = [
-    re.compile(r"([A-Z][^\n\r]{4,110}?)\s*\(\s*(?:the\s*)?[\"“”']?Fund", re.I),
-    re.compile(r"^\s*([A-Z][A-Za-z0-9 .,&'\-/]{6,110}(?:Fund|ETF|Pool|Class|Portfolio|Trust))",
-               re.M),
+# Fund-name extraction.
+#
+# The naive approach - a non-greedy run of characters ending at (the "Fund") -
+# fails in two ways that both corrupt the index. It starts matching as late as
+# possible, so "iA Clarington ..." arrives as "A Clarington ..." and "Russell
+# Investments ..." as "ussell Investments ...". And when the anchor phrase
+# appears in boilerplate ("treat the mutual fund as a Qualified Electing Fund")
+# it happily returns "Electing Fund" - which collapsed all 12,589 CI documents
+# into one nonexistent fund.
+#
+# So: find the anchor, read *backwards* to a real delimiter, then clean up.
+
+_FUND_ANCHOR = re.compile(r"""\(\s*(?:the\s+)?["“”']?\s*Fund\s*["“”']?\s*\)""", re.I)
+
+# Headline forms that name the fund outright; tried first.
+# Only the explicit addressee line. A looser "Annual Information Statement
+# of/for ..." rule was tried and had to be removed: it matched the document's
+# own title block and returned "Year Ending December 31, 2024 1) This
+# Information Statement ..." for five separate families that the anchor rule
+# had been handling correctly.
+_NAME_LEAD = [
+    re.compile(r"(?:SECURITY\s*HOLDERS|SECURITYHOLDERS|UNITHOLDERS|SHAREHOLDERS|HOLDERS)"
+               r"\s+OF\s*:?\s*(?:the\s+)?(?:Fund\s+)?(.{4,110}?)"
+               r"\s*(?:\(|who\s+have|$)", re.I),
 ]
+
+# CI Global's covering-letter layout puts the name in a table, after a run of
+# repeated column headers that the text layer duplicates.
+_NAME_TABLE = re.compile(r"(?:Distributions\s+){1,4}([A-Z][^()\n]{3,90}?)\s*\(", re.I)
+
+# RBC and TD lead with the fund name, then the document title. RBC's includes
+# the series ("... Fund - Series F"), which matters: different series carry
+# different per-unit figures, so collapsing them would be wrong.
+_NAME_TITLE_LEAD = re.compile(
+    r"^(.{6,140}?)\s*PFIC\s+(?:Annual\s+)?Information\s+Statement", re.I)
+
+# Anything matching these is boilerplate, not a fund.
+_NAME_JUNK = re.compile(
+    r"^(?:the\s+)?(?:qualified\s+)?"
+    r"(?:electing|mutual|requested|below\s+listed|following|underlying|"
+    r"mentioned|who\b|fund\b)"
+    r"|^(?:fund|the\s+fund|statement|table|information)$"
+    r"|\b(?:tax\s+filing\s+requirement|ordinary\s+earnings|"
+    r"information\s+statement|year\s+end(?:ing|ed)|"
+    r"passive\s+foreign\s+investment\s+company|u\.s\.\s+persons?\b)",
+    re.I)
+
+# Stripped when they lead a captured name.
+_NAME_PREFIX_JUNK = re.compile(
+    r"^(?:.*?(?:EXCHANGE\s+TRADED\s+FUNDS?|IMPORTANT\s+TAX\s+NOTICE[^:]*:?|"
+    r"TD\s+Asset\s+Management(?=\s+TD)|"
+    r"TO\s+U\.?S\.?\s+(?:PERSONS|INVESTORS|TAXPAYERS)[^:]*:?)\s*)", re.I)
 TICKER_PATTERN = re.compile(r"\(([A-Z]{2,5}(?:\.[A-Z]{1,2})?)\)")
 
 
@@ -332,14 +398,79 @@ def parse_period(text: str) -> str | None:
     return None
 
 
-def parse_fund_name(text: str) -> str | None:
-    for rx in FUNDNAME_PATTERNS:
-        m = rx.search(text)
-        if m:
-            name = re.sub(r"\s+", " ", m.group(1)).strip(" .,-–—")
-            name = re.sub(r"^(?:the\s+)", "", name, flags=re.I)
-            if 6 <= len(name) <= 120 and not name.lower().startswith("important"):
-                return name
+def _clean_name(raw: str) -> str | None:
+    name = re.sub(r"\s+", " ", raw or "").strip()
+    name = re.sub(r"^Page\s+\d+\s+of\s+\d+\s*", "", name, flags=re.I)
+    # The (the "Fund") marker ends the name wherever it appears, not only at
+    # the end - Fidelity continues straight into boilerplate after it.
+    name = _FUND_ANCHOR.split(name)[0].strip()
+    name = re.sub(r"\(\s*(?:the\s+)?[\"“”']?\s*Fund\s*[\"“”']?\s*\)\s*$",
+                  "", name, flags=re.I).strip()
+    name = re.sub(r"\s*\(\s*formerly.*$", "", name, flags=re.I)
+    # PDF text layers sometimes detach the first glyph: "R ussell Investments",
+    # "M ulti-Asset", "I A Clarington". Rejoin a lone leading capital.
+    name = re.sub(r"^([A-Z])\s+(?=[A-Za-z])", r"", name)
+    name = _NAME_PREFIX_JUNK.sub("", name)
+    name = re.sub(r"^(?:the\s+)", "", name, flags=re.I)
+    name = re.sub(r"^Fund\s+(?=[A-Za-z])", "", name)
+    # Drop a trailing exchange ticker - "(ETHX.B)", "(XSH)" - but keep
+    # descriptive parentheticals such as "(CAD-Hedged)".
+    name = re.sub(r"\s*\([A-Z]{2,5}(?:\.[A-Z]{1,2})?\)\s*$", "", name)
+    name = name.strip(" .,:;-–—\"'“”()")
+    if not (6 <= len(name) <= 120):
+        return None
+    if _NAME_JUNK.search(name):
+        return None
+    if not re.search(r"[A-Za-z]{3}", name):
+        return None
+    return name
+
+
+def parse_fund_name(text: str, extra_pattern: str | None = None) -> str | None:
+    """Best-effort fund name, tried in order of reliability."""
+    flat = " ".join((text or "").split())
+    # Some text layers detach the opening glyph of a heading, yielding
+    # "R ussell Investments", "M ulti-Asset", "T D One-Click", "I A Clarington".
+    # Rejoin before any splitting, or the stray letter ends up in a different
+    # chunk and the name silently loses its first character.
+    flat = re.sub(r"(?<![A-Za-z&.])([A-Z])\s(?=[a-z]{2})", r"\1", flat)
+    # Join two *standalone* capitals ("T D One-Click" -> "TD One-Click",
+    # "I A Clarington" -> "IA Clarington"). Both letters must be lone tokens,
+    # or this eats real spaces: "PH&N Absolute" became "PH&NAbsolute" and
+    # "T D One-Click" became "T DOne-Click" on the looser version.
+    flat = re.sub(r"(?<![A-Za-z&.])\b([A-Z])\s([A-Z])\b(?![A-Za-z])", r"\1\2", flat)
+
+    # 0. A family-specific override from sources.yaml wins outright.
+    if extra_pattern:
+        m = re.search(extra_pattern, flat, re.I)
+        if m and (n := _clean_name(m.group(1))):
+            return n
+
+    # 1. Name preceding the document title (RBC, TD). Checked before the
+    #    addressee line because it preserves the series suffix.
+    m = _NAME_TITLE_LEAD.search(flat[:400])
+    if m and (n := _clean_name(m.group(1))):
+        return n
+
+    # 2. Explicit "...HOLDERS OF: <name>" headline.
+    for rx in _NAME_LEAD:
+        m = rx.search(flat)
+        if m and (n := _clean_name(m.group(1))):
+            return n
+
+    # 2. Read backwards from the (the "Fund") anchor to a real delimiter, so the
+    #    first character of the name survives.
+    for m in _FUND_ANCHOR.finditer(flat):
+        before = flat[max(0, m.start() - 160):m.start()]
+        # Split on strong boundaries: a colon, a sentence end, or 2+ spaces.
+        chunk = re.split(r":\s+|(?<=[a-z])\.\s+|\s{2,}|•", before)[-1]
+        if (n := _clean_name(chunk)):
+            return n
+
+    # 3. CI-style table layout.
+    m = _NAME_TABLE.search(flat)
+    if m and (n := _clean_name(m.group(1))):
+        return n
     return None
 
 
@@ -520,6 +651,27 @@ def process_pdf(url: str, family_id: str, manifest: dict, today: str,
         yr = prev.get("probe_year") or 0
         if yr < datetime.now(timezone.utc).year - 1:
             return None
+
+    # A published statement for a closed tax year never changes. Re-validating
+    # every one of them nightly costs a request each and makes routine runs as
+    # slow as the first build, for no information. So trust a recent verdict for
+    # settled years, and always re-check the current and prior tax year, which
+    # is where reissues and late publications actually happen.
+    if (prev.get("verified") and prev.get("verify_version") == VERIFY_VERSION
+            and prev.get("last_seen")):
+        yr = prev.get("tax_year") or 0
+        age_days = (datetime.now(timezone.utc).date()
+                    - datetime.fromisoformat(prev["last_seen"]).date()).days
+        if yr and yr <= datetime.now(timezone.utc).year - 2 and age_days < 30:
+            prev["last_seen"] = today
+            manifest[url] = prev
+            return Statement(
+                family=family_id, url=url, fund_name=prev.get("fund_name"),
+                tickers=prev.get("tickers", []), period_end=prev.get("period_end"),
+                tax_year=yr, sha256=prev.get("sha256", ""), bytes=prev.get("bytes", 0),
+                confidence=prev.get("confidence", 0), verified=True,
+                first_seen=prev.get("first_seen", today), last_seen=today,
+            )
 
     if getter is None:
         status, blob, resp_headers = fetch(url, binary=True, extra_headers=headers)

@@ -72,6 +72,7 @@ families:
     fye: "03-31"
     hub: https://funds.cifinancial.com/en/funds/pfic-documents
     link_include: ['(?i)Passive_Foreign_Investment_Company.+\.pdf']
+    link_exclude: ['(?i)IRS_Form']
     notes: >-
       Hub is ~17MB and links the entire CI document catalog (~15k PDFs), so the
       include filter is doing heavy lifting. Fund identity lives in an opaque
