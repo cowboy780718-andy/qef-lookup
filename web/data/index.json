@@ -1,10 +1,10 @@
 {
- "generated": "2026-08-19T20:26:45+00:00",
+ "generated": "2026-08-19T20:34:48+00:00",
  "stats": {
-  "families": 29,
-  "families_ok": 20,
-  "funds": 4288,
-  "statements": 14469,
+  "families": 31,
+  "families_ok": 21,
+  "funds": 4294,
+  "statements": 14475,
   "years": [
    2025,
    2024,
@@ -390,6 +390,32 @@
    "guidance": null,
    "statement_count": 475,
    "fund_count": 155
+  },
+  {
+   "id": "sprott",
+   "name": "Sprott",
+   "country": "CA",
+   "mode": "static",
+   "fye": "12-31",
+   "hub": "https://sprott.com/investment-strategies/exchange-listed-products/physical-bullion-funds/tax-guide/",
+   "notes": "Physical bullion trusts (PHYS, PSLV, CEF, SPUT, SPPP, COP). Filenames are {YEAR}-{ticker}-pfic.pdf, so both the year and the exchange ticker come free from the URL.",
+   "access": null,
+   "guidance": null,
+   "statement_count": 6,
+   "fund_count": 6
+  },
+  {
+   "id": "lysander",
+   "name": "Lysander Funds",
+   "country": "CA",
+   "mode": "static",
+   "fye": "12-31",
+   "hub": "https://www.lysanderfunds.com/passive-foreign-investment-company-pfic/",
+   "notes": "One combined statement per year, not one per fund. robots.txt blocks retrieval.",
+   "access": "manual",
+   "guidance": "Lysander does publish PFIC statements - one combined document per year covering all its funds, going back to 2020, all linked from this page. They are NOT collected here by the publisher's own instruction: lysanderfunds.com/robots.txt disallows /app/uploads/, where every document lives. Open the page and download the year you need directly.",
+   "statement_count": 0,
+   "fund_count": 0
   }
  ],
  "funds": [
@@ -175658,7 +175684,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay $U.S. Global Investment Grade Corporate Bond Fund (Canada) - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1664"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -175721,7 +175749,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay Emerging Markets Bond Fund (Canada) - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1665",
+    "RBF1667"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -175802,7 +175833,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay Emerging Markets Corporate Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF691",
+    "RBF939"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -175865,7 +175899,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay Emerging Markets High Yield Corporate Bond Fund (Canada) - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF3346",
+    "RBF3347"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -175918,7 +175955,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay Emerging Markets Local Currency Bond Fund (Canada) - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1668",
+    "RBF1674"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -175981,7 +176021,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay European High Yield Bond Fund (Canada) - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5636"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176044,7 +176086,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay Global Alternative Bond Fund (Canada) - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF9918"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176097,7 +176141,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay Global Convertible Bond Fund (Canada) - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF690"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176160,7 +176206,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay Global Convertible Bond Fund (Canada) - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF612"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176223,7 +176271,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay Global Investment Grade Corporate Bond Fund (Canada) - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF9179"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176286,7 +176336,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay Global Monthly Income Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF694"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176349,7 +176401,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "BlueBay Global Sovereign Bond Fund (Canada) - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF9178"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176412,7 +176466,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Absolute Return Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5450"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176551,7 +176607,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Balanced Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5350"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176614,7 +176672,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5110"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176677,7 +176737,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Canadian Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5130"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176740,7 +176802,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Canadian Equity Underlying Fund II - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF332"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176803,7 +176867,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Canadian Equity Value Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5670"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176866,7 +176932,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Canadian Equity Value Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5671"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176929,7 +176997,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Canadian Growth Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5140"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -176992,7 +177062,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Canadian Income Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5490"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177055,7 +177127,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Canadian Money Market Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5120"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177118,7 +177192,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Conservative Equity Income Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF333"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177181,7 +177257,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Dividend Income Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5150"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177244,7 +177322,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Global Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5370"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177307,7 +177387,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N High Yield Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5280"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177370,7 +177452,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Monthly Income Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5660"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177433,7 +177517,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Overseas Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5410",
+    "RBF2420"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177514,7 +177601,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Short Term Bond & Mortgage Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5250"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177577,7 +177666,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Small Float Fund \u2013 Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF3358"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177610,7 +177701,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Total Return Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5340"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177673,7 +177766,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N U.S. Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5160",
+    "RBF2170"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177745,7 +177841,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N U.S. Multi-Style All-Cap Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5380"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177808,7 +177906,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC $U.S. Core Bond Pool - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1082"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177871,7 +177971,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC $U.S. Core Plus Bond Pool - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1083"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177934,7 +178036,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC $U.S. Global Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1648"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -177997,7 +178101,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC $U.S. High Yield Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF683"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178060,7 +178166,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC $U.S. Investment Grade Corporate Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF684"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178123,7 +178231,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC $U.S. Short-Term Corporate Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1654"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178166,7 +178276,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC $U.S. Short-Term Government Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1639"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178229,7 +178341,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Asia Pacific ex-Japan Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF675"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178292,7 +178406,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Asian Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF625"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178355,7 +178471,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Balanced Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF604"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178418,7 +178536,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Balanced Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF577"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178471,7 +178591,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Balanced Fund - Series FT8",
-   "tickers": [],
+   "tickers": [
+    "RBF1577"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178524,7 +178646,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Balanced Growth & Income Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5403",
+    "RBF681"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178587,7 +178712,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Balanced Growth & Income Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF698"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178650,7 +178777,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF601"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178776,7 +178905,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Corporate Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF20907"
+   ],
    "statements": [
     {
      "period_end": "2024-06-30",
@@ -178809,7 +178940,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Dividend Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5405",
+    "RBF607"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178872,7 +179006,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Dividend Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF670"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178935,7 +179071,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Dividend Fund - Series FT8",
-   "tickers": [],
+   "tickers": [
+    "RBF1607"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -178998,7 +179136,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF609"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179061,7 +179201,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Equity Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF909"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179124,7 +179266,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Equity Income Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF646"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179187,7 +179331,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Equity Income Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF4591"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179240,7 +179386,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Index Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5733"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179303,7 +179451,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Mid-Cap Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF3314"
+   ],
    "statements": [
     {
      "period_end": "2024-06-30",
@@ -179336,7 +179486,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Money Market Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF636"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179399,7 +179551,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Short-Term Income Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF947"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179462,7 +179616,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Small & Mid-Cap Resources Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5527"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179525,7 +179681,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC China Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1952",
+    "RBF2322"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179588,7 +179747,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Conservative Bond Pool - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1335"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179651,7 +179812,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Core Bond Pool - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1684"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179714,7 +179877,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Core Plus Bond Pool - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1691"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179777,7 +179942,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Emerging Markets Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5402",
+    "RBF697"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179849,7 +180017,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Emerging Markets Dividend Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF686",
+    "RBF3355"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -179921,7 +180092,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Emerging Markets Equity Focus Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1921",
+    "RBF1922"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180002,7 +180176,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Emerging Markets Equity Focus Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF1622"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180065,7 +180241,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Emerging Markets Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5416",
+    "RBF699"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180137,7 +180316,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Emerging Markets Equity Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5699"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180200,7 +180381,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Emerging Markets Foreign Exchange Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF906"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180263,7 +180446,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Emerging Markets Multi-Strategy Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF938",
+    "RBF9505"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180344,7 +180530,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Emerging Markets Small-Cap Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF685"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180407,7 +180595,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC European Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF622"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180470,7 +180660,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC European Equity Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5622"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180533,7 +180725,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC European Mid-Cap Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF907"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180596,7 +180790,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Balanced Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF605"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180659,7 +180855,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Balanced Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF533"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180702,7 +180900,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Balanced Fund - Series FT8",
-   "tickers": [],
+   "tickers": [
+    "RBF1533"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180745,7 +180945,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF603"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180808,7 +181010,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Corporate Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF638"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180871,7 +181075,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Dividend Growth Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5414",
+    "RBF627"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180934,7 +181141,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Dividend Growth Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF534"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -180997,7 +181206,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Dividend Growth Fund - Series FT8",
-   "tickers": [],
+   "tickers": [
+    "RBF1534"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181050,7 +181261,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Energy Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF613"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181113,7 +181326,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Equity Focus Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5415",
+    "RBF667"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181176,7 +181392,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Equity Focus Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5667"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181239,7 +181457,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5412",
+    "RBF677"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181302,7 +181523,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Equity Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5677"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181365,7 +181588,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Equity Leaders Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1109",
+    "RBF1119"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181427,7 +181653,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Equity Leaders Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF1909"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181480,7 +181708,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global High Yield Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF901"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181543,7 +181773,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Large-Cap Equity Fund \u2013 Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF2902",
+    "RBF2912"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181575,7 +181808,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Precious Metals Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF614"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181638,7 +181873,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Global Technology Fund \u2013 Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF620"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181671,7 +181908,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC High Yield Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF696"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181734,7 +181973,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC International Dividend Growth Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF647"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181787,7 +182028,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC International Dividend Growth Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF535"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181840,7 +182083,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC International Equity Currency Neutral Index ETF Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5736"
+   ],
    "statements": [
     {
      "period_end": "2024-06-30",
@@ -181883,7 +182128,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC International Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5411",
+    "RBF621"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -181955,7 +182203,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC International Equity Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5621"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182018,7 +182268,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC International Index Currency Neutral Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5736"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182051,7 +182303,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Japanese Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF676"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182114,7 +182368,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Life Science and Technology Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF619",
+    "RBF2619"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182177,7 +182434,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund - Series F_2021",
-   "tickers": [],
+   "tickers": [
+    "RBF12100"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182220,7 +182479,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund - Series F_APR22",
-   "tickers": [],
+   "tickers": [
+    "RBF12204"
+   ],
    "statements": [
     {
      "period_end": "2023-06-30",
@@ -182243,7 +182504,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund - Series F_AUG21",
-   "tickers": [],
+   "tickers": [
+    "RBF12108"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182286,7 +182549,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund - Series F_AUG22",
-   "tickers": [],
+   "tickers": [
+    "RBF12208"
+   ],
    "statements": [
     {
      "period_end": "2023-06-30",
@@ -182309,7 +182574,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund - Series F_JUL22",
-   "tickers": [],
+   "tickers": [
+    "RBF12207"
+   ],
    "statements": [
     {
      "period_end": "2023-06-30",
@@ -182332,7 +182599,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund - Series F_JUN22",
-   "tickers": [],
+   "tickers": [
+    "RBF12206"
+   ],
    "statements": [
     {
      "period_end": "2023-06-30",
@@ -182355,7 +182624,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund - Series F_MAR22",
-   "tickers": [],
+   "tickers": [
+    "RBF12203"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182398,7 +182669,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund - Series F_OCT21",
-   "tickers": [],
+   "tickers": [
+    "RBF12110"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182441,7 +182714,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund - Series F_SEP22",
-   "tickers": [],
+   "tickers": [
+    "RBF12209"
+   ],
    "statements": [
     {
      "period_end": "2023-06-30",
@@ -182464,7 +182739,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund \u2013 Series F_AUG23",
-   "tickers": [],
+   "tickers": [
+    "RBF12308"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182497,7 +182774,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund \u2013 Series F_FEB24",
-   "tickers": [],
+   "tickers": [
+    "RBF12402"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182530,7 +182809,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund \u2013 Series F_JAN24",
-   "tickers": [],
+   "tickers": [
+    "RBF12401"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182563,7 +182844,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Long/Short North American Equity Fund \u2013 Series F_JUN24",
-   "tickers": [],
+   "tickers": [
+    "RBF12406"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182596,7 +182879,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Managed Payout Solution - Enhanced - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF662"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182659,7 +182944,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Managed Payout Solution - Enhanced Plus - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF635"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182722,7 +183009,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Managed Payout Solution - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF661"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182785,7 +183074,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Monthly Income Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF695"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182848,7 +183139,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Monthly Income Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF602"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182911,7 +183204,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC North American Growth Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF611"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -182974,7 +183269,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC North American Value Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF608"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183037,7 +183334,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC North American Value Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF666"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183100,7 +183399,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC O'Shaughnessy International Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF639"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183163,7 +183464,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC O'Shaughnessy U.S. Value Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF616"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183226,7 +183529,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Private Canadian Corporate Bond Pool - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF20907"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183269,7 +183574,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Private Canadian Dividend Pool - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF2310",
+    "RBF2311"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183331,7 +183639,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Private Canadian Equity Pool - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF2312"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183384,7 +183694,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Private Canadian Mid-Cap Equity Pool \u2013 Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF3314"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183407,7 +183719,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Private Income Pool - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF20908"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183470,7 +183784,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Private Short-Term Income Pool - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF20905"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183533,7 +183849,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Private U.S. Large-Cap Core Equity Pool - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF20940",
+    "RBF20941"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183596,7 +183915,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC QUBE Canadian Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF678"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183659,7 +183980,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC QUBE Global Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF680"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183712,7 +184035,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC QUBE Low Volatility Canadian Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF689"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183775,7 +184100,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC QUBE Low Volatility Canadian Equity Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF529"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183838,7 +184165,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC QUBE Low Volatility Global Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5413",
+    "RBF687"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183901,7 +184231,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC QUBE Low Volatility Global Equity Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF531"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -183964,7 +184296,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC QUBE Low Volatility U.S. Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF665",
+    "RBF688"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184027,7 +184362,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC QUBE Low Volatility U.S. Equity Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF528"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184090,7 +184427,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC QUBE U.S. Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF679"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184153,7 +184492,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Select Aggressive Growth Portfolio - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5519",
+    "RBF660"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184234,7 +184576,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Select Aggressive Growth Portfolio - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5661"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184297,7 +184641,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Select Balanced Portfolio - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5517",
+    "RBF658"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184369,7 +184716,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Select Balanced Portfolio - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5658"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184432,7 +184781,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Select Conservative Portfolio - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5516",
+    "RBF657"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184513,7 +184865,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Select Conservative Portfolio - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5657"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184576,7 +184930,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Select Growth Portfolio - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5518",
+    "RBF659"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184657,7 +185014,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Select Growth Portfolio - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5659"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184720,7 +185079,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Select Very Conservative Portfolio - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5515",
+    "RBF664"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184801,7 +185163,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Select Very Conservative Portfolio - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5664"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184864,7 +185228,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Short-Term Global Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1690"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184917,7 +185283,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Strategic Income Bond Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF682"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -184980,7 +185348,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC U.S. Dividend Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF634",
+    "RBF902"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -185052,7 +185423,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC U.S. Dividend Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5539"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -185115,7 +185488,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC U.S. Dividend Fund - Series FT8",
-   "tickers": [],
+   "tickers": [
+    "RBF1902"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -185168,7 +185543,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC U.S. Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5449",
+    "RBF615"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -185231,7 +185609,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC U.S. Equity Fund - Series FT5",
-   "tickers": [],
+   "tickers": [
+    "RBF5615"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -185294,7 +185674,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC U.S. Index Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5737"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -185357,7 +185739,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC U.S. Mid-Cap Growth Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5337",
+    "RBF617"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -185429,7 +185814,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC U.S. Mid-Cap Value Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF5542",
+    "RBF692"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -185501,7 +185889,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC U.S. Monthly Income Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF640",
+    "RBF669"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -185564,7 +185955,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Vision Fossil Fuel Free Global Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF1323",
+    "RBF910"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -185626,7 +186020,10 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Vision Global Equity Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF653",
+    "RBF6608"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -193077,6 +193474,154 @@
     2024,
     2023,
     2022
+   ]
+  },
+  {
+   "id": "sprott::spro-tt-physical-gold-and-silver-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Spro Tt Physical Gold And Silver Trust",
+   "tickers": [
+    "CEF"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://sprott.com/media/qvvedijq/2025-cef-pfic.pdf",
+     "bytes": 236775,
+     "sha256": "83c845f53a4db496",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "sprott::spro-tt-physical-gold-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Spro Tt Physical Gold Trust",
+   "tickers": [
+    "PHYS"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://sprott.com/media/wu3albxo/2025-phys-pfic.pdf",
+     "bytes": 235027,
+     "sha256": "a769071ad4034861",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "sprott::spro-tt-physical-platinum-and-palladium-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Spro Tt Physical Platinum And Palladium Trust",
+   "tickers": [
+    "SPPP"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://sprott.com/media/bdrb3li0/2025-sppp-pfic.pdf",
+     "bytes": 190847,
+     "sha256": "bb8ce2c731c78ae9",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "sprott::sprot-t-physical-copper-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Sprot T Physical Copper Trust",
+   "tickers": [
+    "COP.UN"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://sprott.com/media/knaetpgt/2025-cop-pfic.pdf",
+     "bytes": 192131,
+     "sha256": "fb1318d30e1dd591",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "sprott::sprot-t-physical-silver-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Sprot T Physical Silver Trust",
+   "tickers": [
+    "PSLV"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://sprott.com/media/zzmb1baa/2025-pslv-pfic.pdf",
+     "bytes": 190403,
+     "sha256": "fc9a1505a2f8bbc5",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "sprott::sprott-physical-uranium-trust-u-un",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Sprott Physical Uranium Trust (u.un",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://sprott.com/media/afimxjtk/2025-sput-pfic.pdf",
+     "bytes": 191233,
+     "sha256": "589d7e169c849fd3",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
    ]
   },
   {
@@ -202323,6 +202868,30 @@
    "statements": 475,
    "candidates": 475,
    "message": "",
+   "derived_names": 0
+  },
+  {
+   "id": "sprott",
+   "name": "Sprott",
+   "mode": "static",
+   "hub": "https://sprott.com/investment-strategies/exchange-listed-products/physical-bullion-funds/tax-guide/",
+   "checked": "2026-08-19",
+   "status": "ok",
+   "statements": 6,
+   "candidates": 6,
+   "message": "",
+   "derived_names": 0
+  },
+  {
+   "id": "lysander",
+   "name": "Lysander Funds",
+   "mode": "static",
+   "hub": "https://www.lysanderfunds.com/passive-foreign-investment-company-pfic/",
+   "checked": "2026-08-19",
+   "status": "blocked",
+   "statements": 0,
+   "candidates": 6,
+   "message": "documents unreachable (plain HTTP=robots-denied; curl=robots-denied; browser=robots-denied; plain HTTP=robots-denied; curl=robots-denied; browser=robots-denied)",
    "derived_names": 0
   }
  ],

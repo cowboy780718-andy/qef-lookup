@@ -446,3 +446,30 @@ families:
       Note the FundSERV code is in the filename (e.g. MFAL0503), which makes
       this family a candidate for code-to-fund mapping.
 
+  - id: sprott
+    name: Sprott
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://sprott.com/investment-strategies/exchange-listed-products/physical-bullion-funds/tax-guide/
+    link_include: ['(?i)/media/[^/]+/\d{4}-[a-z]+-pfic\.pdf']
+    notes: >-
+      Physical bullion trusts (PHYS, PSLV, CEF, SPUT, SPPP, COP). Filenames are
+      {YEAR}-{ticker}-pfic.pdf, so both the year and the exchange ticker come
+      free from the URL.
+
+  - id: lysander
+    name: Lysander Funds
+    country: CA
+    mode: static
+    access: manual
+    fye: "12-31"
+    hub: https://www.lysanderfunds.com/passive-foreign-investment-company-pfic/
+    guidance: >-
+      Lysander does publish PFIC statements - one combined document per year
+      covering all its funds, going back to 2020, all linked from this page.
+      They are NOT collected here by the publisher's own instruction:
+      lysanderfunds.com/robots.txt disallows /app/uploads/, where every
+      document lives. Open the page and download the year you need directly.
+    notes: One combined statement per year, not one per fund. robots.txt blocks retrieval.
+

@@ -562,6 +562,10 @@ URL_CODE_PATTERNS = [
     # That is the only family so far where the code the client statement shows
     # is recoverable straight from the document URL.
     re.compile(r"/([A-Z]{2,4}\d{3,5})-pfic-", re.I),
+    # RBC names its statements by fund code too: /pfic/2025/rbf1664_e.pdf.
+    # Between them RBC and National Bank cover ~325 funds whose codes are
+    # recoverable with no extra requests at all.
+    re.compile(r"/pfic/\d{4}/([a-z]{2,4}\d{2,5})_", re.I),
 ]
 _CODE_STOPWORDS = {"THE", "FUND", "ETF", "USD", "CAD", "PFIC", "QEF", "IRS",
                    "AIS", "US", "EN", "FR", "STMT", "ENV1", "SE", "PDFUA"}
