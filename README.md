@@ -1,5 +1,21 @@
 # QEF Statement Lookup
 
+**Live:** https://qef-lookup.cowboy780718.workers.dev
+
+| Piece | Where | Deployed by |
+|---|---|---|
+| Site | `qef-lookup` Worker | Auto — pushing to `master` triggers a Cloudflare build |
+| PDF proxy | `qef-pdf-proxy` Worker | Manual, one-off. Its code does not change. |
+| Crawler | GitHub Actions, nightly ~07:20 UTC | Commits `web/data/index.json`, which publishes the site |
+
+The loop: crawler runs → commits a refreshed index → the push triggers a
+Cloudflare build → the live site updates. Nothing to upload by hand.
+
+**Only `wrangler.toml` at the repo root belongs to the site.** If Cloudflare ever
+offers a PR renaming it to `qef-pdf-proxy`, decline: that would deploy the
+website's files over the proxy and silently break ZIP downloads.
+
+
 Find and bulk-download PFIC Annual Information Statements (QEF statements) for
 Form 8621 work, instead of navigating twenty fund company websites by hand.
 
