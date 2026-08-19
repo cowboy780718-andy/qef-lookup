@@ -78,11 +78,57 @@ function buildYearChips() {
 }
 
 function buildFamilySelect() {
-  const seen = new Map();
-  for (const f of state.index.funds) seen.set(f.family, f.family_name);
-  $("famsel").innerHTML = `<option value="">All families</option>` +
-    [...seen].sort((a, b) => a[1].localeCompare(b[1]))
-      .map(([id, name]) => `<option value="${esc(id)}">${esc(name)}</option>`).join("");
+  // Every family we have ever checked appears here, including the ones that
+  // publish nothing. A manager missing from the list looks like a manager
+  // nobody thought of; a manager listed with "no statements published" is a
+  // question already answered.
+  const fams = [...(state.index.families || [])]
+    .sort((a, b) => a.name.localeCompare(b.name));
+  const withDocs = fams.filter((f) => (f.fund_count || 0) > 0);
+  const without = fams.filter((f) => !(f.fund_count > 0));
+
+  const opt = (f) => {
+    const tag = f.access === "none" ? " — no statements published"
+      : f.access === "manual" ? " — fetch by hand"
+      : (f.fund_count ? "" : " — nothing found yet");
+    return `<option value="${esc(f.id)}">${esc(f.name)}${tag}</option>`;
+  };
+
+  $("famsel").innerHTML =
+    `<option value="">All families</option>` +
+    `<optgroup label="Statements in the index">${withDocs.map(opt).join("")}</optgroup>` +
+    (without.length
+      ? `<optgroup label="Checked — nothing to download">${without.map(opt).join("")}</optgroup>`
+      : "");
+}
+
+/**
+ * Panel shown when a family has no statements to list. Empty results are the
+ * moment the tool is most likely to mislead: "nothing found" reads as "no
+ * statement exists". So say which of the two it is, why, and where to go.
+ */
+function familyGuidance(fam) {
+  if (!fam) return "";
+  const kind = fam.access === "none"
+    ? { cls: "none", head: "This manager does not publish PFIC statements" }
+    : fam.access === "manual"
+      ? { cls: "manual", head: "Published, but must be fetched by hand" }
+      : { cls: "unknown", head: "Nothing indexed for this manager yet" };
+  const link = fam.hub;
+  const linkLabel = fam.access === "none"
+    ? "Open the manager's website"
+    : "Open the manager's PFIC page";
+  return `<div class="guide ${kind.cls}">
+    <h3>${esc(kind.head)}</h3>
+    <p class="who">${esc(fam.name)}</p>
+    <p>${esc((fam.guidance || fam.notes || "").trim()) ||
+       "No further detail recorded yet."}</p>
+    ${link ? `<p><a class="gobtn" href="${esc(link)}" target="_blank"
+        rel="noopener">${linkLabel} &rarr;</a></p>` : ""}
+    <p class="caution">Confirm with the manager before concluding that no
+      statement can be obtained. Not publishing one is not the same as
+      refusing to issue one on request.</p>
+  </div>`;
 }
 
 // --------------------------------------------------------------------------
@@ -131,10 +177,18 @@ function render() {
     : "";
 
   if (!funds.length) {
-    $("results").innerHTML = `<div class="empty">
-      <p><strong>Nothing matched.</strong></p>
-      <p>If you expected a statement here, check the <em>Not offered</em> tab &mdash;
-      the manager may have confirmed it does not publish one.</p></div>`;
+    const fam = state.family
+      ? (state.index.families || []).find((f) => f.id === state.family) : null;
+    $("results").innerHTML = fam
+      ? familyGuidance(fam)
+      : `<div class="empty">
+          <p><strong>Nothing matched.</strong></p>
+          <p>If you expected a statement here, pick the manager from the
+          <em>Fund family</em> list above &mdash; every company checked is listed
+          there, including the ones that publish nothing, with the reason and a
+          link to their site.</p>
+          <p>The <em>Not offered</em> tab records the same findings in detail.</p>
+        </div>`;
     updateTray();
     return;
   }

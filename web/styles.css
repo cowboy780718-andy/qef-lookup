@@ -170,3 +170,20 @@ button.ghost { background: none; color: var(--ink-2); }
         display: flex; gap: 16px; flex-wrap: wrap; align-items: baseline; }
 .figs b { color: var(--ink); font-variant-numeric: tabular-nums; }
 .figs em { flex-basis: 100%; font-size: .75rem; opacity: .85; }
+
+/* Guidance shown when a family has nothing to download. */
+.guide { background: var(--panel); border: 1px solid var(--line);
+         border-left: 4px solid var(--ink-2); border-radius: var(--radius);
+         padding: 18px 20px; max-width: 76ch; }
+.guide.none   { border-left-color: var(--bad); }
+.guide.manual { border-left-color: var(--accent); }
+.guide.unknown{ border-left-color: var(--warn); }
+.guide h3 { margin: 0 0 2px; font-size: 1.02rem; }
+.guide .who { margin: 0 0 12px; color: var(--ink-2); font-weight: 600; font-size: .88rem; }
+.guide p { margin: 0 0 12px; font-size: .92rem; }
+.guide .caution { color: var(--ink-2); font-size: .84rem; margin-bottom: 0;
+                  border-top: 1px solid var(--line); padding-top: 11px; }
+.gobtn { display: inline-block; background: var(--accent); color: var(--accent-ink);
+         padding: 8px 15px; border-radius: 7px; text-decoration: none; font-weight: 600;
+         font-size: .9rem; }
+.gobtn:hover { filter: brightness(1.08); }

@@ -738,13 +738,23 @@ def follow_pages(hub_html: str, hub_url: str, fam: dict, browser, args) -> list[
         return []
     print(f"    following {len(pages)} per-fund page(s)")
 
+    inc = [re.compile(x) for x in (fam.get("link_include") or [])]
     found: set[str] = set()
     for i, page in enumerate(pages, 1):
         body = fetch_any(page, browser, allow_browser=not args.static_only)
         if not body:
             continue
-        for h in re.findall(r'href=["\']([^"\']+\.pdf[^"\']*)["\']', body, re.I):
-            found.add(urlparse.urljoin(page, h).split("#")[0])
+        # Scan href attributes AND any quoted string that looks like a document
+        # URL. Purpose renders its fund pages from embedded JSON, so the
+        # statement link never appears as an href and an href-only scan
+        # followed all 85 pages and found nothing.
+        for pattern in (r'href=["\']([^"\']+\.pdf[^"\']*)["\']',
+                        r'["\'](https?://[^"\'\s]+\.pdf[^"\'\s]*)["\']'):
+            for h in re.findall(pattern, body, re.I):
+                absolute = urlparse.urljoin(page, htmlmod.unescape(h)).split("#")[0]
+                if inc and not any(r.search(absolute) for r in inc):
+                    continue
+                found.add(absolute)
         if i % 20 == 0:
             print(f"      {i}/{len(pages)} pages, {len(found)} documents so far")
     print(f"    {len(found)} document(s) from per-fund pages")
@@ -816,6 +826,48 @@ def parse_html_statements(page_html: str, url: str) -> list[dict]:
                 "url": url,
             })
     return out
+
+
+def collect_json_links(page_html: str, base: str,
+                       include: list[str], exclude: list[str]) -> list[str]:
+    """Pull document URLs out of JSON embedded in the page.
+
+    Modern framework sites ship their content as a JSON blob and render the
+    links in the browser, so there is nothing in the markup for a link scraper
+    to find. BMO is the case for this: its PFIC page is Next.js, and all 220
+    statement URLs sit in __NEXT_DATA__ pointing at bmo.bynder.com, while the
+    HTML itself contains not one document link.
+    """
+    inc = [re.compile(p) for p in include]
+    exc = [re.compile(p) for p in exclude]
+    urls: set[str] = set()
+
+    blocks = re.findall(
+        r'<script[^>]*(?:id=["\']__NEXT_DATA__["\']|type=["\']application/json["\'])'
+        r'[^>]*>(.*?)</script>', page_html, re.S | re.I)
+    for block in blocks:
+        try:
+            data = json.loads(block)
+        except Exception:
+            continue
+
+        stack = [data]
+        while stack:
+            node = stack.pop()
+            if isinstance(node, dict):
+                stack.extend(node.values())
+            elif isinstance(node, list):
+                stack.extend(node)
+            elif isinstance(node, str) and ".pdf" in node.lower():
+                absolute = urlparse.urljoin(base, node.strip())
+                if not absolute.lower().startswith("http"):
+                    continue
+                if not any(r.search(absolute) for r in inc):
+                    continue
+                if any(r.search(absolute) for r in exc):
+                    continue
+                urls.add(absolute.split("#")[0])
+    return sorted(urls)
 
 
 def collect_links(html: str, base: str, include: list[str], exclude: list[str]) -> list[str]:
@@ -967,10 +1019,13 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
     # Some managers publish statements but forbid automated retrieval. We take
     # that at face value rather than routing around it: the family stays in the
     # index as a deep link, flagged for manual fetch.
-    if fam.get("access") == "manual":
-        health["status"] = "manual"
-        health["message"] = "publisher disallows crawling; fetch by hand from the hub"
-        print("    - manual-fetch family (publisher disallows crawling)")
+    access = fam.get("access")
+    if access in ("manual", "none"):
+        health["status"] = access
+        health["message"] = (fam.get("guidance") or "").strip() or (
+            "publisher does not issue statements" if access == "none"
+            else "statements exist but cannot be fetched automatically")
+        print(f"    - {'no statements published' if access == 'none' else 'manual-fetch family'}")
         return [], health
 
     # Getting the hub at all is the hardest part of several families, and every
@@ -1073,6 +1128,7 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
     include = fam.get("link_include", defaults["link_include"])
     exclude = fam.get("link_exclude", defaults["link_exclude"])
     links = collect_links(html, fam["hub"], include, exclude)
+    links += collect_json_links(html, fam["hub"], include, exclude)
     links += follow_pages(html, fam["hub"], fam, browser, args)
     derived, derived_names = derive_candidates(fam, browser, args.since_year)
     links = sorted(set(links) | set(derived))
@@ -1277,7 +1333,14 @@ def build_index(all_statements: list[Statement], families: list[dict],
             "years": all_years,
         },
         "families": [
-            {k: fam.get(k) for k in ("id", "name", "country", "mode", "fye", "hub", "notes")}
+            {**{k: fam.get(k) for k in
+                ("id", "name", "country", "mode", "fye", "hub", "notes",
+                 "access", "guidance")},
+             # so the UI can explain a family with no statements rather than
+             # just showing an empty result
+             "statement_count": sum(1 for f in fund_list if f["family"] == fam["id"]
+                                    for _ in f["statements"]),
+             "fund_count": sum(1 for f in fund_list if f["family"] == fam["id"])}
             for fam in families
         ],
         "funds": fund_list,

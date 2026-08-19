@@ -132,6 +132,12 @@ families:
     access: manual
     fye: "varies"
     hub: https://www.capitalgroup.com/advisor/ca/en/service/tax-centre.html
+    guidance: >-
+      Capital Group does publish PFIC Annual Information Statements - its tax
+      centre states they are provided for all of its funds. They are not
+      crawled here by the publisher's own instruction: capitalgroup.com
+      /robots.txt sets a blanket "Disallow: /content", and every document
+      lives under /content/dam/. Open the tax centre and download by hand.
     notes: >-
       NOT CRAWLED, by their instruction. capitalgroup.com/robots.txt carries a
       blanket `Disallow: /content`, and every document including the PFIC
@@ -212,11 +218,17 @@ families:
   - id: bmo-gam
     name: BMO Global Asset Management
     country: CA
-    mode: browser
+    mode: static
     fye: "06-30"
     hub: https://bmogam.com/ca-en/resources/legal-and-regulatory-documents/pfic/
-    pdf_host: https://bmogamhub.com/system/files/
-    notes: June 30 fiscal year end for most funds. PDFs live on bmogamhub.com.
+    link_include: ['(?i)pfic']
+    notes: >-
+      June 30 fiscal year end for most funds - do NOT assume December.
+      Next.js site: the markup contains no document links at all. All ~220
+      statement URLs live in the __NEXT_DATA__ JSON blob and point at
+      bmo.bynder.com, which is why link scraping found nothing. Plain HTTP
+      times out and headless Chromium fails with an HTTP/2 protocol error;
+      curl is the transport that works.
 
   - id: manulife-im
     name: Manulife Investment Management
@@ -248,21 +260,38 @@ families:
   - id: purpose
     name: Purpose Investments
     country: CA
-    mode: browser
+    mode: static
     fye: "12-31"
     hub: https://www.purposeinvest.com/funds
-    doc_root: https://documents.purposeinvest.com/Docs/BNC/pfic/en/
+    link_include: ['(?i)/Docs/[^/]+/pfic/']
+    follow:
+      page_pattern: '^/funds/[a-z0-9-]+$'
     notes: >-
-      The bookmarked page was a single fund page, not a hub. Real repository is
-      documents.purposeinvest.com/Docs/BNC/pfic/en/{Fund Name} PFIC {YYYY-MM-DD}.pdf
+      Two-level, like Manulife. The /funds index links ~87 individual fund
+      pages, and each fund page links exactly one PFIC statement at
+      documents.purposeinvest.com/Docs/{CODE}/pfic/en/{Fund Name} PFIC
+      {YYYY-MM-DD}.pdf. Nothing PFIC-related appears on the index itself,
+      which is why the earlier single-level crawl found zero.
+      The originally bookmarked URL was a single fund page, not a hub.
 
   - id: sunlife-gi
     name: Sun Life Global Investments
     country: CA
-    mode: browser
+    mode: static
+    access: manual
     fye: "12-31"
     hub: https://www.sunlifeglobalinvestments.com/en/resources/regulatory-documents/
-    notes: Roughly 17 funds covered. Bot-blocks plain HTTP fetches.
+    guidance: >-
+      Sun Life states on its regulatory documents page that it provides PFIC
+      Annual Information Statements for 17 of its mutual funds - but the
+      statements themselves are not linked anywhere public. The page has a
+      "Passive Foreign Investment Company (PFIC)" section whose documents are
+      prospectuses and financial statements, not PFIC statements, and no
+      /pfic page exists. They are almost certainly issued on request.
+      Contact Sun Life or the advisor of record to obtain one.
+    notes: >-
+      Publishes but does not post. Every candidate URL tried returned 404 and
+      the site search is blocked to automation.
 
   - id: pimco-ca
     name: PIMCO Canada
@@ -271,6 +300,14 @@ families:
     access: manual
     fye: "varies"
     hub: https://www.pimco.com/ca/en/resources/tax-center
+    guidance: >-
+      PIMCO does publish PFIC statements - the Canadian tax centre has sections
+      headed "2025 / 2024 / 2023 U.S. Taxpayer PFIC / Form 8937 Information".
+      They cannot be fetched automatically: the site runs Akamai Bot Manager
+      and deliberately withholds the panel contents from automated browsers,
+      so the sections sit at "Loader..." forever. In a normal browser they
+      open fine. Open the tax centre, expand the year you need, and search the
+      fund name - it takes about two minutes.
     notes: >-
       PUBLISHES, BUT CANNOT BE CRAWLED. The tax centre carries sections headed
       "2025 / 2024 / 2023 U.S. Taxpayer PFIC / Form 8937 Information", so the
@@ -286,3 +323,40 @@ families:
     mode: browser
     fye: "varies"
     hub: https://www.dimensional.com/ca-en/document-center
+
+  # ---------- Confirmed non-publishers, listed so the check is visible ----------
+
+  - id: evolve
+    name: Evolve ETFs
+    country: CA
+    mode: static
+    access: none
+    fye: "12-31"
+    hub: https://evolveetfs.com/
+    guidance: >-
+      Evolve does not publish PFIC Annual Information Statements. There is no
+      tax-information section on evolveetfs.com, the documents area carries
+      only prospectuses and fund facts, and their own site search returns no
+      results for "PFIC". This means they do not PUBLISH one - it is not proof
+      they would refuse to issue one. Ask Evolve directly before concluding.
+      If none is available, the holding falls to the section 1291 excess
+      distribution regime, or a mark-to-market election if the fund is
+      marketable on a qualified exchange.
+    notes: Checked 2026-08-19. Listed deliberately so the dead end is recorded.
+
+  - id: bridgehouse
+    name: Bridgehouse Asset Managers (incl. GQG Partners funds)
+    country: CA
+    mode: static
+    access: none
+    fye: "12-31"
+    hub: https://www.bridgehousecanada.com/
+    guidance: >-
+      Bridgehouse does not publish PFIC Annual Information Statements. Look
+      under Bridgehouse rather than GQG - GQG Partners is only the sub-advisor;
+      Bridgehouse is the Canadian manager and the party that would issue the
+      statement. Their Legal & Regulatory page lists Fund Facts, Prospectus,
+      Annual Information Form and proxy records with nothing on PFIC, QEF or
+      US taxpayers, and their site search returns no results for "PFIC".
+      Contact inquiries@bridgehousecanada.com or 1-888-861-9998 to confirm.
+    notes: Checked 2026-08-19. Covers the GQG Partners Global Quality Equity Fund.
