@@ -14,6 +14,13 @@ defaults:
   link_include:
     - '(?i)pfic'
     - '(?i)qef'
+    # SPEP = Societe de Placement Etranger Passif, the French for PFIC.
+    # Quebec and bilingual managers name their files with it: Desjardins
+    # publishes fnb_doc_spep_2022_en.pdf. Searching only for "pfic" missed
+    # Desjardins entirely and reported it as "not found", which was wrong -
+    # they publish, the crawler was looking for the wrong word.
+    - '(?i)spep'
+    - '(?i)fepp'
   link_exclude:
     - '(?i)(faq|q-and-a|q_and_a|overview|sample|guide|brochure)'
 
@@ -472,4 +479,21 @@ families:
       lysanderfunds.com/robots.txt disallows /app/uploads/, where every
       document lives. Open the page and download the year you need directly.
     notes: One combined statement per year, not one per fund. robots.txt blocks retrieval.
+
+  - id: desjardins
+    name: Desjardins Funds
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://www.fondsdesjardins.com/
+    year_urls:
+      - https://www.fondsdesjardins.com/information/fnb_doc_spep_{year}_en.pdf
+    notes: >-
+      Uses the FRENCH acronym: SPEP = Societe de Placement Etranger Passif =
+      PFIC. Files are named fnb_doc_spep_{YEAR}_en.pdf ("fnb" = fonds negocies
+      en bourse, i.e. ETF). Nothing on their site links these documents, so
+      they are reached by expanding the URL template over the year range.
+      One combined document per year covering all the ETFs, not one per fund.
+      2021-2023 confirmed; 2024 onward not published at this path yet - check
+      whether the naming changed before assuming they stopped.
 

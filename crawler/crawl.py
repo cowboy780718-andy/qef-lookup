@@ -565,7 +565,7 @@ URL_CODE_PATTERNS = [
     # RBC names its statements by fund code too: /pfic/2025/rbf1664_e.pdf.
     # Between them RBC and National Bank cover ~325 funds whose codes are
     # recoverable with no extra requests at all.
-    re.compile(r"/pfic/\d{4}/([a-z]{2,4}\d{2,5})_", re.I),
+    re.compile(r"/pfic/\d{4}/([a-z]{2,4}\d{2,5}[a-z]?)_", re.I),
 ]
 _CODE_STOPWORDS = {"THE", "FUND", "ETF", "USD", "CAD", "PFIC", "QEF", "IRS",
                    "AIS", "US", "EN", "FR", "STMT", "ENV1", "SE", "PDFUA"}
@@ -1135,7 +1135,18 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
 
     include = fam.get("link_include", defaults["link_include"])
     exclude = fam.get("link_exclude", defaults["link_exclude"])
-    links = collect_links(html, fam["hub"], include, exclude)
+    # Some managers publish one document per year at a fixed path with nothing
+    # linking to it from a browsable page - Desjardins is the case. A template
+    # expanded over the year range reaches them.
+    year_urls: list[str] = []
+    for tmpl in (fam.get("year_urls") or []):
+        this_year = datetime.now(timezone.utc).year
+        for yr in range(this_year, max(args.since_year, this_year - 8) - 1, -1):
+            year_urls.append(tmpl.format(year=yr))
+    if year_urls:
+        print(f"    {len(year_urls)} templated URL(s) to probe")
+
+    links = collect_links(html, fam["hub"], include, exclude) + year_urls
     links += collect_json_links(html, fam["hub"], include, exclude)
     links += follow_pages(html, fam["hub"], fam, browser, args)
     derived, derived_names = derive_candidates(fam, browser, args.since_year)

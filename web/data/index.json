@@ -1,10 +1,10 @@
 {
- "generated": "2026-08-19T20:34:48+00:00",
+ "generated": "2026-08-19T20:42:54+00:00",
  "stats": {
-  "families": 31,
-  "families_ok": 21,
-  "funds": 4294,
-  "statements": 14475,
+  "families": 32,
+  "families_ok": 22,
+  "funds": 4295,
+  "statements": 14478,
   "years": [
    2025,
    2024,
@@ -416,6 +416,19 @@
    "guidance": "Lysander does publish PFIC statements - one combined document per year covering all its funds, going back to 2020, all linked from this page. They are NOT collected here by the publisher's own instruction: lysanderfunds.com/robots.txt disallows /app/uploads/, where every document lives. Open the page and download the year you need directly.",
    "statement_count": 0,
    "fund_count": 0
+  },
+  {
+   "id": "desjardins",
+   "name": "Desjardins Funds",
+   "country": "CA",
+   "mode": "static",
+   "fye": "12-31",
+   "hub": "https://www.fondsdesjardins.com/",
+   "notes": "Uses the FRENCH acronym: SPEP = Societe de Placement Etranger Passif = PFIC. Files are named fnb_doc_spep_{YEAR}_en.pdf (\"fnb\" = fonds negocies en bourse, i.e. ETF). Nothing on their site links these documents, so they are reached by expanding the URL template over the year range. One combined document per year covering all the ETFs, not one per fund. 2021-2023 confirmed; 2024 onward not published at this path yet - check whether the naming changed before assuming they stopped.",
+   "access": null,
+   "guidance": null,
+   "statement_count": 3,
+   "fund_count": 1
   }
  ],
  "funds": [
@@ -156833,6 +156846,49 @@
    ]
   },
   {
+   "id": "desjardins::internal-revenue-service",
+   "family": "desjardins",
+   "family_name": "Desjardins Funds",
+   "country": "CA",
+   "name": "Internal Revenue Service",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.fondsdesjardins.com/information/fnb_doc_spep_2023_en.pdf",
+     "bytes": 145756,
+     "sha256": "242e715ff552a4b4",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.fondsdesjardins.com/information/fnb_doc_spep_2022_en.pdf",
+     "bytes": 148424,
+     "sha256": "2598b4d7a5ef1e1b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://www.fondsdesjardins.com/information/fnb_doc_spep_2021_en.pdf",
+     "bytes": 144125,
+     "sha256": "aa69b6db94528a82",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
    "id": "dimensional-ca::dfa-canadian-core-equity-fund",
    "family": "dimensional-ca",
    "family_name": "Dimensional Fund Advisors Canada",
@@ -176531,7 +176587,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Absolute Return Fund - Series F_AUG22",
-   "tickers": [],
+   "tickers": [
+    "RBF5450B"
+   ],
    "statements": [
     {
      "period_end": "2024-06-30",
@@ -176564,7 +176622,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "PH&N Absolute Return Fund - Series F_MAY20",
-   "tickers": [],
+   "tickers": [
+    "RBF5450A"
+   ],
    "statements": [
     {
      "period_end": "2024-06-30",
@@ -178842,7 +178902,9 @@
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
    "name": "RBC Canadian Core Real Estate Fund - Series F",
-   "tickers": [],
+   "tickers": [
+    "RBF9013A"
+   ],
    "statements": [
     {
      "period_end": "2025-06-30",
@@ -202892,6 +202954,18 @@
    "statements": 0,
    "candidates": 6,
    "message": "documents unreachable (plain HTTP=robots-denied; curl=robots-denied; browser=robots-denied; plain HTTP=robots-denied; curl=robots-denied; browser=robots-denied)",
+   "derived_names": 0
+  },
+  {
+   "id": "desjardins",
+   "name": "Desjardins Funds",
+   "mode": "static",
+   "hub": "https://www.fondsdesjardins.com/",
+   "checked": "2026-08-19",
+   "status": "ok",
+   "statements": 3,
+   "candidates": 6,
+   "message": "",
    "derived_names": 0
   }
  ],
