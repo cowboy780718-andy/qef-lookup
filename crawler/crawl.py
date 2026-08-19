@@ -81,6 +81,13 @@ HEADERS = {
 # Bump when SIGNALS/scoring/parsers change, to invalidate cached verdicts.
 VERIFY_VERSION = 2
 
+# Oldest tax year worth indexing. Anything earlier is left on the issuer's own
+# site: the UI points you there rather than pretending the year does not exist.
+# Raising this is the single biggest lever on crawl time, because the year is
+# usually visible in the URL and a document can then be skipped before it is
+# downloaded at all.
+SINCE_YEAR = 2015
+
 PER_HOST_DELAY = 1.0          # seconds between requests to the same host
 MAX_WORKERS = 6
 TIMEOUT = 45
@@ -407,7 +414,8 @@ def save_manifest(m: dict) -> None:
     (CACHE / "manifest.json").write_text(json.dumps(m, indent=1), encoding="utf-8")
 
 
-def derive_candidates(fam: dict, browser: "BrowserSession | None" = None) -> tuple[list[str], dict]:
+def derive_candidates(fam: dict, browser: "BrowserSession | None" = None,
+                      since: int = SINCE_YEAR) -> tuple[list[str], dict]:
     """Build candidate URLs for publishers that don't link their statements.
 
     BlackRock is the case this exists for: its tax centre links only a "Fund
@@ -440,7 +448,8 @@ def derive_candidates(fam: dict, browser: "BrowserSession | None" = None) -> tup
         return [], {}
 
     this_year = datetime.now(timezone.utc).year
-    years = list(range(this_year, this_year - int(d.get("years_back", 5)), -1))
+    oldest = max(since, this_year - int(d.get("years_back", 5)) + 1)
+    years = list(range(this_year, oldest - 1, -1))
     urls = []
     for ticker in names:
         for year in years:
@@ -449,6 +458,28 @@ def derive_candidates(fam: dict, browser: "BrowserSession | None" = None) -> tup
                                         ticker_lower=ticker.lower()))
     print(f"    derived {len(names)} tickers x {len(years)} years -> {len(urls)} candidates")
     return urls, names
+
+
+# Years appear in these URLs as a path segment (/2024/pfic/), a filename prefix
+# (2022_PFIC_...) or an embedded token (pfic-2021-mft-en.pdf, ...-2024.pdf).
+_URL_YEAR = re.compile(r"(?:^|[^0-9])(19[89]\d|20[0-4]\d)(?:[^0-9]|$)")
+
+
+def url_year(url: str) -> int | None:
+    """Best-effort tax year from a URL. None when it cannot be told."""
+    years = [int(y) for y in _URL_YEAR.findall(urlparse.urlsplit(url).path)]
+    return max(years) if years else None
+
+
+def too_old(url: str, since: int) -> bool:
+    """True only when the URL positively shows a year older than the floor.
+
+    Deliberately one-sided: a URL with no readable year is kept and decided on
+    the period parsed out of the document. Guessing 'old' from an unreadable URL
+    would silently drop current statements.
+    """
+    y = url_year(url)
+    return y is not None and y < since
 
 
 def collect_links(html: str, base: str, include: list[str], exclude: list[str]) -> list[str]:
@@ -498,7 +529,7 @@ def process_pdf(url: str, family_id: str, manifest: dict, today: str,
     if not isinstance(status, int) or status != 200 or not blob or not blob.startswith(b"%PDF"):
         m = re.search(r"[-_/](20\d{2})[-_/]", url)
         manifest[url] = {"miss": True, "status": str(status), "last_seen": today,
-                         "verify_version": VERIFY_VERSION,
+                         "verify_version": VERIFY_VERSION, "family": family_id,
                          "probe_year": int(m.group(1)) if m else None}
         return None
 
@@ -528,6 +559,7 @@ def process_pdf(url: str, family_id: str, manifest: dict, today: str,
 
     manifest[url] = {
         "verify_version": VERIFY_VERSION,
+        "family": family_id,
         "etag": resp_headers.get("ETag"),
         "sha256": digest,
         "bytes": len(blob),
@@ -541,6 +573,8 @@ def process_pdf(url: str, family_id: str, manifest: dict, today: str,
         "last_seen": today,
     }
     if not ok:
+        return None
+    if year is not None and year < SINCE_YEAR:
         return None
     return Statement(
         family=family_id, url=url, fund_name=name, tickers=tickers,
@@ -614,9 +648,19 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
     include = fam.get("link_include", defaults["link_include"])
     exclude = fam.get("link_exclude", defaults["link_exclude"])
     links = collect_links(html, fam["hub"], include, exclude)
-    derived, derived_names = derive_candidates(fam, browser)
+    derived, derived_names = derive_candidates(fam, browser, args.since_year)
     links = sorted(set(links) | set(derived))
     health["derived_names"] = len(derived_names)
+
+    # Drop pre-floor documents before spending a request on them. This is where
+    # the crawl time actually goes: CI alone lists ~15,000 documents, and the
+    # year is right there in the filename.
+    before = len(links)
+    links = [u for u in links if not too_old(u, args.since_year)]
+    if before != len(links):
+        health["skipped_old"] = before - len(links)
+        print(f"    {before - len(links)} candidate(s) older than "
+              f"{args.since_year} skipped by URL")
     if args.limit and len(links) > args.limit:
         # Sample evenly rather than taking the head. Links sort alphabetically,
         # which usually means by year, so a head slice would test only the
@@ -669,11 +713,20 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
                 statements.append(st)
             if i % 25 == 0:
                 print(f"      {i}/{len(links)} fetched")
+            if i % 200 == 0:
+                save_manifest(manifest)
     else:
         with futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
-            for st in pool.map(lambda u: process_pdf(u, fid, manifest, today), links):
+            # Checkpoint periodically. CI Global alone lists ~15,000 documents;
+            # losing hours of downloads because the run was interrupted between
+            # family boundaries is not an acceptable failure mode.
+            for n, st in enumerate(
+                    pool.map(lambda u: process_pdf(u, fid, manifest, today), links), 1):
                 if st:
                     statements.append(st)
+                if n % 250 == 0:
+                    save_manifest(manifest)
+                    print(f"      {n}/{len(links)} processed")
 
     health["statements"] = len(statements)
     health["status"] = "ok" if statements else "empty"
@@ -689,6 +742,32 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
 
 def slug(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", (s or "").lower()).strip("-")
+
+
+def statements_from_manifest(manifest: dict, since: int) -> list[Statement]:
+    """Rebuild the full statement set from the cache.
+
+    The index is assembled from everything ever verified, not just what this
+    run happened to touch. Without this, `--only mackenzie` would publish an
+    index containing Mackenzie and nothing else, quietly deleting twenty other
+    families - and an interrupted run would do the same.
+    """
+    out = []
+    for url, v in manifest.items():
+        if not v.get("verified") or v.get("miss"):
+            continue
+        year = v.get("tax_year")
+        if year is not None and year < since:
+            continue
+        out.append(Statement(
+            family=v.get("family", "unknown"), url=url,
+            fund_name=v.get("fund_name"), tickers=v.get("tickers", []),
+            period_end=v.get("period_end"), tax_year=year,
+            sha256=v.get("sha256", ""), bytes=v.get("bytes", 0),
+            confidence=v.get("confidence", 0), verified=True,
+            first_seen=v.get("first_seen", ""), last_seen=v.get("last_seen", ""),
+        ))
+    return out
 
 
 def build_index(all_statements: list[Statement], families: list[dict],
@@ -753,14 +832,18 @@ def main() -> int:
     ap.add_argument("--only", nargs="*", help="family ids to crawl")
     ap.add_argument("--static-only", action="store_true")
     ap.add_argument("--limit", type=int, default=0, help="max PDFs per family")
+    ap.add_argument("--since-year", type=int, default=SINCE_YEAR,
+                    help=f"oldest tax year to index (default {SINCE_YEAR}); "
+                         "raising this is the biggest lever on crawl time")
     args = ap.parse_args()
+    globals()["SINCE_YEAR"] = args.since_year
 
     cfg = yaml.safe_load((ROOT / "sources.yaml").read_text(encoding="utf-8"))
     negs = yaml.safe_load((ROOT / "negatives.yaml").read_text(encoding="utf-8"))
     defaults = cfg["defaults"]
-    families = cfg["families"]
-    if args.only:
-        families = [f for f in families if f["id"] in args.only]
+    all_families = cfg["families"]
+    families = ([f for f in all_families if f["id"] in args.only]
+                if args.only else all_families)
 
     manifest = load_manifest()
     today = datetime.now(timezone.utc).date().isoformat()
@@ -784,7 +867,26 @@ def main() -> int:
         save_manifest(manifest)
 
     save_manifest(manifest)
-    index = build_index(all_statements, families, health, negs.get("negatives", []))
+
+    # Assemble from the whole cache so a partial run updates its families
+    # without erasing the others, and carry forward the last known health of
+    # anything not crawled this time.
+    prior_health = {}
+    if OUT.exists():
+        try:
+            prior_health = {h["id"]: h for h in
+                            json.loads(OUT.read_text(encoding="utf-8")).get("health", [])}
+        except Exception:
+            pass
+    crawled = {h["id"] for h in health}
+    merged_health = health + [h for fid, h in prior_health.items()
+                              if fid not in crawled
+                              and fid in {f["id"] for f in all_families}]
+    merged_health.sort(key=lambda h: [f["id"] for f in all_families].index(h["id"])
+                       if h["id"] in [f["id"] for f in all_families] else 99)
+
+    index = build_index(statements_from_manifest(manifest, args.since_year),
+                        all_families, merged_health, negs.get("negatives", []))
     OUT.parent.mkdir(parents=True, exist_ok=True)
     # PyYAML turns bare `verified: 2026-08-18` into a date object; default=str
     # keeps the negatives register serializable without quoting every date.
@@ -803,7 +905,7 @@ def main() -> int:
         for msg, n in sorted(_pdf_errors.items(), key=lambda kv: -kv[1]):
             print(f"  {n:>5}x  {msg}")
 
-    broken = [h for h in health if h["status"] in ("down", "error", "empty")]
+    broken = [h for h in merged_health if h["status"] in ("down", "error", "empty")]
     if broken:
         print(f"\nneeds attention ({len(broken)}):")
         for h in broken:
