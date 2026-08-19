@@ -360,3 +360,65 @@ families:
       US taxpayers, and their site search returns no results for "PFIC".
       Contact inquiries@bridgehousecanada.com or 1-888-861-9998 to confirm.
     notes: Checked 2026-08-19. Covers the GQG Partners Global Quality Equity Fund.
+
+  - id: dynamic
+    name: Dynamic Funds (1832 Asset Management)
+    country: CA
+    mode: static
+    access: manual
+    fye: "12-31"
+    hub: https://dynamic.ca/en/literature/regulatory-documents/pfic-irs.html
+    guidance: >-
+      Dynamic does publish PFIC statements - they have a dedicated
+      "PFIC Statements & Other IRS Tax Information" page and the documents sit
+      at /content/dam/docs/regulatory/pfic/{year}/{code}.pdf. The list itself
+      is built in the browser and only one document appears in the raw page,
+      and their server rejects the headless browser with an HTTP/2 error, so
+      the full list cannot be collected automatically. Open the page and pick
+      the fund and year by hand.
+    notes: Retry periodically; a site change may expose the list.
+
+  - id: franklin-templeton-ca
+    name: Franklin Templeton Canada
+    country: CA
+    mode: browser
+    access: manual
+    fye: "varies"
+    hub: https://www.franklintempleton.ca/en-ca/resources/forms/pfic-annual-information-statements
+    guidance: >-
+      Franklin Templeton Canada has a dedicated PFIC Annual Information
+      Statements page. The page loads but its document list did not yield any
+      statement links to the crawler, so the documents could not be collected
+      automatically. Open the page directly - the statements are there.
+    notes: Page renders ~555KB but exposes no PFIC document links. Needs investigation.
+
+  - id: nei
+    name: NEI Investments (Aviso)
+    country: CA
+    mode: static
+    access: manual
+    fye: "09-30"
+    hub: https://www.neiinvestments.com/
+    guidance: >-
+      NEI does publish PFIC statements - documents exist at
+      neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/pfic-{code}-en.pdf
+      and cover taxable years ending 30 SEPTEMBER, not December. Their site
+      blocks automated access, so the index of which fund maps to which code
+      could not be collected. Search their site or contact NEI for the fund
+      you need.
+    notes: September 30 year end. Aviso Wealth is the parent.
+
+  - id: starlight
+    name: Starlight Capital
+    country: CA
+    mode: static
+    access: manual
+    fye: "12-31"
+    hub: https://starlightcapital.com/en/tax-information
+    guidance: >-
+      Starlight has a PFIC section on its tax information page, but only a
+      PFIC Overview and a PFIC FAQ are linked publicly - the per-fund
+      statements themselves are not posted. Contact Starlight to request the
+      statement for a specific fund.
+    notes: Only overview/FAQ PDFs are exposed; no per-fund statements found.
+

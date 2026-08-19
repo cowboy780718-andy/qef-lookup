@@ -1366,6 +1366,9 @@ def main() -> int:
 
     cfg = yaml.safe_load((ROOT / "sources.yaml").read_text(encoding="utf-8"))
     negs = yaml.safe_load((ROOT / "negatives.yaml").read_text(encoding="utf-8"))
+    codes_path = ROOT / "fundcodes.yaml"
+    fund_codes = (yaml.safe_load(codes_path.read_text(encoding="utf-8")).get("prefixes", [])
+                  if codes_path.exists() else [])
     defaults = cfg["defaults"]
     all_families = cfg["families"]
     families = ([f for f in all_families if f["id"] in args.only]
@@ -1450,6 +1453,10 @@ def main() -> int:
                        if h["id"] in [f["id"] for f in all_families] else 99)
 
     index = build_index(stmts, all_families, merged_health, negs.get("negatives", []))
+    # Client statements name funds by FundSERV code; PFIC statements never
+    # print the code. This lets the site at least recognise a code and say
+    # whose it is, instead of returning a blank "nothing found".
+    index["fund_code_prefixes"] = fund_codes
 
     # Seatbelt. Publishing is automatic, so a bad index reaches the live site
     # within a minute. Any large collapse is treated as a bug until a human

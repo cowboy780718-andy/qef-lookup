@@ -1,7 +1,7 @@
 {
- "generated": "2026-08-19T19:34:06+00:00",
+ "generated": "2026-08-19T20:13:22+00:00",
  "stats": {
-  "families": 23,
+  "families": 27,
   "families_ok": 18,
   "funds": 4108,
   "statements": 13969,
@@ -310,6 +310,58 @@
    "notes": "Checked 2026-08-19. Covers the GQG Partners Global Quality Equity Fund.",
    "access": "none",
    "guidance": "Bridgehouse does not publish PFIC Annual Information Statements. Look under Bridgehouse rather than GQG - GQG Partners is only the sub-advisor; Bridgehouse is the Canadian manager and the party that would issue the statement. Their Legal & Regulatory page lists Fund Facts, Prospectus, Annual Information Form and proxy records with nothing on PFIC, QEF or US taxpayers, and their site search returns no results for \"PFIC\". Contact inquiries@bridgehousecanada.com or 1-888-861-9998 to confirm.",
+   "statement_count": 0,
+   "fund_count": 0
+  },
+  {
+   "id": "dynamic",
+   "name": "Dynamic Funds (1832 Asset Management)",
+   "country": "CA",
+   "mode": "static",
+   "fye": "12-31",
+   "hub": "https://dynamic.ca/en/literature/regulatory-documents/pfic-irs.html",
+   "notes": "Retry periodically; a site change may expose the list.",
+   "access": "manual",
+   "guidance": "Dynamic does publish PFIC statements - they have a dedicated \"PFIC Statements & Other IRS Tax Information\" page and the documents sit at /content/dam/docs/regulatory/pfic/{year}/{code}.pdf. The list itself is built in the browser and only one document appears in the raw page, and their server rejects the headless browser with an HTTP/2 error, so the full list cannot be collected automatically. Open the page and pick the fund and year by hand.",
+   "statement_count": 0,
+   "fund_count": 0
+  },
+  {
+   "id": "franklin-templeton-ca",
+   "name": "Franklin Templeton Canada",
+   "country": "CA",
+   "mode": "browser",
+   "fye": "varies",
+   "hub": "https://www.franklintempleton.ca/en-ca/resources/forms/pfic-annual-information-statements",
+   "notes": "Page renders ~555KB but exposes no PFIC document links. Needs investigation.",
+   "access": "manual",
+   "guidance": "Franklin Templeton Canada has a dedicated PFIC Annual Information Statements page. The page loads but its document list did not yield any statement links to the crawler, so the documents could not be collected automatically. Open the page directly - the statements are there.",
+   "statement_count": 0,
+   "fund_count": 0
+  },
+  {
+   "id": "nei",
+   "name": "NEI Investments (Aviso)",
+   "country": "CA",
+   "mode": "static",
+   "fye": "09-30",
+   "hub": "https://www.neiinvestments.com/",
+   "notes": "September 30 year end. Aviso Wealth is the parent.",
+   "access": "manual",
+   "guidance": "NEI does publish PFIC statements - documents exist at neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/pfic-{code}-en.pdf and cover taxable years ending 30 SEPTEMBER, not December. Their site blocks automated access, so the index of which fund maps to which code could not be collected. Search their site or contact NEI for the fund you need.",
+   "statement_count": 0,
+   "fund_count": 0
+  },
+  {
+   "id": "starlight",
+   "name": "Starlight Capital",
+   "country": "CA",
+   "mode": "static",
+   "fye": "12-31",
+   "hub": "https://starlightcapital.com/en/tax-information",
+   "notes": "Only overview/FAQ PDFs are exposed; no per-fund statements found.",
+   "access": "manual",
+   "guidance": "Starlight has a PFIC section on its tax information page, but only a PFIC Overview and a PFIC FAQ are linked publicly - the per-fund statements themselves are not posted. Contact Starlight to request the statement for a specific fund.",
    "statement_count": 0,
    "fund_count": 0
   }
@@ -194531,6 +194583,112 @@
    "candidates": 19,
    "message": "",
    "derived_names": 0
+  }
+ ],
+ "fund_code_prefixes": [
+  {
+   "prefix": "RBF",
+   "family": "rbc-gam",
+   "manager": "RBC Global Asset Management",
+   "resolve": "https://www.rbcgam.com/en/ca/products/mutual-funds/{code}/detail/",
+   "verified": true
+  },
+  {
+   "prefix": "PHN",
+   "family": "rbc-gam",
+   "manager": "Phillips, Hager & North (RBC)",
+   "resolve": "https://www.rbcgam.com/en/ca/products/mutual-funds/{code}/detail/",
+   "verified": false
+  },
+  {
+   "prefix": "TDB",
+   "family": "tdam",
+   "manager": "TD Asset Management"
+  },
+  {
+   "prefix": "CIG",
+   "family": "ci-gam",
+   "manager": "CI Global Asset Management"
+  },
+  {
+   "prefix": "MFC",
+   "family": "mackenzie",
+   "manager": "Mackenzie Investments"
+  },
+  {
+   "prefix": "BMO",
+   "family": "bmo-gam",
+   "manager": "BMO Global Asset Management"
+  },
+  {
+   "prefix": "FID",
+   "family": "fidelity-ca",
+   "manager": "Fidelity Investments Canada"
+  },
+  {
+   "prefix": "DYN",
+   "family": "dynamic",
+   "manager": "Dynamic Funds (1832 Asset Management)"
+  },
+  {
+   "prefix": "AGF",
+   "family": null,
+   "manager": "AGF Investments"
+  },
+  {
+   "prefix": "NBC",
+   "family": null,
+   "manager": "National Bank Investments"
+  },
+  {
+   "prefix": "CIB",
+   "family": "cibc",
+   "manager": "CIBC Asset Management"
+  },
+  {
+   "prefix": "ATL",
+   "family": "ia-clarington",
+   "manager": "iA Clarington Investments"
+  },
+  {
+   "prefix": "CLI",
+   "family": "ia-clarington",
+   "manager": "iA Clarington Investments"
+  },
+  {
+   "prefix": "SUN",
+   "family": "sunlife-gi",
+   "manager": "Sun Life Global Investments"
+  },
+  {
+   "prefix": "MAW",
+   "family": "mawer",
+   "manager": "Mawer Investment Management"
+  },
+  {
+   "prefix": "PMO",
+   "family": "pimco-ca",
+   "manager": "PIMCO Canada"
+  },
+  {
+   "prefix": "IVC",
+   "family": null,
+   "manager": "Invesco Canada"
+  },
+  {
+   "prefix": "NEI",
+   "family": "nei",
+   "manager": "NEI Investments"
+  },
+  {
+   "prefix": "EDG",
+   "family": null,
+   "manager": "EdgePoint Wealth Management"
+  },
+  {
+   "prefix": "BTG",
+   "family": null,
+   "manager": "Beutel Goodman"
   }
  ]
 }

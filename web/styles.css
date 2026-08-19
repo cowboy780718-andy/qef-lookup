@@ -187,3 +187,4 @@ button.ghost { background: none; color: var(--ink-2); }
          padding: 8px 15px; border-radius: 7px; text-decoration: none; font-weight: 600;
          font-size: .9rem; }
 .gobtn:hover { filter: brightness(1.08); }
+.guide.code { border-left-color: var(--warn); }

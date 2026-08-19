@@ -103,6 +103,46 @@ function buildFamilySelect() {
 }
 
 /**
+ * Recognise a FundSERV code and say whose it is.
+ *
+ * Client statements identify Canadian mutual funds by code - RBF556, TDB900 -
+ * while PFIC statements only ever print the legal fund name, so the index has
+ * no codes for mutual funds to match against. Returning a blank "nothing
+ * found" for a code the user copied straight off a client statement is the
+ * worst possible answer: it reads as "no statement exists".
+ */
+function fundCodeHelp(query) {
+  const term = (query || "").trim().toUpperCase();
+  const m = /^([A-Z]{3})(\d{2,5})$/.exec(term);
+  if (!m) return "";
+  const entry = (state.index.fund_code_prefixes || [])
+    .find((p) => p.prefix === m[1]);
+  const fam = entry && entry.family
+    ? (state.index.families || []).find((f) => f.id === entry.family) : null;
+  const resolve = entry && entry.resolve
+    ? entry.resolve.replace("{code}", term) : null;
+
+  return `<div class="guide code">
+    <h3>${esc(term)} looks like a FundSERV fund code</h3>
+    <p class="who">${entry ? esc(entry.manager) : "Manager not recognised"}</p>
+    <p>Fund companies print these codes on client statements, but a PFIC
+       statement only ever carries the fund&rsquo;s legal name &mdash; so the
+       index has no code to match. Resolve the code to a fund name first, then
+       search that name here.</p>
+    ${resolve ? `<p><a class="gobtn" href="${esc(resolve)}" target="_blank"
+        rel="noopener">Look up ${esc(term)} on the manager&rsquo;s site &rarr;</a></p>`
+      : entry && fam ? `<p><a class="gobtn" href="${esc(fam.hub)}" target="_blank"
+        rel="noopener">Open ${esc(entry.manager)} &rarr;</a></p>` : ""}
+    ${entry && entry.verified === false ? `<p class="caution">The direct link for
+       this prefix is unconfirmed &mdash; if it 404s, search the manager&rsquo;s
+       site for the code instead.</p>` : ""}
+    ${!entry ? `<p class="caution">This prefix is not in the table yet. Search
+       the code on the web to identify the manager, then tell me and I will add
+       it.</p>` : ""}
+  </div>`;
+}
+
+/**
  * Panel shown when a family has no statements to list. Empty results are the
  * moment the tool is most likely to mislead: "nothing found" reads as "no
  * statement exists". So say which of the two it is, why, and where to go.
@@ -179,7 +219,10 @@ function render() {
   if (!funds.length) {
     const fam = state.family
       ? (state.index.families || []).find((f) => f.id === state.family) : null;
-    $("results").innerHTML = fam
+    const code = fundCodeHelp(state.query);
+    $("results").innerHTML = code
+      ? code
+      : fam
       ? familyGuidance(fam)
       : `<div class="empty">
           <p><strong>Nothing matched.</strong></p>

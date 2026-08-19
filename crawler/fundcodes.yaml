@@ -1,0 +1,99 @@
+# FundSERV code prefixes.
+#
+# Client statements identify Canadian mutual funds by FundSERV code (RBF556,
+# TDB900), never by the legal name the PFIC statement uses. The statements
+# themselves never print the code, so the index cannot learn the mapping from
+# the documents - it has to come from the fund companies' own product pages.
+#
+# What this file gives the site:
+#   * recognise that a search term IS a fund code, not a typo
+#   * name the manager it belongs to
+#   * where a company keys its fund pages by code, a direct link that resolves
+#     the code to a fund name in one click
+#
+# `resolve` is a URL template with {code}. Verified working where marked.
+
+prefixes:
+  - prefix: RBF
+    family: rbc-gam
+    manager: RBC Global Asset Management
+    resolve: https://www.rbcgam.com/en/ca/products/mutual-funds/{code}/detail/
+    verified: true          # RBF556 -> "RBC Canadian Index Fund"
+
+  - prefix: PHN
+    family: rbc-gam
+    manager: Phillips, Hager & North (RBC)
+    resolve: https://www.rbcgam.com/en/ca/products/mutual-funds/{code}/detail/
+    verified: false         # PHN250 returned 404; pattern may differ for PH&N
+
+  - prefix: TDB
+    family: tdam
+    manager: TD Asset Management
+
+  - prefix: CIG
+    family: ci-gam
+    manager: CI Global Asset Management
+
+  - prefix: MFC
+    family: mackenzie
+    manager: Mackenzie Investments
+
+  - prefix: BMO
+    family: bmo-gam
+    manager: BMO Global Asset Management
+
+  - prefix: FID
+    family: fidelity-ca
+    manager: Fidelity Investments Canada
+
+  - prefix: DYN
+    family: dynamic
+    manager: Dynamic Funds (1832 Asset Management)
+
+  - prefix: AGF
+    family: null
+    manager: AGF Investments
+
+  - prefix: NBC
+    family: null
+    manager: National Bank Investments
+
+  - prefix: CIB
+    family: cibc
+    manager: CIBC Asset Management
+
+  - prefix: ATL
+    family: ia-clarington
+    manager: iA Clarington Investments
+
+  - prefix: CLI
+    family: ia-clarington
+    manager: iA Clarington Investments
+
+  - prefix: SUN
+    family: sunlife-gi
+    manager: Sun Life Global Investments
+
+  - prefix: MAW
+    family: mawer
+    manager: Mawer Investment Management
+
+  - prefix: PMO
+    family: pimco-ca
+    manager: PIMCO Canada
+
+  - prefix: IVC
+    family: null
+    manager: Invesco Canada
+
+  - prefix: NEI
+    family: nei
+    manager: NEI Investments
+
+  - prefix: EDG
+    family: null
+    manager: EdgePoint Wealth Management
+
+  - prefix: BTG
+    family: null
+    manager: Beutel Goodman
