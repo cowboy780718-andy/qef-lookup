@@ -1,0 +1,16 @@
+# Deployment config for the SITE (the static lookup page).
+#
+# This is what lets Cloudflare build straight from GitHub instead of you
+# uploading a ZIP by hand. Once the Worker is connected to the repo, the
+# nightly crawler commits a refreshed web/data/index.json, the push triggers a
+# rebuild, and the live site updates on its own.
+#
+# The PDF proxy is a SEPARATE worker with its own config in worker/wrangler.toml.
+
+name = "qef-lookup"
+compatibility_date = "2025-01-01"
+
+# Static assets only - there is no server-side code in the site itself.
+[assets]
+directory = "./web"
+not_found_handling = "none"

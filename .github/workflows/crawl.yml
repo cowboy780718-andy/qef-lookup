@@ -87,6 +87,8 @@ jobs:
           else
             STATS=$(python -c "import json;d=json.load(open('web/data/index.json'));s=d['stats'];print(f\"{s['funds']} funds, {s['statements']} statements, {s['families_ok']}/{s['families']} sources ok\")")
             git commit -m "index: $STATS"
+            # Pushing here is what publishes the site: the Worker is connected
+            # to this repo, so the commit triggers a Cloudflare rebuild.
             git push
           fi
 
