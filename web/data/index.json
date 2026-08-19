@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-19T06:09:09+00:00",
+ "generated": "2026-08-19T18:22:58+00:00",
  "stats": {
   "families": 20,
   "families_ok": 14,
@@ -146643,11 +146643,11 @@
    ]
   },
   {
-   "id": "mackenzie::are-converted-into-u-s-dollars-based-on-the-closing-rate-published-on-thomson-one",
+   "id": "mackenzie::are-converted-into-u-s-dollars-based-on-the-closing-rate-published-on-thomson-one-source-reuters-forex",
    "family": "mackenzie",
    "family_name": "Mackenzie Investments",
    "country": "CA",
-   "name": "are converted into U.S. dollars based on the closing rate published on Thomson One",
+   "name": "are converted into U.S. dollars based on the closing rate published on Thomson One (Source: Reuters Forex)",
    "tickers": [
     "MDVD",
     "QUU"

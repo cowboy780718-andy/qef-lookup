@@ -1016,6 +1016,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", nargs="*", help="family ids to crawl")
     ap.add_argument("--static-only", action="store_true")
+    ap.add_argument("--allow-shrink", action="store_true",
+                    help="permit an index that loses over half its statements")
     ap.add_argument("--rebuild-only", action="store_true",
                     help="rebuild the index from the cache without any network access")
     ap.add_argument("--limit", type=int, default=0, help="max PDFs per family")
@@ -1058,22 +1060,70 @@ def main() -> int:
     # Assemble from the whole cache so a partial run updates its families
     # without erasing the others, and carry forward the last known health of
     # anything not crawled this time.
-    prior_health = {}
+    prior_health, prior_funds, prior_total = {}, [], 0
     if OUT.exists():
         try:
-            prior_health = {h["id"]: h for h in
-                            json.loads(OUT.read_text(encoding="utf-8")).get("health", [])}
+            prior = json.loads(OUT.read_text(encoding="utf-8"))
+            prior_health = {h["id"]: h for h in prior.get("health", [])}
+            prior_funds = prior.get("funds", [])
+            prior_total = prior.get("stats", {}).get("statements", 0)
         except Exception:
             pass
     crawled = {h["id"] for h in health}
     merged_health = health + [h for fid, h in prior_health.items()
                               if fid not in crawled
                               and fid in {f["id"] for f in all_families}]
+
+    # Carry forward families this run did not successfully crawl.
+    #
+    # The cache is not guaranteed to exist. On a fresh CI runner it starts
+    # empty, so a `--only mackenzie` run rebuilt the index from a cache holding
+    # nothing but Mackenzie, committed it, and published an index of 203
+    # statements over one of 13,572. Rebuilding from the cache alone is only
+    # safe when the cache is complete, and it never is on CI.
+    #
+    # A family is replaced by this run's results only when it actually crawled
+    # OK. If it was skipped, blocked, timed out or errored, its previous
+    # statements are kept - a fund company having a bad night must not delete
+    # everything we already knew about them.
+    stmts = statements_from_manifest(manifest, args.since_year)
+    healthy_now = {h["id"] for h in health if h["status"] == "ok"}
+    have_families = {s.family for s in stmts}
+
+    carried = 0
+    for f in prior_funds:
+        fid = f.get("family")
+        if fid in healthy_now or fid in have_families:
+            continue
+        for s in f.get("statements", []):
+            if s.get("tax_year") and s["tax_year"] < args.since_year:
+                continue
+            stmts.append(Statement(
+                family=fid, url=s["url"], fund_name=f.get("name"),
+                tickers=f.get("tickers", []), period_end=s.get("period_end"),
+                tax_year=s.get("tax_year"), sha256=s.get("sha256", ""),
+                bytes=s.get("bytes", 0), confidence=s.get("confidence", 0),
+                verified=True, first_seen="", last_seen=""))
+            carried += 1
+    if carried:
+        print(f"\ncarried forward {carried} statement(s) from families not "
+              f"crawled or not healthy this run")
     merged_health.sort(key=lambda h: [f["id"] for f in all_families].index(h["id"])
                        if h["id"] in [f["id"] for f in all_families] else 99)
 
-    index = build_index(statements_from_manifest(manifest, args.since_year),
-                        all_families, merged_health, negs.get("negatives", []))
+    index = build_index(stmts, all_families, merged_health, negs.get("negatives", []))
+
+    # Seatbelt. Publishing is automatic, so a bad index reaches the live site
+    # within a minute. Any large collapse is treated as a bug until a human
+    # says otherwise.
+    new_total = index["stats"]["statements"]
+    if prior_total > 100 and new_total < prior_total * 0.5 and not args.allow_shrink:
+        print(f"\nREFUSING TO WRITE: statements would fall {prior_total} -> "
+              f"{new_total} ({100 - round(100 * new_total / prior_total)}% drop).",
+              file=sys.stderr)
+        print("The index was NOT modified. If this shrink is genuine, re-run "
+              "with --allow-shrink.", file=sys.stderr)
+        return 1
     OUT.parent.mkdir(parents=True, exist_ok=True)
     # PyYAML turns bare `verified: 2026-08-18` into a date object; default=str
     # keeps the negatives register serializable without quoting every date.
