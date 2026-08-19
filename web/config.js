@@ -12,7 +12,7 @@
  *              "https://qef-pdf-proxy.<your-subdomain>.workers.dev"
  */
 window.QEF_CONFIG = {
-  PDF_PROXY: "",
+  PDF_PROXY: "https://qef-pdf-proxy.cowboy780718.workers.dev",
   INDEX_URL: "data/index.json",
   MAX_PARALLEL_DOWNLOADS: 4,
 };
