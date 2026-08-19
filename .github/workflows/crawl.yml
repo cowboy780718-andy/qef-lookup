@@ -14,6 +14,10 @@ on:
         description: "Skip headless-browser families"
         type: boolean
         default: false
+      since_year:
+        description: "Oldest fund tax year to index"
+        required: false
+        default: "2021"
 
 permissions:
   contents: write
@@ -59,9 +63,14 @@ jobs:
         id: crawl
         run: |
           set -o pipefail
-          ARGS=""
-          if [ -n "${{ github.event.inputs.only }}" ]; then ARGS="--only ${{ github.event.inputs.only }}"; fi
+          # The year floor must be passed explicitly. crawl.py's own default is
+          # 2015, so leaving it off would quietly widen every nightly run to six
+          # extra years of back catalogue that we deliberately excluded.
+          SINCE="${{ github.event.inputs.since_year }}"
+          ARGS="--since-year ${SINCE:-2021}"
+          if [ -n "${{ github.event.inputs.only }}" ]; then ARGS="$ARGS --only ${{ github.event.inputs.only }}"; fi
           if [ "${{ github.event.inputs.static_only }}" = "true" ]; then ARGS="$ARGS --static-only"; fi
+          echo "Running: crawl.py $ARGS"
           python crawler/crawl.py $ARGS 2>&1 | tee crawl.log
           echo "summary<<EOF" >> $GITHUB_OUTPUT
           tail -25 crawl.log >> $GITHUB_OUTPUT
