@@ -37,6 +37,7 @@ import html as htmlmod
 import io
 import json
 import re
+import subprocess
 import sys
 import threading
 import time
@@ -165,6 +166,51 @@ def fetch(url: str, *, binary: bool = False, extra_headers: dict | None = None):
     try:
         r = requests.get(url, headers=h, timeout=TIMEOUT, allow_redirects=True)
         return r.status_code, (r.content if binary else r.text), dict(r.headers)
+    except Exception as exc:  # noqa: BLE001
+        return f"error:{type(exc).__name__}", None, {}
+
+
+# Client-hint and connection headers some WAFs insist on. Kept separate from
+# HEADERS because they are only meaningful on a real HTTP/1.1 request.
+_CURL_EXTRA_HEADERS = {
+    "Sec-Ch-Ua": '"Chromium";v="124", "Google Chrome";v="124"',
+    "Sec-Ch-Ua-Mobile": "?0",
+    "Sec-Ch-Ua-Platform": '"Windows"',
+    "Sec-Fetch-User": "?1",
+    "Connection": "keep-alive",
+}
+
+
+def curl_fetch(url: str, *, binary: bool = False):
+    """Third fetch path, for hosts that reject Python's TLS but serve curl.
+
+    Manulife is the case for this: with a byte-identical header set, curl gets
+    200 and 600KB while requests gets 403, and headless Chromium gets a
+    359-byte block notice. Nothing here is disguised - same headers, same
+    X-Crawler identification, same robots.txt check and rate limit. It is
+    simply a different HTTP client.
+
+    Deliberately NOT used to get past a real bot-management product. PIMCO
+    serves Akamai Bot Manager (_abck / bm_sz cookies) and withholds content
+    from automation on purpose; that family is marked manual instead.
+    """
+    if not robots_allows(url):
+        return "robots-denied", None, {}
+    _throttle(url)
+    cmd = ["curl", "-sS", "-L", "--max-time", str(TIMEOUT), "--compressed",
+           "-o", "-", "-w", "\n%{http_code}"]
+    for k, v in {**HEADERS, **_CURL_EXTRA_HEADERS}.items():
+        cmd += ["-H", f"{k}: {v}"]
+    cmd.append(url)
+    try:
+        p = subprocess.run(cmd, capture_output=True, timeout=TIMEOUT + 15)
+        raw = p.stdout
+        nl = raw.rfind(b"\n")
+        if nl < 0:
+            return "error:CurlNoStatus", None, {}
+        body, status = raw[:nl], raw[nl + 1:].decode(errors="ignore").strip()
+        return (int(status) if status.isdigit() else status,
+                body if binary else body.decode("utf-8", "replace"), {})
     except Exception as exc:  # noqa: BLE001
         return f"error:{type(exc).__name__}", None, {}
 
@@ -650,6 +696,61 @@ def too_old(url: str, since: int) -> bool:
     return y is not None and y < since
 
 
+def fetch_any(url: str, browser: "BrowserSession | None" = None,
+              allow_browser: bool = True) -> str | None:
+    """Fetch a page through whichever transport this host will actually serve.
+
+    Publishers block in every combination: Mackenzie rejects Python but serves
+    Chromium, Manulife rejects Python and Chromium but serves curl, iA
+    Clarington needs the browser for its documents. Trying all three in turn
+    removes the guesswork.
+    """
+    st, body, _ = fetch(url)
+    if isinstance(st, int) and st == 200 and body:
+        return body
+    st, body, _ = curl_fetch(url)
+    if isinstance(st, int) and st == 200 and body:
+        return body
+    if allow_browser and browser is not None:
+        return browser.html(url)
+    return None
+
+
+def follow_pages(hub_html: str, hub_url: str, fam: dict, browser, args) -> list[str]:
+    """Collect document links from second-level pages linked off the hub.
+
+    Some managers publish one landing page per fund instead of linking
+    documents directly - Manulife has 61 of them, each holding a single
+    statement PDF. Without following them the family looks empty when it is
+    actually fully populated.
+    """
+    cfg = fam.get("follow")
+    if not cfg:
+        return []
+    page_rx = re.compile(cfg["page_pattern"])
+    pages = sorted({urlparse.urljoin(hub_url, h)
+                    for h in re.findall(r'href=["\']([^"\']+)["\']', hub_html)
+                    if page_rx.search(h)})
+    if args.limit and len(pages) > args.limit:
+        step = len(pages) / args.limit
+        pages = [pages[int(i * step)] for i in range(args.limit)]
+    if not pages:
+        return []
+    print(f"    following {len(pages)} per-fund page(s)")
+
+    found: set[str] = set()
+    for i, page in enumerate(pages, 1):
+        body = fetch_any(page, browser, allow_browser=not args.static_only)
+        if not body:
+            continue
+        for h in re.findall(r'href=["\']([^"\']+\.pdf[^"\']*)["\']', body, re.I):
+            found.add(urlparse.urljoin(page, h).split("#")[0])
+        if i % 20 == 0:
+            print(f"      {i}/{len(pages)} pages, {len(found)} documents so far")
+    print(f"    {len(found)} document(s) from per-fund pages")
+    return sorted(found)
+
+
 def _cells(row_html: str) -> list[str]:
     return [re.sub(r"\s+", " ", htmlmod.unescape(re.sub(r"<[^>]+>", " ", c))).strip()
             for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row_html, re.S | re.I)]
@@ -752,8 +853,13 @@ def process_pdf(url: str, family_id: str, manifest: dict, today: str,
     # URLs every single night. Misses for the two most recent tax years are
     # always re-checked, because that is exactly when a statement appears.
     if prev.get("miss") and prev.get("verify_version") == VERIFY_VERSION:
-        yr = prev.get("probe_year") or 0
-        if yr < datetime.now(timezone.utc).year - 1:
+        yr = prev.get("probe_year")
+        # Only skip when the URL positively shows an old year. Treating an
+        # undetectable year as old made every Manulife miss permanent: their
+        # filenames carry no year, so a batch cached while the host was
+        # returning 403 could never be retried even after the transport was
+        # fixed.
+        if yr is not None and yr < datetime.now(timezone.utc).year - 1:
             return None
 
     # A published statement for a closed tax year never changes. Re-validating
@@ -867,39 +973,51 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
         print("    - manual-fetch family (publisher disallows crawling)")
         return [], health
 
-    html = None
-    if mode == "browser":
-        if args.static_only:
-            health["status"] = "skipped"
-            health["message"] = "browser mode skipped (--static-only)"
-            print("    - skipped (static-only run)")
-            return [], health
-        html = browser.html(fam["hub"])
-        if html is None:
-            health["status"] = "degraded"
-            health["message"] = "Playwright unavailable; fell back to plain fetch"
-            print("    ! Playwright unavailable, falling back to plain fetch")
+    # Getting the hub at all is the hardest part of several families, and every
+    # publisher blocks a different combination. Try all three transports in the
+    # order this family is likely to need, and accept the first that returns a
+    # page of plausible size. A 359-byte "page" is a block notice, not a
+    # document list - Manulife serves exactly that to Chromium while serving
+    # 600KB to curl.
+    MIN_HUB_BYTES = 2000
 
-    if html is None:
-        status, body, _ = fetch(fam["hub"])
-        # Several hosts (Mackenzie, Global X, Sun Life) sit behind a WAF that
-        # rejects Python's TLS fingerprint no matter what headers we send, while
-        # serving the identical page to a browser and serving their PDFs to
-        # anyone. Rather than spoof a TLS fingerprint, escalate to a real
-        # browser for the hub page only. It is one request per family per run.
-        if status in (403, 429) and not args.static_only:
-            print(f"    - hub returned {status} over plain HTTP; escalating to browser")
-            body = browser.html(fam["hub"])
-            if body:
-                health["message"] = f"hub requires browser (plain HTTP returned {status})"
-                health["escalated"] = True
-                status = 200
-        if not isinstance(status, int) or status != 200 or not body:
-            health["status"] = "down"
-            health["message"] = f"hub fetch returned {status}"
-            print(f"    ! hub fetch failed: {status}")
-            return [], health
-        html = body
+    def _plain_hub():
+        st, body, _ = fetch(fam["hub"])
+        return body if isinstance(st, int) and st == 200 else None
+
+    def _curl_hub():
+        st, body, _ = curl_fetch(fam["hub"])
+        return body if isinstance(st, int) and st == 200 else None
+
+    order = ([("browser", lambda: browser.html(fam["hub"])), ("curl", _curl_hub),
+              ("plain HTTP", _plain_hub)] if mode == "browser" else
+             [("plain HTTP", _plain_hub), ("curl", _curl_hub),
+              ("browser", lambda: browser.html(fam["hub"]))])
+    if args.static_only:
+        order = [o for o in order if o[0] != "browser"]
+
+    html = None
+    for label, fn in order:
+        try:
+            body = fn()
+        except Exception as exc:  # noqa: BLE001
+            print(f"    - {label} failed: {type(exc).__name__}")
+            continue
+        if body and len(body) >= MIN_HUB_BYTES:
+            if label != order[0][0]:
+                health["message"] = f"hub needed {label}"
+                print(f"    - hub retrieved via {label}")
+            html = body
+            break
+        if body:
+            print(f"    - {label} returned only {len(body)} bytes (looks blocked)")
+
+    if not html:
+        health["status"] = "down"
+        health["message"] = "hub unreachable by plain HTTP, curl or browser"
+        print("    ! hub unreachable by every transport")
+        return [], health
+
 
     # Families that publish statements as HTML tables instead of documents.
     if fam.get("doc_type") == "html_table":
@@ -955,6 +1073,7 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
     include = fam.get("link_include", defaults["link_include"])
     exclude = fam.get("link_exclude", defaults["link_exclude"])
     links = collect_links(html, fam["hub"], include, exclude)
+    links += follow_pages(html, fam["hub"], fam, browser, args)
     derived, derived_names = derive_candidates(fam, browser, args.since_year)
     links = sorted(set(links) | set(derived))
     health["derived_names"] = len(derived_names)
@@ -989,33 +1108,40 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
     # Sample a spread of documents, not just the first. Publishers leave dead
     # links on their pages for years (iA Clarington still lists 2021 files that
     # 404), so a single failed probe proves nothing about the host.
+    # Then pick the transport that actually serves the documents. Manulife 403s
+    # every PDF over plain HTTP and hands all of them to curl.
     probe_idx = sorted({0, len(links) // 2, len(links) - 1})
-    probe_results = []
-    plain_works = False
+    transports = [("plain HTTP", lambda u: fetch(u, binary=True)),
+                  ("curl", lambda u: curl_fetch(u, binary=True))]
+    if not args.static_only:
+        transports.append(("browser", browser.get))
+
+    transport_name, getter, probe_results = None, None, []
     for i in probe_idx:
-        st, blob, _ = fetch(links[i], binary=True)
-        probe_results.append(st)
-        if isinstance(st, int) and st == 200 and blob and blob.startswith(b"%PDF"):
-            plain_works = True
+        for name, fn in transports:
+            st, blob, _ = fn(links[i])
+            probe_results.append(f"{name}={st}")
+            if isinstance(st, int) and st == 200 and blob and blob.startswith(b"%PDF"):
+                transport_name = name
+                getter = None if name == "plain HTTP" else fn
+                break
+        if transport_name:
             break
 
-    use_browser_pdfs = False
-    if not plain_works:
-        if args.static_only:
-            health["status"] = "blocked"
-            health["message"] = (f"PDFs need a browser (probes: {probe_results}); "
-                                 f"skipped on --static-only")
-            print(f"    - PDFs need browser (probes {probe_results}); skipped")
-            return [], health
-        use_browser_pdfs = True
-        health["pdf_mode"] = "browser"
-        print(f"    - plain HTTP probes {probe_results}; using browser for documents")
+    if transport_name is None:
+        health["status"] = "blocked"
+        health["message"] = f"documents unreachable ({'; '.join(probe_results[:6])})"
+        print("    ! documents unreachable by any transport")
+        return [], health
+    if transport_name != "plain HTTP":
+        health["pdf_transport"] = transport_name
+        print(f"    - documents fetched via {transport_name}")
 
     statements: list[Statement] = []
-    if use_browser_pdfs:
+    if transport_name == "browser":
         # Playwright's sync API is single-threaded; go sequentially.
         for i, u in enumerate(links, 1):
-            st = process_pdf(u, fid, manifest, today, getter=browser.get)
+            st = process_pdf(u, fid, manifest, today, getter=getter)
             if st:
                 statements.append(st)
             if i % 25 == 0:
@@ -1028,7 +1154,8 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
             # losing hours of downloads because the run was interrupted between
             # family boundaries is not an acceptable failure mode.
             for n, st in enumerate(
-                    pool.map(lambda u: process_pdf(u, fid, manifest, today), links), 1):
+                    pool.map(lambda u: process_pdf(u, fid, manifest, today, getter=getter),
+                             links), 1):
                 if st:
                     statements.append(st)
                 if n % 250 == 0:

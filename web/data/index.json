@@ -1,10 +1,10 @@
 {
- "generated": "2026-08-19T18:51:02+00:00",
+ "generated": "2026-08-19T19:18:07+00:00",
  "stats": {
   "families": 21,
-  "families_ok": 15,
-  "funds": 3750,
-  "statements": 13611,
+  "families_ok": 16,
+  "funds": 3811,
+  "statements": 13672,
   "years": [
    2025,
    2024,
@@ -156,7 +156,7 @@
    "mode": "browser",
    "fye": "12-31",
    "hub": "https://www.manulifeim.com/retail/ca/en/regulatory/passive-foreign-investment-company-pfic",
-   "notes": "NOT login-gated. Rejects non-browser user agents with 403; serves 200 to a full browser header set. Per-fund landing pages under /retail/ca/en/resources/all/regulatory/{fund}-pfic-annual-information-statements"
+   "notes": "NOT login-gated, but blocks both Python AND headless Chromium; only curl gets through, which is why the crawler has three fetch paths. Two-level: the hub links ~61 per-fund landing pages, each holding exactly one statement PDF under /content/dam/mim-ca/landing-page/product/pdf/. Following those pages is the only way to reach the documents."
   },
   {
    "id": "globalx-ca",
@@ -159467,6 +159467,1409 @@
    ]
   },
   {
+   "id": "manulife-im::mannulife-fundamental-global-equity-class",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Mannulife Fundamental Global Equity Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/876-manulife-fundamental-global-equity-class-en.pdf",
+     "bytes": 128201,
+     "sha256": "d4cf9d5dfbe81c86",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulfe-global-monthly-high-income-class",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulfe Global Monthly High Income Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/847-Manulife-Global-Monthly-High-Income-Class-En.pdf",
+     "bytes": 123963,
+     "sha256": "babf4a4d76babd9f",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-alternative-opportunities-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Alternative Opportunities Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/544-manulife-alternative-opportunities-fund-en.pdf",
+     "bytes": 120165,
+     "sha256": "2cffc06eaf52dab0",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-balanced-income-private-trust",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Balanced Income Private Trust",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/627-Manulife-Balanced-Income-Private-Trust-En.pdf",
+     "bytes": 127201,
+     "sha256": "9fc240758ef5cb78",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-bond-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Bond Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/4045-Manulife-Bond-Fund-En.pdf",
+     "bytes": 122817,
+     "sha256": "f0d7696e2fb06d18",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-cqs-multi-asset-credit-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife CQS Multi-Asset Credit Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/549-manulife-cqs-multi-asset-credit-fund-en.pdf",
+     "bytes": 120266,
+     "sha256": "178eca26dd78a16c",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-canadian-balanced-private-pool",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Canadian Balanced Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/618-Manulife-Canadian-Balanced-Private-Pool-En.pdf",
+     "bytes": 125918,
+     "sha256": "5732ef40b79941f5",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-climate-action-class",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Climate Action Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/879-manulife-climate-action-class-en.pdf",
+     "bytes": 123563,
+     "sha256": "b0a31d6324583ff4",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-climate-action-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Climate Action Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/579-manulife-climate-action-fund-en.pdf",
+     "bytes": 119436,
+     "sha256": "6b799ad44bd4a3c7",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-core-plus-bond-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Core Plus Bond Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/169-manulife-core-plus-bond-fund-en.pdf",
+     "bytes": 122526,
+     "sha256": "8b5bb9c788f970ae",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-corporate-bond-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Corporate Bond Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/154-Manulife-Corporate-Bond-Fund-En.pdf",
+     "bytes": 120645,
+     "sha256": "f19754e96abade56",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-dividend-income-class",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Dividend Income Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/849-Manulife-Dividend-Income-Class-En.pdf",
+     "bytes": 127036,
+     "sha256": "55d4cdde1b1e0259",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-dividend-income-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Dividend Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/446-Manulife-Dividend-Income-Fund-En.pdf",
+     "bytes": 122855,
+     "sha256": "3682efd27fad9931",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-dividend-income-plus-class",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Dividend Income Plus Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/804-Manulife-Dividend-Income-Plus-Class-En.pdf",
+     "bytes": 125742,
+     "sha256": "29e8a08b379845b7",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-dividend-income-plus-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Dividend Income Plus Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/4048-Manulife-Dividend-Income-Plus-Fund-En.pdf",
+     "bytes": 120498,
+     "sha256": "40420299c85a684b",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-dividend-income-private-pool",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Dividend Income Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/613-Manulife-Dividend-Income-Private-Pool-En.pdf",
+     "bytes": 119464,
+     "sha256": "f100ca6f475a2d77",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-fundamental-balanced-class",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Fundamental Balanced Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/848-manulife-fundamental-balanced-class-en.pdf",
+     "bytes": 130280,
+     "sha256": "c1d28224a67a8ebf",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-fundamental-equity-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Fundamental Equity Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/155-manulife-fundamental-equity-fund-en.pdf",
+     "bytes": 123713,
+     "sha256": "e1b2fe1c493ee7e1",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-fundamental-global-equity-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Fundamental Global Equity Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/229-manulife-fundamental-global-equity-fund-en.pdf",
+     "bytes": 119829,
+     "sha256": "fcbef56bde5f5792",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-fundamental-income-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Fundamental Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/4158-Manulife-Fundamental-Income-Fund-En.pdf",
+     "bytes": 122439,
+     "sha256": "ae8dd0cc74122d75",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-global-balanced-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Global Balanced Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/481-Manulife-Global-Balanced-Fund-En.pdf",
+     "bytes": 131827,
+     "sha256": "16417835cf5002c2",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-global-balanced-private-trust",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Global Balanced Private Trust",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/636-Manulife-Global-Balanced-Private-Trust-En.pdf",
+     "bytes": 133918,
+     "sha256": "1e3dc25416d32d93",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-global-core-balanced-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Global Core Balanced Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/548-manulife-global-core-balanced-fund-en.pdf",
+     "bytes": 135614,
+     "sha256": "baaa2ba295e4cb97",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-global-core-equity-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Global Core Equity Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/547-manulife-global-core-equity-fund-en.pdf",
+     "bytes": 134721,
+     "sha256": "46f64b78844bb6a1",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-global-equity-class",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Global Equity Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/4006-Manulife-Global-Equity-Class-En.pdf",
+     "bytes": 120931,
+     "sha256": "9042961fcf198ab6",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-global-equity-private-pool",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Global Equity Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/615-Manulife-Global-Equity-Private-Pool-En.pdf",
+     "bytes": 119181,
+     "sha256": "ce2d797b97c91f79",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-global-fixed-income-private-trust",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Global Fixed Income Private Trust",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/603-Manulife-Global-Fixed-Income-Private-Trust-En.pdf",
+     "bytes": 122619,
+     "sha256": "0bae67519339dc96",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-global-monthly-high-income-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Global Monthly High Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/427-Manulife-Global-Monthly-High-Income-Fund-En.pdf",
+     "bytes": 119877,
+     "sha256": "91e1493d9e4ef5d9",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-global-thematic-opportunities-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Global Thematic Opportunities Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/528-Manulife-Global-Thematic-Opportunities-Fund-En.pdf",
+     "bytes": 119844,
+     "sha256": "dccc351bb4098ba6",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-global-unconstrained-bond-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Global Unconstrained Bond Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/456-Manulife-Global-Unconstrained-Bond-Fund-En.pdf",
+     "bytes": 120495,
+     "sha256": "a961f2f935617930",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-international-equity-private-trust",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife International Equity Private Trust",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/640-Manulife-International-Equity-Private-Trust-En.pdf",
+     "bytes": 120189,
+     "sha256": "b3454c93496bf330",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-monthly-high-income-class",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Monthly High Income Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/803-Manulife-Monthly-High-Income-Class-En.pdf",
+     "bytes": 125811,
+     "sha256": "a5dfe45b375df2ef",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-monthly-high-income-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Monthly High Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/131-Manulife-Monthly-High-Income-Fund-En.pdf",
+     "bytes": 121187,
+     "sha256": "7ea40d94016f8c86",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-multifactor-developed-international-index-etf-hedged-units",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Multifactor Developed International Index ETF - Hedged Units",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/MINT-Manulife-Multifactor-Developed-International-Index-ETF-En.pdf",
+     "bytes": 117150,
+     "sha256": "22675e7f27989fb7",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-real-asset-investment-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Real Asset Investment Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/536-manulife-real-asset-investment-fund-en.pdf",
+     "bytes": 120319,
+     "sha256": "d49c97fda8f6cab4",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-smart-core-bond-etf-unhedged",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Smart Core Bond ETF (Unhedged",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/bskt-manulife-smart-core-bond-etf-unhedged-en.pdf",
+     "bytes": 116412,
+     "sha256": "e25921eb3f8de4f1",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-smart-dividend-etf",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Smart Dividend ETF",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/CDIV-Manulife-Smart-Dividend-ETF-En.pdf",
+     "bytes": 115946,
+     "sha256": "a38c96571d81730a",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-smart-international-dividend-etf",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Smart International Dividend ETF",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/IDIV-B-Manulife-Smart-International-Dividend-ETF-en.pdf",
+     "bytes": 116019,
+     "sha256": "625780b29d02f8b3",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-smart-short-term-bond-etf",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Smart Short-Term Bond ETF",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/TERM-Manulife-Smart-Short-Term-Bond-ETF-En.pdf",
+     "bytes": 116340,
+     "sha256": "ebf153b61c8eca10",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-smart-u-s-dividend-etf-hedged-units",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Smart U.S. Dividend ETF - Hedged Units",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/UDIV-Manulife-Smart-US-Dividend-ETF-En.pdf",
+     "bytes": 117676,
+     "sha256": "3c889ac4dffdbe11",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-strategic-balanced-yield-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Strategic Balanced Yield Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/447-Manulife-Strategic-Balanced-Yield-Fund-En.pdf",
+     "bytes": 119576,
+     "sha256": "9b9d386dd0f8a07b",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-strategic-dividend-bundle",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Strategic Dividend Bundle",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/519-Manulife-Strategic-Dividend-Bundle-En.pdf",
+     "bytes": 136450,
+     "sha256": "8054efe0dbca14db",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-strategic-income-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Strategic Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/159-Manulife-Strategic-Income-Fund-En.pdf",
+     "bytes": 123293,
+     "sha256": "df089f9dde8bfb22",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-strategic-income-plus-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Strategic Income Plus Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/545-manulife-strategic-income-plus-fund-en.pdf",
+     "bytes": 120042,
+     "sha256": "f6102e3fa2a74e8e",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-strategic-investment-grade-global-bond-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Strategic Investment Grade Global Bond Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/517-Manulife-Strategic-Investment-Grade-Global-Bond-Fund-En.pdf",
+     "bytes": 120914,
+     "sha256": "8d532bf1386dbfe3",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-tactical-income-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Tactical Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/4164-manulife-tactical-income-fund-en.pdf",
+     "bytes": 131243,
+     "sha256": "a0020518315c510b",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-all-cap-equity-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. All Cap Equity Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/436-Manulife-US-All-Cap-Equity-Fund-En.pdf",
+     "bytes": 123031,
+     "sha256": "35e5d9f0ed6eeb1d",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-dividend-income-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. Dividend Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/4165-Manulife-US-Dividend-Income-Fund-En.pdf",
+     "bytes": 120536,
+     "sha256": "24a735ef7da44933",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-dollar-strategic-balanced-yield-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. Dollar Strategic Balanced Yield Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/503U-Manulife-US-Dollar-Strategic-Balanced-Yield-Fund-En.pdf",
+     "bytes": 118524,
+     "sha256": "b4f1247dfa482251",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-dollar-strategic-income-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. Dollar Strategic Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/518U-Manulife-US-Dollar-Strategic-Income-Fund-En.pdf",
+     "bytes": 120901,
+     "sha256": "776e652280052e2b",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-dollar-u-s-dividend-income-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. Dollar U.S Dividend Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/538U-Manulife-US-Dollar-US-Dividend-Income-Fund-En.pdf",
+     "bytes": 118234,
+     "sha256": "daf283b9d9165492",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-dollar-u-s-all-cap-equity-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. Dollar U.S. All Cap Equity Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/504U-Manulife-US-Dollar-US-All-Cap-Equity-Fund-En.pdf",
+     "bytes": 118497,
+     "sha256": "6013ff867dfc1e07",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-dollar-u-s-equity-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. Dollar U.S. Equity Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/539U-Manulife-US-Dollar-US-Equity-Fund-En.pdf",
+     "bytes": 118430,
+     "sha256": "aa6090a9e208c0e5",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-dollar-u-s-mid-cap-equity-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. Dollar U.S. Mid Cap Equity Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/541u-manulife-us-dollar-us-mid-cap-equity-fund-en.pdf",
+     "bytes": 118432,
+     "sha256": "df5443d388d22870",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-equity-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. Equity Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/4004-manulife-us-equity-fund-en.pdf",
+     "bytes": 120694,
+     "sha256": "8888730e67f59663",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-mid-cap-equity-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. Mid Cap Equity Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/540-manulife-us-mid-cap-equity-fund-en.pdf",
+     "bytes": 118851,
+     "sha256": "1ebd67f5314f69e5",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-monthly-high-income-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. Monthly High Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/513-Manulife-US-Monthly-High-Income-Fund-En.pdf",
+     "bytes": 120726,
+     "sha256": "04fd931644211d3e",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-u-s-opportunities-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife U.S. Opportunities Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/215-Manulife-US-Opportunities-Fund-En.pdf",
+     "bytes": 119488,
+     "sha256": "e00ff76de420c03f",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-world-investment-class",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife World Investment Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/8021-Manulife-World-Investment-Class-En.pdf",
+     "bytes": 119334,
+     "sha256": "da9fcfe1893ca557",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-world-investment-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife World Investment Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/418-Manulife-World-Investment-Fund-En.pdf",
+     "bytes": 123400,
+     "sha256": "7bac61b8853bd4d4",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-yield-opportunities-fund",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Yield Opportunities Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/4024-Manulife-Yield-Opportunities-Fund-En.pdf",
+     "bytes": 122982,
+     "sha256": "45fb871023906884",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
    "id": "mawer::mawer-global-credit-opportunities-fund",
    "family": "mawer",
    "family_name": "Mawer Investment Management",
@@ -185893,8 +187296,7 @@
    "status": "ok",
    "statements": 209,
    "candidates": 209,
-   "message": "hub requires browser (plain HTTP returned 403)",
-   "escalated": true,
+   "message": "hub needed curl",
    "derived_names": 0
   },
   {
@@ -186072,11 +187474,12 @@
    "mode": "browser",
    "hub": "https://www.manulifeim.com/retail/ca/en/regulatory/passive-foreign-investment-company-pfic",
    "checked": "2026-08-19",
-   "status": "empty",
-   "statements": 0,
-   "candidates": 0,
-   "message": "hub reachable but no candidate PDFs matched",
-   "derived_names": 0
+   "status": "ok",
+   "statements": 61,
+   "candidates": 61,
+   "message": "hub needed curl",
+   "derived_names": 0,
+   "pdf_transport": "curl"
   },
   {
    "id": "globalx-ca",

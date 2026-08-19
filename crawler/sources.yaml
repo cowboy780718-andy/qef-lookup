@@ -224,10 +224,15 @@ families:
     mode: browser
     fye: "12-31"
     hub: https://www.manulifeim.com/retail/ca/en/regulatory/passive-foreign-investment-company-pfic
+    link_include: ['(?i)/landing-page/product/pdf/.+\.pdf', '(?i)pfic']
+    follow:
+      page_pattern: '(?i)/resources/all/regulatory/[^"]*pfic'
     notes: >-
-      NOT login-gated. Rejects non-browser user agents with 403; serves 200 to a
-      full browser header set. Per-fund landing pages under
-      /retail/ca/en/resources/all/regulatory/{fund}-pfic-annual-information-statements
+      NOT login-gated, but blocks both Python AND headless Chromium; only curl
+      gets through, which is why the crawler has three fetch paths.
+      Two-level: the hub links ~61 per-fund landing pages, each holding exactly
+      one statement PDF under /content/dam/mim-ca/landing-page/product/pdf/.
+      Following those pages is the only way to reach the documents.
 
   - id: globalx-ca
     name: Global X Investments Canada (formerly Horizons)
