@@ -967,6 +967,24 @@ def build_index(all_statements: list[Statement], families: list[dict],
             "confidence": st.confidence,
         })
 
+    # CI republishes the same statement under consecutive document ids - byte
+    # for byte the same length, identical extracted text, different binary
+    # (regeneration metadata). Showing both is pure noise in the picker. Dedupe
+    # only on an exact (period, size) twin, which is a strong identity signal;
+    # where two documents for one period genuinely differ in size, both are
+    # kept, because dropping a real statement is worse than showing two.
+    for f in funds.values():
+        seen: set[tuple] = set()
+        deduped = []
+        for s in f["statements"]:
+            sig = (s["period_end"], s["bytes"])
+            if sig in seen:
+                continue
+            seen.add(sig)
+            deduped.append(s)
+        f["duplicates_hidden"] = len(f["statements"]) - len(deduped)
+        f["statements"] = deduped
+
     for f in funds.values():
         f["statements"].sort(key=lambda s: (s["period_end"] or ""), reverse=True)
         f["years"] = sorted({s["tax_year"] for s in f["statements"] if s["tax_year"]},
@@ -998,6 +1016,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", nargs="*", help="family ids to crawl")
     ap.add_argument("--static-only", action="store_true")
+    ap.add_argument("--rebuild-only", action="store_true",
+                    help="rebuild the index from the cache without any network access")
     ap.add_argument("--limit", type=int, default=0, help="max PDFs per family")
     ap.add_argument("--since-year", type=int, default=SINCE_YEAR,
                     help=f"oldest tax year to index (default {SINCE_YEAR}); "
@@ -1017,7 +1037,7 @@ def main() -> int:
 
     all_statements: list[Statement] = []
     health: list[dict] = []
-    for fam in families:
+    for fam in (() if args.rebuild_only else families):
         try:
             sts, h = crawl_family(fam, defaults, manifest, args, today)
         except Exception as exc:  # noqa: BLE001

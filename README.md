@@ -159,6 +159,31 @@ than a stated policy. If a manager does state one, add them to a skip list.
 
 ---
 
+## Known gaps that affect the workflow
+
+**Fund codes are missing for mutual funds.** Only ~12% of indexed funds carry a
+searchable code, and the split is not random:
+
+| Product type | Code coverage | Why |
+|---|---|---|
+| ETFs (iShares, Vanguard, Mackenzie, Fidelity) | ~100% | Exchange ticker appears in the URL and document |
+| Mutual funds (RBC, TD, Renaissance, iA Clarington, CIBC, most of CI) | ~0% | Identified by FundSERV codes (RBF556, TDB900), which client statements show but PFIC statements do not |
+
+Practical effect: dropping in a client statement matches on **fund name**, which
+works because most statements print the name alongside the code — but searching
+by `RBF556` alone will find nothing. Closing this needs a FundSERV-code-to-fund
+mapping from a separate source; it cannot be extracted from the statements.
+
+**Global X publishes one combined table** covering all its ETFs rather than one
+document per fund, so it does not fit the one-document-one-fund model and
+currently indexes as a single entry. Its `robots.txt` also requests a 30-second
+crawl delay, which the crawler honours, making it a deliberately slow family.
+
+**Four families yield nothing yet** — Manulife, Purpose, Sun Life and PIMCO
+return their hub but no documents, because their lists are built by JavaScript
+in ways the generic expansion does not reach. BMO times out. Each needs its own
+selector work.
+
 ## Limitations, stated plainly
 
 - **Index coverage is not the same as reality.** A fund absent from the index may
