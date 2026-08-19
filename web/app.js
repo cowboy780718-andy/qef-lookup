@@ -167,9 +167,16 @@ function render() {
                  ${state.selected.has(keyOf(f, s)) ? "checked" : ""}>
           <span class="yr">${s.tax_year ?? "&mdash;"}</span>
           <span class="pe">${s.period_end ? "ended " + esc(s.period_end) : "period unread"}</span>
-          <a href="${esc(s.url)}" target="_blank" rel="noopener">open PDF</a>
-          <span class="sz">${kb(s.bytes)}</span>
-        </div>`).join("")}</div>` : ""}
+          <a href="${esc(s.url)}" target="_blank" rel="noopener">${
+            s.fmt === "html" ? "open page" : "open PDF"}</a>
+          <span class="sz">${s.fmt === "html"
+            ? `<span class="fmt-html" title="Published as a table on the manager's page, not as a downloadable document">table</span>`
+            : kb(s.bytes)}</span>
+        </div>
+        ${s.fmt === "html" && s.figures ? `<div class="figs">${
+          Object.entries(s.figures).map(([k, v]) =>
+            `<span><b>${esc(v)}</b> ${esc(k)}</span>`).join("")
+        }<em>as published by the manager &mdash; verify against the source page</em></div>` : ""}`).join("")}</div>` : ""}
     </div>`;
   }).join("");
 
@@ -206,9 +213,13 @@ function updateTray() {
   const n = state.selected.size;
   $("tray").hidden = n === 0;
   $("traycount").textContent = `${n} statement${n === 1 ? "" : "s"} selected`;
-  $("btnzip").disabled = !CFG.PDF_PROXY;
-  $("btnzip").title = CFG.PDF_PROXY ? "" :
-    "ZIP bundling needs the PDF proxy Worker deployed - see config.js. Use 'Open in tabs' meanwhile.";
+  // A selection of only HTML statements needs no proxy - those files are
+  // generated in the browser rather than fetched.
+  const needsProxy = [...state.selected.values()].some((x) => x.stmt.fmt !== "html");
+  $("btnzip").disabled = needsProxy && !CFG.PDF_PROXY;
+  $("btnzip").title = $("btnzip").disabled
+    ? "ZIP bundling of PDFs needs the proxy Worker deployed - see config.js."
+    : "";
 }
 
 // --------------------------------------------------------------------------
@@ -311,7 +322,52 @@ const safe = (s) => String(s).replace(/[^A-Za-z0-9]+/g, "_").replace(/^_|_$/g, "
 
 function fileNameFor(fund, stmt) {
   const yr = stmt.tax_year || (stmt.period_end || "").slice(0, 4) || "unknown";
-  return `${safe(fund.family_name)}__${safe(fund.name)}__FY${yr}__PFIC_AIS.pdf`;
+  const ext = stmt.fmt === "html" ? "html" : "pdf";
+  return `${safe(fund.family_name)}__${safe(fund.name)}__FY${yr}__PFIC_AIS.${ext}`;
+}
+
+/**
+ * Build a working-paper page for a statement the manager published as a table
+ * rather than a document. There is nothing to download in those cases, so the
+ * ZIP would otherwise contain a gap exactly where a fund actually does have a
+ * statement. The figures are reproduced as published, with the source URL and
+ * retrieval date on the page so the file stands on its own in a file.
+ */
+export function htmlStatementFile(fund, stmt) {
+  const rows = Object.entries(stmt.figures || {})
+    .map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join("");
+  return `<!doctype html><meta charset="utf-8">
+<title>${esc(fund.name)} — PFIC AIS ${stmt.tax_year ?? ""}</title>
+<style>
+ body{font:14px/1.55 system-ui,sans-serif;margin:36px;max-width:760px;color:#14181d}
+ h1{font-size:1.2rem;margin:0 0 4px}
+ .meta{color:#5a636e;margin-bottom:18px}
+ table{border-collapse:collapse;width:100%;margin:14px 0}
+ th,td{border:1px solid #dfe3e8;padding:8px 10px;text-align:left;vertical-align:top}
+ th{background:#f6f7f9;width:58%;font-weight:600}
+ td{font-variant-numeric:tabular-nums}
+ .note{background:#fff8e6;border:1px solid #f0d999;padding:11px 13px;border-radius:7px;
+       font-size:.9rem;margin-top:20px}
+ a{color:#1d4ed8}
+</style>
+<h1>${esc(fund.name)}</h1>
+<div class="meta">${esc(fund.family_name)}
+  ${fund.tickers.length ? " &middot; " + esc(fund.tickers.join(", ")) : ""}<br>
+  PFIC Annual Information Statement &mdash; fund tax year
+  ${esc(String(stmt.tax_year ?? "unknown"))}${
+    stmt.period_end ? `, period ended ${esc(stmt.period_end)}` : ""}</div>
+<table><tbody>${rows}</tbody></table>
+<div class="note">
+  <strong>This is a transcription, not the manager's own document.</strong>
+  ${esc(fund.family_name)} publishes this statement as a table on its website
+  rather than as a downloadable file, so the figures above were captured from
+  that page and are reproduced exactly as published &mdash; nothing has been
+  recomputed or converted.
+  <br><br>
+  Source: <a href="${esc(stmt.url)}">${esc(stmt.url)}</a><br>
+  Retrieved for this file: ${new Date().toISOString().slice(0, 10)}<br>
+  <strong>Verify against the source page before filing.</strong>
+</div>`;
 }
 
 async function downloadZip() {
@@ -327,10 +383,15 @@ async function downloadZip() {
     while (queue.length) {
       const { fund, stmt } = queue.shift();
       try {
-        const url = `${CFG.PDF_PROXY}/?u=${encodeURIComponent(stmt.url)}`;
-        const r = await fetch(url);
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        zip.file(fileNameFor(fund, stmt), await r.arrayBuffer());
+        if (stmt.fmt === "html") {
+          // Nothing to fetch - the manager published a table, not a file.
+          zip.file(fileNameFor(fund, stmt), htmlStatementFile(fund, stmt));
+        } else {
+          const url = `${CFG.PDF_PROXY}/?u=${encodeURIComponent(stmt.url)}`;
+          const r = await fetch(url);
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          zip.file(fileNameFor(fund, stmt), await r.arrayBuffer());
+        }
       } catch (e) {
         failed.push(`${fund.name} FY${stmt.tax_year}: ${e.message}`);
       }
@@ -354,10 +415,14 @@ async function downloadZip() {
 
 function manifestCsv(items) {
   const rows = [["Fund family", "Fund", "Tickers", "Fund tax year", "Period end",
-                 "File name", "Source URL", "Bytes", "SHA256 (first 16)"]];
+                 "Format", "File name", "Source URL", "Bytes", "SHA256 (first 16)",
+                 "Published figures"]];
   for (const { fund, stmt } of items) {
+    const figs = stmt.figures
+      ? Object.entries(stmt.figures).map(([k, v]) => `${k}: ${v}`).join(" | ") : "";
     rows.push([fund.family_name, fund.name, fund.tickers.join(" "), stmt.tax_year ?? "",
-               stmt.period_end ?? "", fileNameFor(fund, stmt), stmt.url, stmt.bytes, stmt.sha256]);
+               stmt.period_end ?? "", stmt.fmt === "html" ? "web table" : "PDF",
+               fileNameFor(fund, stmt), stmt.url, stmt.bytes, stmt.sha256, figs]);
   }
   return rows.map((r) => r.map((c) => `"${String(c ?? "").replace(/"/g, '""')}"`).join(",")).join("\r\n");
 }

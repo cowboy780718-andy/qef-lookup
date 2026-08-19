@@ -174,6 +174,28 @@ families:
       Covers Renaissance funds, Renaissance Private Pools and Imperial Pools.
       Renaissance HISA and Money Market funds are excluded by the manager.
 
+  # ---------- Tier C: statements published as HTML tables, not documents ----------
+
+  - id: hamilton-etfs
+    name: Hamilton ETFs
+    country: CA
+    mode: browser
+    doc_type: html_table
+    fye: "04-30"
+    hub: https://hamiltonetfs.com/tax-information/
+    statement_pages:
+      - https://hamiltonetfs.com/tax-information/pfic/
+      - https://hamiltonetfs.com/tax-information/pfic-annual-information-statements-2025/
+    notes: >-
+      There is no document to download - the statement IS a table on the page,
+      so the rows are captured and reproduced verbatim. April 30 year end.
+      Figures are per unit PER DAY, so unit-days must be computed to file.
+      Coverage narrows sharply between years: the 2024 page lists 20 ETFs
+      including HBA, the 2025 page only 6. Absence from the newer page is a
+      real finding, not a crawl failure - check with the manager.
+      Add a new page to statement_pages each year; the URL pattern changes
+      (2024 lives at /pfic/, 2025 at /pfic-annual-information-statements-2025/).
+
   # ---------- Tier B: JavaScript-rendered document lists ----------
 
   - id: rbc-gam
@@ -241,8 +263,17 @@ families:
     name: PIMCO Canada
     country: CA
     mode: browser
+    access: manual
     fye: "varies"
     hub: https://www.pimco.com/ca/en/resources/tax-center
+    notes: >-
+      PUBLISHES, BUT CANNOT BE CRAWLED. The tax centre carries sections headed
+      "2025 / 2024 / 2023 U.S. Taxpayer PFIC / Form 8937 Information", so the
+      statements exist. Their contents never load: the panels sit at
+      "Loader..." indefinitely in headless Chromium even after the consent
+      banner is dismissed, and no data request is issued that could be followed.
+      Open the tax centre and expand the year you need by hand. Retry
+      periodically - this is a site behaviour, not a policy.
 
   - id: dimensional-ca
     name: Dimensional Fund Advisors Canada

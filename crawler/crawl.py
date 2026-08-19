@@ -33,6 +33,7 @@ import argparse
 import concurrent.futures as futures
 import dataclasses
 import hashlib
+import html as htmlmod
 import io
 import json
 import re
@@ -226,9 +227,23 @@ class BrowserSession:
                 page.wait_for_load_state("networkidle", timeout=15_000)
             except Exception:
                 pass
+            # Consent banners: decline non-essential rather than accept. An
+            # earlier version clicked "Accept", which opts into tracking on
+            # every publisher's site on every nightly run - the opposite of
+            # what an unattended crawler should do. Rejecting still dismisses
+            # the overlay, which is all we need to read the page.
+            for sel in ("#onetrust-reject-all-handler",
+                        "button:has-text('Reject all')", "button:has-text('Reject All')",
+                        "button:has-text('Decline')", "button:has-text('Necessary only')",
+                        "button:has-text('Only essential')"):
+                try:
+                    page.click(sel, timeout=1200)
+                    break
+                except Exception:
+                    pass
+
             # Document lists commonly hide behind accordions or "load more".
-            for sel in ("button:has-text('Accept')", "button:has-text('I agree')",
-                        "button:has-text('Load more')", "button:has-text('Show all')",
+            for sel in ("button:has-text('Load more')", "button:has-text('Show all')",
                         "[aria-expanded='false']"):
                 try:
                     for el in page.query_selector_all(sel)[:25]:
@@ -542,6 +557,13 @@ class Statement:
     verified: bool
     first_seen: str
     last_seen: str
+    # Not every manager publishes a file. Hamilton puts its statements in an
+    # HTML table on the page, so there is nothing to download - the table row
+    # IS the statement. Those are recorded with fmt="html" and the published
+    # figures carried verbatim, so the site can hand over a working paper
+    # rather than a dead link.
+    fmt: str = "pdf"
+    figures: dict | None = None
 
 
 def load_manifest() -> dict:
@@ -626,6 +648,73 @@ def too_old(url: str, since: int) -> bool:
     """
     y = url_year(url)
     return y is not None and y < since
+
+
+def _cells(row_html: str) -> list[str]:
+    return [re.sub(r"\s+", " ", htmlmod.unescape(re.sub(r"<[^>]+>", " ", c))).strip()
+            for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row_html, re.S | re.I)]
+
+
+def parse_html_statements(page_html: str, url: str) -> list[dict]:
+    """Read statements published as an HTML table rather than a PDF.
+
+    Hamilton is the case this exists for: its PFIC page carries a table of
+    ticker / fund / class / ordinary earnings / net capital gains /
+    distributions, with the period in a heading above it. There is no document
+    to fetch, so the row itself has to be captured or the fund is invisible.
+
+    Returns one dict per fund row. Figures are copied exactly as published -
+    nothing is recomputed, converted or rounded.
+    """
+    text = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", page_html, flags=re.S | re.I)
+    text = re.sub(r"\s+", " ", htmlmod.unescape(re.sub(r"<[^>]+>", " ", text)))
+
+    ok, score = verify_statement(text)
+    if not ok:
+        return []
+    period = parse_period(text)
+
+    out = []
+    for table in re.findall(r"<table[^>]*>.*?</table>", page_html, re.S | re.I):
+        rows = re.findall(r"<tr[^>]*>(.*?)</tr>", table, re.S | re.I)
+        if len(rows) < 2:
+            continue
+        header = [h.lower() for h in _cells(rows[0])]
+        # Only tables that actually name a fund and a per-unit figure qualify.
+        if not any("fund" in h or "ticker" in h for h in header):
+            continue
+        if not any("ordinary" in h or "capital gain" in h or "distribution" in h
+                   for h in header):
+            continue
+        i_tick = next((i for i, h in enumerate(header) if "ticker" in h), None)
+        i_name = next((i for i, h in enumerate(header) if "fund" in h), None)
+        i_class = next((i for i, h in enumerate(header) if "class" in h or "series" in h), None)
+
+        for row in rows[1:]:
+            c = _cells(row)
+            if len(c) < 2 or not any(c):
+                continue
+            name = c[i_name] if i_name is not None and i_name < len(c) else None
+            ticker = c[i_tick] if i_tick is not None and i_tick < len(c) else None
+            if not name and not ticker:
+                continue
+            if name and len(name) < 4:
+                continue
+            series = c[i_class] if i_class is not None and i_class < len(c) else None
+            figures = {header[i]: c[i] for i in range(min(len(header), len(c)))
+                       if i not in (i_tick, i_name, i_class) and c[i] not in ("", "-")}
+            if not figures:
+                continue
+            full = f"{name} - Series {series}" if series and len(series) <= 6 else name
+            out.append({
+                "fund_name": full or ticker,
+                "tickers": [ticker.upper()] if ticker and re.fullmatch(r"[A-Z.]{2,8}", ticker.upper()) else [],
+                "period_end": period,
+                "figures": figures,
+                "confidence": score,
+                "url": url,
+            })
+    return out
 
 
 def collect_links(html: str, base: str, include: list[str], exclude: list[str]) -> list[str]:
@@ -812,6 +901,57 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
             return [], health
         html = body
 
+    # Families that publish statements as HTML tables instead of documents.
+    if fam.get("doc_type") == "html_table":
+        pages = list(fam.get("statement_pages") or [])
+        if not pages:
+            pages = [fam["hub"]]
+        statements: list[Statement] = []
+        for page_url in pages:
+            page = html if page_url == fam["hub"] else None
+            if page is None:
+                st, body, _ = fetch(page_url)
+                page = body if isinstance(st, int) and st == 200 and body else None
+                if page is None and not args.static_only:
+                    page = browser.html(page_url)
+            if not page:
+                print(f"    ! could not read {page_url}")
+                continue
+            rows = parse_html_statements(page, page_url)
+            print(f"    {len(rows)} row(s) from {page_url.rsplit('/', 2)[-2]}")
+            for r in rows:
+                year = int(r["period_end"][:4]) if r["period_end"] else None
+                if year is not None and year < args.since_year:
+                    continue
+                digest = hashlib.sha256(
+                    json.dumps([r["fund_name"], r["period_end"], r["figures"]],
+                               sort_keys=True).encode()).hexdigest()
+                # Record in the manifest like any other statement, so the index
+                # rebuild sees it. Many rows share one page URL, so the key is
+                # synthesised and the real link kept in "url".
+                key = f"{page_url}#{slug(r['fund_name'])}|{r['period_end']}"
+                manifest[key] = {
+                    "verify_version": VERIFY_VERSION, "family": fid, "url": page_url,
+                    "verified": True, "confidence": r["confidence"], "sha256": digest,
+                    "bytes": 0, "fund_name": r["fund_name"], "tickers": r["tickers"],
+                    "period_end": r["period_end"], "tax_year": year,
+                    "fmt": "html", "figures": r["figures"],
+                    "first_seen": manifest.get(key, {}).get("first_seen", today),
+                    "last_seen": today,
+                }
+                statements.append(Statement(
+                    family=fid, url=page_url, fund_name=r["fund_name"],
+                    tickers=r["tickers"], period_end=r["period_end"], tax_year=year,
+                    sha256=digest, bytes=0, confidence=r["confidence"], verified=True,
+                    first_seen=today, last_seen=today, fmt="html", figures=r["figures"]))
+        health["candidates"] = len(pages)
+        health["statements"] = len(statements)
+        health["status"] = "ok" if statements else "empty"
+        if not statements:
+            health["message"] = "no statement tables found on the listed pages"
+        print(f"    {len(statements)} verified statement(s)")
+        return statements, health
+
     include = fam.get("link_include", defaults["link_include"])
     exclude = fam.get("link_exclude", defaults["link_exclude"])
     links = collect_links(html, fam["hub"], include, exclude)
@@ -927,12 +1067,15 @@ def statements_from_manifest(manifest: dict, since: int) -> list[Statement]:
         if year is not None and year < since:
             continue
         out.append(Statement(
-            family=v.get("family", "unknown"), url=url,
+            # HTML rows share a page URL, so their manifest key is synthetic
+            # and the real link lives in "url".
+            family=v.get("family", "unknown"), url=v.get("url") or url,
             fund_name=v.get("fund_name"), tickers=v.get("tickers", []),
             period_end=v.get("period_end"), tax_year=year,
             sha256=v.get("sha256", ""), bytes=v.get("bytes", 0),
             confidence=v.get("confidence", 0), verified=True,
             first_seen=v.get("first_seen", ""), last_seen=v.get("last_seen", ""),
+            fmt=v.get("fmt", "pdf"), figures=v.get("figures"),
         ))
     return out
 
@@ -958,14 +1101,18 @@ def build_index(all_statements: list[Statement], families: list[dict],
         for t in st.tickers:
             if t not in f["tickers"]:
                 f["tickers"].append(t)
-        f["statements"].append({
+        entry = {
             "period_end": st.period_end,
             "tax_year": st.tax_year,
             "url": st.url,
             "bytes": st.bytes,
             "sha256": st.sha256[:16],
             "confidence": st.confidence,
-        })
+            "fmt": st.fmt,
+        }
+        if st.figures:
+            entry["figures"] = st.figures
+        f["statements"].append(entry)
 
     # CI republishes the same statement under consecutive document ids - byte
     # for byte the same length, identical extracted text, different binary
@@ -1103,7 +1250,8 @@ def main() -> int:
                 tickers=f.get("tickers", []), period_end=s.get("period_end"),
                 tax_year=s.get("tax_year"), sha256=s.get("sha256", ""),
                 bytes=s.get("bytes", 0), confidence=s.get("confidence", 0),
-                verified=True, first_seen="", last_seen=""))
+                verified=True, first_seen="", last_seen="",
+                fmt=s.get("fmt", "pdf"), figures=s.get("figures")))
             carried += 1
     if carried:
         print(f"\ncarried forward {carried} statement(s) from families not "

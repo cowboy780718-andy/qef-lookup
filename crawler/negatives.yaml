@@ -72,3 +72,32 @@ negatives:
       document lives under /content/dam/, so the crawler will not fetch them.
       Open the tax centre and download by hand. If robots.txt is relaxed, drop
       the `access: manual` flag in sources.yaml and this entry.
+
+  - scope: Evolve ETFs - all funds, including Evolve Future Leadership Fund
+    family: evolve
+    finding: not_offered
+    evidence: https://evolveetfs.com/?s=PFIC
+    verified: 2026-08-19
+    verified_by: manual
+    note: >-
+      No PFIC or QEF material anywhere on evolveetfs.com: their own site search
+      returns no results for "PFIC", there is no tax-information section, and
+      the documents area carries only prospectuses and fund facts. This means
+      they do not PUBLISH one - it is not proof they would refuse to issue one
+      on request. Call Evolve before concluding, and if they confirm, the
+      holding falls to the section 1291 excess-distribution regime or a mark-to
+      -market election if the fund is marketable.
+
+  - scope: Bridgehouse Asset Managers - all funds, including GQG Partners Global Quality Equity Fund
+    family: bridgehouse
+    finding: not_offered
+    evidence: https://www.bridgehousecanada.com/?s=PFIC
+    verified: 2026-08-19
+    verified_by: manual
+    note: >-
+      Look under Bridgehouse, not GQG - GQG Partners is only the sub-advisor;
+      Bridgehouse is the Canadian manager and the party that would issue the
+      statement. Their Legal & Regulatory page lists Fund Facts, Prospectus,
+      Annual Information Form and proxy records with nothing on PFIC, QEF or US
+      taxpayers, and their site search returns no results for "PFIC".
+      Contact inquiries@bridgehousecanada.com / 1-888-861-9998 to confirm.

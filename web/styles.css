@@ -162,3 +162,11 @@ button.ghost { background: none; color: var(--ink-2); }
   .hrow { flex-wrap: wrap; }
   .hrow .hname { min-width: 0; }
 }
+
+/* Statements published as a web table rather than a document. */
+.fmt-html { color: var(--accent); font-weight: 600; }
+.figs { padding: 2px 13px 10px 40px; background: var(--bg); font-size: .8rem;
+        color: var(--ink-2); border-bottom: 1px solid var(--line);
+        display: flex; gap: 16px; flex-wrap: wrap; align-items: baseline; }
+.figs b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.figs em { flex-basis: 100%; font-size: .75rem; opacity: .85; }
