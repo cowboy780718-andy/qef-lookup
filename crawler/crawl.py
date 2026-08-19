@@ -1147,6 +1147,20 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
         print(f"    {len(year_urls)} templated URL(s) to probe")
 
     links = collect_links(html, fam["hub"], include, exclude) + year_urls
+
+    # Bilingual managers sometimes split their catalogue across language sites:
+    # National Bank's French page lists 15 ETF tickers its English page does
+    # not. Any additional hub is scanned with the same filters.
+    for extra in (fam.get("extra_hubs") or []):
+        extra_html = fetch_any(extra, browser, allow_browser=not args.static_only)
+        if not extra_html:
+            print(f"    ! extra hub unreachable: {extra[:70]}")
+            continue
+        found = collect_links(extra_html, extra, include, exclude)
+        found += collect_json_links(extra_html, extra, include, exclude)
+        new = [u for u in found if u not in links]
+        print(f"    +{len(new)} document(s) from {extra.rsplit('/', 1)[-1]}")
+        links += new
     links += collect_json_links(html, fam["hub"], include, exclude)
     links += follow_pages(html, fam["hub"], fam, browser, args)
     derived, derived_names = derive_candidates(fam, browser, args.since_year)

@@ -1,10 +1,10 @@
 {
- "generated": "2026-08-19T20:42:54+00:00",
+ "generated": "2026-08-19T22:31:43+00:00",
  "stats": {
-  "families": 32,
-  "families_ok": 22,
-  "funds": 4295,
-  "statements": 14478,
+  "families": 33,
+  "families_ok": 23,
+  "funds": 4299,
+  "statements": 14483,
   "years": [
    2025,
    2024,
@@ -429,6 +429,19 @@
    "guidance": null,
    "statement_count": 3,
    "fund_count": 1
+  },
+  {
+   "id": "guardian",
+   "name": "Guardian Capital",
+   "country": "CA",
+   "mode": "static",
+   "fye": "12-31",
+   "hub": "https://www.guardiancapital.com/investmentsolutions/reg-documents/",
+   "notes": "One combined investor statement per year (2021-2025) rather than one per fund; the funds are listed inside the document. Their tax folder also holds PFIC-Form-8937_{year}.pdf - Form 8937 is a different filing (organisational actions affecting basis), not an AIS, so it is excluded.",
+   "access": null,
+   "guidance": null,
+   "statement_count": 5,
+   "fund_count": 4
   }
  ],
  "funds": [
@@ -160701,6 +160714,108 @@
    "years": []
   },
   {
+   "id": "guardian::guardian-canadian-equity-select-fund",
+   "family": "guardian",
+   "family_name": "Guardian Capital",
+   "country": "CA",
+   "name": "Guardian Canadian Equity Select Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://www.guardiancapital.com/investmentsolutions/wp-content/uploads/docs/tax/PFIC-Investor-Statement_2024.pdf",
+     "bytes": 1130599,
+     "sha256": "37106212ab65d546",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
+   ]
+  },
+  {
+   "id": "guardian::guardian-canadian-equity-select-fund-this-statement-is-provided-to-shareholders-who-are-united-states",
+   "family": "guardian",
+   "family_name": "Guardian Capital",
+   "country": "CA",
+   "name": "Guardian Canadian Equity Select Fund This statement is provided to shareholders who are United States",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.guardiancapital.com/investmentsolutions/wp-content/uploads/docs/tax/PFIC-Investor-Statement_2023.pdf",
+     "bytes": 716553,
+     "sha256": "55751b6288b62ed4",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.guardiancapital.com/investmentsolutions/wp-content/uploads/docs/tax/PFIC-Investor-Statement_2022.pdf",
+     "bytes": 757817,
+     "sha256": "6ad72acf6c9995bb",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "guardian::guardian-emerging-markets-equity-fund-this-statement-is-provided-to-shareholders-who-are-united-states",
+   "family": "guardian",
+   "family_name": "Guardian Capital",
+   "country": "CA",
+   "name": "Guardian Emerging Markets Equity Fund This statement is provided to shareholders who are United States",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://www.guardiancapital.com/investmentsolutions/wp-content/uploads/docs/tax/2021_GC_PFIC-Investor-Statement.pdf",
+     "bytes": 729429,
+     "sha256": "5658d867abb7a827",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2021
+   ]
+  },
+  {
+   "id": "guardian::guardian-i3-global-quality-growth-etf",
+   "family": "guardian",
+   "family_name": "Guardian Capital",
+   "country": "CA",
+   "name": "Guardian i3 Global Quality Growth ETF",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.guardiancapital.com/investmentsolutions/wp-content/uploads/docs/tax/PFIC-Investor-Statement_2025.pdf",
+     "bytes": 1029125,
+     "sha256": "3dbc01bfa08d6c2d",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
    "id": "hamilton-etfs::hamilton-australian-bank-equal-weight-index-etf-series-e",
    "family": "hamilton-etfs",
    "family_name": "Hamilton ETFs",
@@ -202927,8 +203042,8 @@
    "hub": "https://www.nbinvestments.ca/regulatory-documents/pfic-statements.html",
    "checked": "2026-08-19",
    "status": "ok",
-   "statements": 475,
-   "candidates": 475,
+   "statements": 949,
+   "candidates": 949,
    "message": "",
    "derived_names": 0
   },
@@ -202965,6 +203080,18 @@
    "status": "ok",
    "statements": 3,
    "candidates": 6,
+   "message": "",
+   "derived_names": 0
+  },
+  {
+   "id": "guardian",
+   "name": "Guardian Capital",
+   "mode": "static",
+   "hub": "https://www.guardiancapital.com/investmentsolutions/reg-documents/",
+   "checked": "2026-08-19",
+   "status": "ok",
+   "statements": 5,
+   "candidates": 5,
    "message": "",
    "derived_names": 0
   }

@@ -497,3 +497,17 @@ families:
       2021-2023 confirmed; 2024 onward not published at this path yet - check
       whether the naming changed before assuming they stopped.
 
+  - id: guardian
+    name: Guardian Capital
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://www.guardiancapital.com/investmentsolutions/reg-documents/
+    link_include: ['(?i)PFIC[-_]Investor[-_]Statement']
+    link_exclude: ['(?i)8937']
+    notes: >-
+      One combined investor statement per year (2021-2025) rather than one per
+      fund; the funds are listed inside the document. Their tax folder also
+      holds PFIC-Form-8937_{year}.pdf - Form 8937 is a different filing
+      (organisational actions affecting basis), not an AIS, so it is excluded.
+
