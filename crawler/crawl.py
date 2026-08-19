@@ -558,6 +558,10 @@ URL_CODE_PATTERNS = [
     re.compile(r"/([A-Z]{2,5})_\d+_PFIC", re.I),                            # vanguard
     re.compile(r"/pfic[-_]([a-z]{2,6})\.pdf", re.I),                        # vanguard legacy
     re.compile(r"/([A-Z0-9]{4})_[A-Za-z]", ),                               # russell fund codes
+    # National Bank names its files by FundSERV code: MFIN4001-pfic-2025.pdf.
+    # That is the only family so far where the code the client statement shows
+    # is recoverable straight from the document URL.
+    re.compile(r"/([A-Z]{2,4}\d{3,5})-pfic-", re.I),
 ]
 _CODE_STOPWORDS = {"THE", "FUND", "ETF", "USD", "CAD", "PFIC", "QEF", "IRS",
                    "AIS", "US", "EN", "FR", "STMT", "ENV1", "SE", "PDFUA"}

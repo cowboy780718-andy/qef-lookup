@@ -422,3 +422,27 @@ families:
       statement for a specific fund.
     notes: Only overview/FAQ PDFs are exposed; no per-fund statements found.
 
+  - id: ninepoint
+    name: Ninepoint Partners
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://www.ninepoint.com/pfic-annual-information-statements/
+    link_include: ['(?i)/media/[^/]+/\d{4}-pfic-']
+    notes: >-
+      Umbraco-style media paths: /media/{hash}/{YEAR}-pfic-{fund}.pdf.
+      The year is the filename prefix, so the year floor filters before download.
+
+  - id: nbi
+    name: National Bank Investments
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://www.nbinvestments.ca/regulatory-documents/pfic-statements.html
+    link_include: ['(?i)/regulatory/pfic/.+\.pdf']
+    notes: >-
+      Large catalogue - ~475 documents across 2023-2025 at
+      /content/dam/bni/en/fund/regulatory/pfic/{FUNDCODE}-pfic-{YEAR}.pdf.
+      Note the FundSERV code is in the filename (e.g. MFAL0503), which makes
+      this family a candidate for code-to-fund mapping.
+
