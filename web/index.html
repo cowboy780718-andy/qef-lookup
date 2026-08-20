@@ -20,6 +20,59 @@
 
 <main class="wrap">
 
+  <!-- Disclaimer sits above the tool, not buried in the footer: one line
+       always visible, the full text one click away. -->
+  <section class="notice">
+    <p class="notice-lead">
+      <strong>Informational purposes only &mdash; not formal tax or legal advice.</strong>
+      Coverage is partial. Always open the manager&rsquo;s own document and confirm
+      the fund, series and period before filing.
+    </p>
+    <details>
+      <summary>Full disclaimer, privacy and attribution</summary>
+      <div class="notice-body">
+        <p>
+          This tool is provided for informational purposes only and does not
+          constitute formal tax or legal advice. It is not a substitute for
+          professional advice on your own circumstances, and using it creates no
+          professional relationship of any kind.
+        </p>
+        <p>
+          The index is assembled automatically from fund company websites and may
+          be incomplete, out of date, or wrong. Some managers are not yet
+          included, some are listed with statements that must be retrieved by
+          hand, and older tax years are not indexed.
+        </p>
+        <p>
+          Where a manager is shown with no statement available, that records only
+          what was found on their public website on the date given. It is not a
+          statement about whether that manager will issue one &mdash; one may be
+          available on request, so ask them directly.
+        </p>
+        <p>
+          No warranty of any kind is given, express or implied. No liability is
+          accepted for any loss arising from use of this tool.
+        </p>
+        <p>
+          <strong>Privacy.</strong> This site sets no cookies, runs no analytics,
+          and stores nothing about you or your searches. Documents you drop in are
+          read inside your own browser and are never uploaded &mdash; there is no
+          server to upload them to.
+        </p>
+        <p>
+          Statements are served from each manager&rsquo;s own website; nothing is
+          rehosted here. The index is refreshed by an automated nightly crawl that
+          honours each site&rsquo;s <code>robots.txt</code>.
+        </p>
+        <p>
+          Built by <strong>Andy Huang</strong> as a personal project. Not
+          affiliated with, endorsed by, or connected to any fund company named
+          here, or to any employer.
+        </p>
+      </div>
+    </details>
+  </section>
+
   <!-- ---------- identify ---------- -->
   <section class="panel">
     <div class="findrow">
@@ -73,23 +126,39 @@
   <!-- ---------- tabs ---------- -->
   <nav class="tabs" role="tablist">
     <button class="tab active" data-tab="results" role="tab">Statements</button>
-    <button class="tab" data-tab="negatives" role="tab">Not offered</button>
+    <button class="tab" data-tab="negatives" role="tab">Not available</button>
     <button class="tab" data-tab="health" role="tab">Source health</button>
   </nav>
 
   <section id="tab-results" class="tabpane">
     <div class="listhead">
-      <label class="ck"><input type="checkbox" id="selall"> Select all shown</label>
+      <label class="ck"><input type="checkbox" id="selall"> Select all matching</label>
       <span id="count" class="muted"></span>
+      <label class="ck perpage">Show
+        <select id="perpage">
+          <option value="10" selected>10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="0">all</option>
+        </select>
+        per page
+      </label>
     </div>
     <div id="results" class="results"></div>
+    <nav id="pager" class="pager" hidden>
+      <button id="prevpage">&larr; Previous</button>
+      <span id="pageinfo"></span>
+      <button id="nextpage">Next &rarr;</button>
+    </nav>
   </section>
 
   <section id="tab-negatives" class="tabpane" hidden>
     <p class="lead">
-      Funds and fund ranges confirmed <strong>not</strong> to publish a QEF statement.
-      A finding here is a working-paper result: it means the question was researched
-      and answered, so it never needs researching again.
+      Funds and fund ranges where <strong>no statement could be located</strong> on
+      the manager&rsquo;s public website, with the date checked. A finding here is a
+      working-paper result &mdash; the question was researched once so it need not be
+      researched again. It is not a statement about whether the manager would issue
+      one on request.
     </p>
     <div id="negatives"></div>
   </section>
@@ -119,49 +188,14 @@
 </div>
 
 <footer class="foot wrap">
-  <div class="disclaimer">
-    <h2>Disclaimer</h2>
-    <p>
-      This tool is provided for <strong>informational purposes only and does not
-      constitute formal tax or legal advice</strong>. It is not a substitute for
-      professional advice on your own circumstances, and using it creates no
-      professional relationship of any kind.
-    </p>
-    <p>
-      The index is assembled automatically from fund company websites and may be
-      incomplete, out of date, or wrong. Coverage is partial: some managers are
-      not yet included, some are listed with statements that must be retrieved by
-      hand, and older tax years are not indexed.
-      <strong>Always open the manager&rsquo;s own document and confirm it matches
-      the fund, the series and the period before relying on it or filing.</strong>
-    </p>
-    <p>
-      Where a manager is shown with no statement available, that records only what
-      was found on their public website on the date given. It is not a statement
-      about whether that manager will issue one &mdash; a statement may be
-      available on request, so ask them directly.
-    </p>
-    <p>
-      No warranty of any kind is given, express or implied. No liability is
-      accepted for any loss arising from use of this tool.
-    </p>
-  </div>
-
   <p>
-    <strong>Privacy.</strong> This site sets no cookies, runs no analytics, and
-    stores nothing about you or your searches. Documents you drop in are read
-    inside your own browser and are never uploaded &mdash; there is no server to
-    upload them to.
-  </p>
-  <p>
-    Statements are served from each manager&rsquo;s own website; nothing is
-    rehosted here. The index is refreshed by an automated nightly crawl that
-    honours each site&rsquo;s <code>robots.txt</code>.
+    <strong>Informational purposes only &mdash; not formal tax or legal advice.</strong>
+    Always confirm the statement matches the fund, series and period before filing.
+    Full disclaimer at the top of the page.
   </p>
   <p class="byline">
-    Built by <strong>Andy Huang</strong> as a personal project. Not affiliated
-    with, endorsed by, or connected to any fund company named here, or to any
-    employer.
+    Built by <strong>Andy Huang</strong> as a personal project. Not affiliated with,
+    endorsed by, or connected to any fund company named here, or to any employer.
   </p>
   <p class="muted" id="built"></p>
 </footer>

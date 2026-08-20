@@ -24,6 +24,10 @@ const state = {
   selected: new Map(),   // key -> {fund, stmt}
   expanded: new Set(),
   matches: null,         // Map fundId -> {score, why} from a dropped PDF
+  // Paging. Four thousand funds in one list is unusable and slow to read;
+  // ten at a time is a page you can actually scan.
+  perPage: 10,
+  page: 1,
 };
 
 // Only true function words and legal suffixes. Content words stay, even the
@@ -215,9 +219,26 @@ function visibleFunds() {
 function render() {
   const funds = visibleFunds();
   const total = funds.reduce((n, f) => n + f.statements.length, 0);
+
+  const per = state.perPage || funds.length || 1;
+  const pages = Math.max(1, Math.ceil(funds.length / per));
+  if (state.page > pages) state.page = pages;
+  const from = (state.page - 1) * per;
+  const shown = state.perPage ? funds.slice(from, from + per) : funds;
+
   $("count").textContent = funds.length
     ? `${funds.length} fund${funds.length === 1 ? "" : "s"}, ${total} statement${total === 1 ? "" : "s"}`
+      + (state.perPage && funds.length > per
+         ? ` — showing ${from + 1}–${from + shown.length}` : "")
     : "";
+
+  const pager = $("pager");
+  pager.hidden = pages <= 1;
+  if (pages > 1) {
+    $("pageinfo").textContent = `Page ${state.page} of ${pages}`;
+    $("prevpage").disabled = state.page === 1;
+    $("nextpage").disabled = state.page === pages;
+  }
 
   if (!funds.length) {
     const fam = state.family
@@ -233,13 +254,13 @@ function render() {
           <em>Fund family</em> list above &mdash; every company checked is listed
           there, including those with nothing available, with what was found and
           a link to their site.</p>
-          <p>The <em>Not offered</em> tab records the same findings in detail.</p>
+          <p>The <em>Not available</em> tab records the same findings in detail.</p>
         </div>`;
     updateTray();
     return;
   }
 
-  $("results").innerHTML = funds.map((f) => {
+  $("results").innerHTML = shown.map((f) => {
     const open = state.expanded.has(f.id);
     const m = state.matches?.get(f.id);
     const fam = state.index.families.find((x) => x.id === f.family);
@@ -395,6 +416,7 @@ async function handleFiles(files) {
     }
     const hits = identify(text);
     state.matches = hits.size ? hits : null;
+    state.page = 1;
     state.expanded = new Set([...hits.keys()].slice(0, 8));
     box.innerHTML = hits.size
       ? `<strong>${hits.size} candidate fund${hits.size === 1 ? "" : "s"} identified.</strong>
@@ -404,9 +426,9 @@ async function handleFiles(files) {
          and period against the client&rsquo;s holding before filing.</div>`
       : `<strong>No funds in the index matched this document.</strong>
          That is not the same as &ldquo;not a PFIC&rdquo; &mdash; the fund may simply not be
-         indexed yet, or may not publish a statement. Check the <em>Not offered</em> tab.`;
+         indexed yet, or no statement may be available. Check the <em>Not available</em> tab.`;
     $("clrmatch")?.addEventListener("click", () => {
-      state.matches = null; box.hidden = true; render();
+      state.matches = null; state.page = 1; box.hidden = true; render();
     });
     render();
   } catch (e) {
@@ -543,7 +565,7 @@ function wire() {
   let t;
   $("q").addEventListener("input", (e) => {
     clearTimeout(t);
-    t = setTimeout(() => { state.query = e.target.value; render(); }, 140);
+    t = setTimeout(() => { state.query = e.target.value; state.page = 1; render(); }, 140);
   });
 
   $("years").addEventListener("click", (e) => {
@@ -551,12 +573,35 @@ function wire() {
     const y = Number(b.dataset.year);
     state.years.has(y) ? state.years.delete(y) : state.years.add(y);
     b.setAttribute("aria-pressed", state.years.has(y));
+    state.page = 1;
     render();
   });
 
-  $("famsel").addEventListener("change", (e) => { state.family = e.target.value; render(); });
-  $("periodfrom").addEventListener("change", (e) => { state.from = e.target.value; render(); });
-  $("periodto").addEventListener("change", (e) => { state.to = e.target.value; render(); });
+  $("famsel").addEventListener("change", (e) => {
+    state.family = e.target.value; state.page = 1; render();
+  });
+  $("periodfrom").addEventListener("change", (e) => {
+    state.from = e.target.value; state.page = 1; render();
+  });
+  $("periodto").addEventListener("change", (e) => {
+    state.to = e.target.value; state.page = 1; render();
+  });
+
+  $("perpage").addEventListener("change", (e) => {
+    state.perPage = Number(e.target.value);   // 0 = show everything
+    state.page = 1;
+    render();
+  });
+
+  const turn = (delta) => {
+    state.page += delta;
+    render();
+    // Put the top of the list back in view rather than leaving the reader
+    // stranded halfway down the previous page.
+    document.querySelector(".listhead")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  $("prevpage").addEventListener("click", () => turn(-1));
+  $("nextpage").addEventListener("click", () => turn(1));
 
   $("results").addEventListener("click", (e) => {
     const ck = e.target.closest("[data-stmt]");

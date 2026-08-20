@@ -202,3 +202,27 @@ button.ghost { background: none; color: var(--ink-2); }
 .foot .byline { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 14px; }
 .foot code { font-family: var(--mono); font-size: .8rem; background: var(--chip);
              padding: 1px 5px; border-radius: 4px; }
+
+/* Disclaimer banner above the tool. */
+.notice { background: color-mix(in srgb, var(--warn) 9%, var(--panel));
+          border: 1px solid color-mix(in srgb, var(--warn) 35%, var(--line));
+          border-left: 4px solid var(--warn); border-radius: var(--radius);
+          padding: 13px 17px; margin-top: 18px; }
+.notice-lead { margin: 0; font-size: .87rem; color: var(--ink-2); max-width: 90ch; }
+.notice-lead strong { color: var(--ink); }
+.notice details { margin-top: 8px; }
+.notice summary { cursor: pointer; font-size: .82rem; font-weight: 600;
+                  color: var(--accent); }
+.notice-body { margin-top: 10px; padding-top: 10px;
+               border-top: 1px solid color-mix(in srgb, var(--warn) 30%, var(--line)); }
+.notice-body p { font-size: .84rem; color: var(--ink-2); margin: 0 0 9px; max-width: 86ch; }
+.notice-body p:last-child { margin-bottom: 0; }
+.notice-body strong { color: var(--ink); }
+
+/* Paging. */
+.listhead { flex-wrap: wrap; gap: 10px; }
+.perpage { margin-left: auto; gap: 5px; }
+.perpage select { width: auto; padding: 4px 7px; font-size: .85rem; }
+.pager { display: flex; align-items: center; justify-content: center; gap: 16px;
+         padding: 14px 0 4px; }
+.pager span { font-size: .87rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
