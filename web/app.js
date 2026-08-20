@@ -423,7 +423,7 @@ async function handleFiles(files) {
          Results below are filtered to these matches.
          <button id="clrmatch" class="ghost" style="padding:3px 9px">show everything</button>
          <div class="hint">A match is a lead, not a determination. Confirm the fund, series
-         and period against the client&rsquo;s holding before filing.</div>`
+         and period against the client&rsquo;s holding before using it.</div>`
       : `<strong>No funds in the index matched this document.</strong>
          That is not the same as &ldquo;not a PFIC&rdquo; &mdash; the fund may simply not be
          indexed yet, or no statement may be available. Check the <em>Not available</em> tab.`;
@@ -488,7 +488,7 @@ export function htmlStatementFile(fund, stmt) {
   <br><br>
   Source: <a href="${esc(stmt.url)}">${esc(stmt.url)}</a><br>
   Retrieved for this file: ${new Date().toISOString().slice(0, 10)}<br>
-  <strong>Verify against the source page before filing.</strong>
+  <strong>Verify against the source page before using it.</strong>
 </div>`;
 }
 
