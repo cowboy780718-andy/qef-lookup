@@ -30,7 +30,11 @@ concurrency:
 jobs:
   crawl:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    # The first scheduled run took 90m22s on a cold cache and finished right
+    # at a 90-minute limit. Later runs reuse the cache and are far quicker, but
+    # a cache eviction puts it back to a full rebuild, so leave real headroom -
+    # a cancelled run publishes nothing and reports nothing.
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
 

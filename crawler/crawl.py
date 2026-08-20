@@ -1447,6 +1447,29 @@ def main() -> int:
                               if fid not in crawled
                               and fid in {f["id"] for f in all_families}]
 
+    # Every family gets a health row, and a declared access level always wins
+    # over a stale crawl result.
+    #
+    # Without this the nightly alert cried wolf: Sun Life and PIMCO were marked
+    # manual-fetch, but their health still read "empty" from before that flag
+    # existed, so the job would have opened an issue about them every night
+    # forever - for two families behaving exactly as intended. Six other
+    # families had no health row at all and were simply invisible.
+    have = {h["id"] for h in merged_health}
+    for fam in all_families:
+        if fam["id"] not in have:
+            merged_health.append({"id": fam["id"], "name": fam["name"],
+                                  "mode": fam.get("mode"), "hub": fam.get("hub"),
+                                  "checked": today, "status": "unknown",
+                                  "statements": 0, "candidates": 0,
+                                  "message": "not crawled yet"})
+    by_id = {f["id"]: f for f in all_families}
+    for h in merged_health:
+        access = by_id.get(h["id"], {}).get("access")
+        if access in ("manual", "none"):
+            h["status"] = access
+            h["message"] = (by_id[h["id"]].get("guidance") or h.get("message") or "").strip()
+
     # Carry forward families this run did not successfully crawl.
     #
     # The cache is not guaranteed to exist. On a fresh CI runner it starts

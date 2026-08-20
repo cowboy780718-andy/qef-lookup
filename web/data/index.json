@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-19T22:31:43+00:00",
+ "generated": "2026-08-20T19:54:27+00:00",
  "stats": {
   "families": 33,
   "families_ok": 23,
@@ -202875,7 +202875,7 @@
    "status": "manual",
    "statements": 0,
    "candidates": 0,
-   "message": "publisher disallows crawling; fetch by hand from the hub"
+   "message": "Capital Group does publish PFIC Annual Information Statements - its tax centre states they are provided for all of its funds. They are not crawled here by the publisher's own instruction: capitalgroup.com /robots.txt sets a blanket \"Disallow: /content\", and every document lives under /content/dam/. Open the tax centre and download by hand."
   },
   {
    "id": "fidelity-ca",
@@ -202993,10 +202993,10 @@
    "mode": "browser",
    "hub": "https://www.sunlifeglobalinvestments.com/en/resources/regulatory-documents/",
    "checked": "2026-08-19",
-   "status": "empty",
+   "status": "manual",
    "statements": 0,
    "candidates": 0,
-   "message": "hub reachable but no candidate PDFs matched",
+   "message": "Sun Life states on its regulatory documents page that it provides PFIC Annual Information Statements for 17 of its mutual funds - but the statements themselves are not linked anywhere public. The page has a \"Passive Foreign Investment Company (PFIC)\" section whose documents are prospectuses and financial statements, not PFIC statements, and no /pfic page exists. They are almost certainly issued on request. Contact Sun Life or the advisor of record to obtain one.",
    "derived_names": 0
   },
   {
@@ -203005,10 +203005,10 @@
    "mode": "browser",
    "hub": "https://www.pimco.com/ca/en/resources/tax-center",
    "checked": "2026-08-19",
-   "status": "empty",
+   "status": "manual",
    "statements": 0,
    "candidates": 0,
-   "message": "hub reachable but no candidate PDFs matched",
+   "message": "PIMCO does publish PFIC statements - the Canadian tax centre has sections headed \"2025 / 2024 / 2023 U.S. Taxpayer PFIC / Form 8937 Information\". They cannot be fetched automatically: the site runs Akamai Bot Manager and deliberately withholds the panel contents from automated browsers, so the sections sit at \"Loader...\" forever. In a normal browser they open fine. Open the tax centre, expand the year you need, and search the fund name - it takes about two minutes.",
    "derived_names": 0
   },
   {
@@ -203022,6 +203022,72 @@
    "candidates": 19,
    "message": "",
    "derived_names": 0
+  },
+  {
+   "id": "evolve",
+   "name": "Evolve ETFs",
+   "mode": "static",
+   "hub": "https://evolveetfs.com/",
+   "checked": "2026-08-20",
+   "status": "none",
+   "statements": 0,
+   "candidates": 0,
+   "message": "Evolve does not publish PFIC Annual Information Statements. There is no tax-information section on evolveetfs.com, the documents area carries only prospectuses and fund facts, and their own site search returns no results for \"PFIC\". This means they do not PUBLISH one - it is not proof they would refuse to issue one. Ask Evolve directly before concluding. If none is available, the holding falls to the section 1291 excess distribution regime, or a mark-to-market election if the fund is marketable on a qualified exchange."
+  },
+  {
+   "id": "bridgehouse",
+   "name": "Bridgehouse Asset Managers (incl. GQG Partners funds)",
+   "mode": "static",
+   "hub": "https://www.bridgehousecanada.com/",
+   "checked": "2026-08-20",
+   "status": "none",
+   "statements": 0,
+   "candidates": 0,
+   "message": "Bridgehouse does not publish PFIC Annual Information Statements. Look under Bridgehouse rather than GQG - GQG Partners is only the sub-advisor; Bridgehouse is the Canadian manager and the party that would issue the statement. Their Legal & Regulatory page lists Fund Facts, Prospectus, Annual Information Form and proxy records with nothing on PFIC, QEF or US taxpayers, and their site search returns no results for \"PFIC\". Contact inquiries@bridgehousecanada.com or 1-888-861-9998 to confirm."
+  },
+  {
+   "id": "dynamic",
+   "name": "Dynamic Funds (1832 Asset Management)",
+   "mode": "static",
+   "hub": "https://dynamic.ca/en/literature/regulatory-documents/pfic-irs.html",
+   "checked": "2026-08-20",
+   "status": "manual",
+   "statements": 0,
+   "candidates": 0,
+   "message": "Dynamic does publish PFIC statements - they have a dedicated \"PFIC Statements & Other IRS Tax Information\" page and the documents sit at /content/dam/docs/regulatory/pfic/{year}/{code}.pdf. The list itself is built in the browser and only one document appears in the raw page, and their server rejects the headless browser with an HTTP/2 error, so the full list cannot be collected automatically. Open the page and pick the fund and year by hand."
+  },
+  {
+   "id": "franklin-templeton-ca",
+   "name": "Franklin Templeton Canada",
+   "mode": "browser",
+   "hub": "https://www.franklintempleton.ca/en-ca/resources/forms/pfic-annual-information-statements",
+   "checked": "2026-08-20",
+   "status": "manual",
+   "statements": 0,
+   "candidates": 0,
+   "message": "Franklin Templeton Canada has a dedicated PFIC Annual Information Statements page. The page loads but its document list did not yield any statement links to the crawler, so the documents could not be collected automatically. Open the page directly - the statements are there."
+  },
+  {
+   "id": "nei",
+   "name": "NEI Investments (Aviso)",
+   "mode": "static",
+   "hub": "https://www.neiinvestments.com/",
+   "checked": "2026-08-20",
+   "status": "manual",
+   "statements": 0,
+   "candidates": 0,
+   "message": "NEI does publish PFIC statements - documents exist at neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/pfic-{code}-en.pdf and cover taxable years ending 30 SEPTEMBER, not December. Their site blocks automated access, so the index of which fund maps to which code could not be collected. Search their site or contact NEI for the fund you need."
+  },
+  {
+   "id": "starlight",
+   "name": "Starlight Capital",
+   "mode": "static",
+   "hub": "https://starlightcapital.com/en/tax-information",
+   "checked": "2026-08-20",
+   "status": "manual",
+   "statements": 0,
+   "candidates": 0,
+   "message": "Starlight has a PFIC section on its tax information page, but only a PFIC Overview and a PFIC FAQ are linked publicly - the per-fund statements themselves are not posted. Contact Starlight to request the statement for a specific fund."
   },
   {
    "id": "ninepoint",
@@ -203065,10 +203131,10 @@
    "mode": "static",
    "hub": "https://www.lysanderfunds.com/passive-foreign-investment-company-pfic/",
    "checked": "2026-08-19",
-   "status": "blocked",
+   "status": "manual",
    "statements": 0,
    "candidates": 6,
-   "message": "documents unreachable (plain HTTP=robots-denied; curl=robots-denied; browser=robots-denied; plain HTTP=robots-denied; curl=robots-denied; browser=robots-denied)",
+   "message": "Lysander does publish PFIC statements - one combined document per year covering all its funds, going back to 2020, all linked from this page. They are NOT collected here by the publisher's own instruction: lysanderfunds.com/robots.txt disallows /app/uploads/, where every document lives. Open the page and download the year you need directly.",
    "derived_names": 0
   },
   {
