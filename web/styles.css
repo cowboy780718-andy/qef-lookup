@@ -120,6 +120,7 @@ input:focus, select:focus, .drop:focus { outline: 2px solid var(--accent); outli
 .tagline { display: flex; gap: 9px; flex-wrap: wrap; align-items: center;
            font-size: .78rem; color: var(--ink-2); margin-top: 7px; }
 .tag { padding: 2px 8px; border-radius: 999px; background: var(--chip); font-weight: 600; }
+.tag.not_available { color: var(--bad); }
 .tag.not_offered { color: var(--bad); }
 .tag.offered_on_request { color: var(--warn); }
 .tag.registered_only, .tag.unreachable { color: var(--ink-2); }
@@ -188,3 +189,16 @@ button.ghost { background: none; color: var(--ink-2); }
          font-size: .9rem; }
 .gobtn:hover { filter: brightness(1.08); }
 .guide.code { border-left-color: var(--warn); }
+
+/* Disclaimer and attribution. Deliberately readable, not fine print. */
+.disclaimer { background: var(--panel); border: 1px solid var(--line);
+              border-left: 4px solid var(--warn); border-radius: var(--radius);
+              padding: 16px 20px; margin: 26px 0 18px; max-width: none; }
+.disclaimer h2 { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em;
+                 margin: 0 0 10px; color: var(--ink-2); }
+.disclaimer p { font-size: .86rem; color: var(--ink-2); margin: 0 0 10px; max-width: 82ch; }
+.disclaimer p:last-child { margin-bottom: 0; }
+.disclaimer strong { color: var(--ink); }
+.foot .byline { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 14px; }
+.foot code { font-family: var(--mono); font-size: .8rem; background: var(--chip);
+             padding: 1px 5px; border-radius: 4px; }

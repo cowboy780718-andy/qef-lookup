@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-20T19:54:27+00:00",
+ "generated": "2026-08-20T20:14:58+00:00",
  "stats": {
   "families": 33,
   "families_ok": 23,
@@ -294,9 +294,9 @@
    "mode": "static",
    "fye": "12-31",
    "hub": "https://evolveetfs.com/",
-   "notes": "Checked 2026-08-19. Listed deliberately so the dead end is recorded.",
+   "notes": "Checked 2026-08-19. Listed deliberately so the search is recorded.",
    "access": "none",
-   "guidance": "Evolve does not publish PFIC Annual Information Statements. There is no tax-information section on evolveetfs.com, the documents area carries only prospectuses and fund facts, and their own site search returns no results for \"PFIC\". This means they do not PUBLISH one - it is not proof they would refuse to issue one. Ask Evolve directly before concluding. If none is available, the holding falls to the section 1291 excess distribution regime, or a mark-to-market election if the fund is marketable on a qualified exchange.",
+   "guidance": "No PFIC Annual Information Statement could be located on the Evolve ETFs website as at 19 August 2026. Their site has no tax-information section, the documents area carries prospectuses and fund facts only, and a site search for \"PFIC\" returned nothing. This records what was found on their public website - it is not a statement about whether Evolve issues one. Contact Evolve directly to ask. If no statement can be obtained, the holding falls to the section 1291 excess distribution regime, or a mark-to-market election if the fund is marketable on a qualified exchange.",
    "statement_count": 0,
    "fund_count": 0
   },
@@ -309,7 +309,7 @@
    "hub": "https://www.bridgehousecanada.com/",
    "notes": "Checked 2026-08-19. Covers the GQG Partners Global Quality Equity Fund.",
    "access": "none",
-   "guidance": "Bridgehouse does not publish PFIC Annual Information Statements. Look under Bridgehouse rather than GQG - GQG Partners is only the sub-advisor; Bridgehouse is the Canadian manager and the party that would issue the statement. Their Legal & Regulatory page lists Fund Facts, Prospectus, Annual Information Form and proxy records with nothing on PFIC, QEF or US taxpayers, and their site search returns no results for \"PFIC\". Contact inquiries@bridgehousecanada.com or 1-888-861-9998 to confirm.",
+   "guidance": "No PFIC Annual Information Statement could be located on the Bridgehouse website as at 19 August 2026. Look under Bridgehouse rather than GQG - GQG Partners is the sub-advisor; Bridgehouse is the Canadian manager and the party that would issue the statement. Their Legal & Regulatory page lists Fund Facts, Prospectus, Annual Information Form and proxy records, with nothing on PFIC, QEF or US taxpayers, and a site search for \"PFIC\" returned nothing. This records what was found on their public website - it is not a statement about whether Bridgehouse issues one. Contact Bridgehouse directly to ask.",
    "statement_count": 0,
    "fund_count": 0
   },
@@ -202706,16 +202706,16 @@
   {
    "scope": "CIBC-branded mutual funds, CIBC Index Funds, CIBC Managed Portfolios, Axiom Portfolios",
    "family": "cibc",
-   "finding": "not_offered",
+   "finding": "not_available",
    "evidence": "https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance.html",
    "verified": "2026-08-18",
    "verified_by": "manual",
-   "note": "Manager states unitholders of these funds will not receive PFIC Annual Information Statements. Sister brands Renaissance and Imperial Pools DO receive them - same bank, opposite answer. This is the canonical case for why the register exists."
+   "note": "CIBC's own reporting and governance page states that unitholders of these funds do not receive PFIC Annual Information Statements - this one is the manager's own wording, not an inference. Sister brands Renaissance and Imperial Pools do receive them: same bank, opposite answer, which is the canonical case for why this register exists."
   },
   {
    "scope": "Renaissance HISA, Renaissance Money Market funds",
    "family": "renaissance",
-   "finding": "not_offered",
+   "finding": "not_available",
    "evidence": "https://www.renaissanceinvestments.ca/reporting-governance/pfic",
    "verified": "2026-08-18",
    "verified_by": "manual"
@@ -202723,11 +202723,11 @@
   {
    "scope": "All funds held inside RRSPs and RRIFs",
    "family": "*",
-   "finding": "not_offered",
+   "finding": "not_available",
    "evidence": "https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance.html",
    "verified": "2026-08-18",
    "verified_by": "manual",
-   "note": "Managers generally do not issue statements for registered retirement accounts. Note this is about the manager's publishing practice only, and is not a conclusion about the treaty position or reporting obligation for any particular account type. TFSAs and RESPs are NOT covered by this exclusion and generally do need PFIC reporting."
+   "note": "Managers generally do not post statements for registered retirement accounts. Note this is about the manager's publishing practice only, and is not a conclusion about the treaty position or reporting obligation for any particular account type. TFSAs and RESPs are NOT covered by this exclusion and generally do need PFIC reporting."
   },
   {
    "scope": "Fidelity Canada non-ETF mutual fund series",
@@ -202750,20 +202750,20 @@
   {
    "scope": "Evolve ETFs - all funds, including Evolve Future Leadership Fund",
    "family": "evolve",
-   "finding": "not_offered",
+   "finding": "not_available",
    "evidence": "https://evolveetfs.com/?s=PFIC",
    "verified": "2026-08-19",
    "verified_by": "manual",
-   "note": "No PFIC or QEF material anywhere on evolveetfs.com: their own site search returns no results for \"PFIC\", there is no tax-information section, and the documents area carries only prospectuses and fund facts. This means they do not PUBLISH one - it is not proof they would refuse to issue one on request. Call Evolve before concluding, and if they confirm, the holding falls to the section 1291 excess-distribution regime or a mark-to -market election if the fund is marketable."
+   "note": "No PFIC or QEF material could be located on evolveetfs.com as at this date: a site search for \"PFIC\" returned nothing, there is no tax-information section, and the documents area carries prospectuses and fund facts only. This records what was found on their public website. It is not a statement about whether Evolve issues one - ask them directly. If no statement can be obtained, the holding falls to the section 1291 excess distribution regime, or a mark-to-market election if the fund is marketable on a qualified exchange."
   },
   {
    "scope": "Bridgehouse Asset Managers - all funds, including GQG Partners Global Quality Equity Fund",
    "family": "bridgehouse",
-   "finding": "not_offered",
+   "finding": "not_available",
    "evidence": "https://www.bridgehousecanada.com/?s=PFIC",
    "verified": "2026-08-19",
    "verified_by": "manual",
-   "note": "Look under Bridgehouse, not GQG - GQG Partners is only the sub-advisor; Bridgehouse is the Canadian manager and the party that would issue the statement. Their Legal & Regulatory page lists Fund Facts, Prospectus, Annual Information Form and proxy records with nothing on PFIC, QEF or US taxpayers, and their site search returns no results for \"PFIC\". Contact inquiries@bridgehousecanada.com / 1-888-861-9998 to confirm."
+   "note": "No PFIC material could be located on the Bridgehouse website as at this date. Look under Bridgehouse, not GQG - GQG Partners is the sub-advisor; Bridgehouse is the Canadian manager and the party that would issue the statement. Their Legal & Regulatory page lists Fund Facts, Prospectus, Annual Information Form and proxy records, with nothing on PFIC, QEF or US taxpayers, and a site search for \"PFIC\" returned nothing. This records what was found on their public website, not whether Bridgehouse issues one - contact them directly to ask."
   }
  ],
  "health": [
@@ -203032,7 +203032,7 @@
    "status": "none",
    "statements": 0,
    "candidates": 0,
-   "message": "Evolve does not publish PFIC Annual Information Statements. There is no tax-information section on evolveetfs.com, the documents area carries only prospectuses and fund facts, and their own site search returns no results for \"PFIC\". This means they do not PUBLISH one - it is not proof they would refuse to issue one. Ask Evolve directly before concluding. If none is available, the holding falls to the section 1291 excess distribution regime, or a mark-to-market election if the fund is marketable on a qualified exchange."
+   "message": "No PFIC Annual Information Statement could be located on the Evolve ETFs website as at 19 August 2026. Their site has no tax-information section, the documents area carries prospectuses and fund facts only, and a site search for \"PFIC\" returned nothing. This records what was found on their public website - it is not a statement about whether Evolve issues one. Contact Evolve directly to ask. If no statement can be obtained, the holding falls to the section 1291 excess distribution regime, or a mark-to-market election if the fund is marketable on a qualified exchange."
   },
   {
    "id": "bridgehouse",
@@ -203043,7 +203043,7 @@
    "status": "none",
    "statements": 0,
    "candidates": 0,
-   "message": "Bridgehouse does not publish PFIC Annual Information Statements. Look under Bridgehouse rather than GQG - GQG Partners is only the sub-advisor; Bridgehouse is the Canadian manager and the party that would issue the statement. Their Legal & Regulatory page lists Fund Facts, Prospectus, Annual Information Form and proxy records with nothing on PFIC, QEF or US taxpayers, and their site search returns no results for \"PFIC\". Contact inquiries@bridgehousecanada.com or 1-888-861-9998 to confirm."
+   "message": "No PFIC Annual Information Statement could be located on the Bridgehouse website as at 19 August 2026. Look under Bridgehouse rather than GQG - GQG Partners is the sub-advisor; Bridgehouse is the Canadian manager and the party that would issue the statement. Their Legal & Regulatory page lists Fund Facts, Prospectus, Annual Information Form and proxy records, with nothing on PFIC, QEF or US taxpayers, and a site search for \"PFIC\" returned nothing. This records what was found on their public website - it is not a statement about whether Bridgehouse issues one. Contact Bridgehouse directly to ask."
   },
   {
    "id": "dynamic",

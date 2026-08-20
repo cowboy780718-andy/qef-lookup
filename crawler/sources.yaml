@@ -341,15 +341,16 @@ families:
     fye: "12-31"
     hub: https://evolveetfs.com/
     guidance: >-
-      Evolve does not publish PFIC Annual Information Statements. There is no
-      tax-information section on evolveetfs.com, the documents area carries
-      only prospectuses and fund facts, and their own site search returns no
-      results for "PFIC". This means they do not PUBLISH one - it is not proof
-      they would refuse to issue one. Ask Evolve directly before concluding.
-      If none is available, the holding falls to the section 1291 excess
-      distribution regime, or a mark-to-market election if the fund is
-      marketable on a qualified exchange.
-    notes: Checked 2026-08-19. Listed deliberately so the dead end is recorded.
+      No PFIC Annual Information Statement could be located on the Evolve ETFs
+      website as at 19 August 2026. Their site has no tax-information section,
+      the documents area carries prospectuses and fund facts only, and a site
+      search for "PFIC" returned nothing. This records what was found on their
+      public website - it is not a statement about whether Evolve issues one.
+      Contact Evolve directly to ask. If no statement can be obtained, the
+      holding falls to the section 1291 excess distribution regime, or a
+      mark-to-market election if the fund is marketable on a qualified
+      exchange.
+    notes: Checked 2026-08-19. Listed deliberately so the search is recorded.
 
   - id: bridgehouse
     name: Bridgehouse Asset Managers (incl. GQG Partners funds)
@@ -359,13 +360,15 @@ families:
     fye: "12-31"
     hub: https://www.bridgehousecanada.com/
     guidance: >-
-      Bridgehouse does not publish PFIC Annual Information Statements. Look
-      under Bridgehouse rather than GQG - GQG Partners is only the sub-advisor;
-      Bridgehouse is the Canadian manager and the party that would issue the
-      statement. Their Legal & Regulatory page lists Fund Facts, Prospectus,
-      Annual Information Form and proxy records with nothing on PFIC, QEF or
-      US taxpayers, and their site search returns no results for "PFIC".
-      Contact inquiries@bridgehousecanada.com or 1-888-861-9998 to confirm.
+      No PFIC Annual Information Statement could be located on the Bridgehouse
+      website as at 19 August 2026. Look under Bridgehouse rather than GQG -
+      GQG Partners is the sub-advisor; Bridgehouse is the Canadian manager and
+      the party that would issue the statement. Their Legal & Regulatory page
+      lists Fund Facts, Prospectus, Annual Information Form and proxy records,
+      with nothing on PFIC, QEF or US taxpayers, and a site search for "PFIC"
+      returned nothing. This records what was found on their public website -
+      it is not a statement about whether Bridgehouse issues one. Contact
+      Bridgehouse directly to ask.
     notes: Checked 2026-08-19. Covers the GQG Partners Global Quality Equity Fund.
 
   - id: dynamic

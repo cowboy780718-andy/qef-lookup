@@ -78,17 +78,17 @@ function buildYearChips() {
 }
 
 function buildFamilySelect() {
-  // Every family we have ever checked appears here, including the ones that
-  // publish nothing. A manager missing from the list looks like a manager
-  // nobody thought of; a manager listed with "no statements published" is a
-  // question already answered.
+  // Every family we have ever checked appears here, including those with
+  // nothing available. A manager missing from the list looks like a manager
+  // nobody thought of; a manager listed as "none available" is a question
+  // already answered.
   const fams = [...(state.index.families || [])]
     .sort((a, b) => a.name.localeCompare(b.name));
   const withDocs = fams.filter((f) => (f.fund_count || 0) > 0);
   const without = fams.filter((f) => !(f.fund_count > 0));
 
   const opt = (f) => {
-    const tag = f.access === "none" ? " — no statements published"
+    const tag = f.access === "none" ? " — none available"
       : f.access === "manual" ? " — fetch by hand"
       : (f.fund_count ? "" : " — nothing found yet");
     return `<option value="${esc(f.id)}">${esc(f.name)}${tag}</option>`;
@@ -149,10 +149,13 @@ function fundCodeHelp(query) {
  */
 function familyGuidance(fam) {
   if (!fam) return "";
+  // Wording is deliberate. We report what was found on a manager's public
+  // website on a date - never that a manager refuses to issue a statement.
+  // One may well be available on request.
   const kind = fam.access === "none"
-    ? { cls: "none", head: "This manager does not publish PFIC statements" }
+    ? { cls: "none", head: "No statement available from this manager's website" }
     : fam.access === "manual"
-      ? { cls: "manual", head: "Published, but must be fetched by hand" }
+      ? { cls: "manual", head: "Available, but must be fetched by hand" }
       : { cls: "unknown", head: "Nothing indexed for this manager yet" };
   const link = fam.hub;
   const linkLabel = fam.access === "none"
@@ -165,9 +168,9 @@ function familyGuidance(fam) {
        "No further detail recorded yet."}</p>
     ${link ? `<p><a class="gobtn" href="${esc(link)}" target="_blank"
         rel="noopener">${linkLabel} &rarr;</a></p>` : ""}
-    <p class="caution">Confirm with the manager before concluding that no
-      statement can be obtained. Not publishing one is not the same as
-      refusing to issue one on request.</p>
+    <p class="caution">This records what was found on the manager&rsquo;s public
+      website, not whether they will issue a statement. One may be available on
+      request &mdash; contact the manager before concluding otherwise.</p>
   </div>`;
 }
 
@@ -228,8 +231,8 @@ function render() {
           <p><strong>Nothing matched.</strong></p>
           <p>If you expected a statement here, pick the manager from the
           <em>Fund family</em> list above &mdash; every company checked is listed
-          there, including the ones that publish nothing, with the reason and a
-          link to their site.</p>
+          there, including those with nothing available, with what was found and
+          a link to their site.</p>
           <p>The <em>Not offered</em> tab records the same findings in detail.</p>
         </div>`;
     updateTray();
