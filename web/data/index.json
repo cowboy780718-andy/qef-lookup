@@ -1,10 +1,10 @@
 {
- "generated": "2026-08-20T20:14:58+00:00",
+ "generated": "2026-08-21T08:31:56+00:00",
  "stats": {
   "families": 33,
-  "families_ok": 23,
-  "funds": 4299,
-  "statements": 14483,
+  "families_ok": 19,
+  "funds": 4280,
+  "statements": 14453,
   "years": [
    2025,
    2024,
@@ -24,7 +24,7 @@
    "notes": "Most predictable publisher found. URL form: /content/dam/mackenzie/en/pfic/pfic-{YEAR}-{CODE}-en.pdf Both EN and FR posted; we take EN. Statements are not mailed to investors.",
    "access": null,
    "guidance": null,
-   "statement_count": 209,
+   "statement_count": 203,
    "fund_count": 63
   },
   {
@@ -76,8 +76,8 @@
    "notes": "Hub is ~17MB and links the entire CI document catalog (~15k PDFs), so the include filter is doing heavy lifting. Fund identity lives in an opaque numeric path segment, so identity must come from PDF text, not the URL.",
    "access": null,
    "guidance": null,
-   "statement_count": 11042,
-   "fund_count": 2868
+   "statement_count": 11018,
+   "fund_count": 2849
   },
   {
    "id": "mawer",
@@ -8809,25 +8809,25 @@
    "country": "CA",
    "name": "CI Active Credit ETF",
    "tickers": [
-    "FAO.U",
-    "FAO"
+    "FAO",
+    "FAO.U"
    ],
    "statements": [
-    {
-     "period_end": "2023-03-31",
-     "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/308112/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 42337,
-     "sha256": "586d3eae77e1ec66",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
      "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/308111/2023_PFIC_Annual_Information_Statement.pdf",
      "bytes": 42318,
      "sha256": "7e290f515dae7ed7",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-03-31",
+     "tax_year": 2023,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/308112/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 42337,
+     "sha256": "586d3eae77e1ec66",
      "confidence": 14,
      "fmt": "pdf"
     }
@@ -11811,9 +11811,9 @@
     {
      "period_end": "2021-03-31",
      "tax_year": 2021,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53277/2021_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53278/2021_PFIC_Annual_Information_Statement.pdf",
      "bytes": 47127,
-     "sha256": "622b58b6320a1ce5",
+     "sha256": "7a5186fd302d4351",
      "confidence": 9,
      "fmt": "pdf"
     }
@@ -11983,9 +11983,9 @@
     {
      "period_end": "2021-03-31",
      "tax_year": 2021,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53281/2021_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53282/2021_PFIC_Annual_Information_Statement.pdf",
      "bytes": 47126,
-     "sha256": "37083507b0099e6e",
+     "sha256": "b0692addcc3e38e5",
      "confidence": 9,
      "fmt": "pdf"
     }
@@ -15125,29 +15125,6 @@
    ]
   },
   {
-   "id": "ci-gam::ci-canada-quality-dividend-growth-index-etf-unhedged-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI Canada Quality Dividend Growth Index ETF (UNHEDGED COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368141/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41833,
-     "sha256": "f63aee852a0cd06b",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
    "id": "ci-gam::ci-canada-quality-dividend-growth-index-fund-series-a",
    "family": "ci-gam",
    "family_name": "CI Global Asset Management",
@@ -15312,29 +15289,6 @@
    "years": [
     2024,
     2023
-   ]
-  },
-  {
-   "id": "ci-gam::ci-canadian-aggregate-bond-index-etf-unhedged-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI Canadian Aggregate Bond Index ETF (UNHEDGED COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368136/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41813,
-     "sha256": "93ddf236c8915a6f",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
    ]
   },
   {
@@ -19362,19 +19316,19 @@
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309050/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 47086,
-     "sha256": "1f779a7920f88f76",
-     "confidence": 9,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309049/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 48175,
+     "sha256": "69403af2b834d063",
+     "confidence": 11,
      "fmt": "pdf"
     },
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309049/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 48175,
-     "sha256": "69403af2b834d063",
-     "confidence": 11,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309050/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 47086,
+     "sha256": "1f779a7920f88f76",
+     "confidence": 9,
      "fmt": "pdf"
     },
     {
@@ -33066,29 +33020,6 @@
    ]
   },
   {
-   "id": "ci-gam::ci-canadian-short-term-aggregate-bond-index-etf-unhedged-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI Canadian Short-Term Aggregate Bond Index ETF (UNHEDGED COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368137/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41833,
-     "sha256": "8e55a6711523f502",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
    "id": "ci-gam::ci-canadian-short-term-bond-pool-series-i",
    "family": "ci-gam",
    "family_name": "CI Global Asset Management",
@@ -45710,29 +45641,6 @@
    ]
   },
   {
-   "id": "ci-gam::ci-emerging-markets-dividend-index-etf-unhedged-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI Emerging Markets Dividend Index ETF (UNHEDGED COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368142/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41819,
-     "sha256": "fa0eef7be0b2ecde",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
    "id": "ci-gam::ci-emerging-markets-fund-series-a",
    "family": "ci-gam",
    "family_name": "CI Global Asset Management",
@@ -46397,24 +46305,6 @@
     "NXF.U"
    ],
    "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368123/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 42407,
-     "sha256": "c13822c7290dfb4c",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368124/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 42441,
-     "sha256": "132d533774210eb2",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
     {
      "period_end": "2025-03-31",
      "tax_year": 2025,
@@ -48104,52 +47994,6 @@
    "years": [
     2024,
     2023
-   ]
-  },
-  {
-   "id": "ci-gam::ci-europe-hedged-equity-index-etf-hedged-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI Europe Hedged Equity Index ETF (Hedged Units)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368133/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41768,
-     "sha256": "4b37e4e3eb1d964a",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ci-gam::ci-europe-hedged-equity-index-etf-unhedged-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI Europe Hedged Equity Index ETF (UNHEDGED COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368139/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41809,
-     "sha256": "f4e874a029b95dd1",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
    ]
   },
   {
@@ -53690,9 +53534,9 @@
     {
      "period_end": "2024-03-31",
      "tax_year": 2024,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/328296/2024_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/328297/2024_PFIC_Annual_Information_Statement.pdf",
      "bytes": 42644,
-     "sha256": "86404c29ff501cef",
+     "sha256": "5f3f01022958903c",
      "confidence": 9,
      "fmt": "pdf"
     },
@@ -57476,29 +57320,6 @@
     2023,
     2022,
     2021
-   ]
-  },
-  {
-   "id": "ci-gam::ci-global-core-plus-equity-etf-series-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI Global Core Plus Equity ETF - Series UNITS",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368125/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41767,
-     "sha256": "581d42d48523d78c",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
    ]
   },
   {
@@ -65678,29 +65499,6 @@
    ]
   },
   {
-   "id": "ci-gam::ci-global-financial-sector-etf-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI Global Financial Sector ETF (COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368122/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41774,
-     "sha256": "3f45dd630f7c75b8",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
    "id": "ci-gam::ci-global-green-bond-fund-etf-c-series",
    "family": "ci-gam",
    "family_name": "CI Global Asset Management",
@@ -66177,9 +65975,9 @@
     {
      "period_end": "2021-03-31",
      "tax_year": 2021,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53382/2021_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53381/2021_PFIC_Annual_Information_Statement.pdf",
      "bytes": 47112,
-     "sha256": "198df0850b653bc0",
+     "sha256": "35a5cbf197e0d64c",
      "confidence": 9,
      "fmt": "pdf"
     }
@@ -66952,19 +66750,19 @@
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309991/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 48511,
-     "sha256": "64541db42640758f",
-     "confidence": 11,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309992/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 47420,
+     "sha256": "04ee15a2fd6450d2",
+     "confidence": 9,
      "fmt": "pdf"
     },
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309992/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 47420,
-     "sha256": "04ee15a2fd6450d2",
-     "confidence": 9,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309991/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 48511,
+     "sha256": "64541db42640758f",
+     "confidence": 11,
      "fmt": "pdf"
     },
     {
@@ -67717,9 +67515,9 @@
     {
      "period_end": "2025-03-31",
      "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369263/2025_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369262/2025_PFIC_Annual_Information_Statement.pdf",
      "bytes": 43528,
-     "sha256": "82a5e904070ccc66",
+     "sha256": "1d6cfa899067464f",
      "confidence": 11,
      "fmt": "pdf"
     },
@@ -90230,24 +90028,6 @@
    ],
    "statements": [
     {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368134/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 42497,
-     "sha256": "677f5750e9afba18",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368135/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 42529,
-     "sha256": "acc86a902319655c",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2024-03-31",
      "tax_year": 2024,
      "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/331291/2024_PFIC_Annual_Information_Statement.pdf",
@@ -90286,7 +90066,6 @@
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025,
     2024,
     2023
    ]
@@ -93605,29 +93384,6 @@
     2024,
     2023,
     2022
-   ]
-  },
-  {
-   "id": "ci-gam::ci-msci-canada-quality-index-class-etf-etf-shares",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI MSCI Canada Quality Index Class ETF (ETF SHARES)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368127/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41785,
-     "sha256": "7c5a1f70e290d2db",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
    ]
   },
   {
@@ -97783,29 +97539,6 @@
      "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368120/2025_PFIC_Annual_Information_Statement.pdf",
      "bytes": 41793,
      "sha256": "b14026fb31d68e1d",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ci-gam::ci-morningstar-international-momentum-index-etf-unhedged-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI Morningstar International Momentum Index ETF (UNHEDGED COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368121/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41813,
-     "sha256": "35991d9f59bcfe12",
      "confidence": 9,
      "fmt": "pdf"
     }
@@ -114506,9 +114239,9 @@
     {
      "period_end": "2025-03-31",
      "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369913/2025_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369912/2025_PFIC_Annual_Information_Statement.pdf",
      "bytes": 52547,
-     "sha256": "86d49e20949539ce",
+     "sha256": "34990f9c86058e94",
      "confidence": 11,
      "fmt": "pdf"
     },
@@ -115690,29 +115423,6 @@
     2024,
     2023,
     2022
-   ]
-  },
-  {
-   "id": "ci-gam::ci-preferred-share-etf-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI Preferred Share ETF (COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368128/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41753,
-     "sha256": "b03ba3202f961fb0",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
    ]
   },
   {
@@ -119490,19 +119200,19 @@
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/310711/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 48621,
-     "sha256": "d6692a403f3d2c76",
-     "confidence": 11,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/310712/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 47121,
+     "sha256": "345dbb268dec6929",
+     "confidence": 9,
      "fmt": "pdf"
     },
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/310712/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 47121,
-     "sha256": "345dbb268dec6929",
-     "confidence": 9,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/310711/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 48621,
+     "sha256": "d6692a403f3d2c76",
+     "confidence": 11,
      "fmt": "pdf"
     },
     {
@@ -125966,9 +125676,9 @@
     {
      "period_end": "2025-03-31",
      "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369739/2025_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369738/2025_PFIC_Annual_Information_Statement.pdf",
      "bytes": 51754,
-     "sha256": "1521af89a1bc14af",
+     "sha256": "c0b1ba75114ea0f6",
      "confidence": 11,
      "fmt": "pdf"
     },
@@ -130806,9 +130516,9 @@
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309324/2023_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309323/2023_PFIC_Annual_Information_Statement.pdf",
      "bytes": 47123,
-     "sha256": "ca9626f653d99b4c",
+     "sha256": "4b9644a17be729eb",
      "confidence": 9,
      "fmt": "pdf"
     },
@@ -138070,15 +137780,6 @@
    ],
    "statements": [
     {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368126/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 42514,
-     "sha256": "0621b2f4d24d9701",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2024-03-31",
      "tax_year": 2024,
      "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/331283/2024_PFIC_Annual_Information_Statement.pdf",
@@ -138108,7 +137809,6 @@
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025,
     2024,
     2023,
     2022
@@ -141355,9 +141055,9 @@
     {
      "period_end": "2025-03-31",
      "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369509/2025_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369510/2025_PFIC_Annual_Information_Statement.pdf",
      "bytes": 41740,
-     "sha256": "7bc6c5b2d2765f3d",
+     "sha256": "2e9536e3600c8b63",
      "confidence": 9,
      "fmt": "pdf"
     },
@@ -143053,29 +142753,6 @@
      "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368173/2025_PFIC_Annual_Information_Statement.pdf",
      "bytes": 42219,
      "sha256": "b2caa1f915a0e10c",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ci-gam::ci-tech-giants-covered-call-etf-unhedged-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI Tech Giants Covered Call ETF (UNHEDGED COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368140/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41804,
-     "sha256": "0e5ec5d6c5e65e2f",
      "confidence": 9,
      "fmt": "pdf"
     }
@@ -150001,52 +149678,6 @@
    ]
   },
   {
-   "id": "ci-gam::ci-u-s-midcap-dividend-index-etf-hedged-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI U.S. MidCap Dividend Index ETF (Hedged Units)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368143/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41779,
-     "sha256": "b0ee441ab8e17f69",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ci-gam::ci-u-s-midcap-dividend-index-etf-unhedged-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI U.S. MidCap Dividend Index ETF (UNHEDGED COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368144/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41805,
-     "sha256": "5a657f72df233c13",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
    "id": "ci-gam::ci-u-s-minimum-downside-volatility-index-etf",
    "family": "ci-gam",
    "family_name": "CI Global Asset Management",
@@ -150702,52 +150333,6 @@
      "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368210/2025_PFIC_Annual_Information_Statement.pdf",
      "bytes": 42243,
      "sha256": "78e12a1910ff80ca",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ci-gam::ci-u-s-quality-dividend-growth-index-etf-hedged-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI U.S. Quality Dividend Growth Index ETF (Hedged Units)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368129/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41817,
-     "sha256": "6081f6ec1c2d9c44",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ci-gam::ci-u-s-quality-dividend-growth-index-etf-unhedged-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI U.S. Quality Dividend Growth Index ETF (UNHEDGED COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368130/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41832,
-     "sha256": "c4f883558a438ae1",
      "confidence": 9,
      "fmt": "pdf"
     }
@@ -153652,29 +153237,6 @@
    ]
   },
   {
-   "id": "ci-gam::ci-u-s-trendleaders-index-etf-common-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI U.S. TrendLeaders Index ETF (COMMON UNITS)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368138/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41772,
-     "sha256": "12190d9d53457354",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
    "id": "ci-gam::ci-us-money-market-fund-series-a",
    "family": "ci-gam",
    "family_name": "CI Global Asset Management",
@@ -154140,29 +153702,6 @@
    ]
   },
   {
-   "id": "ci-gam::ci-wisdomtree-international-quality-dividend-growth-variably-hedged-index-etf-variably-hedged-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI WisdomTree International Quality Dividend Growth Variably Hedged Index ETF (Variably Hedged Units)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368132/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41854,
-     "sha256": "bfe6438566e9d471",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
    "id": "ci-gam::ci-wisdomtree-japan-equity-index-etf",
    "family": "ci-gam",
    "family_name": "CI Global Asset Management",
@@ -154368,29 +153907,6 @@
     2023,
     2022,
     2021
-   ]
-  },
-  {
-   "id": "ci-gam::ci-wisdomtree-u-s-quality-dividend-growth-variably-hedged-index-etf-variably-hedged-units",
-   "family": "ci-gam",
-   "family_name": "CI Global Asset Management",
-   "country": "CA",
-   "name": "CI WisdomTree U.S. Quality Dividend Growth Variably Hedged Index ETF (Variably Hedged Units)",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-03-31",
-     "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/368131/2025_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 41839,
-     "sha256": "d8a414cca9bbe28f",
-     "confidence": 9,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
    ]
   },
   {
@@ -162173,15 +161689,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-qcn-en.pdf",
-     "bytes": 488409,
-     "sha256": "96287b6656da7def",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-qcn-en.pdf",
@@ -162196,7 +161703,6 @@
     2025,
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -162438,15 +161944,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-qsb-en.pdf",
-     "bytes": 478621,
-     "sha256": "e4d9c8ecc50256aa",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-qsb-en.pdf",
@@ -162461,7 +161958,6 @@
     2025,
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -162694,15 +162190,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-mkb-en.pdf",
-     "bytes": 458400,
-     "sha256": "f875c4151612993b",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-mkb-en.pdf",
@@ -162716,7 +162203,6 @@
    "years": [
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -163203,15 +162689,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-qebl-en.pdf",
-     "bytes": 480112,
-     "sha256": "3a05eebd0f825d0e",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-qebl-en.pdf",
@@ -163226,7 +162703,6 @@
     2025,
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -163958,15 +163434,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-qdx-en.pdf",
-     "bytes": 453207,
-     "sha256": "692736993a908ce7",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-qdx-en.pdf",
@@ -163981,7 +163448,6 @@
     2025,
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -164088,15 +163554,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-mivg-en.pdf",
-     "bytes": 452832,
-     "sha256": "876d136cb3e5cec4",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-mivg-en.pdf",
@@ -164111,7 +163568,6 @@
     2025,
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -202772,11 +202228,11 @@
    "name": "Mackenzie Investments",
    "mode": "static",
    "hub": "https://www.mackenzieinvestments.com/en/legal-and-privacy/passive-foreign-investment-company-statements",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
-   "statements": 209,
+   "statements": 203,
    "candidates": 209,
-   "message": "hub needed curl",
+   "message": "hub needed browser",
    "derived_names": 0
   },
   {
@@ -202784,7 +202240,7 @@
    "name": "TD Asset Management",
    "mode": "static",
    "hub": "https://www.td.com/ca/en/asset-management/resources/pfic-reporting",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 417,
    "candidates": 417,
@@ -202796,20 +202252,20 @@
    "name": "Vanguard Investments Canada",
    "mode": "static",
    "hub": "https://www.vanguard.ca/en/tools-and-resources/tax-centre",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 182,
-   "candidates": 183,
+   "candidates": 188,
    "message": "",
    "derived_names": 0,
-   "skipped_old": 144
+   "skipped_old": 148
   },
   {
    "id": "russell-ca",
    "name": "Russell Investments Canada",
    "mode": "static",
    "hub": "https://russellinvestments.com/content/ri/ca/en/legal/pfic.html",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 242,
    "candidates": 242,
@@ -202821,9 +202277,9 @@
    "name": "CI Global Asset Management",
    "mode": "static",
    "hub": "https://funds.cifinancial.com/en/funds/pfic-documents",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
-   "statements": 12589,
+   "statements": 12619,
    "candidates": 12643,
    "message": "",
    "derived_names": 0,
@@ -202834,11 +202290,11 @@
    "name": "Mawer Investment Management",
    "mode": "static",
    "hub": "https://www.mawer.com/documents",
-   "checked": "2026-08-19",
-   "status": "ok",
-   "statements": 1,
+   "checked": "2026-08-21",
+   "status": "empty",
+   "statements": 0,
    "candidates": 1,
-   "message": "",
+   "message": "candidates found but none verified as PFIC statements",
    "derived_names": 0
   },
   {
@@ -202846,7 +202302,7 @@
    "name": "CIBC Asset Management",
    "mode": "static",
    "hub": "https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance/etf-pfic-annual-statement.html",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 20,
    "candidates": 20,
@@ -202858,20 +202314,19 @@
    "name": "BlackRock / iShares Canada",
    "mode": "static",
    "hub": "https://www.blackrock.com/ca/investors/en/resources/tax-information-centre",
-   "checked": "2026-08-19",
-   "status": "ok",
-   "statements": 232,
+   "checked": "2026-08-21",
+   "status": "blocked",
+   "statements": 0,
    "candidates": 720,
-   "message": "",
-   "derived_names": 72,
-   "pdf_mode": "browser"
+   "message": "documents unreachable (plain HTTP=404; curl=404; browser=404; plain HTTP=404; curl=404; browser=404)",
+   "derived_names": 72
   },
   {
    "id": "capitalgroup-ca",
    "name": "Capital Group Canada",
    "mode": "static",
    "hub": "https://www.capitalgroup.com/advisor/ca/en/service/tax-centre.html",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -202882,7 +202337,7 @@
    "name": "Fidelity Investments Canada",
    "mode": "static",
    "hub": "https://www.fidelity.ca/en/pfic_etf_statements/",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 213,
    "candidates": 213,
@@ -202895,11 +202350,11 @@
    "name": "iA Clarington Investments",
    "mode": "browser",
    "hub": "https://iaclarington.com/applicationsandforms/pficstatements",
-   "checked": "2026-08-19",
-   "status": "ok",
-   "statements": 39,
+   "checked": "2026-08-21",
+   "status": "blocked",
+   "statements": 0,
    "candidates": 123,
-   "message": "",
+   "message": "documents unreachable (plain HTTP=robots-denied; curl=robots-denied; browser=robots-denied; plain HTTP=robots-denied; curl=robots-denied; browser=robots-denied)",
    "derived_names": 0
   },
   {
@@ -202907,7 +202362,7 @@
    "name": "Renaissance Investments (CIBC)",
    "mode": "static",
    "hub": "https://www.renaissanceinvestments.ca/reporting-governance/pfic",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 169,
    "candidates": 169,
@@ -202919,7 +202374,7 @@
    "name": "Hamilton ETFs",
    "mode": "browser",
    "hub": "https://hamiltonetfs.com/tax-information/",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 51,
    "candidates": 2,
@@ -202930,7 +202385,7 @@
    "name": "RBC Global Asset Management / PH&N",
    "mode": "browser",
    "hub": "https://www.rbcgam.com/en/ca/products/pfic-reporting",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 921,
    "candidates": 921,
@@ -202942,7 +202397,7 @@
    "name": "BMO Global Asset Management",
    "mode": "static",
    "hub": "https://bmogam.com/ca-en/resources/legal-and-regulatory-documents/pfic/",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 217,
    "candidates": 217,
@@ -202955,20 +202410,19 @@
    "name": "Manulife Investment Management",
    "mode": "browser",
    "hub": "https://www.manulifeim.com/retail/ca/en/regulatory/passive-foreign-investment-company-pfic",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 61,
    "candidates": 61,
-   "message": "hub needed curl",
-   "derived_names": 0,
-   "pdf_transport": "curl"
+   "message": "",
+   "derived_names": 0
   },
   {
    "id": "globalx-ca",
    "name": "Global X Investments Canada (formerly Horizons)",
    "mode": "browser",
    "hub": "https://www.globalx.ca/pfic",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 1,
    "candidates": 1,
@@ -202980,7 +202434,7 @@
    "name": "Purpose Investments",
    "mode": "static",
    "hub": "https://www.purposeinvest.com/funds",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 80,
    "candidates": 80,
@@ -202990,37 +202444,35 @@
   {
    "id": "sunlife-gi",
    "name": "Sun Life Global Investments",
-   "mode": "browser",
+   "mode": "static",
    "hub": "https://www.sunlifeglobalinvestments.com/en/resources/regulatory-documents/",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
-   "message": "Sun Life states on its regulatory documents page that it provides PFIC Annual Information Statements for 17 of its mutual funds - but the statements themselves are not linked anywhere public. The page has a \"Passive Foreign Investment Company (PFIC)\" section whose documents are prospectuses and financial statements, not PFIC statements, and no /pfic page exists. They are almost certainly issued on request. Contact Sun Life or the advisor of record to obtain one.",
-   "derived_names": 0
+   "message": "Sun Life states on its regulatory documents page that it provides PFIC Annual Information Statements for 17 of its mutual funds - but the statements themselves are not linked anywhere public. The page has a \"Passive Foreign Investment Company (PFIC)\" section whose documents are prospectuses and financial statements, not PFIC statements, and no /pfic page exists. They are almost certainly issued on request. Contact Sun Life or the advisor of record to obtain one."
   },
   {
    "id": "pimco-ca",
    "name": "PIMCO Canada",
    "mode": "browser",
    "hub": "https://www.pimco.com/ca/en/resources/tax-center",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
-   "message": "PIMCO does publish PFIC statements - the Canadian tax centre has sections headed \"2025 / 2024 / 2023 U.S. Taxpayer PFIC / Form 8937 Information\". They cannot be fetched automatically: the site runs Akamai Bot Manager and deliberately withholds the panel contents from automated browsers, so the sections sit at \"Loader...\" forever. In a normal browser they open fine. Open the tax centre, expand the year you need, and search the fund name - it takes about two minutes.",
-   "derived_names": 0
+   "message": "PIMCO does publish PFIC statements - the Canadian tax centre has sections headed \"2025 / 2024 / 2023 U.S. Taxpayer PFIC / Form 8937 Information\". They cannot be fetched automatically: the site runs Akamai Bot Manager and deliberately withholds the panel contents from automated browsers, so the sections sit at \"Loader...\" forever. In a normal browser they open fine. Open the tax centre, expand the year you need, and search the fund name - it takes about two minutes."
   },
   {
    "id": "dimensional-ca",
    "name": "Dimensional Fund Advisors Canada",
    "mode": "browser",
    "hub": "https://www.dimensional.com/ca-en/document-center",
-   "checked": "2026-08-19",
-   "status": "ok",
-   "statements": 19,
-   "candidates": 19,
-   "message": "",
+   "checked": "2026-08-21",
+   "status": "empty",
+   "statements": 0,
+   "candidates": 0,
+   "message": "hub reachable but no candidate PDFs matched",
    "derived_names": 0
   },
   {
@@ -203028,7 +202480,7 @@
    "name": "Evolve ETFs",
    "mode": "static",
    "hub": "https://evolveetfs.com/",
-   "checked": "2026-08-20",
+   "checked": "2026-08-21",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -203039,7 +202491,7 @@
    "name": "Bridgehouse Asset Managers (incl. GQG Partners funds)",
    "mode": "static",
    "hub": "https://www.bridgehousecanada.com/",
-   "checked": "2026-08-20",
+   "checked": "2026-08-21",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -203050,7 +202502,7 @@
    "name": "Dynamic Funds (1832 Asset Management)",
    "mode": "static",
    "hub": "https://dynamic.ca/en/literature/regulatory-documents/pfic-irs.html",
-   "checked": "2026-08-20",
+   "checked": "2026-08-21",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -203061,7 +202513,7 @@
    "name": "Franklin Templeton Canada",
    "mode": "browser",
    "hub": "https://www.franklintempleton.ca/en-ca/resources/forms/pfic-annual-information-statements",
-   "checked": "2026-08-20",
+   "checked": "2026-08-21",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -203072,7 +202524,7 @@
    "name": "NEI Investments (Aviso)",
    "mode": "static",
    "hub": "https://www.neiinvestments.com/",
-   "checked": "2026-08-20",
+   "checked": "2026-08-21",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -203083,7 +202535,7 @@
    "name": "Starlight Capital",
    "mode": "static",
    "hub": "https://starlightcapital.com/en/tax-information",
-   "checked": "2026-08-20",
+   "checked": "2026-08-21",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -203094,7 +202546,7 @@
    "name": "Ninepoint Partners",
    "mode": "static",
    "hub": "https://www.ninepoint.com/pfic-annual-information-statements/",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 25,
    "candidates": 25,
@@ -203106,10 +202558,10 @@
    "name": "National Bank Investments",
    "mode": "static",
    "hub": "https://www.nbinvestments.ca/regulatory-documents/pfic-statements.html",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
-   "statements": 949,
-   "candidates": 949,
+   "statements": 475,
+   "candidates": 475,
    "message": "",
    "derived_names": 0
   },
@@ -203118,7 +202570,7 @@
    "name": "Sprott",
    "mode": "static",
    "hub": "https://sprott.com/investment-strategies/exchange-listed-products/physical-bullion-funds/tax-guide/",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 6,
    "candidates": 6,
@@ -203130,19 +202582,18 @@
    "name": "Lysander Funds",
    "mode": "static",
    "hub": "https://www.lysanderfunds.com/passive-foreign-investment-company-pfic/",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "manual",
    "statements": 0,
-   "candidates": 6,
-   "message": "Lysander does publish PFIC statements - one combined document per year covering all its funds, going back to 2020, all linked from this page. They are NOT collected here by the publisher's own instruction: lysanderfunds.com/robots.txt disallows /app/uploads/, where every document lives. Open the page and download the year you need directly.",
-   "derived_names": 0
+   "candidates": 0,
+   "message": "Lysander does publish PFIC statements - one combined document per year covering all its funds, going back to 2020, all linked from this page. They are NOT collected here by the publisher's own instruction: lysanderfunds.com/robots.txt disallows /app/uploads/, where every document lives. Open the page and download the year you need directly."
   },
   {
    "id": "desjardins",
    "name": "Desjardins Funds",
    "mode": "static",
    "hub": "https://www.fondsdesjardins.com/",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 3,
    "candidates": 6,
@@ -203154,7 +202605,7 @@
    "name": "Guardian Capital",
    "mode": "static",
    "hub": "https://www.guardiancapital.com/investmentsolutions/reg-documents/",
-   "checked": "2026-08-19",
+   "checked": "2026-08-21",
    "status": "ok",
    "statements": 5,
    "candidates": 5,
