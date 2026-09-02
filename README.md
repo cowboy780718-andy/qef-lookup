@@ -79,6 +79,23 @@ a ZIP, and caches them at the edge — it never becomes a document archive.
 
 ---
 
+## Working with the nightly crawler
+
+`web/data/index.json` is generated, and the nightly job commits it. If you also
+change it locally you will get a merge conflict on a 6MB file.
+
+**Always Pull before you Push.** In GitHub Desktop, if the top bar shows a
+number next to a down arrow, click that first.
+
+If a conflict happens anyway, do not hand-merge it. Take the crawler's copy and
+regenerate:
+
+```bash
+git checkout --theirs web/data/index.json
+git add web/data/index.json
+python crawler/crawl.py --rebuild-only --since-year 2021
+```
+
 ## Setup
 
 ### 1. Run the crawler locally
