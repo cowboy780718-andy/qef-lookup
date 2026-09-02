@@ -1,10 +1,10 @@
 {
- "generated": "2026-09-02T04:46:18+00:00",
+ "generated": "2026-09-01T13:03:26+00:00",
  "stats": {
   "families": 33,
-  "families_ok": 22,
-  "funds": 4299,
-  "statements": 14483,
+  "families_ok": 15,
+  "funds": 4193,
+  "statements": 14359,
   "years": [
    2025,
    2024,
@@ -24,7 +24,7 @@
    "notes": "Most predictable publisher found. URL form: /content/dam/mackenzie/en/pfic/pfic-{YEAR}-{CODE}-en.pdf Both EN and FR posted; we take EN. Statements are not mailed to investors.",
    "access": null,
    "guidance": null,
-   "statement_count": 209,
+   "statement_count": 203,
    "fund_count": 63
   },
   {
@@ -151,11 +151,11 @@
    "mode": "browser",
    "fye": "12-31",
    "hub": "https://iaclarington.com/applicationsandforms/pficstatements",
-   "notes": "NOT CRAWLED, by their instruction. Their robots.txt opens with \"Allow: /*\" and then \"Disallow: /docs/\"; some robots.txt parsers let the broad Allow win, which is how this family was crawled at all. The conservative reading is the correct one - /docs/ is disallowed. Revisit only if robots.txt changes.",
+   "notes": "Needs a browser twice over. The raw HTML carries a stale 2021/2022 link list that now 404s; JavaScript replaces it with the current year on load. The PDFs themselves also reject non-browser TLS, answering requests/curl with a 404 HTML page while serving Chromium the real file.",
    "access": "manual",
-   "guidance": "iA Clarington publishes PFIC Annual Information Statements on this page. They are not collected here by the publisher's own instruction: iaclarington.com/robots.txt sets \"Disallow: /docs/\", and every statement lives under /docs/default-source/distributions-and-taxes/pfic/. Open the page and download the fund and year you need directly.",
-   "statement_count": 39,
-   "fund_count": 27
+   "guidance": "",
+   "statement_count": 0,
+   "fund_count": 0
   },
   {
    "id": "renaissance",
@@ -245,8 +245,8 @@
    "notes": "Two-level, like Manulife. The /funds index links ~87 individual fund pages, and each fund page links exactly one PFIC statement at documents.purposeinvest.com/Docs/{CODE}/pfic/en/{Fund Name} PFIC {YYYY-MM-DD}.pdf. Nothing PFIC-related appears on the index itself, which is why the earlier single-level crawl found zero. The originally bookmarked URL was a single fund page, not a hub.",
    "access": null,
    "guidance": null,
-   "statement_count": 80,
-   "fund_count": 80
+   "statement_count": 1,
+   "fund_count": 1
   },
   {
    "id": "sunlife-gi",
@@ -8809,25 +8809,25 @@
    "country": "CA",
    "name": "CI Active Credit ETF",
    "tickers": [
-    "FAO.U",
-    "FAO"
+    "FAO",
+    "FAO.U"
    ],
    "statements": [
-    {
-     "period_end": "2023-03-31",
-     "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/308112/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 42337,
-     "sha256": "586d3eae77e1ec66",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
      "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/308111/2023_PFIC_Annual_Information_Statement.pdf",
      "bytes": 42318,
      "sha256": "7e290f515dae7ed7",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-03-31",
+     "tax_year": 2023,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/308112/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 42337,
+     "sha256": "586d3eae77e1ec66",
      "confidence": 14,
      "fmt": "pdf"
     }
@@ -11811,9 +11811,9 @@
     {
      "period_end": "2021-03-31",
      "tax_year": 2021,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53277/2021_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53278/2021_PFIC_Annual_Information_Statement.pdf",
      "bytes": 47127,
-     "sha256": "622b58b6320a1ce5",
+     "sha256": "7a5186fd302d4351",
      "confidence": 9,
      "fmt": "pdf"
     }
@@ -11983,9 +11983,9 @@
     {
      "period_end": "2021-03-31",
      "tax_year": 2021,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53281/2021_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53282/2021_PFIC_Annual_Information_Statement.pdf",
      "bytes": 47126,
-     "sha256": "37083507b0099e6e",
+     "sha256": "b0692addcc3e38e5",
      "confidence": 9,
      "fmt": "pdf"
     }
@@ -19362,19 +19362,19 @@
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309050/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 47086,
-     "sha256": "1f779a7920f88f76",
-     "confidence": 9,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309049/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 48175,
+     "sha256": "69403af2b834d063",
+     "confidence": 11,
      "fmt": "pdf"
     },
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309049/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 48175,
-     "sha256": "69403af2b834d063",
-     "confidence": 11,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309050/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 47086,
+     "sha256": "1f779a7920f88f76",
+     "confidence": 9,
      "fmt": "pdf"
     },
     {
@@ -53690,9 +53690,9 @@
     {
      "period_end": "2024-03-31",
      "tax_year": 2024,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/328296/2024_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/328297/2024_PFIC_Annual_Information_Statement.pdf",
      "bytes": 42644,
-     "sha256": "86404c29ff501cef",
+     "sha256": "5f3f01022958903c",
      "confidence": 9,
      "fmt": "pdf"
     },
@@ -66177,9 +66177,9 @@
     {
      "period_end": "2021-03-31",
      "tax_year": 2021,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53382/2021_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/53381/2021_PFIC_Annual_Information_Statement.pdf",
      "bytes": 47112,
-     "sha256": "198df0850b653bc0",
+     "sha256": "35a5cbf197e0d64c",
      "confidence": 9,
      "fmt": "pdf"
     }
@@ -66952,19 +66952,19 @@
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309991/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 48511,
-     "sha256": "64541db42640758f",
-     "confidence": 11,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309992/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 47420,
+     "sha256": "04ee15a2fd6450d2",
+     "confidence": 9,
      "fmt": "pdf"
     },
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309992/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 47420,
-     "sha256": "04ee15a2fd6450d2",
-     "confidence": 9,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309991/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 48511,
+     "sha256": "64541db42640758f",
+     "confidence": 11,
      "fmt": "pdf"
     },
     {
@@ -67717,9 +67717,9 @@
     {
      "period_end": "2025-03-31",
      "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369263/2025_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369262/2025_PFIC_Annual_Information_Statement.pdf",
      "bytes": 43528,
-     "sha256": "82a5e904070ccc66",
+     "sha256": "1d6cfa899067464f",
      "confidence": 11,
      "fmt": "pdf"
     },
@@ -114506,9 +114506,9 @@
     {
      "period_end": "2025-03-31",
      "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369913/2025_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369912/2025_PFIC_Annual_Information_Statement.pdf",
      "bytes": 52547,
-     "sha256": "86d49e20949539ce",
+     "sha256": "34990f9c86058e94",
      "confidence": 11,
      "fmt": "pdf"
     },
@@ -119490,19 +119490,19 @@
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/310711/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 48621,
-     "sha256": "d6692a403f3d2c76",
-     "confidence": 11,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/310712/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 47121,
+     "sha256": "345dbb268dec6929",
+     "confidence": 9,
      "fmt": "pdf"
     },
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/310712/2023_PFIC_Annual_Information_Statement.pdf",
-     "bytes": 47121,
-     "sha256": "345dbb268dec6929",
-     "confidence": 9,
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/310711/2023_PFIC_Annual_Information_Statement.pdf",
+     "bytes": 48621,
+     "sha256": "d6692a403f3d2c76",
+     "confidence": 11,
      "fmt": "pdf"
     },
     {
@@ -125966,9 +125966,9 @@
     {
      "period_end": "2025-03-31",
      "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369739/2025_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369738/2025_PFIC_Annual_Information_Statement.pdf",
      "bytes": 51754,
-     "sha256": "1521af89a1bc14af",
+     "sha256": "c0b1ba75114ea0f6",
      "confidence": 11,
      "fmt": "pdf"
     },
@@ -130806,9 +130806,9 @@
     {
      "period_end": "2023-03-31",
      "tax_year": 2023,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309324/2023_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/309323/2023_PFIC_Annual_Information_Statement.pdf",
      "bytes": 47123,
-     "sha256": "ca9626f653d99b4c",
+     "sha256": "4b9644a17be729eb",
      "confidence": 9,
      "fmt": "pdf"
     },
@@ -141355,9 +141355,9 @@
     {
      "period_end": "2025-03-31",
      "tax_year": 2025,
-     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369509/2025_PFIC_Annual_Information_Statement.pdf",
+     "url": "https://funds.cifinancial.com/en/documents/static/Passive_Foreign_Investment_Company/Mutual_funds/369510/2025_PFIC_Annual_Information_Statement.pdf",
      "bytes": 41740,
-     "sha256": "7bc6c5b2d2765f3d",
+     "sha256": "2e9536e3600c8b63",
      "confidence": 9,
      "fmt": "pdf"
     },
@@ -162173,15 +162173,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-qcn-en.pdf",
-     "bytes": 488409,
-     "sha256": "96287b6656da7def",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-qcn-en.pdf",
@@ -162196,7 +162187,6 @@
     2025,
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -162438,15 +162428,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-qsb-en.pdf",
-     "bytes": 478621,
-     "sha256": "e4d9c8ecc50256aa",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-qsb-en.pdf",
@@ -162461,7 +162442,6 @@
     2025,
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -162694,15 +162674,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-mkb-en.pdf",
-     "bytes": 458400,
-     "sha256": "f875c4151612993b",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-mkb-en.pdf",
@@ -162716,7 +162687,6 @@
    "years": [
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -163203,15 +163173,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-qebl-en.pdf",
-     "bytes": 480112,
-     "sha256": "3a05eebd0f825d0e",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-qebl-en.pdf",
@@ -163226,7 +163187,6 @@
     2025,
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -163958,15 +163918,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-qdx-en.pdf",
-     "bytes": 453207,
-     "sha256": "692736993a908ce7",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-qdx-en.pdf",
@@ -163981,7 +163932,6 @@
     2025,
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -164088,15 +164038,6 @@
      "fmt": "pdf"
     },
     {
-     "period_end": "2022-12-31",
-     "tax_year": 2022,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2023-mivg-en.pdf",
-     "bytes": 452832,
-     "sha256": "876d136cb3e5cec4",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2021-12-31",
      "tax_year": 2021,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2022-mivg-en.pdf",
@@ -164111,7 +164052,6 @@
     2025,
     2024,
     2023,
-    2022,
     2021
    ]
   },
@@ -173962,190 +173902,6 @@
    ]
   },
   {
-   "id": "purpose::february-13-2026-purpose-bitcoin-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "February 13, 2026 Purpose Bitcoin ETF",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/BTCC/pfic/en/Purpose%20Bitcoin%20ETF%20PFIC%202026-02-13.pdf",
-     "bytes": 180480,
-     "sha256": "aed1fb64d715fd43",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::february-13-2026-purpose-bitcoin-yield-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "February 13, 2026 Purpose Bitcoin Yield ETF",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/BTCY/pfic/en/Purpose%20Bitcoin%20Yield%20ETF%20PFIC%202026-02-13.pdf",
-     "bytes": 301572,
-     "sha256": "48748d80d46eebe2",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::february-13-2026-purpose-core-bitcoin-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "February 13, 2026 Purpose Core Bitcoin ETF",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/BTCO/pfic/en/Purpose%20Core%20Bitcoin%20ETF%20PFIC%202026-02-13.pdf",
-     "bytes": 216076,
-     "sha256": "3adbe002bb4f262d",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::february-13-2026-purpose-core-ether-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "February 13, 2026 Purpose Core Ether ETF",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/ETHO/pfic/en/Purpose%20Core%20Ether%20ETF%20PFIC%202026-02-13.pdf",
-     "bytes": 214870,
-     "sha256": "16ed2fab3bebc1f8",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::february-13-2026-purpose-ether-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "February 13, 2026 Purpose Ether ETF",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/ETHH/pfic/en/Purpose%20Ether%20ETF%20PFIC%202026-02-13.pdf",
-     "bytes": 202834,
-     "sha256": "575d337a6194e855",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::february-13-2026-purpose-ether-yield-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "February 13, 2026 Purpose Ether Yield ETF",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/ETHY/pfic/en/Purpose%20Ether%20Yield%20ETF%20PFIC%202026-02-13.pdf",
-     "bytes": 223784,
-     "sha256": "6e0196808485f967",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::february-13-2026-purpose-solana-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "February 13, 2026 Purpose Solana ETF",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/SOLL/pfic/en/Purpose%20Solana%20ETF%20PFIC%202026-02-13.pdf",
-     "bytes": 214841,
-     "sha256": "d97a061a9a716fb8",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::february-13-2026-purpose-xrp-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "February 13, 2026 Purpose XRP ETF",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/XRPP/pfic/en/Purpose%20XRP%20ETF%20PFIC%202026-02-13.pdf",
-     "bytes": 213676,
-     "sha256": "922127d1b7616495",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
    "id": "purpose::march-31-2025-purpose-international-tactical-hedged-equity-fund",
    "family": "purpose",
    "family_name": "Purpose Investments",
@@ -174166,1687 +173922,6 @@
    "duplicates_hidden": 0,
    "years": [
     2024
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-amd-amd-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 AMD (AMD) Yield Shares Purpose ETF",
-   "tickers": [
-    "AMD"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YAMD/pfic/en/AMD%20(AMD)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 201579,
-     "sha256": "842d95ece8b4143c",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-alphabet-googl-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Alphabet (GOOGL) Yield Shares Purpose ETF",
-   "tickers": [
-    "GOOGL"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YGOG/pfic/en/Alphabet%20(GOOGL)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 248369,
-     "sha256": "068ee604ff0f24dc",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-amazon-amzn-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Amazon (AMZN) Yield Shares Purpose ETF",
-   "tickers": [
-    "AMZN"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YAMZ/pfic/en/Amazon%20(AMZN)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 204080,
-     "sha256": "088d6e61661be495",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-apple-aapl-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Apple (AAPL) Yield Shares Purpose ETF",
-   "tickers": [
-    "AAPL"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/APLY/pfic/en/Apple%20(AAPL)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 201447,
-     "sha256": "0a8cc3cca2942f4e",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-berkshire-hathaway-brk-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Berkshire Hathaway (BRK) Yield Shares Purpose ETF",
-   "tickers": [
-    "BRK"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/BRKY/pfic/en/Berkshire%20Hathaway%20(BRK)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 251562,
-     "sha256": "f2405621b5398337",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-big-banc-split-corp",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Big Banc Split Corp",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/BNK/pfic/en/Big%20Banc%20Split%20Corp.%20PFIC%202026-03-31.pdf",
-     "bytes": 201771,
-     "sha256": "ef3033c5366d4402",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-broadcom-avgo-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Broadcom (AVGO) Yield Shares Purpose ETF",
-   "tickers": [
-    "AVGO"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YAVG/pfic/en/Broadcom%20(AVGO)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 249861,
-     "sha256": "958b8ad8c6a3966f",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-coinbase-coin-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Coinbase (COIN) Yield Shares Purpose ETF",
-   "tickers": [
-    "COIN"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YCON/pfic/en/Coinbase%20(COIN)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 248300,
-     "sha256": "0c87227fe5de5430",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-costco-cost-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Costco (COST) Yield Shares Purpose ETF",
-   "tickers": [
-    "COST"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YCST/pfic/en/Costco%20(COST)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 202348,
-     "sha256": "2746fe831b0e073d",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-mbp-canadian-dividend-growth-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 MBP Canadian Dividend & Growth Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/MBPC/pfic/en/MBP%20Canadian%20Dividend%20Growth%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 203226,
-     "sha256": "e548ff90e3714ea7",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-mbp-us-growth-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 MBP US Growth Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/MBPU/pfic/en/MBP%20US%20Growth%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 199275,
-     "sha256": "7fb552261ece7874",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-meta-meta-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 META (META) Yield Shares Purpose ETF",
-   "tickers": [
-    "META"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YMET/pfic/en/Meta%20(META)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 246107,
-     "sha256": "e878842002d5a12c",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-microsoft-msft-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Microsoft (MSFT) Yield Shares Purpose ETF",
-   "tickers": [
-    "MSFT"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/MSFY/pfic/en/Microsoft%20(MSFT)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 251632,
-     "sha256": "81d064447524580d",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-nvidia-nvda-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 NVIDIA (NVDA) Yield Shares Purpose ETF",
-   "tickers": [
-    "NVDA"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YNVD/pfic/en/NVIDIA%20(NVDA)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 202821,
-     "sha256": "de556d97920692c2",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-netflix-nflx-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Netflix (NFLX) Yield Shares Purpose ETF",
-   "tickers": [
-    "NFLX"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YNET/pfic/en/Netflix%20(NFLX)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 205291,
-     "sha256": "c19b51298a7cdb59",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-palantir-pltr-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Palantir (PLTR) Yield Shares Purpose ETF",
-   "tickers": [
-    "PLTR"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YPLT/pfic/en/Palantir%20(PLTR)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 202286,
-     "sha256": "b4f94e8ed4168045",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-active-balanced-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Active Balanced Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PABF/pfic/en/Purpose%20Active%20Balanced%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 225821,
-     "sha256": "60cc2bd71a9634df",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-active-conservative-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Active Conservative Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PACF/pfic/en/Purpose%20Active%20Conservative%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 225312,
-     "sha256": "d79e3dcd21804c2a",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-active-growth-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Active Growth Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PAGF/pfic/en/Purpose%20Active%20Growth%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 226210,
-     "sha256": "52ba22bf54d12e35",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-best-ideas-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Best Ideas Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PBI/pfic/en/Purpose%20Best%20Ideas%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 270557,
-     "sha256": "e3e39895cb2ee8b6",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-brookfield-bn-yield-shares-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Brookfield (BN) Yield Shares ETF",
-   "tickers": [
-    "BN"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/BNY/pfic/en/Purpose%20Brookfield%20(BN)%20Yield%20Shares%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 204760,
-     "sha256": "482413ace9fdafe2",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-canadian-financial-income-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Canadian Financial Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/BNC/pfic/en/Purpose%20Canadian%20Financial%20Income%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 202408,
-     "sha256": "544e458c93c7bdf1",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-canadian-natural-resources-cnq-yield-shares-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Canadian Natural Resources (CNQ) Yield Shares ETF",
-   "tickers": [
-    "CNQ"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/CNQY/pfic/en/Purpose%20Canadian%20Natural%20Resources%20(CNQ)%20Yield%20Shares%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 287071,
-     "sha256": "33fd3f99fb8f63d2",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-canadian-preferred-share-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Canadian Preferred Share Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/RPS/pfic/en/Purpose%20Canadian%20Preferred%20Share%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 202590,
-     "sha256": "c79598ad956de3c2",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-cash-management-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Cash Management Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/MNY/pfic/en/Purpose%20Cash%20Management%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 247166,
-     "sha256": "9542faba76ea7fbf",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-conservative-income-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Conservative Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PRP/pfic/en/Purpose%20Conservative%20Income%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 205856,
-     "sha256": "acb71e77a6e0b7b2",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-core-dividend-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Core Dividend Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PDF/pfic/en/Purpose%20Core%20Dividend%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 266735,
-     "sha256": "5a96d620e3527589",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-core-equity-income-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Core Equity Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/RDE/pfic/en/Purpose%20Core%20Equity%20Income%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 207248,
-     "sha256": "0c2d54dfc5935dc2",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-couche-tard-atd-yield-shares-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Couche-Tard (ATD) Yield Shares ETF",
-   "tickers": [
-    "ATD"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/ATDY/pfic/en/Purpose%20Couche-Tard%20(ATD)%20Yield%20Shares%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 247650,
-     "sha256": "762b509f3602469b",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-credit-opportunities-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Credit Opportunities Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/CROPS/pfic/en/Purpose%20Credit%20Opportunities%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 246372,
-     "sha256": "16ec725b6cd46cc6",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-diversified-real-asset-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Diversified Real Asset Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PRA/pfic/en/Purpose%20Diversified%20Real%20Asset%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 211193,
-     "sha256": "98ac727bc6adac71",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-dollarama-dol-yield-shares-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Dollarama (DOL) Yield Shares ETF",
-   "tickers": [
-    "DOL"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/DOLY/pfic/en/Purpose%20Dollarama%20(DOL)%20Yield%20Shares%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 202453,
-     "sha256": "b0258144c8d39f3e",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-emerging-markets-dividend-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Emerging Markets Dividend Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/REM/pfic/en/Purpose%20Emerging%20Markets%20Dividend%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 206897,
-     "sha256": "0f24f4e9e6ab83b2",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-enbridge-enb-yield-shares-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Enbridge (ENB) Yield Shares ETF",
-   "tickers": [
-    "ENB"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/ENBY/pfic/en/Purpose%20Enbridge%20(ENB)%20Yield%20Shares%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 204532,
-     "sha256": "813c3ac68067358d",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-enhanced-dividend-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Enhanced Dividend Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PDIV/pfic/en/Purpose%20Enhanced%20Dividend%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 199122,
-     "sha256": "6f1b6ed44e6e801f",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-enhanced-premium-yield-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Enhanced Premium Yield Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PAYF/pfic/en/Purpose%20Enhanced%20Premium%20Yield%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 213816,
-     "sha256": "633970938a464c7d",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-global-bond-class",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Global Bond Class",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/IGB/pfic/en/Purpose%20Global%20Bond%20Class%20PFIC%202026-03-31.pdf",
-     "bytes": 207951,
-     "sha256": "d32401820a31e85a",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-global-bond-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Global Bond Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/BND/pfic/en/Purpose%20Global%20Bond%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 282529,
-     "sha256": "c71d5aeda2a816c0",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-global-flexible-credit-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Global Flexible Credit Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/FLX/pfic/en/Purpose%20Global%20Flexible%20Credit%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 191901,
-     "sha256": "41e368b75f6deb11",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-global-innovators-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Global Innovators Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PINV/pfic/en/Purpose%20Global%20Innovators%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 212426,
-     "sha256": "f6cfdc9ff8dabd18",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-global-resource-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Global Resource Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/REDRGI/pfic/en/Purpose%20Global%20Resource%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 208169,
-     "sha256": "c25573a42557fabf",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-gold-bullion-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Gold Bullion Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/KILO/pfic/en/Purpose%20Gold%20Bullion%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 189336,
-     "sha256": "ceb28a83bdfad781",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-high-interest-savings-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose High Interest Savings Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PSA/pfic/en/Purpose%20High%20Interest%20Savings%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 247951,
-     "sha256": "3a37907cd3a47d8e",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-international-dividend-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose International Dividend Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PID/pfic/en/Purpose%20International%20Dividend%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 247048,
-     "sha256": "2f88f4bf80b4d122",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-monthly-income-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Monthly Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PIN/pfic/en/Purpose%20Monthly%20Income%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 216884,
-     "sha256": "d080d9ffec6ec7e5",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-multi-asset-income-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Multi-Asset Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PINC/pfic/en/Purpose%20Multi-Asset%20Income%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 201592,
-     "sha256": "a3e2b7902c83a016",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-multi-strategy-market-neutral-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Multi-Strategy Market Neutral Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PMM/pfic/en/Purpose%20Multi-Strategy%20Market%20Neutral%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 212868,
-     "sha256": "ae193ae9e8d2312d",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-premium-money-market-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Premium Money Market Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PMR/pfic/en/Purpose%20Premium%20Money%20Market%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 203185,
-     "sha256": "3cb0a2685b290af0",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-premium-yield-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Premium Yield Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PYF/pfic/en/Purpose%20Premium%20Yield%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 308584,
-     "sha256": "dad9ae71c8e7775c",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-rbc-ry-yield-shares-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose RBC (RY) Yield Shares ETF",
-   "tickers": [
-    "RY"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/RBCY/pfic/en/Purpose%20RBC%20(RY)%20Yield%20Shares%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 247146,
-     "sha256": "3661d5506d891826",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-real-estate-income-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Real Estate Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PHR/pfic/en/Purpose%20Real%20Estate%20Income%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 199745,
-     "sha256": "60f19af97ae8a3dc",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-scotiabank-bns-yield-shares-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Scotiabank (BNS) Yield Shares ETF",
-   "tickers": [
-    "BNS"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/BNSY/pfic/en/Purpose%20Scotiabank%20(BNS)%20Yield%20Shares%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 249746,
-     "sha256": "6977e0a56c6228c8",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-shopify-shop-yield-shares-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Shopify (SHOP) Yield Shares ETF",
-   "tickers": [
-    "SHOP"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/SHPY/pfic/en/Purpose%20Shopify%20(SHOP)%20Yield%20Shares%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 203990,
-     "sha256": "3bee9769f723538b",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-silver-bullion-trust",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Silver Bullion Trust",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/SBT/pfic/en/Purpose%20Silver%20Bullion%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 334722,
-     "sha256": "ed496b6a68008f34",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-specialty-lending-trust",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Specialty Lending Trust",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/SPEC/pfic/en/Purpose%20Specialty%20Lending%20Trust%20PFIC%202026-03-31.pdf",
-     "bytes": 208659,
-     "sha256": "9d779dc70b7a9dda",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-strategic-yield-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Strategic Yield Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/SYLD/pfic/en/Purpose%20Strategic%20Yield%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 201786,
-     "sha256": "f7787d24079abdae",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-structured-equity-growth-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Structured Equity Growth Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PSG/pfic/en/Purpose%20Structured%20Equity%20Growth%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 202921,
-     "sha256": "a22c56f18fffd34a",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-structured-equity-yield-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Structured Equity Yield Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PSY2/pfic/en/Purpose%20Structured%20Equity%20Yield%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 205618,
-     "sha256": "b532fcc636052324",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-structured-equity-yield-plus-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Structured Equity Yield Plus Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PSYL/pfic/en/Purpose%20Structured%20Equity%20Yield%20Plus%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 230702,
-     "sha256": "6feb477e954fa182",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-td-td-yield-shares-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose TD (TD) Yield Shares ETF",
-   "tickers": [
-    "TD"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/TDY/pfic/en/Purpose%20TD%20(TD)%20Yield%20Shares%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 201164,
-     "sha256": "8c46e47805bb9833",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-tactical-asset-allocation-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Tactical Asset Allocation Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/RTA/pfic/en/Purpose%20Tactical%20Asset%20Allocation%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 212326,
-     "sha256": "e5e591ce82b79db1",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-tactical-hedged-equity-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Tactical Hedged Equity Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PHE/pfic/en/Purpose%20Tactical%20Hedged%20Equity%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 452834,
-     "sha256": "3ccf8a7678713db6",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-tactical-thematic-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Tactical Thematic Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/RTT/pfic/en/Purpose%20Tactical%20Thematic%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 202713,
-     "sha256": "02ea9ac2c8c81ca3",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-telus-t-yield-shares-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Telus (T) Yield Shares ETF",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/TY/pfic/en/Purpose%20Telus%20(T)%20Yield%20Shares%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 200930,
-     "sha256": "fd455cf9fbcaf58a",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-total-return-bond-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose Total Return Bond Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PBD/pfic/en/Purpose%20Total%20Return%20Bond%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 208760,
-     "sha256": "cbec7fad38722ba5",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-us-cash-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose US Cash Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/PSU_U/pfic/en/Purpose%20US%20Cash%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 246259,
-     "sha256": "64617e65072d3c2d",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-us-preferred-share-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose US Preferred Share Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/RPU/pfic/en/Purpose%20US%20Preferred%20Share%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 185155,
-     "sha256": "0d03bd32990750e2",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-purpose-usd-cash-management-fund",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Purpose USD Cash Management Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/MNU_U/pfic/en/Purpose%20USD%20Cash%20Management%20Fund%20PFIC%202026-03-31.pdf",
-     "bytes": 202935,
-     "sha256": "45a1ada0a9e32f7b",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-tech-innovators-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Tech Innovators Yield Shares Purpose ETF",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YMAG/pfic/en/Tech%20Innovators%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 209646,
-     "sha256": "0fa9e076e23636f2",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-tesla-tsla-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 Tesla (TSLA) Yield Shares Purpose ETF",
-   "tickers": [
-    "TSLA"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YTSL/pfic/en/Tesla%20(TSLA)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 201465,
-     "sha256": "b62dfb40ab49e73b",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "purpose::march-31-2026-unitedhealth-group-unh-yield-shares-purpose-etf",
-   "family": "purpose",
-   "family_name": "Purpose Investments",
-   "country": "CA",
-   "name": "March 31, 2026 UnitedHealth Group (UNH) Yield Shares Purpose ETF",
-   "tickers": [
-    "UNH"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://documents.purposeinvest.com/Docs/YUNH/pfic/en/UnitedHealth%20Group%20(UNH)%20Yield%20Shares%20Purpose%20ETF%20PFIC%202026-03-31.pdf",
-     "bytes": 249167,
-     "sha256": "bd7eb90a401c654f",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
    ]
   },
   {
@@ -201959,747 +200034,6 @@
     2022,
     2021
    ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-agile-core-plus-bond-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Agile Core Plus Bond Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf210_ia-clarington-agile-core-plus-bond-fund.pdf?sfvrsn=985e4adc_3",
-     "bytes": 277341,
-     "sha256": "4cd70ab2a1634743",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-agile-global-total-return-income-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Agile Global Total Return Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf008_ia-clarington-agile-global-total-return-income-fund.pdf?sfvrsn=a55e4adc_3",
-     "bytes": 256655,
-     "sha256": "192b54a156b71447",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-canadian-dividend-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Canadian Dividend Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf513_ia-clarington-canadian-dividend-fund.pdf?sfvrsn=f5d4adc_3",
-     "bytes": 241880,
-     "sha256": "dc5823b878899c49",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf513_ia-clarington-canadian-dividend-fund.pdf?sfvrsn=679d7fdc_6",
-     "bytes": 300794,
-     "sha256": "1de44be5a1ab6ade",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-canadian-small-cap-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Canadian Small Cap Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf535_ia-clarington-canadian-small-cap-fund.pdf?sfvrsn=cf9d7fdc_6",
-     "bytes": 300280,
-     "sha256": "4310aded85b214e9",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-core-plus-bond-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Core Plus Bond Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf210_ia-clarington-core-plus-bond-fund.pdf?sfvrsn=1f9d7fdc_10",
-     "bytes": 306085,
-     "sha256": "0ec2155fd0596f69",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-floating-rate-income-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Floating Rate Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf508_ia-clarington-floating-rate-income-fund.pdf?sfvrsn=989e7fdc_7",
-     "bytes": 326461,
-     "sha256": "c3a9c410de046eac",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-global-equity-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Global Equity Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf567_ia-clarington-global-equity-fund.pdf?sfvrsn=f29d7fdc_14",
-     "bytes": 300416,
-     "sha256": "9b34ff290b8021f5",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-global-multi-factor-equity-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Global Multi-Factor Equity Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf003_ia-clarington-global-multi-factor-equity-fund.pdf?sfvrsn=df5e4adc_3",
-     "bytes": 257980,
-     "sha256": "2f5e3f4c33a2c8ce",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-inhance-canadian-equity-sri-class",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Inhance Canadian Equity SRI Class",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf510_ia-clarington-inhance-canadian-equity-sri-class.pdf?sfvrsn=3e5d4adc_3",
-     "bytes": 255158,
-     "sha256": "740ba38d42c43cdb",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf510_ia-clarington-inhance-canadian-equity-sri-class.pdf?sfvrsn=6b9d7fdc_10",
-     "bytes": 299302,
-     "sha256": "9630a5787494d6bb",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-inhance-global-equity-sri-class",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Inhance Global Equity SRI Class",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf530_ia-clarington-inhance-global-equity-sri-class.pdf?sfvrsn=d65d4adc_3",
-     "bytes": 256071,
-     "sha256": "f11c15856862ab0b",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf530_ia-clarington-inhance-global-equity-sri-class.pdf?sfvrsn=ec9d7fdc_12",
-     "bytes": 301833,
-     "sha256": "5854b6d691642ee9",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-inhance-growth-sri-portfolio",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Inhance Growth SRI Portfolio",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf862_ia-clarington-inhance-growth-sri-portfolio.pdf?sfvrsn=e59e7fdc_6",
-     "bytes": 316375,
-     "sha256": "1aba29436fe13bb5",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-inhance-monthly-income-sri-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Inhance Monthly Income SRI Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf712_ia-clarington-inhance-monthly-income-sri-fund.pdf?sfvrsn=415c4adc_3",
-     "bytes": 257213,
-     "sha256": "c66d87f6cdd2cc41",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf712_ia-clarington-inhance-monthly-income-sri-fund.pdf?sfvrsn=e79e7fdc_6",
-     "bytes": 299694,
-     "sha256": "d72a228f251fab0a",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-loomis-floating-rate-income-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Loomis Floating Rate Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf508_ia-clarington-loomis-floating-rate-income-fund.pdf?sfvrsn=5b5d4adc_3",
-     "bytes": 269425,
-     "sha256": "55eddde02232e74a",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-loomis-global-allocation-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Loomis Global Allocation Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf518_ia-clarington-loomis-global-allocation-fund.pdf?sfvrsn=e25d4adc_3",
-     "bytes": 262205,
-     "sha256": "2e9c29268b5326d7",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf518_ia-clarington-loomis-global-allocation-fund.pdf?sfvrsn=1c9d7fdc_10",
-     "bytes": 300526,
-     "sha256": "df1c6601a7afd18e",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-loomis-global-equity-opportunities-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Loomis Global Equity Opportunities Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf016_ia-clarington-loomis-global-equity-opportunities-fund.pdf?sfvrsn=b35e4adc_3",
-     "bytes": 259332,
-     "sha256": "4cce00c8f2ded43b",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf016_ia-clarington-loomis-global-equity-opportunities-fund.pdf?sfvrsn=129d7fdc_10",
-     "bytes": 306340,
-     "sha256": "3146a0873862cfec",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-loomis-global-multisector-bond-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Loomis Global Multisector Bond Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf400_ia-clarington-loomis-global-multisector-bond-fund.pdf?sfvrsn=4c5d4adc_3",
-     "bytes": 257367,
-     "sha256": "64393a23a604db52",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf400_ia-clarington-loomis-global-multisector-bond-fund.pdf?sfvrsn=aa9e7fdc_6",
-     "bytes": 294670,
-     "sha256": "e4c0b06bdf246cab",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-loomis-u-s-dollar-floating-rate-income-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Loomis U.S. Dollar Floating Rate Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf213_ia-clarington-loomis-us-dollar-floating-rate-income-fund.pdf?sfvrsn=665d4adc_3",
-     "bytes": 255189,
-     "sha256": "e5ce1222a7187389",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-monthly-income-balanced-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Monthly Income Balanced Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf711_ia-clarington-monthly-income-balanced-fund.pdf?sfvrsn=785c4adc_3",
-     "bytes": 284640,
-     "sha256": "9fef6aefb11b3ef4",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf711_ia-clarington-monthly-income-balanced-fund.pdf?sfvrsn=ef9e7fdc_12",
-     "bytes": 328333,
-     "sha256": "6de6fe2b6ae9fe47",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-qv-canadian-small-cap-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington QV Canadian Small Cap Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf535_ia-clarington-qv-canadian-small-cap-fund.pdf?sfvrsn=bc5d4adc_3",
-     "bytes": 259466,
-     "sha256": "c89abf68205b7e6d",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-qv-global-equity-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington QV Global Equity Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf567-ia-clarington-qv-global-equity-fund.pdf?sfvrsn=fa1e4adc_7",
-     "bytes": 277270,
-     "sha256": "bdcd7437755d47cf",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-qv-u-s-equity-currency-neutral-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington QV U.S. Equity Currency Neutral Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf524_ia-clarington-qv-us-equity-currency-neutral-fund.pdf?sfvrsn=d75d4adc_3",
-     "bytes": 256502,
-     "sha256": "72fabdc0ffab5db4",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-strategic-equity-income-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Strategic Equity Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf707_ia-clarington-strategic-equity-income-fund.pdf?sfvrsn=7f5c4adc_3",
-     "bytes": 259810,
-     "sha256": "0641334cbb9ff214",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf707_ia-clarington-strategic-equity-income-fund.pdf?sfvrsn=9a9e7fdc_10",
-     "bytes": 302918,
-     "sha256": "5886a2f46f245915",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-strategic-income-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington Strategic Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf516_ia-clarington-strategic-income-fund.pdf?sfvrsn=155d4adc_3",
-     "bytes": 262547,
-     "sha256": "8e76ee6957c55ca7",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf516_ia-clarington-strategic-income-fund.pdf?sfvrsn=9b9e7fdc_10",
-     "bytes": 300935,
-     "sha256": "c672380e20cbaef5",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-u-s-dividend-growth-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington U.S. Dividend Growth Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf002_ia-clarington-us-dividend-growth-fund.pdf?sfvrsn=f65e4adc_3",
-     "bytes": 257870,
-     "sha256": "947c71a8203e57ce",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf002_ia-clarington-u-s-dividend-growth-fund.pdf?sfvrsn=bf9d7fdc_17",
-     "bytes": 306166,
-     "sha256": "3dcf6b7b4f63acc4",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-u-s-dollar-floating-rate-income-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington U.S. Dollar Floating Rate Income Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf213_ia-clarington-u-s-dollar-floating-rate-income-fund.pdf?sfvrsn=6a9d7fdc_14",
-     "bytes": 304604,
-     "sha256": "b2451f800e2061ee",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-clarington-u-s-equity-currency-neutral-fund",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Clarington U.S. Equity Currency Neutral Fund",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf524_ia-clarington-u-s-equity-currency-neutral-fund.pdf?sfvrsn=ef9d7fdc_14",
-     "bytes": 301782,
-     "sha256": "b376d006dbcb3221",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2024
-   ]
-  },
-  {
-   "id": "ia-clarington::ia-wealth-core-bond-pool",
-   "family": "ia-clarington",
-   "family_name": "iA Clarington Investments",
-   "country": "CA",
-   "name": "IA Wealth Core Bond Pool",
-   "tickers": [],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2025/ais/mf702_ia-wealth-core-bond-pool.pdf?sfvrsn=825d4adc_3",
-     "bytes": 256130,
-     "sha256": "99b4bca6322407c4",
-     "confidence": 15,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-12-31",
-     "tax_year": 2024,
-     "url": "https://iaclarington.com/docs/default-source/distributions-and-taxes/pfic/2024/ais/mf702_ia-wealth-core-bond-pool.pdf?sfvrsn=bc9d7fdc_8",
-     "bytes": 300190,
-     "sha256": "cea63bd9ea82cb4c",
-     "confidence": 15,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
   }
  ],
  "negatives": [
@@ -202772,11 +200106,11 @@
    "name": "Mackenzie Investments",
    "mode": "static",
    "hub": "https://www.mackenzieinvestments.com/en/legal-and-privacy/passive-foreign-investment-company-statements",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
-   "statements": 209,
+   "statements": 203,
    "candidates": 209,
-   "message": "hub needed curl",
+   "message": "hub needed browser",
    "derived_names": 0
   },
   {
@@ -202784,7 +200118,7 @@
    "name": "TD Asset Management",
    "mode": "static",
    "hub": "https://www.td.com/ca/en/asset-management/resources/pfic-reporting",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
    "statements": 417,
    "candidates": 417,
@@ -202796,34 +200130,33 @@
    "name": "Vanguard Investments Canada",
    "mode": "static",
    "hub": "https://www.vanguard.ca/en/tools-and-resources/tax-centre",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
    "statements": 182,
-   "candidates": 183,
+   "candidates": 188,
    "message": "",
    "derived_names": 0,
-   "skipped_old": 144
+   "skipped_old": 148
   },
   {
    "id": "russell-ca",
    "name": "Russell Investments Canada",
    "mode": "static",
    "hub": "https://russellinvestments.com/content/ri/ca/en/legal/pfic.html",
-   "checked": "2026-08-19",
-   "status": "ok",
-   "statements": 242,
-   "candidates": 242,
-   "message": "",
-   "derived_names": 0
+   "checked": "2026-09-01",
+   "status": "down",
+   "statements": 0,
+   "candidates": 0,
+   "message": "hub unreachable by plain HTTP, curl or browser"
   },
   {
    "id": "ci-gam",
    "name": "CI Global Asset Management",
    "mode": "static",
    "hub": "https://funds.cifinancial.com/en/funds/pfic-documents",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
-   "statements": 12589,
+   "statements": 12643,
    "candidates": 12643,
    "message": "",
    "derived_names": 0,
@@ -202834,11 +200167,11 @@
    "name": "Mawer Investment Management",
    "mode": "static",
    "hub": "https://www.mawer.com/documents",
-   "checked": "2026-08-19",
-   "status": "ok",
-   "statements": 1,
+   "checked": "2026-09-01",
+   "status": "empty",
+   "statements": 0,
    "candidates": 1,
-   "message": "",
+   "message": "candidates found but none verified as PFIC statements",
    "derived_names": 0
   },
   {
@@ -202846,7 +200179,7 @@
    "name": "CIBC Asset Management",
    "mode": "static",
    "hub": "https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance/etf-pfic-annual-statement.html",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
    "statements": 20,
    "candidates": 20,
@@ -202858,20 +200191,19 @@
    "name": "BlackRock / iShares Canada",
    "mode": "static",
    "hub": "https://www.blackrock.com/ca/investors/en/resources/tax-information-centre",
-   "checked": "2026-08-19",
-   "status": "ok",
-   "statements": 232,
+   "checked": "2026-09-01",
+   "status": "blocked",
+   "statements": 0,
    "candidates": 720,
-   "message": "",
-   "derived_names": 72,
-   "pdf_mode": "browser"
+   "message": "documents unreachable (plain HTTP=404; curl=404; browser=404; plain HTTP=404; curl=404; browser=404)",
+   "derived_names": 72
   },
   {
    "id": "capitalgroup-ca",
    "name": "Capital Group Canada",
    "mode": "static",
    "hub": "https://www.capitalgroup.com/advisor/ca/en/service/tax-centre.html",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -202882,7 +200214,7 @@
    "name": "Fidelity Investments Canada",
    "mode": "static",
    "hub": "https://www.fidelity.ca/en/pfic_etf_statements/",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
    "statements": 213,
    "candidates": 213,
@@ -202895,11 +200227,11 @@
    "name": "iA Clarington Investments",
    "mode": "browser",
    "hub": "https://iaclarington.com/applicationsandforms/pficstatements",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "manual",
-   "statements": 39,
+   "statements": 0,
    "candidates": 123,
-   "message": "iA Clarington publishes PFIC Annual Information Statements on this page. They are not collected here by the publisher's own instruction: iaclarington.com/robots.txt sets \"Disallow: /docs/\", and every statement lives under /docs/default-source/distributions-and-taxes/pfic/. Open the page and download the fund and year you need directly.",
+   "message": "iA Clarington publishes these statements, but iaclarington.com/robots.txt disallows /docs/ where they live, so they are not collected here. Open their page and download directly.",
    "derived_names": 0
   },
   {
@@ -202907,7 +200239,7 @@
    "name": "Renaissance Investments (CIBC)",
    "mode": "static",
    "hub": "https://www.renaissanceinvestments.ca/reporting-governance/pfic",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
    "statements": 169,
    "candidates": 169,
@@ -202919,18 +200251,18 @@
    "name": "Hamilton ETFs",
    "mode": "browser",
    "hub": "https://hamiltonetfs.com/tax-information/",
-   "checked": "2026-08-19",
-   "status": "ok",
-   "statements": 51,
+   "checked": "2026-09-01",
+   "status": "empty",
+   "statements": 0,
    "candidates": 2,
-   "message": ""
+   "message": "no statement tables found on the listed pages"
   },
   {
    "id": "rbc-gam",
    "name": "RBC Global Asset Management / PH&N",
    "mode": "browser",
    "hub": "https://www.rbcgam.com/en/ca/products/pfic-reporting",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
    "statements": 921,
    "candidates": 921,
@@ -202942,7 +200274,7 @@
    "name": "BMO Global Asset Management",
    "mode": "static",
    "hub": "https://bmogam.com/ca-en/resources/legal-and-regulatory-documents/pfic/",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
    "statements": 217,
    "candidates": 217,
@@ -202955,20 +200287,19 @@
    "name": "Manulife Investment Management",
    "mode": "browser",
    "hub": "https://www.manulifeim.com/retail/ca/en/regulatory/passive-foreign-investment-company-pfic",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
    "statements": 61,
    "candidates": 61,
-   "message": "hub needed curl",
-   "derived_names": 0,
-   "pdf_transport": "curl"
+   "message": "",
+   "derived_names": 0
   },
   {
    "id": "globalx-ca",
    "name": "Global X Investments Canada (formerly Horizons)",
    "mode": "browser",
    "hub": "https://www.globalx.ca/pfic",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
    "statements": 1,
    "candidates": 1,
@@ -202980,9 +200311,9 @@
    "name": "Purpose Investments",
    "mode": "static",
    "hub": "https://www.purposeinvest.com/funds",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
-   "statements": 80,
+   "statements": 1,
    "candidates": 80,
    "message": "",
    "derived_names": 0
@@ -202990,37 +200321,35 @@
   {
    "id": "sunlife-gi",
    "name": "Sun Life Global Investments",
-   "mode": "browser",
+   "mode": "static",
    "hub": "https://www.sunlifeglobalinvestments.com/en/resources/regulatory-documents/",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
-   "message": "Sun Life states on its regulatory documents page that it provides PFIC Annual Information Statements for 17 of its mutual funds - but the statements themselves are not linked anywhere public. The page has a \"Passive Foreign Investment Company (PFIC)\" section whose documents are prospectuses and financial statements, not PFIC statements, and no /pfic page exists. They are almost certainly issued on request. Contact Sun Life or the advisor of record to obtain one.",
-   "derived_names": 0
+   "message": "Sun Life states on its regulatory documents page that it provides PFIC Annual Information Statements for 17 of its mutual funds - but the statements themselves are not linked anywhere public. The page has a \"Passive Foreign Investment Company (PFIC)\" section whose documents are prospectuses and financial statements, not PFIC statements, and no /pfic page exists. They are almost certainly issued on request. Contact Sun Life or the advisor of record to obtain one."
   },
   {
    "id": "pimco-ca",
    "name": "PIMCO Canada",
    "mode": "browser",
    "hub": "https://www.pimco.com/ca/en/resources/tax-center",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
-   "message": "PIMCO does publish PFIC statements - the Canadian tax centre has sections headed \"2025 / 2024 / 2023 U.S. Taxpayer PFIC / Form 8937 Information\". They cannot be fetched automatically: the site runs Akamai Bot Manager and deliberately withholds the panel contents from automated browsers, so the sections sit at \"Loader...\" forever. In a normal browser they open fine. Open the tax centre, expand the year you need, and search the fund name - it takes about two minutes.",
-   "derived_names": 0
+   "message": "PIMCO does publish PFIC statements - the Canadian tax centre has sections headed \"2025 / 2024 / 2023 U.S. Taxpayer PFIC / Form 8937 Information\". They cannot be fetched automatically: the site runs Akamai Bot Manager and deliberately withholds the panel contents from automated browsers, so the sections sit at \"Loader...\" forever. In a normal browser they open fine. Open the tax centre, expand the year you need, and search the fund name - it takes about two minutes."
   },
   {
    "id": "dimensional-ca",
    "name": "Dimensional Fund Advisors Canada",
    "mode": "browser",
    "hub": "https://www.dimensional.com/ca-en/document-center",
-   "checked": "2026-08-19",
-   "status": "ok",
-   "statements": 19,
-   "candidates": 19,
-   "message": "",
+   "checked": "2026-09-01",
+   "status": "empty",
+   "statements": 0,
+   "candidates": 0,
+   "message": "hub reachable but no candidate PDFs matched",
    "derived_names": 0
   },
   {
@@ -203028,7 +200357,7 @@
    "name": "Evolve ETFs",
    "mode": "static",
    "hub": "https://evolveetfs.com/",
-   "checked": "2026-08-20",
+   "checked": "2026-09-01",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -203039,7 +200368,7 @@
    "name": "Bridgehouse Asset Managers (incl. GQG Partners funds)",
    "mode": "static",
    "hub": "https://www.bridgehousecanada.com/",
-   "checked": "2026-08-20",
+   "checked": "2026-09-01",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -203050,7 +200379,7 @@
    "name": "Dynamic Funds (1832 Asset Management)",
    "mode": "static",
    "hub": "https://dynamic.ca/en/literature/regulatory-documents/pfic-irs.html",
-   "checked": "2026-08-20",
+   "checked": "2026-09-01",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -203061,7 +200390,7 @@
    "name": "Franklin Templeton Canada",
    "mode": "browser",
    "hub": "https://www.franklintempleton.ca/en-ca/resources/forms/pfic-annual-information-statements",
-   "checked": "2026-08-20",
+   "checked": "2026-09-01",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -203072,7 +200401,7 @@
    "name": "NEI Investments (Aviso)",
    "mode": "static",
    "hub": "https://www.neiinvestments.com/",
-   "checked": "2026-08-20",
+   "checked": "2026-09-01",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -203083,7 +200412,7 @@
    "name": "Starlight Capital",
    "mode": "static",
    "hub": "https://starlightcapital.com/en/tax-information",
-   "checked": "2026-08-20",
+   "checked": "2026-09-01",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -203094,11 +200423,11 @@
    "name": "Ninepoint Partners",
    "mode": "static",
    "hub": "https://www.ninepoint.com/pfic-annual-information-statements/",
-   "checked": "2026-08-19",
-   "status": "ok",
-   "statements": 25,
+   "checked": "2026-09-01",
+   "status": "empty",
+   "statements": 0,
    "candidates": 25,
-   "message": "",
+   "message": "candidates found but none verified as PFIC statements",
    "derived_names": 0
   },
   {
@@ -203106,10 +200435,10 @@
    "name": "National Bank Investments",
    "mode": "static",
    "hub": "https://www.nbinvestments.ca/regulatory-documents/pfic-statements.html",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
-   "statements": 949,
-   "candidates": 949,
+   "statements": 475,
+   "candidates": 475,
    "message": "",
    "derived_names": 0
   },
@@ -203118,11 +200447,11 @@
    "name": "Sprott",
    "mode": "static",
    "hub": "https://sprott.com/investment-strategies/exchange-listed-products/physical-bullion-funds/tax-guide/",
-   "checked": "2026-08-19",
-   "status": "ok",
-   "statements": 6,
+   "checked": "2026-09-01",
+   "status": "empty",
+   "statements": 0,
    "candidates": 6,
-   "message": "",
+   "message": "candidates found but none verified as PFIC statements",
    "derived_names": 0
   },
   {
@@ -203130,19 +200459,18 @@
    "name": "Lysander Funds",
    "mode": "static",
    "hub": "https://www.lysanderfunds.com/passive-foreign-investment-company-pfic/",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "manual",
    "statements": 0,
-   "candidates": 6,
-   "message": "Lysander does publish PFIC statements - one combined document per year covering all its funds, going back to 2020, all linked from this page. They are NOT collected here by the publisher's own instruction: lysanderfunds.com/robots.txt disallows /app/uploads/, where every document lives. Open the page and download the year you need directly.",
-   "derived_names": 0
+   "candidates": 0,
+   "message": "Lysander does publish PFIC statements - one combined document per year covering all its funds, going back to 2020, all linked from this page. They are NOT collected here by the publisher's own instruction: lysanderfunds.com/robots.txt disallows /app/uploads/, where every document lives. Open the page and download the year you need directly."
   },
   {
    "id": "desjardins",
    "name": "Desjardins Funds",
    "mode": "static",
    "hub": "https://www.fondsdesjardins.com/",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
    "statements": 3,
    "candidates": 6,
@@ -203154,7 +200482,7 @@
    "name": "Guardian Capital",
    "mode": "static",
    "hub": "https://www.guardiancapital.com/investmentsolutions/reg-documents/",
-   "checked": "2026-08-19",
+   "checked": "2026-09-01",
    "status": "ok",
    "statements": 5,
    "candidates": 5,
