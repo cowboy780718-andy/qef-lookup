@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-20T20:14:58+00:00",
+ "generated": "2026-09-02T04:46:18+00:00",
  "stats": {
   "families": 33,
-  "families_ok": 23,
+  "families_ok": 22,
   "funds": 4299,
   "statements": 14483,
   "years": [
@@ -151,9 +151,9 @@
    "mode": "browser",
    "fye": "12-31",
    "hub": "https://iaclarington.com/applicationsandforms/pficstatements",
-   "notes": "Needs a browser twice over. The raw HTML carries a stale 2021/2022 link list that now 404s; JavaScript replaces it with the current year on load. The PDFs themselves also reject non-browser TLS, answering requests/curl with a 404 HTML page while serving Chromium the real file.",
-   "access": null,
-   "guidance": null,
+   "notes": "NOT CRAWLED, by their instruction. Their robots.txt opens with \"Allow: /*\" and then \"Disallow: /docs/\"; some robots.txt parsers let the broad Allow win, which is how this family was crawled at all. The conservative reading is the correct one - /docs/ is disallowed. Revisit only if robots.txt changes.",
+   "access": "manual",
+   "guidance": "iA Clarington publishes PFIC Annual Information Statements on this page. They are not collected here by the publisher's own instruction: iaclarington.com/robots.txt sets \"Disallow: /docs/\", and every statement lives under /docs/default-source/distributions-and-taxes/pfic/. Open the page and download the fund and year you need directly.",
    "statement_count": 39,
    "fund_count": 27
   },
@@ -202896,10 +202896,10 @@
    "mode": "browser",
    "hub": "https://iaclarington.com/applicationsandforms/pficstatements",
    "checked": "2026-08-19",
-   "status": "ok",
+   "status": "manual",
    "statements": 39,
    "candidates": 123,
-   "message": "",
+   "message": "iA Clarington publishes PFIC Annual Information Statements on this page. They are not collected here by the publisher's own instruction: iaclarington.com/robots.txt sets \"Disallow: /docs/\", and every statement lives under /docs/default-source/distributions-and-taxes/pfic/. Open the page and download the fund and year you need directly.",
    "derived_names": 0
   },
   {

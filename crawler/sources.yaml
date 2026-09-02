@@ -169,13 +169,21 @@ families:
     name: iA Clarington Investments
     country: CA
     mode: browser
+    access: manual
     fye: "12-31"
     hub: https://iaclarington.com/applicationsandforms/pficstatements
+    guidance: >-
+      iA Clarington publishes PFIC Annual Information Statements on this page.
+      They are not collected here by the publisher's own instruction:
+      iaclarington.com/robots.txt sets "Disallow: /docs/", and every statement
+      lives under /docs/default-source/distributions-and-taxes/pfic/. Open the
+      page and download the fund and year you need directly.
     notes: >-
-      Needs a browser twice over. The raw HTML carries a stale 2021/2022 link
-      list that now 404s; JavaScript replaces it with the current year on load.
-      The PDFs themselves also reject non-browser TLS, answering requests/curl
-      with a 404 HTML page while serving Chromium the real file.
+      NOT CRAWLED, by their instruction. Their robots.txt opens with
+      "Allow: /*" and then "Disallow: /docs/"; some robots.txt parsers let the
+      broad Allow win, which is how this family was crawled at all. The
+      conservative reading is the correct one - /docs/ is disallowed. Revisit
+      only if robots.txt changes.
 
   - id: renaissance
     name: Renaissance Investments (CIBC)
