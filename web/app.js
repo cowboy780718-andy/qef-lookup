@@ -147,6 +147,27 @@ function fundCodeHelp(query) {
 }
 
 /**
+ * Guidance for managers matched by NAME when the search returns no funds.
+ *
+ * Typing "pimco" used to produce a bare "Nothing matched", because PIMCO has
+ * no funds in the index - which reads as "no statement exists" when the truth
+ * is "PIMCO publishes these, we just cannot fetch them for you". The manager
+ * is in the index the whole time; only the dropdown surfaced it, and nobody
+ * thinks to look there. So match the query against manager names too.
+ */
+function familyMatchPanels(query) {
+  const terms = (query || "").split(/[\n,]+/).map(norm).filter(Boolean);
+  if (!terms.length) return "";
+  const hits = (state.index.families || []).filter((f) => {
+    // Families with funds would already have appeared in the results.
+    if ((f.fund_count || 0) > 0) return false;
+    const hay = norm(`${f.name} ${f.id}`);
+    return terms.every((t) => hay.includes(t));
+  });
+  return hits.map(familyGuidance).join("");
+}
+
+/**
  * Panel shown when a family has no statements to list. Empty results are the
  * moment the tool is most likely to mislead: "nothing found" reads as "no
  * statement exists". So say which of the two it is, why, and where to go.
@@ -244,17 +265,20 @@ function render() {
     const fam = state.family
       ? (state.index.families || []).find((f) => f.id === state.family) : null;
     const code = fundCodeHelp(state.query);
+    const byName = familyMatchPanels(state.query);
     $("results").innerHTML = code
       ? code
       : fam
       ? familyGuidance(fam)
+      : byName
+      ? byName
       : `<div class="empty">
           <p><strong>Nothing matched.</strong></p>
-          <p>If you expected a statement here, pick the manager from the
-          <em>Fund family</em> list above &mdash; every company checked is listed
-          there, including those with nothing available, with what was found and
-          a link to their site.</p>
-          <p>The <em>Not available</em> tab records the same findings in detail.</p>
+          <p>If you expected a statement here, try the manager&rsquo;s name on its
+          own &mdash; every company checked is in the index, including those whose
+          statements cannot be collected automatically, and searching the name
+          shows what was found and where to get it.</p>
+          <p>The <em>Not available</em> tab lists the same findings together.</p>
         </div>`;
     updateTray();
     return;
