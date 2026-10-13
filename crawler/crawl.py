@@ -922,17 +922,30 @@ def process_pdf(url: str, family_id: str, manifest: dict, today: str,
         if yr is not None and yr < datetime.now(timezone.utc).year - 1:
             return None
 
-    # A published statement for a closed tax year never changes. Re-validating
-    # every one of them nightly costs a request each and makes routine runs as
-    # slow as the first build, for no information. So trust a recent verdict for
-    # settled years, and always re-check the current and prior tax year, which
-    # is where reissues and late publications actually happen.
+    # A published statement does not change once it is up, so re-downloading it
+    # every night buys almost nothing and costs a request to someone else's
+    # server. NEW statements are still found every run, because they are
+    # discovered by re-reading the manager's listing page - a URL not in the
+    # cache is always fetched. Re-fetching a KNOWN document only detects a
+    # reissue.
+    #
+    # The original rule re-fetched the current and prior tax year nightly. That
+    # meant hitting Ninepoint 25 times, Sprott 6 and Purpose 80 every single
+    # night, which tripped their rate limits: the crawl succeeded, got blocked
+    # the next night, recovered, and settled into a visible two-day on/off
+    # cycle for months.
+    #
+    # So trust a recent verdict for every year, just for different windows: a
+    # reissue of a current-year statement is still noticed within ten days, and
+    # closed years are left alone for a month.
     if (prev.get("verified") and prev.get("verify_version") == VERIFY_VERSION
             and prev.get("last_seen")):
         yr = prev.get("tax_year") or 0
+        this_year = datetime.now(timezone.utc).year
+        trust_days = 30 if yr and yr <= this_year - 2 else 10
         age_days = (datetime.now(timezone.utc).date()
                     - datetime.fromisoformat(prev["last_seen"]).date()).days
-        if yr and yr <= datetime.now(timezone.utc).year - 2 and age_days < 30:
+        if yr and age_days < trust_days:
             prev["last_seen"] = today
             manifest[url] = prev
             return Statement(
