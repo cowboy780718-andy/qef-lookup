@@ -29,7 +29,7 @@ concurrency:
 
 jobs:
   crawl:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     # The first scheduled run took 90m22s on a cold cache and finished right
     # at a 90-minute limit. Later runs reuse the cache and are far quicker, but
     # a cache eviction puts it back to a full rebuild, so leave real headroom -
@@ -51,7 +51,13 @@ jobs:
 
       # Chromium is only needed for the WAF-protected hub pages. The PDFs
       # themselves fetch fine over plain HTTP.
+      # Must never sink the whole run: on 11 Nov 2026 this step hung for ten
+      # minutes and failed, so nothing was crawled at all. Without Chromium the
+      # crawler still does every family that does not need a browser and keeps
+      # the rest from the cache.
       - name: Install Chromium
+        continue-on-error: true
+        timeout-minutes: 8
         run: python -m playwright install --with-deps chromium
 
       # The PDF cache is what makes a nightly run cheap: without it every run
