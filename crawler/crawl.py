@@ -154,6 +154,19 @@ GONE_STRIKES = 3
 # already refusing us is how a temporary block becomes a permanent one.
 BREAKER_LIMIT = 12
 
+# A run that overruns the job's time limit is cancelled outright: nothing is
+# published and the night is lost. So the crawler keeps its own, earlier
+# deadline (--max-minutes). Past it, no new request is made - whatever is left
+# is answered from the cache and picked up tomorrow - and the run still
+# finishes, saves its cache and publishes what it has.
+_deadline: float | None = None
+_deferred = 0
+
+
+def out_of_time() -> bool:
+    return _deadline is not None and time.monotonic() > _deadline
+
+
 _host_lock = defaultdict(threading.Lock)
 _host_last = defaultdict(float)
 _robots: dict[str, "Robots"] = {}
@@ -351,7 +364,7 @@ def _slow_down(url: str) -> None:
     """A 429 is the host asking us to ease off. Do so for the rest of the run."""
     host = urlparse.urlsplit(url).netloc
     with _robots_lock:
-        slower = min(max(_host_delay(host) * 2, 1.0), 8.0)
+        slower = min(max(_host_delay(host) * 2, 1.0), 3.0)
         if slower > _host_delay(host):
             _host_delays[host] = slower
             print(f"    - {host} answered 429 (too many requests); "
@@ -1150,6 +1163,9 @@ def follow_pages(hub_html: str, hub_url: str, fam: dict, browser, args) -> list[
     ticker_rx = re.compile(cfg["ticker_pattern"]) if cfg.get("ticker_pattern") else None
     found: set[str] = set()
     for i, page in enumerate(pages, 1):
+        if out_of_time():
+            print(f"      time budget reached after {i - 1}/{len(pages)} pages")
+            break
         body = fetch_any(page, browser, allow_browser=not args.static_only)
         if not body:
             continue
@@ -1791,6 +1807,11 @@ def process_pdf(url: str, family_id: str, manifest: dict, today: str,
     if not force and not needs_fetch(url, prev, today):
         return from_cache()
     if breaker is not None and breaker.tripped:
+        return from_cache()
+    if out_of_time():
+        global _deferred
+        with _manifest_lock:
+            _deferred += 1
         return from_cache()
 
     # Conditional request, so an unchanged document costs a 304 instead of a
@@ -2508,6 +2529,9 @@ def main() -> int:
     ap.add_argument("--rebuild-only", action="store_true",
                     help="rebuild the index from the cache without any network access")
     ap.add_argument("--limit", type=int, default=0, help="max PDFs per family")
+    ap.add_argument("--max-minutes", type=float, default=0,
+                    help="stop making requests after this long and finish from the "
+                         "cache, so the run always completes (0 = no limit)")
     ap.add_argument("--refresh", action="store_true",
                     help="download and re-read every listed document, ignoring the "
                          "cache; use with --only after changing a family's settings")
@@ -2526,6 +2550,9 @@ def main() -> int:
     all_families = cfg["families"]
     families = ([f for f in all_families if f["id"] in args.only]
                 if args.only else all_families)
+
+    if args.max_minutes > 0:
+        globals()["_deadline"] = time.monotonic() + args.max_minutes * 60
 
     manifest = load_manifest()
     today = utc_today().isoformat()
@@ -2678,6 +2705,10 @@ def main() -> int:
     print(f"statements  : {s['statements']}")
     print(f"years       : {', '.join(map(str, s['years'])) or '-'}")
     print(f"written     : {OUT.relative_to(REPO)}")
+
+    if _deferred:
+        print(f"\ntime budget of {args.max_minutes:g} minutes reached: {_deferred} "
+              f"document(s) left for the next run")
 
     if _pdf_errors:
         print(f"\nPDF read failures ({sum(_pdf_errors.values())} documents):")

@@ -90,7 +90,10 @@ jobs:
           # The year floor must be passed explicitly. crawl.py's own default is
           # 2015, so leaving it off would quietly widen every nightly run to six
           # extra years of back catalogue that we deliberately excluded.
-          ARGS=(--since-year "${SINCE:-2021}")
+          # --max-minutes keeps the crawler's own deadline well inside the job's
+          # 180-minute limit: past it, it stops asking, finishes from the cache
+          # and still publishes. A job that hits the limit publishes nothing.
+          ARGS=(--since-year "${SINCE:-2021}" --max-minutes 140)
           # Inputs arrive through the environment and are split into separate
           # arguments here, so nothing typed into the form is run as a command.
           if [ -n "$ONLY" ]; then read -r -a IDS <<< "$ONLY"; ARGS+=(--only "${IDS[@]}"); fi

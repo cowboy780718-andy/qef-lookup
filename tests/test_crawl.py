@@ -249,6 +249,23 @@ class ProcessPdf(Patched):
         self.assertTrue(breaker.tripped)
         self.assertEqual(len(self.calls), 5)
 
+    def test_past_the_time_budget_no_request_is_made_and_nothing_is_lost(self):
+        import time
+        self.serve(lambda u, h: (200, PDF, {}))
+        m = {}
+        crawl.process_pdf(self.URL, "fam", m, "2026-06-01")
+        self.calls.clear()
+        crawl._deadline = time.monotonic() - 1
+        try:
+            kept = crawl.process_pdf(self.URL, "fam", m, TODAY)                    # overdue recheck
+            new = crawl.process_pdf("https://a.example/pfic-2025-new.pdf", "fam", m, TODAY)
+        finally:
+            crawl._deadline = None
+        self.assertIsNotNone(kept)
+        self.assertIsNone(new)
+        self.assertEqual(self.calls, [])
+        self.assertNotIn("https://a.example/pfic-2025-new.pdf", m)    # so it is tried tomorrow
+
     def test_404s_never_trip_the_breaker(self):
         self.serve(lambda u, h: (404, None, {}))
         m, breaker = {}, crawl.Breaker(limit=5)
