@@ -414,7 +414,8 @@ function renderHealth() {
       <span class="dot ${esc(x.status)}" title="${esc(x.status)}"></span>
       <span class="hname">${esc(x.name)}</span>
       <span class="hnum">${NOT_CRAWLED.has(x.status) ? "" : `${x.statements}/${x.candidates}`}</span>
-      <span class="hmsg"><b>${esc(label[x.status] || x.status)}</b>${x.message ? " — " + esc(x.message) : ""}</span>
+      <span class="hmsg"><b>${esc(label[x.status] || x.status)}</b>${x.message ? " — " + esc(x.message) : ""}${
+        x.requests != null ? ` <span class="hstat" title="How the last crawl got these: statements answered from the cache, requests actually sent to the manager, and how long it took">(${x.from_cache ?? 0} cached, ${x.requests} request${x.requests === 1 ? "" : "s"}${x.seconds != null ? `, ${x.seconds}s` : ""})</span>` : ""}</span>
       <a href="${esc(x.hub)}" target="_blank" rel="noopener">source</a>
     </div>`).join("");
 }

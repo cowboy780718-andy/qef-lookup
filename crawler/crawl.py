@@ -1473,7 +1473,8 @@ def section_links(html: str, base: str, cfg: dict | None, exclude: list[str]) ->
     return sorted(urls)
 
 
-def api_links(hub_html: str, fam: dict, include: list[str], exclude: list[str]) -> list[str]:
+def api_links(hub_html: str, fam: dict, include: list[str], exclude: list[str],
+              health: dict | None = None) -> list[str]:
     """Document URLs from the JSON endpoint a page loads its list from.
 
     Dimensional is the case for this. Its document centre is an empty shell
@@ -1491,23 +1492,39 @@ def api_links(hub_html: str, fam: dict, include: list[str], exclude: list[str]) 
     cfg = fam.get("json_api")
     if not cfg:
         return []
+
+    def note(why: str) -> None:
+        # The run's log cannot be read without signing in to GitHub, but the
+        # index it publishes can - so the reason goes there too.
+        print(f"    ! {why}")
+        if health is not None:
+            health["detail"] = why
+
     body = cfg.get("body")
     if body and "$TOKEN" in body:
         m = re.search(cfg["token_pattern"], hub_html)
-        if not m:
-            print("    ! json_api token not found on the hub page")
+        token = m.group(1) if m else cfg.get("token_default")
+        if not token:
+            note("document API: its id was not on the page the server sent us")
             return []
-        body = body.replace("$TOKEN", m.group(1))
+        if not m:
+            # Seen from GitHub's US-based runners: the page arrives without
+            # the id it carries for a visitor in Canada. Fall back on the last
+            # id known to work rather than list nothing.
+            note("document API: id not on the page; used the stored one")
+        body = body.replace("$TOKEN", token)
     status, text, _ = fetch(cfg["url"], json_body=body,
                             extra_headers={"Referer": fam["hub"]})
     if status != 200 or not text:
-        print(f"    ! json_api returned {status}")
+        note(f"document API answered {status}")
         return []
     # Reuse the embedded-JSON walker by presenting the payload the way a page
     # would carry it.
     found = collect_json_links(
         f'<script type="application/json">{text}</script>', cfg["url"], include, exclude)
     print(f"    {len(found)} document(s) from the site's document API")
+    if not found:
+        note(f"document API answered with {len(text)} bytes but no statement links")
     return found
 
 
@@ -2098,10 +2115,15 @@ def crawl_family(fam: dict, defaults: dict, manifest: dict, args, today: str):
         _host_delays[host] = max(_host_delay(host), float(fam["delay"]))
 
     browser = BrowserSession()
+    began = time.monotonic()
     try:
         return _crawl_family_inner(fam, defaults, manifest, args, today, health, browser)
     finally:
         browser.close()
+        # Published with the index, so a slow night can be explained without
+        # the run's log.
+        health["seconds"] = round(time.monotonic() - began)
+        print(f"    took {health['seconds']}s")
 
 
 def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: str,
@@ -2282,7 +2304,7 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
     links += section_links(html, fam["hub"], fam.get("link_section"), exclude)
     if fam.get("url_scan"):
         links += scan_urls(html, include, exclude)
-    links += api_links(html, fam, include, exclude)
+    links += api_links(html, fam, include, exclude, health)
 
     # Bilingual managers sometimes split their catalogue across language sites:
     # National Bank's French page lists 15 ETF tickers its English page does
@@ -2350,7 +2372,8 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
     if not listed and health["status"] == "ok":
         health["status"] = "empty"
         health["message"] = ("hub reachable but it listed no documents tonight; "
-                             f"{len(statements)} cached statement(s) kept")
+                             f"{len(statements)} cached statement(s) kept"
+                             + (f" ({health['detail']})" if health.get("detail") else ""))
     return statements, health
 
 

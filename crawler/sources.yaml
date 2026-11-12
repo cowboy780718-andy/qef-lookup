@@ -401,6 +401,8 @@ families:
       url: https://www.dimensional.com/investment-api/v2/document-grid
       body: '{"gridid":"$TOKEN"}'
       token_pattern: 'data-gridid="([^"]+)"'
+      # Used only if the page arrives without one, as it does on GitHub's runners.
+      token_default: '{1661EFCE-BEDE-4332-A71C-4234DD3ED840}'
     notes: >-
       The document centre is an empty shell that loads its list from the
       document-grid endpoint, so the list is read from that endpoint directly
