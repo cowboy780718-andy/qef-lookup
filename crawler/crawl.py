@@ -17,14 +17,27 @@ Design notes worth knowing before you change anything here:
     family's declared `fye` when the document is unreadable.
 
   * Everything is cached by URL in .cache/manifest.json with the ETag and a
-    content hash, so a nightly run re-downloads almost nothing. A statement
-    whose hash changes is flagged loudly - managers do reissue corrected ones.
+    content hash, so a nightly run re-downloads almost nothing. Each document
+    is looked at again on its own night every 10-30 days (recheck_due), and a
+    statement whose hash changes is flagged loudly - managers do reissue
+    corrected ones.
+
+  * A manager's robots.txt is the last word. Where it forbids the documents
+    but not the page that lists them, only the list is read and the links are
+    published unfetched and labelled as unchecked (`listing_only`).
+
+  * Nothing already verified is dropped because of one bad night. See
+    process_pdf() for the three outcomes that are kept apart.
 
 Usage:
-    python crawl.py                  # everything
+    python crawl.py --since-year 2021          # everything, as the nightly job runs it
     python crawl.py --only mackenzie tdam
-    python crawl.py --static-only    # skip headless-browser families
-    python crawl.py --limit 25       # cap PDFs per family (for smoke tests)
+    python crawl.py --only mawer --refresh     # re-read a family, ignoring the cache
+    python crawl.py --static-only              # skip headless-browser families
+    python crawl.py --limit 25                 # sample a few PDFs per family (smoke test)
+    python crawl.py --rebuild-only             # rebuild the index from the cache, no network
+
+Tests:  python -m unittest discover -s tests   (from the repo root)
 """
 
 from __future__ import annotations
