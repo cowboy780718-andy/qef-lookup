@@ -696,3 +696,141 @@ class NamesFromRealDocuments(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class EarlierYears(Patched):
+    """Statements a manager has taken down: its old addresses, then the archive."""
+
+    FAM = {"id": "fam", "hub": "https://m.example/pfic",
+           "archive": {"prefix": "m.example/docs/"}}
+    INCLUDE = [r"(?i)pfic.*\.pdf$"]
+    LISTING = "\n".join([
+        "20250420000000 https://m.example/docs/pfic-abc-en.pdf AAAA",        # fixed address, last year's file
+        "20260309000000 https://m.example/docs/pfic-abc-en.pdf BBBB",        # ...and this year's
+        "20240101000000 http://m.example:80/docs/2023/pfic-xyz.pdf CCCC",    # dated, no longer linked
+        "20260101000000 https://m.example/docs/2025/pfic-xyz.pdf DDDD",      # dated, still linked
+        "20260101000000 https://m.example/docs/prospectus.pdf EEEE",         # not a statement
+        "20220101000000 https://m.example/docs/2019/pfic-xyz.pdf FFFF",      # before the floor
+    ])
+    LISTED = ["https://m.example/docs/pfic-abc-en.pdf", "https://m.example/docs/2025/pfic-xyz.pdf"]
+
+    def candidates(self, manifest, today=TODAY, fam=None):
+        return crawl.archive_candidates(fam or self.FAM, manifest, today, 2021,
+                                        self.LISTED, self.INCLUDE, [])
+
+    def test_old_addresses_are_tried_at_the_manager_and_copies_taken_from_the_archive(self):
+        self.serve(lambda u, h: (200, self.LISTING, {}))
+        at_manager, copies = self.candidates({})
+        # The dated file the page dropped may still be on the manager's server.
+        self.assertEqual(at_manager, ["https://m.example/docs/2023/pfic-xyz.pdf"])
+        self.assertEqual(copies, [
+            "https://web.archive.org/web/20240101000000id_/https://m.example/docs/2023/pfic-xyz.pdf",
+            # A fixed address is overwritten yearly: every version is a candidate.
+            "https://web.archive.org/web/20250420000000id_/https://m.example/docs/pfic-abc-en.pdf",
+            "https://web.archive.org/web/20260309000000id_/https://m.example/docs/pfic-abc-en.pdf",
+        ])
+
+    def test_the_archive_is_asked_for_its_list_once_a_month_not_nightly(self):
+        self.serve(lambda u, h: (200, self.LISTING, {}))
+        m = {}
+        self.candidates(m)
+        self.candidates(m, today="2026-11-20")
+        self.assertEqual(len(self.calls), 1)
+        self.candidates(m, today="2026-12-15")
+        self.assertEqual(len(self.calls), 2)
+
+    def test_a_failed_or_empty_answer_does_not_forget_what_the_archive_holds(self):
+        self.serve(lambda u, h: (200, self.LISTING, {}))
+        m = {}
+        first = self.candidates(m)
+        self.serve(lambda u, h: (429, "<html>slow down</html>", {}))
+        self.assertEqual(self.candidates(m, today="2027-01-20"), first)
+        self.serve(lambda u, h: (200, "", {}))
+        self.assertEqual(self.candidates(m, today="2027-01-21"), first)
+
+    def test_a_shared_folder_only_yields_the_files_the_pfic_page_links(self):
+        self.serve(lambda u, h: (200, self.LISTING, {}))
+        fam = {**self.FAM, "archive": {"prefix": "m.example/docs/", "only_listed": True}}
+        at_manager, copies = self.candidates({}, fam=fam)
+        self.assertEqual(at_manager, [])
+        self.assertTrue(all("pfic-abc-en.pdf" in c for c in copies))
+        self.assertEqual(len(copies), 2)
+
+    def test_an_archived_copy_is_read_once_and_never_asked_for_again(self):
+        url = "https://web.archive.org/web/20250420000000id_/https://m.example/docs/pfic-abc-en.pdf"
+        self.serve(lambda u, h: (200, PDF, {}))
+        m = {}
+        self.assertIsNotNone(crawl.process_pdf(url, "fam", m, "2026-06-01"))
+        self.calls.clear()
+        from datetime import date, timedelta
+        d = date(2026, 6, 2)
+        for _ in range(70):                     # every night for ten weeks
+            crawl.process_pdf(url, "fam", m, d.isoformat())
+            d += timedelta(days=1)
+        self.assertEqual(self.calls, [])
+
+    def test_a_copy_is_not_fetched_when_the_manager_still_has_the_dated_file(self):
+        live = "https://m.example/docs/2023/pfic-xyz.pdf"
+        copy = f"https://web.archive.org/web/20240101000000id_/{live}"
+        self.serve(lambda u, h: (200, PDF, {}))
+        m = {}
+        crawl.process_pdf(live, "fam", m, TODAY)
+        self.calls.clear()
+        health = {}
+        got = crawl.fetch_archived([copy], self.FAM, m, TODAY, None, args(), health)
+        self.assertEqual(got, [])
+        self.assertEqual(self.calls, [])
+
+    def test_the_archive_refusing_does_not_mark_the_manager_blocked(self):
+        copies = [f"https://web.archive.org/web/2024010100000{i}id_/https://m.example/docs/pfic-{i}.pdf"
+                  for i in range(4)]
+        self.serve(lambda u, h: (429, b"", {}))
+        health = {"status": "ok", "statements": 5, "requests": 2, "from_cache": 3}
+        got = crawl.fetch_archived(copies, self.FAM, {}, TODAY, None, args(), health)
+        self.assertEqual(got, [])
+        self.assertEqual(health["status"], "ok")
+        self.assertEqual(health["statements"], 5)
+
+    def test_this_years_addresses_are_tried_with_earlier_years(self):
+        got = crawl.earlier_year_urls(
+            ["https://m.example/pfic/2024/Fund-A.pdf", "https://m.example/docs/pfic-abc-en.pdf",
+             "https://m.example/pfic/2025/2025_fund_EN.pdf"], 2022)
+        self.assertEqual(got, [
+            "https://m.example/pfic/2023/Fund-A.pdf", "https://m.example/pfic/2022/Fund-A.pdf",
+            "https://m.example/pfic/2024/2024_fund_EN.pdf", "https://m.example/pfic/2023/2023_fund_EN.pdf",
+            "https://m.example/pfic/2022/2022_fund_EN.pdf"])
+
+
+class ArchivedInTheIndex(IndexAssembly):
+    COPY = "https://web.archive.org/web/{}id_/https://m.example/docs/pfic-abc-en.pdf"
+
+    def build(self, *stmts):
+        return crawl.build_index(list(stmts), [{"id": "fam", "name": "Fam"}], [], [])["funds"][0]
+
+    def test_an_archived_copy_is_labelled_with_its_date_and_a_readers_address(self):
+        fund = self.build(
+            self.st(url="https://m.example/docs/pfic-abc-en.pdf"),
+            self.st(url=self.COPY.format("20250420225254"), period_end="2024-12-31",
+                    tax_year=2024, bytes=90, sha256="b" * 64))
+        self.assertEqual([s["tax_year"] for s in fund["statements"]], [2025, 2024])
+        old = fund["statements"][1]
+        self.assertEqual(old["archived"], "2025-04-20")
+        self.assertEqual(old["url"], "https://web.archive.org/web/20250420225254/"
+                                     "https://m.example/docs/pfic-abc-en.pdf")
+        self.assertNotIn("archived", fund["statements"][0])
+
+    def test_the_managers_own_document_wins_over_a_copy_of_the_same_period(self):
+        fund = self.build(
+            self.st(url=self.COPY.format("20260309000000"), bytes=120, sha256="c" * 64),
+            self.st(url="https://m.example/docs/pfic-abc-en.pdf"))
+        self.assertEqual(len(fund["statements"]), 1)
+        self.assertNotIn("archived", fund["statements"][0])
+
+    def test_of_two_copies_of_one_period_the_later_capture_is_kept(self):
+        fund = self.build(
+            self.st(url=self.COPY.format("20240301000000"), period_end="2023-12-31",
+                    tax_year=2023, bytes=80, sha256="d" * 64),
+            self.st(url=self.COPY.format("20240901000000"), period_end="2023-12-31",
+                    tax_year=2023, bytes=81, sha256="e" * 64))
+        self.assertEqual([s["archived"] for s in fund["statements"]], ["2024-09-01"])
+

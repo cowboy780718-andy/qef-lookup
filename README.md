@@ -70,7 +70,8 @@ Cloudflare build -> the live site updates. Nothing is uploaded by hand.
 parsed in the browser with PDF.js. There is no upload endpoint.
 
 **Nothing is rehosted.** The index stores links; documents are served from each
-manager's own site. `/pdf` fetches a statement on demand so the browser can put
+manager's own site - or, for a year the manager has since taken down, from the
+Internet Archive's dated copy of that manager's file (see *Earlier years*). `/pdf` fetches a statement on demand so the browser can put
 it in a ZIP - browsers will not let a page read another site's PDF directly -
 and it is not an archive.
 
@@ -181,6 +182,8 @@ What a block can say, each added for a real manager:
 | `listing_only` | List the manager's links without fetching them | Capital Group, iA Clarington, Lysander, Franklin Templeton |
 | `access: request / manual / none` | Not crawled; `guidance` says why in one sentence, `action` says what to do in one more | Sun Life, PIMCO, AGF |
 | `page` | Where to send a person, when it is not the page the crawler starts from | Hamilton, Evolve |
+| `archive` | Earlier years the manager has taken down: look for them at their old addresses, then in the Internet Archive | CIBC, Renaissance, NEI, Harvest, Mawer, Sprott |
+| `earlier_years` | Try this year's addresses with earlier years in them | Dynamic, Harvest |
 | `caveat` | A note shown on every fund of this manager | "amounts are per unit PER DAY" |
 | `covers` | Fund names to match for a manager with nothing to list | Sun Life's 17 funds |
 | `name_fix`, `delay` | Repair a broken text layer; pace a rate-limiting host | Sprott; Harvest |
@@ -204,6 +207,25 @@ nothing was opened, so nothing was verified.
 A statement that has been verified is only dropped from the index after its
 address has positively gone (404) on three nights running. One failed request -
 a timeout, a rate limit - never removes anything.
+
+### Earlier years
+
+Many managers post only the latest statement: CIBC and NEI overwrite one file
+per fund each year; Renaissance, Harvest and Mawer stop linking last year's.
+The earlier years are looked for in two places, in this order:
+
+1. **At the manager, at the address it used before.** The old file is often
+   still there, just unlinked. That is the best copy, and it is listed like any
+   other statement.
+2. **In the Internet Archive** (web.archive.org), which keeps dated copies of
+   public web files. A copy is the manager's own file as served on that date.
+   It is read and verified exactly like a live document, and shown with an
+   **archived copy** tag and its capture date - in the list, and in the ZIP's
+   manifest. Where the manager's own document exists for the same period, the
+   archived one is not shown.
+
+What the archive happens to hold is patchy - it is not a complete record - so
+some funds gain earlier years and others do not.
 
 ---
 
@@ -236,9 +258,11 @@ a timeout, a rate limit - never removes anything.
   verbatim, because there is no file.)
 - **Several managers report per unit *per day*** (Fidelity, Hamilton, Global X,
   Starlight, Mackenzie) - unit-days must be computed. The tool does not do this.
-- **Some managers post only the latest year** at a fixed address (Dimensional,
-  NEI, Capital Group, Harvest). Earlier years appear here only from the date the
-  manager was first crawled.
+- **Some managers post only the latest year.** Earlier years are recovered
+  where the old file is still on the manager's server or the Internet Archive
+  kept a copy (see *Earlier years*); otherwise they appear here only from the
+  date the manager was first crawled. Nothing earlier could be recovered for
+  BMO or Dimensional.
 - **Fund codes are mostly missing for mutual funds.** Client statements show
   FundSERV codes (RBF556, TDB900); PFIC statements rarely print them. RBC and
   National Bank put the code in the file name, so those are searchable. For the

@@ -15,7 +15,9 @@ const SITE = "https://qef-lookup.example";
 const PDF = new TextEncoder().encode("%PDF-1.7\n fake body");
 const HTML = new TextEncoder().encode("<!doctype html><title>Not found</title>");
 
-function makeEnv(hosts = ["www.manager.example", "cdn.manager.example", "files.manager.example"]) {
+// The Worker keeps the host list for ten minutes, so every test shares this one.
+function makeEnv(hosts = ["www.manager.example", "cdn.manager.example", "files.manager.example",
+                          "web.archive.org"]) {
   return {
     ASSETS: {
       async fetch(req) {
@@ -167,3 +169,27 @@ test("with no host list at all, everything is refused", async () => {
     new Request(`${SITE}/pdf?u=${encodeURIComponent("https://never-listed.example/a.pdf")}`), env, ctx);
   assert.equal(r.status, 403);
 });
+
+test("an archived copy is served only when it is a copy of a document from an indexed host", async () => {
+  const env = makeEnv();
+  stubUpstream(() => new Response(PDF, { status: 200 }));
+  const get = (u) => worker.fetch(
+    new Request(`${SITE}/pdf?u=${encodeURIComponent(u)}`), env, ctx);
+
+  const ok = await get("https://web.archive.org/web/20250420225254/https://www.manager.example/docs/pfic-abc-en.pdf");
+  assert.equal(ok.status, 200);
+  assert.equal(upstreamCalls.length, 1);
+
+  // The archive holds everything; that is not what was allowed.
+  for (const u of [
+    "https://web.archive.org/web/20250420225254/https://elsewhere.example/any.pdf",
+    "https://web.archive.org/web/20250420225254/https://web.archive.org/web/2020/https://www.manager.example/a.pdf",
+    "https://web.archive.org/save/https://www.manager.example/a.pdf",
+    "https://web.archive.org/some/other/file.pdf",
+  ]) {
+    const r = await get(u);
+    assert.equal(r.status, 403, u);
+  }
+  assert.equal(upstreamCalls.length, 1);
+});
+

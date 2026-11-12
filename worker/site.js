@@ -24,10 +24,13 @@
  *   - only https, and only paths ending in .pdf (bar the few hosts the index
  *     marks as publishing statements without that suffix)
  *   - the response must really be a PDF, or it is not passed on
+ *   - from the Internet Archive, only a copy of a file from one of those
+ *     same hosts (earlier years a manager has since taken down)
  *   - other websites cannot use it from a browser
  */
 
 const HOSTS_TTL_MS = 10 * 60 * 1000;
+const ARCHIVE_HOST = "web.archive.org";
 const MAX_BYTES = 40 * 1024 * 1024;
 const UPSTREAM_HEADERS = {
   "User-Agent":
@@ -113,6 +116,15 @@ async function servePdf(request, env, ctx, url) {
   }
   if (!hosts.has(host)) {
     return json({ error: "host is not in the index", host: target.hostname }, 403);
+  }
+  if (host === ARCHIVE_HOST) {
+    // The archive holds a copy of everything. Being allowed to fetch a
+    // manager's earlier statements from it must not mean fetching anything
+    // else it has: the copy has to be of a file from a host in the index.
+    const m = /^\/web\/\d{14}(?:id_)?\/https?:\/\/([^\/:?#]+)\//i.exec(target.pathname);
+    if (!m || m[1].toLowerCase() === ARCHIVE_HOST || !hosts.has(m[1].toLowerCase())) {
+      return json({ error: "not an archived copy of a document in the index" }, 403);
+    }
   }
   if (suffixless) target.search = "";     // "?preview=1" and the like
 

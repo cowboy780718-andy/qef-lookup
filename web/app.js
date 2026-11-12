@@ -328,6 +328,9 @@ function statementRow(f, s) {
   const link = s.fmt === "html" ? "open page"
     : s.fmt === "link" ? "open on the manager&rsquo;s site"
     : s.part ? `open PDF at page ${s.part.page}` : "open PDF";
+  // A year the manager has taken off its site, served from the Internet
+  // Archive's dated copy of the manager's own file. Never passed off as live.
+  const archived = s.archived ? ` <span class="archived" title="The manager no longer posts this year. This is the Internet Archive's copy of the manager's own file, saved on ${esc(s.archived)} - read and verified here like any other statement.">archived copy</span>` : "";
   const size = s.fmt === "html"
     ? `<span class="fmt-html" title="Published as a table on the manager's page, not as a downloadable document">table</span>`
     : s.fmt === "link"
@@ -356,7 +359,7 @@ function statementRow(f, s) {
           <span class="pe">${s.period_end ? "ended " + esc(s.period_end)
             : s.fmt === "link" ? (s.tax_year ? "as listed by the manager" : "year not stated by the manager")
             : "period unread"}${
-            s.name ? ` <span class="asname" title="The manager published this year's statement under a different fund name">as &ldquo;${esc(s.name)}&rdquo;</span>` : ""}</span>
+            s.name ? ` <span class="asname" title="The manager published this year's statement under a different fund name">as &ldquo;${esc(s.name)}&rdquo;</span>` : ""}${archived}</span>
           <a href="${esc(s.url)}" target="_blank" rel="noopener">${link}</a>
           <span class="sz">${size}</span>
         </div>${figs}${investees}`;

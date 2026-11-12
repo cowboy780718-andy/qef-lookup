@@ -1094,8 +1094,153 @@ _URL_YEAR = re.compile(r"(?:^|[^0-9])(19[89]\d|20[0-4]\d)(?:[^0-9]|$)")
 
 def url_year(url: str) -> int | None:
     """Best-effort tax year from a URL. None when it cannot be told."""
+    held = archive_parts(url)
+    if held:
+        url = held[1]          # the year of the document, not of the capture
     years = [int(y) for y in _URL_YEAR.findall(urlparse.urlsplit(url).path)]
     return max(years) if years else None
+
+
+# --------------------------------------------------------------------------
+# earlier years
+# --------------------------------------------------------------------------
+#
+# Many managers keep only the latest statement on their site: CIBC and NEI
+# overwrite one file per fund every year, Renaissance and Harvest move to a new
+# folder and stop linking the old one. The earlier years are still wanted - a
+# late or amended Form 8621 needs them - so they are looked for in two places:
+#
+#   1. at the manager, at the addresses it used before. Often the old file is
+#      still there and merely unlinked; that is the best copy there is.
+#   2. in the Internet Archive (web.archive.org), which keeps dated copies of
+#      public web files. An archived copy is the manager's own file as it was
+#      served on that date, byte for byte. It goes through exactly the same
+#      verification as any other document, and the index marks it as an
+#      archived copy wherever it is shown.
+#
+# The archive's list of what it holds (its "CDX" index) is asked for once a
+# month per manager; a copy, once read, is never fetched again - it cannot
+# change.
+
+ARCHIVE_HOST = "web.archive.org"
+ARCHIVE_CDX = "https://web.archive.org/cdx/search/cdx"
+ARCHIVE_LIST_DAYS = 30
+ARCHIVE_DELAY = 3.0            # seconds between requests to the archive; it throttles hard
+_ARCHIVED = re.compile(r"^https://web\.archive\.org/web/(\d{14})(?:id_)?/(https?://.+)$")
+
+
+def archive_parts(url: str) -> tuple[str, str] | None:
+    """(capture time, the manager's own address) of an archived copy, else None."""
+    m = _ARCHIVED.match(url or "")
+    return (m.group(1), m.group(2)) if m else None
+
+
+def archive_url(timestamp: str, original: str, raw: bool = True) -> str:
+    """Address of a capture. `raw` is the file exactly as the manager served it."""
+    return f"https://{ARCHIVE_HOST}/web/{timestamp}{'id_' if raw else ''}/{original}"
+
+
+def _https(url: str) -> str:
+    return re.sub(r"^http://([^/:]+)(?::80)?/", r"https://\1/", url)
+
+
+def archive_captures(fam: dict, manifest: dict, today: str, since: int) -> list[list[str]]:
+    """What the archive holds under this manager's document folder.
+
+    Returns [capture time, original address, content digest] rows, one per
+    distinct version of each file. Kept in the cache and refreshed monthly.
+    """
+    cfg = fam["archive"]
+    key = f"archive-list::{fam['id']}"
+    prev = manifest.get(key) or {}
+    held = prev.get("captures") or []
+    age = ((date.fromisoformat(today) - date.fromisoformat(prev["checked"])).days
+           if prev.get("checked") else None)
+    asked = prev.get("prefix") == cfg["prefix"]
+    if asked and age is not None and age < ARCHIVE_LIST_DAYS:
+        return held
+    if out_of_time():
+        return held
+    query = urlparse.urlencode([
+        ("url", cfg["prefix"]), ("matchType", "prefix"),
+        ("filter", "statuscode:200"), ("filter", "mimetype:application/pdf"),
+        ("from", str(since)), ("collapse", "digest"),
+        ("fl", "timestamp,original,digest"), ("limit", "20000")])
+    status, text, _ = fetch(f"{ARCHIVE_CDX}?{query}")
+    if status != 200 or text is None:
+        print(f"    ! the archive's list could not be read ({status}); "
+              f"using the {len(held)} capture(s) already known")
+        return held
+    seen: dict[tuple[str, str], list[str]] = {}
+    for line in text.splitlines():
+        cols = line.split(" ")
+        if len(cols) != 3 or not re.fullmatch(r"\d{14}", cols[0]):
+            continue                      # an error page, not a listing
+        seen.setdefault((cols[1], cols[2]), cols)      # the first capture of each version
+    rows = sorted(seen.values())
+    if not rows and held:
+        return held                       # an empty answer does not un-know what we knew
+    _put(manifest, key, {"family": fam["id"], "archive_list": True, "prefix": cfg["prefix"],
+                         "checked": today, "captures": rows})
+    print(f"    the archive holds {len(rows)} capture(s) under this manager's folder")
+    return rows
+
+
+def archive_candidates(fam: dict, manifest: dict, today: str, since: int,
+                       listed: list[str], include: list[str],
+                       exclude: list[str]) -> tuple[list[str], list[str]]:
+    """Earlier documents worth looking for: (at the manager, in the archive).
+
+    `listed` is what the manager's page links tonight.
+    """
+    cfg = fam["archive"]
+    inc = [re.compile(p) for p in (cfg.get("include") or include)]
+    exc = [re.compile(p) for p in (cfg.get("exclude") or exclude)]
+    now = set(listed)
+    at_manager: list[str] = []
+    copies: list[str] = []
+    for stamp, original, _digest in archive_captures(fam, manifest, today, since):
+        original = _https(original)
+        if not any(p.search(original) for p in inc) or any(p.search(original) for p in exc):
+            continue
+        if too_old(original, since):
+            continue
+        dated = url_year(original) is not None
+        if original in now:
+            if dated:
+                # Still posted, at an address with its year in it: the copy
+                # and tonight's document are the same statement.
+                continue
+        else:
+            if cfg.get("only_listed"):
+                # A folder shared with every other kind of document
+                # (Manulife): only files the PFIC page links are statements.
+                continue
+            if original not in at_manager:
+                at_manager.append(original)
+        copies.append(archive_url(stamp, original))
+    return at_manager, copies
+
+
+def earlier_year_urls(links: list[str], since: int) -> list[str]:
+    """The same addresses with an earlier year in them.
+
+    Dynamic and Harvest file statements under /pfic/2024/ and /tax/2025/PFIC/
+    and link only the latest folder; last year's file is often still at last
+    year's address. Asking costs one request per address, once: "not there" is
+    remembered.
+    """
+    out: list[str] = []
+    for u in links:
+        parts = urlparse.urlsplit(u)
+        years = set(_URL_YEAR.findall(parts.path))
+        if len(years) != 1:
+            continue
+        year = years.pop()
+        for y in range(int(year) - 1, since - 1, -1):
+            path = re.sub(rf"(?<![0-9]){year}(?![0-9])", str(y), parts.path)
+            out.append(urlparse.urlunsplit(parts._replace(path=path)))
+    return out
 
 
 def too_old(url: str, since: int) -> bool:
@@ -1763,6 +1908,12 @@ def needs_fetch(url: str, prev: dict, today: str) -> bool:
     current = prev.get("verify_version") == VERIFY_VERSION
     checked = prev.get("checked") or prev.get("last_seen")
 
+    # An archived copy cannot change, so once it has been read - accepted or
+    # rejected - there is nothing to ask again until the verifier changes.
+    if (archive_parts(url) and current and not prev.get("miss")
+            and prev.get("verified") is not None and not prev.get("last_error")):
+        return False
+
     if prev.get("miss"):
         if not current:
             return True
@@ -2101,6 +2252,41 @@ def fetch_documents(links: list[str], fam: dict, manifest: dict, today: str,
     return finish()
 
 
+def fetch_archived(copies: list[str], fam: dict, manifest: dict, today: str,
+                   browser: "BrowserSession", args, health: dict) -> list["Statement"]:
+    """Read the archived copies of statements the manager has taken down.
+
+    Skipped for any document just found at the manager under a dated address:
+    that is the same file, and the manager's own copy is the one to show.
+    """
+    wanted = []
+    for u in copies:
+        original = archive_parts(u)[1]
+        rec = manifest.get(original) or {}
+        if rec.get("verified") and not rec.get("miss") and url_year(original) is not None:
+            continue
+        wanted.append(u)
+    if not wanted:
+        return []
+    _host_delays[ARCHIVE_HOST] = max(_host_delay(ARCHIVE_HOST), ARCHIVE_DELAY)
+    print(f"    {len(wanted)} archived cop{'y' if len(wanted) == 1 else 'ies'} of earlier statements")
+    # Its own tally and its own circuit breaker: the archive being slow or
+    # refusing tonight says nothing about the manager, and must not turn a
+    # healthy source "blocked".
+    tally: dict = {}
+    plain = argparse.Namespace(**{**vars(args), "static_only": True})
+    found = fetch_documents(wanted, {**fam, "derive": None}, manifest, today, browser, plain, tally)
+    health["archived"] = len(found)
+    health["from_cache"] = health.get("from_cache", 0) + tally.get("from_cache", 0)
+    health["requests"] = health.get("requests", 0) + tally.get("requests", 0)
+    health["statements"] = health.get("statements", 0) + len(found)
+    if found and health.get("status") == "empty":
+        health["status"] = "ok"
+    if tally.get("status") == "blocked":
+        health["detail"] = "the Internet Archive refused requests tonight; earlier years will be retried"
+    return found
+
+
 def crawl_family(fam: dict, defaults: dict, manifest: dict, args, today: str):
     fid, mode = fam["id"], fam.get("mode", "static")
     health = {"id": fid, "name": fam["name"], "mode": mode, "hub": fam["hub"],
@@ -2325,6 +2511,19 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
     links = sorted(set(links) | set(derived))
     health["derived_names"] = len(derived_names)
 
+    # Earlier years the page no longer links (see "earlier years", above).
+    archived_copies: list[str] = []
+    earlier: list[str] = []
+    if fam.get("earlier_years"):
+        earlier += earlier_year_urls(links, args.since_year)
+    if fam.get("archive"):
+        at_manager, archived_copies = archive_candidates(
+            fam, manifest, today, args.since_year, links, include, exclude)
+        earlier += at_manager
+    earlier = sorted(set(earlier) - set(links))
+    if earlier:
+        print(f"    {len(earlier)} earlier address(es) to look for at the manager")
+
     # Drop pre-floor documents before spending a request on them. This is where
     # the crawl time actually goes: CI alone lists ~15,000 documents, and the
     # year is right there in the filename.
@@ -2335,8 +2534,10 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
         print(f"    {before - len(links)} candidate(s) older than "
               f"{args.since_year} skipped by URL")
     listed = len(links)
+    links = sorted(set(links) | {u for u in earlier if not too_old(u, args.since_year)})
     if args.limit:
         links = _spread(links, args.limit)     # a smoke test: sample, and nothing else
+        archived_copies = _spread(archived_copies, args.limit)
     else:
         # Statements we verified earlier that tonight's listing no longer
         # links. Managers prune their pages (Mawer shows only the latest year)
@@ -2351,6 +2552,7 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
                 u for u, v in manifest.items()
                 if v.get("family") == fid and v.get("verified") and not v.get("miss")
                 and v.get("fmt", "pdf") == "pdf" and u not in listed_set
+                and not archive_parts(u)       # those have their own pass, below
                 and not too_old(u, args.since_year))
         if orphans:
             health["delisted"] = len(orphans)
@@ -2365,6 +2567,7 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
         return [], health
 
     statements = fetch_documents(links, fam, manifest, today, browser, args, health)
+    statements += fetch_archived(archived_copies, fam, manifest, today, browser, args, health)
     # A hub that lists nothing while we still hold its statements has not
     # gone quiet - its page has changed shape under us (or failed to render),
     # and new statements will be missed until someone looks. Say so, rather
@@ -2446,7 +2649,7 @@ def build_index(all_statements: list[Statement], families: list[dict],
             name = f"{fam.get('name', st.family)} - combined statement (all funds)"
         else:
             # No readable name: fall back on the filename, made presentable.
-            stem = Path(urlparse.urlsplit(st.url).path).stem
+            stem = Path(urlparse.unquote(urlparse.urlsplit(st.url).path)).stem
             name = re.sub(r"[-_]+", " ", stem).strip()
         key = f"{st.family}::{st.fund_key or slug(name)}"
         f = funds.setdefault(key, {
@@ -2461,11 +2664,13 @@ def build_index(all_statements: list[Statement], families: list[dict],
         for t in st.tickers:
             if t not in f["tickers"]:
                 f["tickers"].append(t)
+        held = archive_parts(st.url)
         entry = {
             "name": name,
             "period_end": st.period_end,
             "tax_year": st.tax_year,
-            "url": st.url,
+            # For a reader, the capture's ordinary address; "id_" is for us.
+            "url": archive_url(held[0], held[1], raw=False) if held else st.url,
             "bytes": st.bytes,
             "sha256": st.sha256[:16],
             "confidence": st.confidence,
@@ -2477,7 +2682,26 @@ def build_index(all_statements: list[Statement], families: list[dict],
             entry["investees"] = st.investees
         if st.part:
             entry["part"] = st.part
+        if held:
+            # The manager no longer posts this one: say whose copy it is and
+            # when it was taken.
+            entry["archived"] = f"{held[0][:4]}-{held[0][4:6]}-{held[0][6:8]}"
         f["statements"].append(entry)
+
+    # An archived copy stands in only where the manager's own document is
+    # missing. Where both exist for a period the manager's wins; of several
+    # captures of one period, the latest is the manager's last word on it.
+    for f in funds.values():
+        own = {s["period_end"] for s in f["statements"] if not s.get("archived")}
+        latest: dict = {}
+        for s in f["statements"]:
+            if s.get("archived") and s["period_end"] not in own:
+                key = s["period_end"] or s["url"]
+                if key not in latest or s["archived"] > latest[key]["archived"]:
+                    latest[key] = s
+        keep = {id(s) for s in latest.values()}
+        f["statements"] = [s for s in f["statements"]
+                           if not s.get("archived") or id(s) in keep]
 
     # CI republishes the same statement under consecutive document ids - byte
     # for byte the same length, identical extracted text, different binary

@@ -310,7 +310,8 @@ export function manifestCsv(items, files = planDownloads(items), failed = new Ma
       stmt.tax_year ?? "", stmt.period_end ?? "",
       stmt.fmt === "html" ? "web table"
         : stmt.fmt === "link" ? "link only (not checked)"
-        : stmt.part ? "PDF (combined document)" : "PDF",
+        : (stmt.part ? "PDF (combined document)" : "PDF") +
+          (stmt.archived ? ` - archived copy (Internet Archive, saved ${stmt.archived})` : ""),
       f ? f.name : "", stmt.part ? stmt.part.page : "",
       stmt.url, stmt.bytes || "", stmt.sha256 || "", figureText(stmt.figures),
       (stmt.investees || []).map((i) => i.name).join(" | "),

@@ -281,3 +281,5 @@ button.ghost { background: none; color: var(--ink-2); }
 .famnote.top { padding-left: 15px; margin: 0 0 10px; border-radius: 10px; }
 .guide .src { margin: 0; font-size: .8rem; color: var(--ink-2); }
 .guide h3 .who { font-weight: 600; }
+.stmt .archived { margin-left: 6px; padding: 1px 7px; border-radius: 999px; font-size: .74rem;
+  font-weight: 600; background: var(--chip); color: var(--warn); white-space: nowrap; cursor: help; }

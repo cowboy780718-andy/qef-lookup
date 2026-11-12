@@ -91,6 +91,10 @@ families:
     mode: static
     fye: "12-31"
     hub: https://www.mawer.com/documents
+    # Earlier years were posted under /assets/Documents/ and are no longer linked.
+    archive:
+      prefix: www.mawer.com/assets/Documents/
+      include: ['(?i)PFIC-Reporting.*\.pdf$']
     link_include: ['(?i)pfic']
     link_section:
       start: '>\s*PFIC\s*</div>\s*</button>'
@@ -113,8 +117,13 @@ families:
     hub: https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance/etf-pfic-annual-statement.html
     caveat: >-
       CIBC posts statements for its ETFs only, one per ETF at a fixed address
-      that it replaces each year - so only the latest year (to 30 June) is
-      available here. For earlier years, ask CIBC.
+      that it replaces each year. Earlier years shown here are archived
+      copies, where one exists; otherwise ask CIBC.
+    # Each year's statement overwrites the last at the same address, so the
+    # only earlier years are the Internet Archive's copies of those files.
+    archive:
+      prefix: www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic
+      include: ['(?i)pfic-etf-.+-en\.pdf$']
     link_include: ['(?i)pfic-etf-.+\.pdf', '(?i)pfic.+\.pdf']
     notes: >-
       IMPORTANT: CIBC-branded mutual funds, CIBC Index Funds, Managed Portfolios
@@ -206,6 +215,11 @@ families:
     mode: static
     fye: "12-31"
     hub: https://www.renaissanceinvestments.ca/reporting-governance/pfic
+    # Each year goes in a new folder (/pfic/2025/) and the page stops linking
+    # the last one.
+    archive:
+      prefix: www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/
+      include: ['(?i)/pfic/\d{4}/.+_EN\.pdf$']
     notes: >-
       Covers Renaissance funds, Renaissance Private Pools and Imperial Pools.
       Renaissance HISA and Money Market funds are excluded by the manager.
@@ -276,6 +290,11 @@ families:
     mode: browser
     fye: "12-31"
     hub: https://www.manulifeim.com/retail/ca/en/regulatory/passive-foreign-investment-company-pfic
+    # One file per fund, overwritten each year, in a folder shared with every
+    # other product document - so only the files the PFIC page links are taken.
+    archive:
+      prefix: www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/
+      only_listed: true
     link_include: ['(?i)/landing-page/product/pdf/.+\.pdf', '(?i)pfic']
     follow:
       page_pattern: '(?i)/resources/all/regulatory/[^"]*pfic'
@@ -457,6 +476,8 @@ families:
     mode: static
     fye: "12-31"
     hub: https://dynamic.ca/en/regulatory/statutory-documents-applications-and-forms/pfic-irs.html
+    # The archive page lists one year; earlier folders are still on the server.
+    earlier_years: true
     extra_hubs:
       - https://dynamic.ca/en/regulatory/statutory-documents-applications-and-forms/pfic-irs/archive.html
     link_include: ['(?i)/content/dam/docs/regulatory/pfic/\d{4}/.+\.pdf']
@@ -509,11 +530,14 @@ families:
     mode: static
     fye: "09-30"
     hub: https://www.neiinvestments.com/investment-products/fund-resources/fund-financials.html
+    # One file per fund, overwritten each year.
+    archive:
+      prefix: www.neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/
     link_include: ['(?i)/regulatory/pfic/pfic-[0-9a-z]+-en\.pdf']
     caveat: >-
       NEI's funds have a 30 SEPTEMBER year end, not December. It posts one
-      statement per fund at a fixed address and replaces it each year, so only
-      the latest year is available here.
+      statement per fund and replaces it each year; earlier years shown here
+      are archived copies, where one exists.
     notes: >-
       The statements are linked from the "Fund financials" page, in a column
       headed "PFIC annual statements" - not from any page with PFIC in its
@@ -570,6 +594,8 @@ families:
     mode: static
     fye: "12-31"
     hub: https://sprott.com/investment-strategies/exchange-listed-products/physical-bullion-funds/tax-guide/
+    archive:
+      prefix: sprott.com/media/
     link_include: ['(?i)/media/[^/]+/\d{4}-[a-z]+-pfic\.pdf']
     # The text layer of these statements splits the name: "SPROT T PHYSICAL ...", "SPRO TT PHYSICAL ...".
     name_fix:
@@ -643,6 +669,13 @@ families:
     mode: static
     fye: "12-31"
     hub: https://harvestportfolios.com/products/
+    name_fix:
+      - ['^Harvset\b', 'Harvest']
+    # Each year goes in a new folder (/tax/2025/PFIC/); only the latest is linked.
+    earlier_years: true
+    archive:
+      prefix: harvestportfolios.com/wp-content/uploads/tax/
+      include: ['(?i)/tax/\d{4}/.*pfic.*\.pdf$']
     # Their server answers 429 (too many requests) at the default pace.
     delay: 1.5
     link_include: ['(?i)/tax/\d{4}/PFIC/.+\.pdf']
@@ -650,9 +683,8 @@ families:
       page_pattern: '^https://harvestportfolios\.com/etf/[a-z0-9-]+/?$'
       ticker_pattern: '/etf/([a-z0-9]+)'
     caveat: >-
-      Harvest links only the latest year's statement from each fund's page.
-      Earlier years were collected here from the time this manager was added
-      (November 2026); for years before that, ask Harvest.
+      Harvest's own pages link only the latest year. The earlier years listed
+      here are files still on its server that it no longer links.
     notes: >-
       No PFIC page and nothing on the tax-information page. Each ETF's own
       page (/etf/{ticker}) links one "PFIC Annual Information Statement" among
