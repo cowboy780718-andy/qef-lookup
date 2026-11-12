@@ -1,10 +1,10 @@
 {
- "generated": "2026-11-12T16:36:35+00:00",
+ "generated": "2026-11-12T20:19:13+00:00",
  "stats": {
   "families": 41,
   "families_ok": 30,
   "funds": 4760,
-  "statements": 15177,
+  "statements": 15494,
   "years": [
    2026,
    2025,
@@ -120,7 +120,7 @@
    "caveat": null,
    "covers": null,
    "links_only": false,
-   "statement_count": 14,
+   "statement_count": 53,
    "fund_count": 14
   },
   {
@@ -138,7 +138,7 @@
    "caveat": "CIBC posts statements for its ETFs only, one per ETF at a fixed address that it replaces each year. Earlier years shown here are archived copies, where one exists; otherwise ask CIBC.",
    "covers": null,
    "links_only": false,
-   "statement_count": 20,
+   "statement_count": 22,
    "fund_count": 20
   },
   {
@@ -462,7 +462,7 @@
    "caveat": "Dynamic keeps its statements for the most recent tax year behind its investor / advisor sign-in, so only earlier years - its public archive - can be collected here. For the latest year, sign in on Dynamic's PFIC page.",
    "covers": null,
    "links_only": false,
-   "statement_count": 123,
+   "statement_count": 379,
    "fund_count": 123
   },
   {
@@ -498,7 +498,7 @@
    "caveat": "NEI's funds have a 30 SEPTEMBER year end, not December. It posts one statement per fund and replaces it each year; earlier years shown here are archived copies, where one exists.",
    "covers": null,
    "links_only": false,
-   "statement_count": 41,
+   "statement_count": 48,
    "fund_count": 41
   },
   {
@@ -642,7 +642,7 @@
    "caveat": "Harvest's own pages link only the latest year. The earlier years listed here are files still on its server that it no longer links.",
    "covers": null,
    "links_only": false,
-   "statement_count": 28,
+   "statement_count": 41,
    "fund_count": 28
   },
   {
@@ -157439,11 +157439,22 @@
      "sha256": "4bf76c35495d8543",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420215428/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-cacb-en.pdf",
+     "bytes": 81959,
+     "sha256": "c7bb653fab440570",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -157577,11 +157588,22 @@
      "sha256": "6dfedf71a120b952",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420222643/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-cflx-en.pdf",
+     "bytes": 82245,
+     "sha256": "2408dbfea06e9694",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -158738,11 +158760,31 @@
      "sha256": "0de4a50795b02be8",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Canadian-Dividend-ETF.pdf",
+     "bytes": 262977,
+     "sha256": "44b471c036da6163",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-Canadian-Dividend-ETF.pdf",
+     "bytes": 279148,
+     "sha256": "f3d725f83aaaf18e",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -158761,11 +158803,31 @@
      "sha256": "338ef9fba9abc44b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Core-Bond-Private-Pool.pdf",
+     "bytes": 263755,
+     "sha256": "9eccc5d358739b98",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-Core-Bond-Private-Pool.pdf",
+     "bytes": 190650,
+     "sha256": "1bbee56e86c1956c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -158784,11 +158846,31 @@
      "sha256": "622518b8043ef5e7",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Credit-Strategies-Private-Pool.pdf",
+     "bytes": 254672,
+     "sha256": "92cedc1516c610d0",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-Credit-Strategies-Private-Pool.pdf",
+     "bytes": 195454,
+     "sha256": "435534bae4280495",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -158807,11 +158889,31 @@
      "sha256": "6e5f41f17f42bd13",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Crossover-Bond-ETF.pdf",
+     "bytes": 263954,
+     "sha256": "52200987ad492f20",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-Crossover-Bond-ETF.pdf",
+     "bytes": 192648,
+     "sha256": "13fb0fabbcec0c5f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -158830,11 +158932,21 @@
      "sha256": "1ab9f7c4b861b8d9",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Discount-Bond-ETF.pdf",
+     "bytes": 259198,
+     "sha256": "6ff00fd0df9f7878",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022
    ]
   },
   {
@@ -158853,11 +158965,21 @@
      "sha256": "3927aaedd576a82e",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Enhanced-Yield-Covered-Options-ETF.pdf",
+     "bytes": 246605,
+     "sha256": "ce5cfd80e3855861",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022
    ]
   },
   {
@@ -158876,11 +158998,31 @@
      "sha256": "e93def68ecf53755",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Global-Dividend-ETF.pdf",
+     "bytes": 262923,
+     "sha256": "3dd13b072a8a83b4",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-Global-Dividend-ETF.pdf",
+     "bytes": 279091,
+     "sha256": "fb23208e9103d92a",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -158922,11 +159064,31 @@
      "sha256": "302be671a1c032ad",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Global-Financial-Services-ETF.pdf",
+     "bytes": 258272,
+     "sha256": "e830a190b4112b8f",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-Global-Financial-Services-ETF.pdf",
+     "bytes": 280231,
+     "sha256": "a220ba22ae5f979a",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -158968,11 +159130,31 @@
      "sha256": "fda4522077e36284",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Global-Infrastructure-ETF.pdf",
+     "bytes": 256335,
+     "sha256": "c83b5bf83822a030",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-Global-Infrastructure-ETF.pdf",
+     "bytes": 193500,
+     "sha256": "488b96f93fbc20c9",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -158991,11 +159173,31 @@
      "sha256": "74c607f63da4437a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-International-Dividend-ETF.pdf",
+     "bytes": 262995,
+     "sha256": "c2861c4f2e2c5fb6",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-International-Dividend-ETF.pdf",
+     "bytes": 189718,
+     "sha256": "b571a754a1c4a50a",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159014,11 +159216,31 @@
      "sha256": "e95123435d444f71",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-International-ETF.pdf",
+     "bytes": 229147,
+     "sha256": "6589a09da7287aa7",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-International-ETF.pdf",
+     "bytes": 247253,
+     "sha256": "cb3e9021244822b0",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159037,11 +159259,31 @@
      "sha256": "02cb141dc88677ad",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Investment-Grade-Floating-Rate-ETF.pdf",
+     "bytes": 258502,
+     "sha256": "1a12d90f3ed13068",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-Investment-Grade-Floating-Rate-ETF.pdf",
+     "bytes": 192983,
+     "sha256": "52a13d2ffc139ba7",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159083,11 +159325,31 @@
      "sha256": "2213ea48c45c91aa",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Preferred-Shares-ETF.pdf",
+     "bytes": 258226,
+     "sha256": "d4632f745247aeb2",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-Preferred-Shares-ETF.pdf",
+     "bytes": 192626,
+     "sha256": "8001369b86daf74f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159106,11 +159368,21 @@
      "sha256": "0d179e10fb35bd54",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Retirement-Income-ETF.pdf",
+     "bytes": 268822,
+     "sha256": "98698555976ac1d1",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022
    ]
   },
   {
@@ -159129,11 +159401,31 @@
      "sha256": "3f2418823098b1a7",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-Tactical-Bond-ETF.pdf",
+     "bytes": 258403,
+     "sha256": "64a1063ce5c408af",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-Tactical-Bond-ETF.pdf",
+     "bytes": 192699,
+     "sha256": "1201a36596b39ffe",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159152,11 +159444,41 @@
      "sha256": "b941831b8395ec61",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Active-US-Dividend-ETF.pdf",
+     "bytes": 227884,
+     "sha256": "2a055bf6934b28aa",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-US-Dividend-ETF.pdf",
+     "bytes": 260386,
+     "sha256": "232bcb26373a2881",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-US-Dividend-ETF.pdf",
+     "bytes": 283275,
+     "sha256": "160c67e43ed31c2f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159198,11 +159520,41 @@
      "sha256": "ca0a885abc796bd3",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Active-US-Mid-Cap-ETF.pdf",
+     "bytes": 228205,
+     "sha256": "a533b9bb288d406e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Active-US-Mid-Cap-ETF.pdf",
+     "bytes": 258512,
+     "sha256": "9509ff6de1d2c615",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Active-US-Mid-Cap-ETF.pdf",
+     "bytes": 279499,
+     "sha256": "bf96a4ee38478201",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159221,11 +159573,41 @@
      "sha256": "96d96573e413c7e6",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Advantage-Bond-Class.pdf",
+     "bytes": 259788,
+     "sha256": "231965e7246b54b5",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Advantage-Bond-Class.pdf",
+     "bytes": 258678,
+     "sha256": "998552aa00a4e65b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Advantage-Bond-Class.pdf",
+     "bytes": 256952,
+     "sha256": "c8c8ebc198a73b5c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159244,11 +159626,31 @@
      "sha256": "f80a56d966dd770f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Advantage-Bond-Fund.pdf",
+     "bytes": 259162,
+     "sha256": "429c83287efd6a92",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Advantage-Bond-Fund.pdf",
+     "bytes": 162448,
+     "sha256": "b9925671d2f5265b",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159267,11 +159669,31 @@
      "sha256": "a3a8fba6b8f4157b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Alpha-Performance-Fund.pdf",
+     "bytes": 265150,
+     "sha256": "8770b9fa9566f9c6",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Alpha-Performance-Fund.pdf",
+     "bytes": 155601,
+     "sha256": "ee24598a6fd83343",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159290,11 +159712,41 @@
      "sha256": "4420567518adba1a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Alpha-Performance-II-Fund.pdf",
+     "bytes": 247809,
+     "sha256": "6a0ff5eecf355e08",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Alpha-Performance-II-Fund.pdf",
+     "bytes": 263781,
+     "sha256": "5e907b0d8626c41f",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Alpha-Performance-II-Fund.pdf",
+     "bytes": 155781,
+     "sha256": "50183bc4b95e749e",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159313,11 +159765,31 @@
      "sha256": "4f618fd915670feb",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Alternative-Yield-Class.pdf",
+     "bytes": 258341,
+     "sha256": "523c0264b1126fb0",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Alternative-Yield-Class.pdf",
+     "bytes": 251546,
+     "sha256": "3185e6219c339bab",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159336,11 +159808,31 @@
      "sha256": "af1586b3aa946887",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Alternative-Yield-Fund.pdf",
+     "bytes": 253392,
+     "sha256": "de9b02d338546bc1",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Alternative-Yield-Fund.pdf",
+     "bytes": 249004,
+     "sha256": "b45d716835c50766",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159382,11 +159874,41 @@
      "sha256": "0a47cc8bf807dbc5",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-American-Fund.pdf",
+     "bytes": 249346,
+     "sha256": "1fa43ae254befadf",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-American-Fund.pdf",
+     "bytes": 264123,
+     "sha256": "9dad43bc6c674427",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-American-Fund.pdf",
+     "bytes": 190852,
+     "sha256": "d591cfe523bbc9fe",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159405,11 +159927,41 @@
      "sha256": "946c05e27d6cb065",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Asia-Pacific-Equity-Fund.pdf",
+     "bytes": 247284,
+     "sha256": "e2f6426734fa8e74",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Asia-Pacific-Equity-Fund.pdf",
+     "bytes": 263590,
+     "sha256": "ed646444c7e505f3",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Asia-Pacific-Equity-Fund.pdf",
+     "bytes": 155503,
+     "sha256": "6b4e6924569db589",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159451,11 +160003,41 @@
      "sha256": "2980b025f9c4645c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Blue-Chip-Balanced-Fund.pdf",
+     "bytes": 248128,
+     "sha256": "e46fe0bf825d0513",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Blue-Chip-Balanced-Fund.pdf",
+     "bytes": 265308,
+     "sha256": "ffc68067a26a0a88",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Blue-Chip-Balanced-Fund.pdf",
+     "bytes": 191046,
+     "sha256": "82f0d861a88a2ac0",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159474,11 +160056,41 @@
      "sha256": "ab97ae0ff05d2fcd",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Blue-Chip-Equity-Fund.pdf",
+     "bytes": 249687,
+     "sha256": "7b2e8f8f3cf0cffd",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Blue-Chip-Equity-Fund.pdf",
+     "bytes": 265044,
+     "sha256": "010ed3ceb457724f",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Blue-Chip-Equity-Fund.pdf",
+     "bytes": 190797,
+     "sha256": "1588386876099153",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159497,11 +160109,31 @@
      "sha256": "a876035751caa561",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Canadian-Bond-Fund.pdf",
+     "bytes": 265113,
+     "sha256": "30e3667dbf474868",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Canadian-Bond-Fund.pdf",
+     "bytes": 190868,
+     "sha256": "1c9e1074d428415f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159520,11 +160152,41 @@
      "sha256": "e419791f04ecbfd1",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Canadian-Dividend-Fund.pdf",
+     "bytes": 247852,
+     "sha256": "10a5e97b6198378e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Canadian-Dividend-Fund.pdf",
+     "bytes": 265020,
+     "sha256": "c912d111d07008b2",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Canadian-Dividend-Fund.pdf",
+     "bytes": 190787,
+     "sha256": "2047e4d386fdd5a9",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159543,11 +160205,41 @@
      "sha256": "475c5964184d65d0",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Canadian-Value-Class.pdf",
+     "bytes": 248114,
+     "sha256": "dd3eec092f3b062a",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Canadian-Value-Class.pdf",
+     "bytes": 265282,
+     "sha256": "9e1fdac8155bfd99",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Canadian-Value-Class.pdf",
+     "bytes": 190982,
+     "sha256": "efeabb2577659dac",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159566,11 +160258,31 @@
      "sha256": "ec69bba94721af68",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Conservative-Yield-Private-Pool-Class.pdf",
+     "bytes": 258309,
+     "sha256": "4d88b531504600a2",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Conservative-Yield-Private-Pool-Class.pdf",
+     "bytes": 223652,
+     "sha256": "fa894ef39125c68d",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159589,11 +160301,31 @@
      "sha256": "a26b126b6851391f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Corporate-Bond-Strategies-Class.pdf",
+     "bytes": 263752,
+     "sha256": "142ba30c37dc11b6",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Corporate-Bond-Strategies-Class.pdf",
+     "bytes": 190695,
+     "sha256": "be1e0371f8843bf5",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159612,11 +160344,31 @@
      "sha256": "5b9f8343fa3008cd",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Corporate-Bond-Strategies-Fund.pdf",
+     "bytes": 264469,
+     "sha256": "422770f600d83bf3",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Corporate-Bond-Strategies-Fund.pdf",
+     "bytes": 191907,
+     "sha256": "61b5ef030332cfda",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159635,11 +160387,41 @@
      "sha256": "0149387261a9f463",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Credit-Absolute-Return-Fund.pdf",
+     "bytes": 253231,
+     "sha256": "6e5389da5b28438e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Credit-Absolute-Return-Fund.pdf",
+     "bytes": 263913,
+     "sha256": "e0218f9cdb697e55",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Credit-Absolute-Return-Fund.pdf",
+     "bytes": 247567,
+     "sha256": "f831f9ea7c415a75",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159681,11 +160463,31 @@
      "sha256": "5caa72e1e7144aa3",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Credit-Spectrum-Fund.pdf",
+     "bytes": 255709,
+     "sha256": "d7d80d3ef9828283",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Credit-Spectrum-Fund.pdf",
+     "bytes": 253322,
+     "sha256": "d7a60ffd427d0531",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159704,11 +160506,41 @@
      "sha256": "3d8c8009173818b8",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Dividend-Advantage-Class.pdf",
+     "bytes": 254065,
+     "sha256": "e7d6f8b39b7af417",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Dividend-Advantage-Class.pdf",
+     "bytes": 265138,
+     "sha256": "59bfaaefb86221bc",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Dividend-Advantage-Class.pdf",
+     "bytes": 190893,
+     "sha256": "7df4dd50a13b50b4",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159727,11 +160559,31 @@
      "sha256": "26d6aa492d2a6d36",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Dividend-Advantage-Fund.pdf",
+     "bytes": 265117,
+     "sha256": "779e03c21488e05c",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Dividend-Advantage-Fund.pdf",
+     "bytes": 190855,
+     "sha256": "84c956d969250134",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159750,11 +160602,41 @@
      "sha256": "cbc3242eba5e60a0",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Dividend-Fund.pdf",
+     "bytes": 249233,
+     "sha256": "48f412f247e7caf4",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Dividend-Fund.pdf",
+     "bytes": 264985,
+     "sha256": "f084636a21fd957f",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Dividend-Fund.pdf",
+     "bytes": 190511,
+     "sha256": "fb9a4d50f26c00b5",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159773,11 +160655,31 @@
      "sha256": "d4358f09ec05a87a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Dividend-Income-Class.pdf",
+     "bytes": 276944,
+     "sha256": "908f15d320f0f391",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Dividend-Income-Class.pdf",
+     "bytes": 285689,
+     "sha256": "04733e59118a3533",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159796,11 +160698,31 @@
      "sha256": "9faf6907d3c2fa57",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Energy-Evolution-Fund.pdf",
+     "bytes": 263914,
+     "sha256": "1230a6e61a9008ab",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Energy-Evolution-Fund.pdf",
+     "bytes": 190812,
+     "sha256": "3e9b72672f249844",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159819,11 +160741,41 @@
      "sha256": "6a624ef70255cce4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Equity-Income-Fund.pdf",
+     "bytes": 249415,
+     "sha256": "b286e6da5608007e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Equity-Income-Fund.pdf",
+     "bytes": 265181,
+     "sha256": "6ed33c4f362fe932",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Equity-Income-Fund.pdf",
+     "bytes": 190873,
+     "sha256": "a6214f3992b29101",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159842,11 +160794,41 @@
      "sha256": "af049f011775706f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-European-Equity-Fund.pdf",
+     "bytes": 249335,
+     "sha256": "f02ff7ecdf16ec46",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-European-Equity-Fund.pdf",
+     "bytes": 264733,
+     "sha256": "d70ac4b266c27610",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-European-Equity-Fund.pdf",
+     "bytes": 190543,
+     "sha256": "ea203ff7a952b638",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159865,11 +160847,41 @@
      "sha256": "23e7d5f80bdcf1e1",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Financial-Services-Fund.pdf",
+     "bytes": 247829,
+     "sha256": "ae8dff591418106c",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Financial-Services-Fund.pdf",
+     "bytes": 264236,
+     "sha256": "295bd088f2d1fb92",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Financial-Services-Fund.pdf",
+     "bytes": 190974,
+     "sha256": "97b38498a2f9897d",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159888,11 +160900,31 @@
      "sha256": "250c397aeab51ee5",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Asset-Allocation-Class.pdf",
+     "bytes": 254049,
+     "sha256": "6ec129cdc3da55e8",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Asset-Allocation-Class.pdf",
+     "bytes": 193590,
+     "sha256": "9eb98ae1513a941a",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -159911,11 +160943,41 @@
      "sha256": "853295eac7115ff5",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Global-Asset-Allocation-Fund.pdf",
+     "bytes": 249297,
+     "sha256": "021924f11ffa1a92",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Asset-Allocation-Fund.pdf",
+     "bytes": 264082,
+     "sha256": "95321abaca822da6",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Asset-Allocation-Fund.pdf",
+     "bytes": 191623,
+     "sha256": "89e123e2715b9df8",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159934,11 +160996,41 @@
      "sha256": "16d2351aea8e90c2",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Global-Discovery-Class.pdf",
+     "bytes": 253955,
+     "sha256": "72f6a86c8a0867c6",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Discovery-Class.pdf",
+     "bytes": 265575,
+     "sha256": "541211b1949ca747",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Discovery-Class.pdf",
+     "bytes": 190510,
+     "sha256": "779d9afa48dedb78",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159957,11 +161049,41 @@
      "sha256": "fdf0f2b29e84428e",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Global-Discovery-Fund.pdf",
+     "bytes": 247903,
+     "sha256": "d72d1ec42aa342ad",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Discovery-Fund.pdf",
+     "bytes": 263838,
+     "sha256": "0e2672162a3c7f28",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Discovery-Fund.pdf",
+     "bytes": 191607,
+     "sha256": "498e7550940a8871",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -159980,11 +161102,41 @@
      "sha256": "b1d06ff24da72a94",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Global-Dividend-Class.pdf",
+     "bytes": 247828,
+     "sha256": "2874149d30f8c8bf",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Dividend-Class.pdf",
+     "bytes": 264940,
+     "sha256": "9ffb648648b20111",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Dividend-Class.pdf",
+     "bytes": 190807,
+     "sha256": "d7e0e8e67ddb1e45",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160003,11 +161155,41 @@
      "sha256": "d0b4c9c51cd31cf3",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Global-Dividend-Fund.pdf",
+     "bytes": 249387,
+     "sha256": "6908af131be70104",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Dividend-Fund.pdf",
+     "bytes": 264159,
+     "sha256": "56ae99b69f0ffd15",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Dividend-Fund.pdf",
+     "bytes": 191269,
+     "sha256": "43dab42b8e021e16",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160026,11 +161208,41 @@
      "sha256": "a559d3144127d6e9",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Global-Equity-Fund.pdf",
+     "bytes": 249372,
+     "sha256": "b58b3ddb09ef9605",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Equity-Fund.pdf",
+     "bytes": 264764,
+     "sha256": "6368214b6f478ab6",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Equity-Fund.pdf",
+     "bytes": 190535,
+     "sha256": "0395d3c549a4e90c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160049,11 +161261,41 @@
      "sha256": "1f5420d7f1fb04da",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Global-Equity-Income-Fund.pdf",
+     "bytes": 249191,
+     "sha256": "62b723a6795355d5",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Equity-Income-Fund.pdf",
+     "bytes": 264434,
+     "sha256": "d74c8725ba3a894c",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Equity-Income-Fund.pdf",
+     "bytes": 191027,
+     "sha256": "2ffab40c2772cd50",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160072,11 +161314,31 @@
      "sha256": "5ec8964a76b769b8",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Equity-Private-Pool-Class.pdf",
+     "bytes": 265135,
+     "sha256": "cd8a55af05f9b629",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Equity-Private-Pool-Class.pdf",
+     "bytes": 159925,
+     "sha256": "3ad7371efffb2ace",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160095,11 +161357,21 @@
      "sha256": "849d0bee9200ed88",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Fixed-Income-Fund.pdf",
+     "bytes": 259193,
+     "sha256": "20660c34b411b42c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022
    ]
   },
   {
@@ -160118,11 +161390,41 @@
      "sha256": "4cd59e8efb154e8c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Global-Growth-Opportunities-Fund.pdf",
+     "bytes": 285117,
+     "sha256": "c0a697d9cb184ac8",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Growth-Opportunities-Fund.pdf",
+     "bytes": 265431,
+     "sha256": "aa8f39e8b4f69032",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Growth-Opportunities-Fund.pdf",
+     "bytes": 229603,
+     "sha256": "5e290792518de558",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160141,11 +161443,31 @@
      "sha256": "274914e53a32a505",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Infrastructure-Class.pdf",
+     "bytes": 254302,
+     "sha256": "7d16137f7286ae52",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Infrastructure-Class.pdf",
+     "bytes": 158589,
+     "sha256": "54ec7b7d98e65aed",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160164,11 +161486,31 @@
      "sha256": "c60bb0a00a4a324c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Infrastructure-Fund.pdf",
+     "bytes": 262510,
+     "sha256": "cc88ea7e0ec8a88d",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Infrastructure-Fund.pdf",
+     "bytes": 158990,
+     "sha256": "bd64bb8e09ce67f5",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160187,11 +161529,41 @@
      "sha256": "fd3993eb3565cfe4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Global-Real-Estate-Fund.pdf",
+     "bytes": 249416,
+     "sha256": "1cb4a9d145f88425",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Real-Estate-Fund.pdf",
+     "bytes": 265241,
+     "sha256": "3fc0422f33eadff6",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Real-Estate-Fund.pdf",
+     "bytes": 190407,
+     "sha256": "49e8aa889be59706",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160210,11 +161582,31 @@
      "sha256": "5ac3cabef8d2e366",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Strategic-Yield-Fund.pdf",
+     "bytes": 255802,
+     "sha256": "5d127476ed37a7a5",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Strategic-Yield-Fund.pdf",
+     "bytes": 158855,
+     "sha256": "c7915d25c20f2043",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160233,11 +161625,31 @@
      "sha256": "c9304c8151800bd4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Yield-Private-Pool.pdf",
+     "bytes": 256569,
+     "sha256": "0ac3c5a7c405b85b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Yield-Private-Pool.pdf",
+     "bytes": 286979,
+     "sha256": "7e94181817db1d9f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160256,11 +161668,31 @@
      "sha256": "7262ea868013cd30",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Global-Yield-Private-Pool-Class.pdf",
+     "bytes": 256409,
+     "sha256": "4cf5e1726841e220",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Global-Yield-Private-Pool-Class.pdf",
+     "bytes": 290583,
+     "sha256": "d88d4705bb776eff",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160279,11 +161711,31 @@
      "sha256": "1cb982d55a8431e9",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-High-Yield-Bond-Fund.pdf",
+     "bytes": 263252,
+     "sha256": "ad9d03b956992909",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-High-Yield-Bond-Fund.pdf",
+     "bytes": 256610,
+     "sha256": "d5ef740ea045cf0d",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160302,11 +161754,21 @@
      "sha256": "80c1b734a2e4b430",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-International-Discovery-Fund.pdf",
+     "bytes": 259115,
+     "sha256": "e742ca19fd6d4a23",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022
    ]
   },
   {
@@ -160325,11 +161787,31 @@
      "sha256": "93150fb5eb5a7486",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-International-Dividend-Private-Pool.pdf",
+     "bytes": 265640,
+     "sha256": "c9fbcad2d5a162e4",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-International-Dividend-Private-Pool.pdf",
+     "bytes": 190474,
+     "sha256": "9bab0491592ec43e",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160348,11 +161830,41 @@
      "sha256": "b2c4f04e651607af",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-International-Equity-Fund.pdf",
+     "bytes": 234908,
+     "sha256": "4676df981925a76e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-International-Equity-Fund.pdf",
+     "bytes": 265219,
+     "sha256": "61a880f5c77c5c94",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-International-Equity-Fund.pdf",
+     "bytes": 191012,
+     "sha256": "b00fc1765aad1dfa",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160417,11 +161929,31 @@
      "sha256": "0d0128639decc3f8",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Money-Market-Fund.pdf",
+     "bytes": 264556,
+     "sha256": "73ff7cf891753933",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Money-Market-Fund.pdf",
+     "bytes": 191065,
+     "sha256": "88df6b0e77fcaae9",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160440,11 +161972,31 @@
      "sha256": "6ffcf0fb5667b4fc",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-North-American-Dividend-Private-Pool.pdf",
+     "bytes": 263660,
+     "sha256": "ce6be937bfedf293",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-North-American-Dividend-Private-Pool.pdf",
+     "bytes": 191387,
+     "sha256": "c49bbcdaaca0d6e4",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160463,11 +162015,41 @@
      "sha256": "5aa26809d2c84912",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Power-American-Growth-Class.pdf",
+     "bytes": 249394,
+     "sha256": "aa0617a0fcac4b4b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Power-American-Growth-Class.pdf",
+     "bytes": 266840,
+     "sha256": "e50f5e8405ad10c5",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Power-American-Growth-Class.pdf",
+     "bytes": 190588,
+     "sha256": "70fceb75c78da66c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160486,11 +162068,41 @@
      "sha256": "d61bca68e8f1f4a6",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Power-American-Growth-Fund.pdf",
+     "bytes": 249499,
+     "sha256": "1c22b0d5e968937b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Power-American-Growth-Fund.pdf",
+     "bytes": 264314,
+     "sha256": "8baf6fb619784b67",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Power-American-Growth-Fund.pdf",
+     "bytes": 191654,
+     "sha256": "52ef7360610a11db",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160509,11 +162121,31 @@
      "sha256": "de8fc42137cdde2c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Power-Balanced-Fund.pdf",
+     "bytes": 265213,
+     "sha256": "be5c4adddff3099b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Power-Balanced-Fund.pdf",
+     "bytes": 191014,
+     "sha256": "efa7301f1571afda",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160532,11 +162164,41 @@
      "sha256": "8f0872ae8aff950a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Power-Canadian-Growth-Fund.pdf",
+     "bytes": 249479,
+     "sha256": "b3b4a5c1df9596ba",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Power-Canadian-Growth-Fund.pdf",
+     "bytes": 265564,
+     "sha256": "6c7be5f1b97122ea",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Power-Canadian-Growth-Fund.pdf",
+     "bytes": 190913,
+     "sha256": "8f0d8fb56d53c1f1",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160555,11 +162217,31 @@
      "sha256": "a3bdf0ed289cd0a4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Power-Global-Balanced-Class.pdf",
+     "bytes": 262852,
+     "sha256": "ed2a195308f5385b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Power-Global-Balanced-Class.pdf",
+     "bytes": 252201,
+     "sha256": "7744bfe448f08941",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160578,11 +162260,31 @@
      "sha256": "5e08f98557720c5a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Power-Global-Growth-Class.pdf",
+     "bytes": 265424,
+     "sha256": "e4e9f82088ce09aa",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Power-Global-Growth-Class.pdf",
+     "bytes": 191290,
+     "sha256": "d5a23933ea065bd7",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160601,11 +162303,21 @@
      "sha256": "540cbfd844c54d28",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Power-Global-Growth-Fund.pdf",
+     "bytes": 262911,
+     "sha256": "69c3f988a8feb0fe",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022
    ]
   },
   {
@@ -160624,11 +162336,41 @@
      "sha256": "b83f9a18d2495599",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Power-Small-Cap-Fund.pdf",
+     "bytes": 249297,
+     "sha256": "a21b2f3696cc6ca6",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Power-Small-Cap-Fund.pdf",
+     "bytes": 264686,
+     "sha256": "093179b0d43de7fb",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Power-Small-Cap-Fund.pdf",
+     "bytes": 190493,
+     "sha256": "fdf3fed035b9f95d",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160647,11 +162389,41 @@
      "sha256": "f4c7051a1f138b8d",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Precious-Metals-Fund.pdf",
+     "bytes": 247391,
+     "sha256": "d9392674d76c395e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Precious-Metals-Fund.pdf",
+     "bytes": 264895,
+     "sha256": "a70915420c20fa86",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Precious-Metals-Fund.pdf",
+     "bytes": 192410,
+     "sha256": "3def3b3bf743f71a",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160670,11 +162442,41 @@
      "sha256": "f8dbcf150a2b2cf7",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Preferred-Yield-Class.pdf",
+     "bytes": 247799,
+     "sha256": "caf9af0f71ef1a21",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Preferred-Yield-Class.pdf",
+     "bytes": 265043,
+     "sha256": "3719d5c8d3dc27f4",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Preferred-Yield-Class.pdf",
+     "bytes": 248968,
+     "sha256": "24cadcf6baa50c22",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160716,11 +162518,41 @@
      "sha256": "a9e8acfaf86f7d71",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Premium-Bond-Private-Pool-Class.pdf",
+     "bytes": 256418,
+     "sha256": "38ec5113f57cab78",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Premium-Bond-Private-Pool-Class.pdf",
+     "bytes": 275899,
+     "sha256": "d0ab2f53c221c87f",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Premium-Bond-Private-Pool-Class.pdf",
+     "bytes": 160376,
+     "sha256": "643e6820568dd19b",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160739,11 +162571,41 @@
      "sha256": "874b2ac2ed0ca9c1",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Premium-Yield-Class.pdf",
+     "bytes": 283017,
+     "sha256": "cafd912acdf908b7",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Premium-Yield-Class.pdf",
+     "bytes": 272756,
+     "sha256": "cbf86bb2e2346288",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Premium-Yield-Class.pdf",
+     "bytes": 158401,
+     "sha256": "8758916e08801f7f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160762,11 +162624,31 @@
      "sha256": "4d051d00eafa39e7",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Premium-Yield-Fund.pdf",
+     "bytes": 296823,
+     "sha256": "c5351f4ef8a10859",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Premium-Yield-Fund.pdf",
+     "bytes": 159639,
+     "sha256": "606209c8c8e79bad",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160785,11 +162667,31 @@
      "sha256": "3e3decc5c40c0cc7",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Premium-Yield-PLUS-Fund.pdf",
+     "bytes": 262482,
+     "sha256": "bb86f8e64766481c",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Premium-Yield-PLUS-Fund.pdf",
+     "bytes": 190533,
+     "sha256": "1dcd19a9606f13d9",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160808,11 +162710,31 @@
      "sha256": "8e531306c8ccec07",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Real-Estate-Infrastructure-Income-II-Fund.pdf",
+     "bytes": 253810,
+     "sha256": "c4b78eca89bd9740",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Real-Estate-Infrastructure-Income-II-Fund.pdf",
+     "bytes": 191870,
+     "sha256": "598c8701c7ad0575",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160831,11 +162753,21 @@
      "sha256": "f9318aa4a944d8a4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Retirement-Income-Fund.pdf",
+     "bytes": 274713,
+     "sha256": "ebf4fc9e6087b027",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022
    ]
   },
   {
@@ -160854,11 +162786,41 @@
      "sha256": "4022624908e24ca4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Small-Business-Fund.pdf",
+     "bytes": 249460,
+     "sha256": "0a7ce7da2d9dceb9",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Small-Business-Fund.pdf",
+     "bytes": 264411,
+     "sha256": "bb5f365b28bf4243",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Small-Business-Fund.pdf",
+     "bytes": 192607,
+     "sha256": "95dab1e1c763f94a",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160877,11 +162839,41 @@
      "sha256": "4bb3a4656775c5f6",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Strategic-Energy-Class.pdf",
+     "bytes": 249349,
+     "sha256": "96f1abe148ef59d3",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Strategic-Energy-Class.pdf",
+     "bytes": 264249,
+     "sha256": "301f1fca24e2c1f8",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Strategic-Energy-Class.pdf",
+     "bytes": 190953,
+     "sha256": "bea54512d1f2ed03",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160900,11 +162892,41 @@
      "sha256": "e988f9d8851c5b5a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Strategic-Gold-Class.pdf",
+     "bytes": 247829,
+     "sha256": "6dfed522f90c7bbc",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Strategic-Gold-Class.pdf",
+     "bytes": 263836,
+     "sha256": "693cd7d977729d4c",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Strategic-Gold-Class.pdf",
+     "bytes": 190427,
+     "sha256": "b6231d9945de2c7f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160923,11 +162945,41 @@
      "sha256": "ee944dd053e37938",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Strategic-Resource-Class.pdf",
+     "bytes": 249714,
+     "sha256": "80948311549f12ab",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Strategic-Resource-Class.pdf",
+     "bytes": 264606,
+     "sha256": "9cce0a696ae1ad97",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Strategic-Resource-Class.pdf",
+     "bytes": 215318,
+     "sha256": "7e95abb1879bc370",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -160946,11 +162998,31 @@
      "sha256": "7d9e0c9712975db2",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Strategic-Yield-Class.pdf",
+     "bytes": 287945,
+     "sha256": "229bc111eff61589",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Strategic-Yield-Class.pdf",
+     "bytes": 164897,
+     "sha256": "fd8e18fc56ceda8e",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160969,11 +163041,31 @@
      "sha256": "0d4aa0e911f06eff",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Strategic-Yield-Fund.pdf",
+     "bytes": 285087,
+     "sha256": "538a5f3970a78d52",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Strategic-Yield-Fund.pdf",
+     "bytes": 295009,
+     "sha256": "ff2709a89799d0b3",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -160992,11 +163084,31 @@
      "sha256": "1fca415472b2c425",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Tactical-Bond-Private-Pool.pdf",
+     "bytes": 264229,
+     "sha256": "a7ea873ef4d5dbbb",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Tactical-Bond-Private-Pool.pdf",
+     "bytes": 191768,
+     "sha256": "3892c4ff112b0b79",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161015,11 +163127,41 @@
      "sha256": "922f0d5622456c5e",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Total-Return-Bond-Class.pdf",
+     "bytes": 248266,
+     "sha256": "9140159838ae6727",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Total-Return-Bond-Class.pdf",
+     "bytes": 265476,
+     "sha256": "e998fba70589e73a",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Total-Return-Bond-Class.pdf",
+     "bytes": 191248,
+     "sha256": "fb79f7d33d5d8e5a",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -161038,11 +163180,31 @@
      "sha256": "f2acb0ca6ed24bdb",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Total-Return-Bond-Fund.pdf",
+     "bytes": 264746,
+     "sha256": "b20c7d00382b978b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Total-Return-Bond-Fund.pdf",
+     "bytes": 191265,
+     "sha256": "40392afed8d97a14",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161084,11 +163246,31 @@
      "sha256": "57b08db10bfa82c9",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-US-Equity-Income-Fund.pdf",
+     "bytes": 248860,
+     "sha256": "42dd9107a0d44cad",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-US-Equity-Income-Fund.pdf",
+     "bytes": 265176,
+     "sha256": "12d63e368999d333",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022
    ]
   },
   {
@@ -161107,11 +163289,31 @@
      "sha256": "f010677c44a99496",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-US-Equity-Private-Pool-Class.pdf",
+     "bytes": 248790,
+     "sha256": "62c15699fa17b7a5",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-US-Equity-Private-Pool-Class.pdf",
+     "bytes": 263711,
+     "sha256": "3626fd607a896a72",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022
    ]
   },
   {
@@ -161130,11 +163332,41 @@
      "sha256": "d6e465f7d6634e74",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-US-Strategic-Yield-Fund.pdf",
+     "bytes": 254337,
+     "sha256": "953002f0ff1983e1",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-US-Strategic-Yield-Fund.pdf",
+     "bytes": 255711,
+     "sha256": "9f53bdb4eeef5b72",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-US-Strategic-Yield-Fund.pdf",
+     "bytes": 191127,
+     "sha256": "b340f0e0d916f0a8",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -161176,11 +163408,31 @@
      "sha256": "dde1b98194dd94c2",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Value-Balanced-Class.pdf",
+     "bytes": 265791,
+     "sha256": "604ba04e1b93ab62",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Value-Balanced-Class.pdf",
+     "bytes": 192091,
+     "sha256": "d2f0d41d46fd231a",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161199,11 +163451,41 @@
      "sha256": "4af61ca72015ac2d",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Value-Balanced-Fund.pdf",
+     "bytes": 248212,
+     "sha256": "84100c6306bb2ca7",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Value-Balanced-Fund.pdf",
+     "bytes": 265735,
+     "sha256": "a4a4a109edd348fc",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Value-Balanced-Fund.pdf",
+     "bytes": 191162,
+     "sha256": "8279e3f9ce3bd94f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -161222,11 +163504,41 @@
      "sha256": "79952cce4ed57a0e",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Dynamic-Value-Fund-of-Canada.pdf",
+     "bytes": 248033,
+     "sha256": "0bab98877179ccc3",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Dynamic-Value-Fund-of-Canada.pdf",
+     "bytes": 265201,
+     "sha256": "19981b4cdbc6d686",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Dynamic-Value-Fund-of-Canada.pdf",
+     "bytes": 190956,
+     "sha256": "11059f82b21df683",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -161245,11 +163557,31 @@
      "sha256": "7f00952dc7fe9237",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/DynamicEdge-Balanced-Growth-Class-Portfolio.pdf",
+     "bytes": 271525,
+     "sha256": "e634d48cb2e4697e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/DynamicEdge-Balanced-Growth-Class-Portfolio.pdf",
+     "bytes": 173688,
+     "sha256": "7ba8cfa5ad6f2570",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161268,11 +163600,31 @@
      "sha256": "f5f71234c2cb8aed",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/DynamicEdge-Balanced-Growth-Portfolio.pdf",
+     "bytes": 273092,
+     "sha256": "ecb8d02b12490b57",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/DynamicEdge-Balanced-Growth-Portfolio.pdf",
+     "bytes": 289615,
+     "sha256": "3b5958353dc5c301",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161291,11 +163643,31 @@
      "sha256": "b7546933a0711ef2",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/DynamicEdge-Balanced-Portfolio.pdf",
+     "bytes": 318336,
+     "sha256": "cbbbdee0c633d7a3",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/DynamicEdge-Balanced-Portfolio.pdf",
+     "bytes": 175015,
+     "sha256": "3f77899262d84d18",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161314,11 +163686,31 @@
      "sha256": "27499e38c481fdb5",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/DynamicEdge-Conservative-Class-Portfolio.pdf",
+     "bytes": 324188,
+     "sha256": "a89040d72743a08f",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/DynamicEdge-Conservative-Class-Portfolio.pdf",
+     "bytes": 273282,
+     "sha256": "85fa4e077f1d0ee0",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161337,11 +163729,31 @@
      "sha256": "1642d8b32490efa4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/DynamicEdge-Defensive-Portfolio.pdf",
+     "bytes": 268891,
+     "sha256": "b89b1d3a9c355614",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/DynamicEdge-Defensive-Portfolio.pdf",
+     "bytes": 167415,
+     "sha256": "10d0f9ceb1c6fe28",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161360,11 +163772,31 @@
      "sha256": "fa9f6253e1b5e58e",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/DynamicEdge-Equity-Class-Portfolio.pdf",
+     "bytes": 268409,
+     "sha256": "a0e50b1c8809b511",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/DynamicEdge-Equity-Class-Portfolio.pdf",
+     "bytes": 265560,
+     "sha256": "1101b18cd06d1386",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161383,11 +163815,31 @@
      "sha256": "69e9e7cab5008837",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/DynamicEdge-Equity-Portfolio.pdf",
+     "bytes": 263540,
+     "sha256": "968d5cfcb914557b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/DynamicEdge-Equity-Portfolio.pdf",
+     "bytes": 273219,
+     "sha256": "f4c6e7c6354dcd3f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161406,11 +163858,31 @@
      "sha256": "7516a236dfc6f3fa",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/DynamicEdge-Growth-Portfolio.pdf",
+     "bytes": 271550,
+     "sha256": "8019c0a82e648fee",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/DynamicEdge-Growth-Portfolio.pdf",
+     "bytes": 289353,
+     "sha256": "ee09f0c93ad0a70e",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161429,11 +163901,31 @@
      "sha256": "d21bf12684a992c5",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Marquis-Institutional-Balanced-Growth-Portfolio.pdf",
+     "bytes": 258282,
+     "sha256": "0a009f00bc2d4a41",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Marquis-Institutional-Balanced-Growth-Portfolio.pdf",
+     "bytes": 287930,
+     "sha256": "6e4b28a0844ca799",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161452,11 +163944,21 @@
      "sha256": "5ccd2d14353034b5",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Marquis-Institutional-Balanced-Portfolio.pdf",
+     "bytes": 259489,
+     "sha256": "31ff93259f237bd8",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022
    ]
   },
   {
@@ -161475,11 +163977,31 @@
      "sha256": "3da46d41b7c236e4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Marquis-Institutional-Bond-Portfolio.pdf",
+     "bytes": 262227,
+     "sha256": "7de15c3c1b588ec9",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Marquis-Institutional-Bond-Portfolio.pdf",
+     "bytes": 192814,
+     "sha256": "4d5575dbd8e27bec",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2022,
+    2021
    ]
   },
   {
@@ -161498,11 +164020,41 @@
      "sha256": "c347cd24f0f4a937",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Marquis-Institutional-Canadian-Equity-Portfolio.pdf",
+     "bytes": 248736,
+     "sha256": "b481f89ae4206d95",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Marquis-Institutional-Canadian-Equity-Portfolio.pdf",
+     "bytes": 264433,
+     "sha256": "65e1950d2e0bb69d",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Marquis-Institutional-Canadian-Equity-Portfolio.pdf",
+     "bytes": 192163,
+     "sha256": "d11243e36654824f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -161521,11 +164073,41 @@
      "sha256": "ffce78ffd923d904",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2023/Marquis-Institutional-Global-Equity-Portfolio.pdf",
+     "bytes": 249859,
+     "sha256": "eef76d43e1074e3a",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2022/Marquis-Institutional-Global-Equity-Portfolio.pdf",
+     "bytes": 265770,
+     "sha256": "7ec60f4566913fd3",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://dynamic.ca/content/dam/docs/regulatory/pfic/2021/Marquis-Institutional-Global-Equity-Portfolio.pdf",
+     "bytes": 191300,
+     "sha256": "8ed642add14663de",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2024
+    2024,
+    2023,
+    2022,
+    2021
    ]
   },
   {
@@ -174075,11 +176657,21 @@
      "sha256": "48eeb1d2cd55a45d",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTJ_Blockchain%20Technologies%20ETF.pdf",
+     "bytes": 245288,
+     "sha256": "7c9b6b11648fddbb",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174231,11 +176823,21 @@
      "sha256": "55d80c3685f422f8",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRQA_Harvest%20Canadian%20Equity%20Income%20Leaders%20ETF.pdf",
+     "bytes": 235287,
+     "sha256": "be56fdb02ea580be",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174283,11 +176885,21 @@
      "sha256": "7c4294d244120cbd",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTX_Harvest%20Clean%20Energy%20ETF.pdf",
+     "bytes": 238320,
+     "sha256": "653872db46c30248",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174335,11 +176947,21 @@
      "sha256": "b7e797cda0348d56",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRAX_Harvest%20Diversified%20Monthly%20Income%20ETF.pdf",
+     "bytes": 250026,
+     "sha256": "7a5feec9a5352935",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174361,11 +176983,21 @@
      "sha256": "4bf7945bce578150",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRT0_Harvest%20Energy%20Leaders%20Plus%20Income%20ETF.pdf",
+     "bytes": 241946,
+     "sha256": "179db89a21f16366",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174387,11 +177019,21 @@
      "sha256": "dd56a9313ac9bbe1",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRA4_Harvest%20Equal%20Weight%20Global%20Utilities%20Enhanced%20Income%20ETF.pdf",
+     "bytes": 254070,
+     "sha256": "35009f3c451ba7e1",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174413,11 +177055,21 @@
      "sha256": "3bf1530c764ab0fa",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTM_Harvest%20Equal%20Weight%20Global%20Utilities%20Income%20ETF.pdf",
+     "bytes": 246255,
+     "sha256": "d673f035424d4b2c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174465,11 +177117,21 @@
      "sha256": "2586566f2a120408",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTG_Harvest%20Global%20REIT%20Leaders%20Income%20ETF.pdf",
+     "bytes": 245716,
+     "sha256": "cdcc11b50f89c679",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174491,11 +177153,21 @@
      "sha256": "e513502bc93491d6",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRA1_Harvest%20Healthcare%20Leaders%20Enhanced%20Income%20ETF.pdf",
+     "bytes": 246352,
+     "sha256": "c9082ef96d77d422",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174517,11 +177189,21 @@
      "sha256": "95d5c906918d6957",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTH_Harvest%20Healthcare%20Leaders%20Income%20ETF.pdf",
+     "bytes": 245781,
+     "sha256": "423568c75d27fbc4",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174673,11 +177355,21 @@
      "sha256": "f7e233f847d0874a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRA3_Harvest%20Tech%20Achievers%20Enhanced%20Income%20ETF.pdf",
+     "bytes": 249796,
+     "sha256": "694e133b20ea318c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174699,11 +177391,21 @@
      "sha256": "88b1038ac121bb00",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HR21_Harvest%20Tech%20Achievers%20Growth%20%26%20Income%20ETF.pdf",
+     "bytes": 239039,
+     "sha256": "9786d34d4752b867",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -174751,11 +177453,21 @@
      "sha256": "5dbfc9954666c065",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTY_Harvest%20Travel%20%26%20Leisure%20Index%20ETF.pdf",
+     "bytes": 246462,
+     "sha256": "f04fa5789e01f1e2",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -179286,11 +181998,40 @@
      "sha256": "f761798232b787c2",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MMGD-Mawer-Balanced-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 87151,
+     "sha256": "d977873e59019a2f",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGD-Mawer-Balanced-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 87021,
+     "sha256": "b30b0ccf3bae2368",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGD-Mawer-Balanced-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 87070,
+     "sha256": "b9222f74bbb9ba67",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179309,11 +182050,40 @@
      "sha256": "aa6a2cb8e386b7db",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MMGA-Mawer-Canadian-Bond-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 75420,
+     "sha256": "2452acfdb4affd2a",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGA-Mawer-Canadian-Bond-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 75571,
+     "sha256": "c201a2a1bb1dc412",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGA-Mawer-Canadian-Bond-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 75622,
+     "sha256": "e9fe064750f5c267",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179332,11 +182102,40 @@
      "sha256": "7b74c3e5f24ffe21",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MMGH-Mawer-Canadian-Equity-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 74543,
+     "sha256": "62ca8dfa6becff8a",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGH-Mawer-Canadian-Equity-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 74380,
+     "sha256": "f8f58819d9df7d4e",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGH-Mawer-Canadian-Equity-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 74439,
+     "sha256": "ab4c133e6eea8f02",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179355,11 +182154,40 @@
      "sha256": "61c48e80c247f896",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MM7Z-Mawer-EAFE-Large-Cap-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 74549,
+     "sha256": "aa744d50357a646f",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MM7Z-Mawer-EAFE-Large-Cap-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 73939,
+     "sha256": "d76973e25c7025c4",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MM7Z-Mawer-EAFE-Large-Cap-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 74547,
+     "sha256": "7827fecb445509b4",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179378,11 +182206,40 @@
      "sha256": "80268357da0522da",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MMGP-Mawer-Emerging-Markets-Equity-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 74429,
+     "sha256": "0b602b8e9d596627",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGP-Mawer-Emerging-Markets-Equity-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 74265,
+     "sha256": "bb5993823410d692",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGP-Mawer-Emerging-Markets-Equity-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 74605,
+     "sha256": "f8869d60a7802bbb",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179401,11 +182258,40 @@
      "sha256": "902b24079a0f6ece",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MMGB-Mawer-Global-Balanced-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 77158,
+     "sha256": "bc063c9105c0ce43",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGB-Mawer-Global-Balanced-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 77020,
+     "sha256": "b93c74aab48e8044",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGB-Mawer-Global-Balanced-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 77024,
+     "sha256": "4ef3ca39cc792fe9",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179449,11 +182335,40 @@
      "sha256": "8c541b8a333bcbdb",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MMGE-Mawer-Global-Equity-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 64306,
+     "sha256": "d7719db833a43672",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGE-Mawer-Global-Equity-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 64100,
+     "sha256": "2a0f52b3bc4c95ed",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGE-Mawer-Global-Equity-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 64281,
+     "sha256": "ac6d524ef8757819",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179472,11 +182387,40 @@
      "sha256": "e38e703c0f3d630f",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MMGN-Mawer-Global-Small-Cap-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 74610,
+     "sha256": "4909ff880e76617a",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGN-Mawer-Global-Small-Cap-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 74428,
+     "sha256": "2f9bf55b8d12a876",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGN-Mawer-Global-Small-Cap-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 74420,
+     "sha256": "7e74e083ec21e3a2",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179495,11 +182439,40 @@
      "sha256": "093044ed0fa2dc96",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MMGL-Mawer-International-Equity-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 75434,
+     "sha256": "90cb6776302e1745",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGL-Mawer-International-Equity-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 74979,
+     "sha256": "bab140db6e247a4b",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGL-Mawer-International-Equity-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 75434,
+     "sha256": "72b59105568a3367",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179518,11 +182491,40 @@
      "sha256": "6e1e93bfac7cdb43",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MMGI-Mawer-New-Canada-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 75388,
+     "sha256": "93358f453dfa9d9d",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGI-Mawer-New-Canada-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 75187,
+     "sha256": "ae521cb4d5038cb7",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGI-Mawer-New-Canada-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 75377,
+     "sha256": "2f4710b45cfae4ef",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179541,11 +182543,40 @@
      "sha256": "f7cacabb5793a33d",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MMGF-Mawer-Tax-Effective-Balanced-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 81044,
+     "sha256": "4cf06ebd704e3e8c",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGF-Mawer-Tax-Effective-Balanced-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 80911,
+     "sha256": "264c0b5521d966f6",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGF-Mawer-Tax-Effective-Balanced-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 80874,
+     "sha256": "404904c54869686e",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179564,11 +182595,40 @@
      "sha256": "8837b8419b3dbfbf",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MMGJ-Mawer-U.S.-Equity-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 74338,
+     "sha256": "da4843114b2a3974",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGJ-Mawer-U.S.-Equity-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 74440,
+     "sha256": "f3ecadca88af26ec",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MMGJ-Mawer-U.S.-Equity-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 74444,
+     "sha256": "0a5cbbac6e7924a6",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179587,11 +182647,40 @@
      "sha256": "08d364ead6836bb3",
      "confidence": 11,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.mawer.com/assets/Documents/MAWE-Mawer-U.S.-Mid-Cap-Equity-Fund-PFIC-Reporting-Dec-31-2023.pdf",
+     "bytes": 74345,
+     "sha256": "d241e534ad89a1fa",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MAWE-Mawer-U.S.-Mid-Cap-Equity-Fund-PFIC-Reporting-Dec-31-2022.pdf",
+     "bytes": 74162,
+     "sha256": "496d9102651608eb",
+     "confidence": 11,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-04-30",
+     "tax_year": 2022,
+     "url": "https://www.mawer.com/assets/Documents/MAWE-Mawer-U.S.-Mid-Cap-Equity-Fund-PFIC-Reporting-2022.pdf",
+     "bytes": 73382,
+     "sha256": "20adc8e0e57874ad",
+     "confidence": 11,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023,
+    2022
    ]
   },
   {
@@ -179656,11 +182745,22 @@
      "sha256": "01bbe346d0e03eb6",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-09-30",
+     "tax_year": 2022,
+     "url": "https://web.archive.org/web/20230327163901/https://www.neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/pfic-128-en.pdf",
+     "bytes": 78351,
+     "sha256": "4a27c8d0cb31acd0",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2023-03-27"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2022
    ]
   },
   {
@@ -179794,11 +182894,22 @@
      "sha256": "42a03c3047347aa3",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-09-30",
+     "tax_year": 2022,
+     "url": "https://web.archive.org/web/20230327172950/https://www.neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/pfic-067-en.pdf",
+     "bytes": 78928,
+     "sha256": "85830c8a59ec7ea1",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2023-03-27"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2022
    ]
   },
   {
@@ -179840,11 +182951,22 @@
      "sha256": "afada8cda7d44f8c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-09-30",
+     "tax_year": 2022,
+     "url": "https://web.archive.org/web/20230401034138/https://www.neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/pfic-198-en.pdf",
+     "bytes": 83118,
+     "sha256": "ed6042b55f73e709",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2023-04-01"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2022
    ]
   },
   {
@@ -179886,11 +183008,22 @@
      "sha256": "db886bf548717e69",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-09-30",
+     "tax_year": 2022,
+     "url": "https://web.archive.org/web/20230327162031/https://www.neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/pfic-130-en.pdf",
+     "bytes": 78931,
+     "sha256": "4d9378746b19f155",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2023-03-27"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2022
    ]
   },
   {
@@ -180369,11 +183502,22 @@
      "sha256": "61f1f63474622dd9",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-09-30",
+     "tax_year": 2022,
+     "url": "https://web.archive.org/web/20230327162835/https://www.neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/pfic-019-en.pdf",
+     "bytes": 86150,
+     "sha256": "9a2ecda3f0519236",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2023-03-27"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2022
    ]
   },
   {
@@ -180507,11 +183651,22 @@
      "sha256": "a2c656f61a53e4cb",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-09-30",
+     "tax_year": 2022,
+     "url": "https://web.archive.org/web/20230327162922/https://www.neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/pfic-132-en.pdf",
+     "bytes": 78304,
+     "sha256": "76158103225297b1",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2023-03-27"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2022
    ]
   },
   {
@@ -180530,11 +183685,22 @@
      "sha256": "907f8541943ce9ff",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-09-30",
+     "tax_year": 2022,
+     "url": "https://web.archive.org/web/20230327171443/https://www.neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/pfic-063-en.pdf",
+     "bytes": 78911,
+     "sha256": "830e7cf24fa85395",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2023-03-27"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2022
    ]
   },
   {
@@ -218063,7 +221229,7 @@
    "from_cache": 197,
    "requests": 12,
    "unchanged": 11,
-   "seconds": 17
+   "seconds": 19
   },
   {
    "id": "tdam",
@@ -218096,7 +221262,7 @@
    "from_cache": 167,
    "requests": 21,
    "unchanged": 15,
-   "seconds": 8
+   "seconds": 7
   },
   {
    "id": "russell-ca",
@@ -218129,7 +221295,7 @@
    "from_cache": 12077,
    "requests": 572,
    "unchanged": 0,
-   "seconds": 202
+   "seconds": 199
   },
   {
    "id": "mawer",
@@ -218138,14 +221304,14 @@
    "hub": "https://www.mawer.com/documents",
    "checked": "2026-11-12",
    "status": "ok",
-   "statements": 14,
-   "candidates": 14,
+   "statements": 53,
+   "candidates": 53,
    "message": "",
    "derived_names": 0,
    "from_cache": 14,
-   "requests": 0,
+   "requests": 39,
    "unchanged": 0,
-   "seconds": 0
+   "seconds": 22
   },
   {
    "id": "cibc",
@@ -218154,14 +221320,15 @@
    "hub": "https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance/etf-pfic-annual-statement.html",
    "checked": "2026-11-12",
    "status": "ok",
-   "statements": 20,
+   "statements": 22,
    "candidates": 20,
    "message": "",
    "derived_names": 0,
    "from_cache": 19,
-   "requests": 1,
+   "requests": 18,
    "unchanged": 0,
-   "seconds": 1
+   "archived": 2,
+   "seconds": 60
   },
   {
    "id": "blackrock-ishares-ca",
@@ -218177,7 +221344,7 @@
    "from_cache": 825,
    "requests": 39,
    "unchanged": 14,
-   "seconds": 15
+   "seconds": 14
   },
   {
    "id": "capitalgroup-ca",
@@ -218189,7 +221356,7 @@
    "statements": 16,
    "candidates": 16,
    "message": "links only - the documents are not fetched: capitalgroup.com/robots.txt disallows /content, where every document is kept",
-   "seconds": 2
+   "seconds": 1
   },
   {
    "id": "fidelity-ca",
@@ -218206,7 +221373,7 @@
    "from_cache": 205,
    "requests": 8,
    "unchanged": 0,
-   "seconds": 3
+   "seconds": 4
   },
   {
    "id": "ia-clarington",
@@ -218234,7 +221401,7 @@
    "from_cache": 150,
    "requests": 19,
    "unchanged": 18,
-   "seconds": 8
+   "seconds": 13
   },
   {
    "id": "hamilton-etfs",
@@ -218262,7 +221429,7 @@
    "from_cache": 875,
    "requests": 46,
    "unchanged": 45,
-   "seconds": 57
+   "seconds": 55
   },
   {
    "id": "bmo-gam",
@@ -218279,7 +221446,7 @@
    "from_cache": 191,
    "requests": 26,
    "unchanged": 0,
-   "seconds": 73
+   "seconds": 71
   },
   {
    "id": "manulife-im",
@@ -218295,7 +221462,9 @@
    "from_cache": 58,
    "requests": 3,
    "unchanged": 2,
-   "seconds": 65
+   "archived": 0,
+   "detail": "the Internet Archive refused requests tonight; earlier years will be retried",
+   "seconds": 88
   },
   {
    "id": "globalx-ca",
@@ -218329,7 +221498,7 @@
    "from_cache": 75,
    "requests": 6,
    "unchanged": 5,
-   "seconds": 1415
+   "seconds": 1427
   },
   {
    "id": "sunlife-gi",
@@ -218387,7 +221556,7 @@
    "from_cache": 6,
    "requests": 0,
    "unchanged": 0,
-   "seconds": 201
+   "seconds": 178
   },
   {
    "id": "bridgehouse",
@@ -218408,14 +221577,14 @@
    "hub": "https://dynamic.ca/en/regulatory/statutory-documents-applications-and-forms/pfic-irs.html",
    "checked": "2026-11-12",
    "status": "ok",
-   "statements": 123,
-   "candidates": 123,
+   "statements": 379,
+   "candidates": 493,
    "message": "",
    "derived_names": 0,
    "from_cache": 119,
-   "requests": 4,
+   "requests": 374,
    "unchanged": 3,
-   "seconds": 2
+   "seconds": 129
   },
   {
    "id": "franklin-templeton-ca",
@@ -218436,15 +221605,17 @@
    "hub": "https://www.neiinvestments.com/investment-products/fund-resources/fund-financials.html",
    "checked": "2026-11-12",
    "status": "ok",
-   "statements": 41,
+   "statements": 48,
    "candidates": 41,
    "message": "",
    "derived_names": 0,
    "skipped_old": 4,
    "from_cache": 35,
-   "requests": 6,
-   "unchanged": 1,
-   "seconds": 4
+   "requests": 42,
+   "unchanged": 3,
+   "archived": 7,
+   "detail": "the Internet Archive refused requests tonight; earlier years will be retried",
+   "seconds": 143
   },
   {
    "id": "starlight",
@@ -218460,7 +221631,7 @@
    "from_cache": 26,
    "requests": 1,
    "unchanged": 0,
-   "seconds": 3
+   "seconds": 4
   },
   {
    "id": "ninepoint",
@@ -218491,7 +221662,7 @@
    "derived_names": 0,
    "from_cache": 444,
    "requests": 31,
-   "unchanged": 24,
+   "unchanged": 27,
    "seconds": 11
   },
   {
@@ -218508,7 +221679,7 @@
    "from_cache": 6,
    "requests": 0,
    "unchanged": 0,
-   "seconds": 1
+   "seconds": 16
   },
   {
    "id": "lysander",
@@ -218536,7 +221707,7 @@
    "from_cache": 6,
    "requests": 0,
    "unchanged": 0,
-   "seconds": 1
+   "seconds": 2
   },
   {
    "id": "guardian",
@@ -218552,7 +221723,7 @@
    "from_cache": 5,
    "requests": 0,
    "unchanged": 0,
-   "seconds": 2
+   "seconds": 3
   },
   {
    "id": "harvest",
@@ -218561,14 +221732,14 @@
    "hub": "https://harvestportfolios.com/products/",
    "checked": "2026-11-12",
    "status": "ok",
-   "statements": 28,
-   "candidates": 28,
+   "statements": 41,
+   "candidates": 140,
    "message": "",
    "derived_names": 0,
    "from_cache": 22,
-   "requests": 6,
+   "requests": 118,
    "unchanged": 5,
-   "seconds": 56
+   "seconds": 366
   },
   {
    "id": "agf",
