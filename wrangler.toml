@@ -5,12 +5,19 @@
 # nightly crawler commits a refreshed web/data/index.json, the push triggers a
 # rebuild, and the live site updates on its own.
 #
-# The PDF proxy is a SEPARATE worker with its own config in worker/wrangler.toml.
+# The site also answers one address that is not a file: /pdf?u=..., which
+# fetches a statement so the page can put it in a ZIP. That code is
+# worker/site.js. Files under ./web are served directly and never reach it -
+# only requests that match no file do - so the site stays a static site.
+#
+# (worker/worker.js and worker/wrangler.toml are the OLD stand-alone proxy,
+# "qef-pdf-proxy". The page only falls back to it if /pdf is unavailable.)
 
 name = "qef-lookup"
+main = "worker/site.js"
 compatibility_date = "2025-01-01"
 
-# Static assets only - there is no server-side code in the site itself.
 [assets]
 directory = "./web"
+binding = "ASSETS"
 not_found_handling = "none"

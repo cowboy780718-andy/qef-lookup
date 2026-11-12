@@ -1,16 +1,17 @@
 /**
- * QEF Lookup - PDF fetch proxy (Cloudflare Worker, free tier)
+ * QEF Lookup - the OLD stand-alone PDF proxy ("qef-pdf-proxy").
  *
- * Why this exists: fund company servers do not send CORS headers, so the
- * browser cannot fetch their PDFs directly to bundle them into a ZIP. This
- * Worker fetches on the page's behalf and re-serves with CORS.
+ * SUPERSEDED by worker/site.js, which does the same job at the site's own
+ * /pdf address, is deployed automatically with the site, and takes its list
+ * of permitted hosts from the index instead of from the hand-typed list below.
+ * The page only falls back to this Worker when /pdf is not available.
  *
- * It is NOT a general proxy. Requests are refused unless the target host is on
- * ALLOWED_HOSTS below, so this cannot be turned into an open relay if someone
- * finds the URL. Add a host here when you add a fund family to sources.yaml.
+ * It is kept so the fallback keeps working. The list below is only as current
+ * as the last time someone deployed this file by hand - which is exactly the
+ * problem site.js was written to remove - so once /pdf has been seen working
+ * on the live site this Worker can simply be deleted from Cloudflare.
  *
- * Deploy:  npx wrangler deploy
- * Free tier: 100,000 requests/day.
+ * Deploy (only if you want the fallback refreshed):  npx wrangler deploy
  */
 
 const ALLOWED_HOSTS = [
@@ -25,22 +26,22 @@ const ALLOWED_HOSTS = [
   "az-prd-mawer-com-cms-bda9ehd8a2fqgdgn.a02.azurefd.net",
   "www.cibc.com",
   "www.blackrock.com",
-  "www.capitalgroup.com",
   "www.fidelity.ca",
-  "iaclarington.com",
-  "www.iaclarington.com",
   "www.renaissanceinvestments.ca",
   // Tier B
   "www.rbcgam.com",
-  "bmogam.com",
-  "bmogamhub.com",
   "www.manulifeim.com",
   "www.globalx.ca",
-  "www.purposeinvest.com",
   "documents.purposeinvest.com",
-  "www.sunlifeglobalinvestments.com",
-  "www.pimco.com",
   "www.dimensional.com",
+  // Added after the first deploy - and never deployed, which is why these
+  // failed in every ZIP until site.js took over.
+  "bmo.bynder.com",
+  "www.nbinvestments.ca",
+  "www.ninepoint.com",
+  "sprott.com",
+  "www.fondsdesjardins.com",
+  "www.guardiancapital.com",
 ];
 
 const CORS = {

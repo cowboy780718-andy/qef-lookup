@@ -1,0 +1,27 @@
+{
+ "generated": "2026-11-10T16:02:46+00:00",
+ "hosts": [
+  "az-prd-mawer-com-cms-bda9ehd8a2fqgdgn.a02.azurefd.net",
+  "bmo.bynder.com",
+  "documents.purposeinvest.com",
+  "fund-docs.vanguard.com",
+  "funds.cifinancial.com",
+  "russellinvestments.com",
+  "sprott.com",
+  "www.blackrock.com",
+  "www.cibc.com",
+  "www.dimensional.com",
+  "www.fidelity.ca",
+  "www.fondsdesjardins.com",
+  "www.globalx.ca",
+  "www.guardiancapital.com",
+  "www.mackenzieinvestments.com",
+  "www.manulifeim.com",
+  "www.nbinvestments.ca",
+  "www.ninepoint.com",
+  "www.rbcgam.com",
+  "www.renaissanceinvestments.ca",
+  "www.td.com",
+  "www.vanguard.ca"
+ ]
+}
