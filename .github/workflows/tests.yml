@@ -38,5 +38,11 @@ jobs:
           pip install requests PyYAML pypdf cryptography
           python -m unittest discover -s tests -v
 
+      # A recent Node is asked for by name: the site's files are ES modules
+      # with a .js ending, which older Node releases refuse to import.
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
       - name: Site and download-helper tests
         run: node --test tests/test_lib.mjs tests/test_worker.mjs
