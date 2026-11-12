@@ -1,18 +1,30 @@
 /**
- * QEF Statement Lookup - client-side application.
+ * QEF Statement Lookup - the page.
  *
  * Everything here runs in the reader's browser. Client documents dropped onto
  * the page are parsed locally with PDF.js and never leave the machine; the only
- * network calls are for the static index and, when bundling a ZIP, the PDF
- * proxy. There is no server-side session and nothing about a lookup is logged.
+ * network calls are for the static index and, when bundling a ZIP, the
+ * statements themselves. There is no server-side session and nothing about a
+ * lookup is logged.
+ *
+ * The logic that decides WHAT matches and WHAT gets downloaded lives in
+ * lib.js, where it can be tested. This file is the wiring to the page.
  */
 
-import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.mjs";
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.worker.min.mjs";
+import {
+  esc, kb, keyOf, splitKey, queryTerms, queryScore, identify, planDownloads,
+  manifestCsv, htmlStatementFile, healthSummary,
+} from "./lib.js";
 
 const CFG = window.QEF_CONFIG;
 const $ = (id) => document.getElementById(id);
+
+// Loaded only when first needed. They used to be loaded up front, which meant
+// that if the CDN was slow or blocked, the whole page - search included -
+// never started, for the sake of two features most visits do not use.
+const PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.mjs";
+const PDFJS_WORKER = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.worker.min.mjs";
+const JSZIP = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
 
 const state = {
   index: null,
@@ -28,20 +40,10 @@ const state = {
   // ten at a time is a page you can actually scan.
   perPage: 10,
   page: 1,
+  visible: [],           // what the current filters show; set by render()
 };
 
-// Only true function words and legal suffixes. Content words stay, even the
-// ones that feel generic: stripping "corporate" once made
-// "...Short Term Corporate Bond Index ETF" and "...Short Term Bond Index ETF"
-// reduce to identical token sets, and every search for one matched the other.
-const STOP = new Set("the a an of and for to in on inc ltd ltee limited".split(" "));
-
-const norm = (s) => (s || "").toLowerCase().replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
-const tokens = (s) => norm(s).split(" ").filter((t) => t && !STOP.has(t) && t.length > 1);
-const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
-  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const kb = (n) => (n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.round(n / 1024) + " KB");
-const keyOf = (f, s) => `${f.id}|${s.url}`;
+const familyById = (id) => (state.index.families || []).find((f) => f.id === id);
 
 // --------------------------------------------------------------------------
 // boot
@@ -55,17 +57,23 @@ async function boot() {
   } catch (e) {
     $("stats").innerHTML =
       `<span style="color:var(--bad)">Could not load the index (${esc(e.message)}). ` +
-      `If this is a fresh checkout, run the crawler first.</span>`;
+      `Check your connection and reload the page.</span>`;
     return;
   }
   const s = state.index.stats;
+  const h = healthSummary(state.index.health);
+  const generated = new Date(state.index.generated);
+  const ageDays = (Date.now() - generated.getTime()) / 86400000;
   $("stats").innerHTML = [
     `<span><b>${s.funds.toLocaleString()}</b> funds</span>`,
     `<span><b>${s.statements.toLocaleString()}</b> statements</span>`,
-    `<span><b>${s.families_ok}/${s.families}</b> sources healthy</span>`,
-    `<span class="muted">updated ${new Date(state.index.generated).toLocaleDateString()}</span>`,
+    `<span title="Managers collected automatically. ${h.byHand} more are listed with a link because their statements have to be fetched by hand."><b>${h.ok}/${h.total}</b> sources healthy</span>`,
+    `<span class="muted">updated ${generated.toLocaleDateString()}</span>`,
+    // The index is rebuilt nightly. If it has not been, say so rather than
+    // let week-old data pass as current.
+    ageDays > 4 ? `<span style="color:var(--warn)">not refreshed for ${Math.floor(ageDays)} days</span>` : "",
   ].join("");
-  $("built").textContent = `Index generated ${new Date(state.index.generated).toUTCString()}.`;
+  $("built").textContent = `Index generated ${generated.toUTCString()}.`;
 
   buildYearChips();
   buildFamilySelect();
@@ -111,7 +119,7 @@ function buildFamilySelect() {
  *
  * Client statements identify Canadian mutual funds by code - RBF556, TDB900 -
  * while PFIC statements only ever print the legal fund name, so the index has
- * no codes for mutual funds to match against. Returning a blank "nothing
+ * no codes for most mutual funds to match against. Returning a blank "nothing
  * found" for a code the user copied straight off a client statement is the
  * worst possible answer: it reads as "no statement exists".
  */
@@ -121,8 +129,7 @@ function fundCodeHelp(query) {
   if (!m) return "";
   const entry = (state.index.fund_code_prefixes || [])
     .find((p) => p.prefix === m[1]);
-  const fam = entry && entry.family
-    ? (state.index.families || []).find((f) => f.id === entry.family) : null;
+  const fam = entry && entry.family ? familyById(entry.family) : null;
   const resolve = entry && entry.resolve
     ? entry.resolve.replace("{code}", term) : null;
 
@@ -141,28 +148,26 @@ function fundCodeHelp(query) {
        this prefix is unconfirmed &mdash; if it 404s, search the manager&rsquo;s
        site for the code instead.</p>` : ""}
     ${!entry ? `<p class="caution">This prefix is not in the table yet. Search
-       the code on the web to identify the manager, then tell me and I will add
-       it.</p>` : ""}
+       the code on the web to identify the manager.</p>` : ""}
   </div>`;
 }
 
 /**
- * Guidance for managers matched by NAME when the search returns no funds.
+ * Guidance for managers matched by NAME.
  *
  * Typing "pimco" used to produce a bare "Nothing matched", because PIMCO has
  * no funds in the index - which reads as "no statement exists" when the truth
- * is "PIMCO publishes these, we just cannot fetch them for you". The manager
- * is in the index the whole time; only the dropdown surfaced it, and nobody
- * thinks to look there. So match the query against manager names too.
+ * is "PIMCO publishes these, we just cannot fetch them for you". So the search
+ * is matched against manager names too.
  */
 function familyMatchPanels(query) {
-  const terms = (query || "").split(/[\n,]+/).map(norm).filter(Boolean);
+  const terms = queryTerms(query);
   if (!terms.length) return "";
   const hits = (state.index.families || []).filter((f) => {
     // Families with funds would already have appeared in the results.
     if ((f.fund_count || 0) > 0) return false;
-    const hay = norm(`${f.name} ${f.id}`);
-    return terms.every((t) => hay.includes(t));
+    const hay = ` ${queryTerms(`${f.name} ${f.id}`).join(" ")} `;
+    return terms.some((t) => t.split(" ").every((w) => hay.includes(w)));
   });
   return hits.map(familyGuidance).join("");
 }
@@ -182,7 +187,6 @@ function familyGuidance(fam) {
     : fam.access === "manual"
       ? { cls: "manual", head: "Available, but must be fetched by hand" }
       : { cls: "unknown", head: "Nothing indexed for this manager yet" };
-  const link = fam.hub;
   const linkLabel = fam.access === "none"
     ? "Open the manager's website"
     : "Open the manager's PFIC page";
@@ -191,7 +195,7 @@ function familyGuidance(fam) {
     <p class="who">${esc(fam.name)}</p>
     <p>${esc((fam.guidance || fam.notes || "").trim()) ||
        "No further detail recorded yet."}</p>
-    ${link ? `<p><a class="gobtn" href="${esc(link)}" target="_blank"
+    ${fam.hub ? `<p><a class="gobtn" href="${esc(fam.hub)}" target="_blank"
         rel="noopener">${linkLabel} &rarr;</a></p>` : ""}
     <p class="caution">This records what was found on the manager&rsquo;s public
       website, not whether they will issue a statement. One may be available on
@@ -203,21 +207,14 @@ function familyGuidance(fam) {
 // filtering
 // --------------------------------------------------------------------------
 
-function matchesQuery(fund, terms) {
-  if (!terms.length) return true;
-  const hay = norm(`${fund.name} ${fund.family_name} ${fund.tickers.join(" ")}`);
-  const ticks = fund.tickers.map((t) => t.toLowerCase());
-  // Every term must hit somewhere: substring of the haystack, or a ticker.
-  return terms.every((t) => hay.includes(t) || ticks.some((k) => k === t || k.startsWith(t)));
-}
-
 function visibleFunds() {
-  const terms = state.query.split(/[\n,]+/).map(norm).filter(Boolean);
+  const terms = queryTerms(state.query);
   const out = [];
   for (const fund of state.index.funds) {
     if (state.family && fund.family !== state.family) continue;
     if (state.matches && !state.matches.has(fund.id)) continue;
-    if (!matchesQuery(fund, terms)) continue;
+    const score = queryScore(fund, terms);
+    if (!score) continue;
     const stmts = fund.statements.filter((s) => {
       if (state.years.size && !state.years.has(s.tax_year)) return false;
       if (state.from && (!s.period_end || s.period_end < state.from)) return false;
@@ -225,10 +222,14 @@ function visibleFunds() {
       return true;
     });
     if (!stmts.length) continue;
-    out.push({ ...fund, statements: stmts });
+    out.push({ ...fund, statements: stmts, _score: score });
   }
   if (state.matches) {
     out.sort((a, b) => (state.matches.get(b.id).score - state.matches.get(a.id).score));
+  } else if (terms.length) {
+    // Best match first; the index order (family, then name) breaks ties, and
+    // Array.prototype.sort keeps that order for equal scores.
+    out.sort((a, b) => b._score - a._score);
   }
   return out;
 }
@@ -237,8 +238,42 @@ function visibleFunds() {
 // render
 // --------------------------------------------------------------------------
 
+function statementRow(f, s) {
+  const key = keyOf(f, s);
+  const link = s.fmt === "html" ? "open page"
+    : s.part ? `open PDF at page ${s.part.page}` : "open PDF";
+  const size = s.fmt === "html"
+    ? `<span class="fmt-html" title="Published as a table on the manager's page, not as a downloadable document">table</span>`
+    : s.part
+      ? `<span title="One document covering many funds; this fund starts on page ${s.part.page}">p.&nbsp;${s.part.page}${s.part.pages ? " of " + s.part.pages : ""}</span>`
+      : kb(s.bytes);
+  const figs = s.fmt === "html" && s.figures ? `<div class="figs">${
+    Object.entries(s.figures).map(([k, v]) =>
+      `<span><b>${esc(v)}</b> ${esc(k)}</span>`).join("")
+  }<em>as published by the manager &mdash; verify against the source page</em></div>` : "";
+  const investees = (s.investees || []).length ? `<details class="investees">
+      <summary>${s.investees.length} direct investee fund${s.investees.length === 1 ? "" : "s"}
+        listed for holders of this fund</summary>
+      <p class="hint">Amounts attributable to one unit of <strong>this</strong> fund
+        through the funds below &mdash; not those funds&rsquo; own statements.</p>
+      ${s.investees.map((i) => `<div class="inv"><span class="invname">${esc(i.name)}</span>${
+        Object.entries(i.figures || {}).map(([k, v]) =>
+          `<span><b>${esc(v)}</b> ${esc(k)}</span>`).join("")}</div>`).join("")}
+    </details>` : "";
+  return `
+        <div class="stmt">
+          <input type="checkbox" data-stmt="${esc(key)}"
+                 ${state.selected.has(key) ? "checked" : ""}>
+          <span class="yr">${s.tax_year ?? "&mdash;"}</span>
+          <span class="pe">${s.period_end ? "ended " + esc(s.period_end) : "period unread"}${
+            s.name ? ` <span class="asname" title="The manager published this year's statement under a different fund name">as &ldquo;${esc(s.name)}&rdquo;</span>` : ""}</span>
+          <a href="${esc(s.url)}" target="_blank" rel="noopener">${link}</a>
+          <span class="sz">${size}</span>
+        </div>${figs}${investees}`;
+}
+
 function render() {
-  const funds = visibleFunds();
+  const funds = state.visible = visibleFunds();
   const total = funds.reduce((n, f) => n + f.statements.length, 0);
 
   const per = state.perPage || funds.length || 1;
@@ -248,10 +283,12 @@ function render() {
   const shown = state.perPage ? funds.slice(from, from + per) : funds;
 
   $("count").textContent = funds.length
-    ? `${funds.length} fund${funds.length === 1 ? "" : "s"}, ${total} statement${total === 1 ? "" : "s"}`
+    ? `${funds.length.toLocaleString()} fund${funds.length === 1 ? "" : "s"}, ${total.toLocaleString()} statement${total === 1 ? "" : "s"}`
       + (state.perPage && funds.length > per
          ? ` — showing ${from + 1}–${from + shown.length}` : "")
     : "";
+  $("selall").checked = funds.length > 0 &&
+    funds.every((f) => f.statements.every((s) => state.selected.has(keyOf(f, s))));
 
   const pager = $("pager");
   pager.hidden = pages <= 1;
@@ -262,8 +299,7 @@ function render() {
   }
 
   if (!funds.length) {
-    const fam = state.family
-      ? (state.index.families || []).find((f) => f.id === state.family) : null;
+    const fam = state.family ? familyById(state.family) : null;
     const code = fundCodeHelp(state.query);
     const byName = familyMatchPanels(state.query);
     $("results").innerHTML = code
@@ -284,15 +320,19 @@ function render() {
     return;
   }
 
-  $("results").innerHTML = shown.map((f) => {
+  // A manager's name typed into the search also brings up its guidance when
+  // the manager is fetch-by-hand, even though other funds matched the words.
+  const alsoByName = state.page === 1 && !state.matches ? familyMatchPanels(state.query) : "";
+
+  $("results").innerHTML = alsoByName + shown.map((f) => {
     const open = state.expanded.has(f.id);
     const m = state.matches?.get(f.id);
-    const fam = state.index.families.find((x) => x.id === f.family);
-    const oddFye = fam && fam.fye && fam.fye !== "12-31";
+    const fam = familyById(f.family);
+    const oddFye = fam && fam.fye && fam.fye !== "12-31" && fam.fye !== "varies";
     return `
     <div class="fund ${m ? "match" : ""}">
       <div class="fundhead" data-fund="${esc(f.id)}">
-        <input type="checkbox" data-fundck="${esc(f.id)}"
+        <input type="checkbox" data-fundck="${esc(f.id)}" aria-label="Select every statement for ${esc(f.name)}"
                ${f.statements.every((s) => state.selected.has(keyOf(f, s))) ? "checked" : ""}>
         <div class="fundmain">
           <div class="fundname">${esc(f.name)}</div>
@@ -306,22 +346,7 @@ function render() {
         </div>
         <span class="caret">${open ? "&#9662;" : "&#9656;"}</span>
       </div>
-      ${open ? `<div class="stmts">${f.statements.map((s) => `
-        <div class="stmt">
-          <input type="checkbox" data-stmt="${esc(keyOf(f, s))}"
-                 ${state.selected.has(keyOf(f, s)) ? "checked" : ""}>
-          <span class="yr">${s.tax_year ?? "&mdash;"}</span>
-          <span class="pe">${s.period_end ? "ended " + esc(s.period_end) : "period unread"}</span>
-          <a href="${esc(s.url)}" target="_blank" rel="noopener">${
-            s.fmt === "html" ? "open page" : "open PDF"}</a>
-          <span class="sz">${s.fmt === "html"
-            ? `<span class="fmt-html" title="Published as a table on the manager's page, not as a downloadable document">table</span>`
-            : kb(s.bytes)}</span>
-        </div>
-        ${s.fmt === "html" && s.figures ? `<div class="figs">${
-          Object.entries(s.figures).map(([k, v]) =>
-            `<span><b>${esc(v)}</b> ${esc(k)}</span>`).join("")
-        }<em>as published by the manager &mdash; verify against the source page</em></div>` : ""}`).join("")}</div>` : ""}
+      ${open ? `<div class="stmts">${f.statements.map((s) => statementRow(f, s)).join("")}</div>` : ""}
     </div>`;
   }).join("");
 
@@ -344,12 +369,15 @@ function renderNegatives() {
 
 function renderHealth() {
   const h = state.index.health || [];
+  const label = { ok: "collected", manual: "fetch by hand", none: "nothing posted",
+                  empty: "nothing collected", blocked: "refused", down: "unreachable",
+                  error: "crawler error", unknown: "not checked yet" };
   $("health").innerHTML = h.map((x) => `
     <div class="hrow">
-      <span class="dot ${esc(x.status)}"></span>
+      <span class="dot ${esc(x.status)}" title="${esc(x.status)}"></span>
       <span class="hname">${esc(x.name)}</span>
-      <span class="hnum">${x.statements}/${x.candidates}</span>
-      <span class="hmsg">${esc(x.message || x.status)}</span>
+      <span class="hnum">${x.status === "manual" || x.status === "none" ? "" : `${x.statements}/${x.candidates}`}</span>
+      <span class="hmsg"><b>${esc(label[x.status] || x.status)}</b>${x.message ? " — " + esc(x.message) : ""}</span>
       <a href="${esc(x.hub)}" target="_blank" rel="noopener">source</a>
     </div>`).join("");
 }
@@ -357,21 +385,26 @@ function renderHealth() {
 function updateTray() {
   const n = state.selected.size;
   $("tray").hidden = n === 0;
-  $("traycount").textContent = `${n} statement${n === 1 ? "" : "s"} selected`;
-  // A selection of only HTML statements needs no proxy - those files are
-  // generated in the browser rather than fetched.
-  const needsProxy = [...state.selected.values()].some((x) => x.stmt.fmt !== "html");
-  $("btnzip").disabled = needsProxy && !CFG.PDF_PROXY;
-  $("btnzip").title = $("btnzip").disabled
-    ? "ZIP bundling of PDFs needs the proxy Worker deployed - see config.js."
-    : "";
+  const files = n ? planDownloads([...state.selected.values()]).length : 0;
+  $("traycount").textContent = `${n.toLocaleString()} statement${n === 1 ? "" : "s"} selected` +
+    (files && files !== n ? ` (${files} file${files === 1 ? "" : "s"})` : "");
 }
 
 // --------------------------------------------------------------------------
 // client document identification (local only)
 // --------------------------------------------------------------------------
 
+let pdfjsPromise = null;
+function loadPdfJs() {
+  pdfjsPromise ??= import(PDFJS).then((lib) => {
+    lib.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
+    return lib;
+  }).catch((e) => { pdfjsPromise = null; throw e; });
+  return pdfjsPromise;
+}
+
 async function readPdf(file) {
+  const pdfjsLib = await loadPdfJs();
   const buf = await file.arrayBuffer();
   const doc = await pdfjsLib.getDocument({ data: buf }).promise;
   let text = "";
@@ -383,65 +416,30 @@ async function readPdf(file) {
   return text;
 }
 
-/**
- * Match a client document against the index.
- *
- * Deliberately conservative. A fund is only proposed when either an exact
- * ticker appears as a standalone token, or most of the fund's distinctive name
- * tokens are present. Over-matching here would be worse than under-matching:
- * a wrong fund quietly filed is a bigger problem than one you had to look up.
- */
-export function identify(text) {
-  // Match on contiguous token runs, not bag-of-words overlap. Fund families
-  // name products in nested series, so one fund's name is routinely a subset of
-  // another's ("Short Term Bond" inside "Short Term Corporate Bond"). Set
-  // overlap treats those as the same fund; requiring the tokens to appear in
-  // order, adjacent, does not.
-  const docStr = ` ${tokens(text).join(" ")} `;
-  const upper = text.toUpperCase();
-  const hits = new Map();
-
-  for (const fund of state.index.funds) {
-    let score = 0;
-    const why = [];
-
-    for (const t of fund.tickers) {
-      if (t.length >= 2 && new RegExp(`(^|[^A-Z0-9])${t}([^A-Z0-9]|$)`).test(upper)) {
-        score += 10; why.push(`ticker ${t}`); break;
-      }
-    }
-
-    const toks = tokens(fund.name);
-    if (toks.length >= 2 && docStr.includes(` ${toks.join(" ")} `)) {
-      score += 6 + Math.min(toks.length, 6);
-      why.push("full name");
-    }
-
-    if (score > 0) hits.set(fund.id, { score, why: why.join(", ") });
-  }
-  return hits;
-}
-
 async function handleFiles(files) {
   const box = $("dropstatus");
   box.hidden = false;
-  box.innerHTML = `Reading ${files.length} file(s) locally&hellip;`;
+  const pdfs = files.filter((f) => f.type === "application/pdf" || /\.pdf$/i.test(f.name));
+  if (!pdfs.length) {
+    box.innerHTML = `<strong>That is not a PDF.</strong> Drop a PDF statement, or type
+      the fund names into the search box instead.`;
+    return;
+  }
+  box.innerHTML = `Reading ${pdfs.length} file${pdfs.length === 1 ? "" : "s"} locally&hellip;`;
   try {
     let text = "";
-    for (const f of files) {
-      if (f.type !== "application/pdf") continue;
-      text += await readPdf(f) + "\n";
-    }
+    for (const f of pdfs) text += await readPdf(f) + "\n";
     if (!text.trim()) {
       box.innerHTML = `<strong>No text found.</strong> This looks like a scanned PDF.
         The page cannot OCR it without uploading it somewhere, which it will not do &mdash;
         type the fund names into the search box instead.`;
       return;
     }
-    const hits = identify(text);
+    const hits = identify(text, state.index.funds);
     state.matches = hits.size ? hits : null;
     state.page = 1;
-    state.expanded = new Set([...hits.keys()].slice(0, 8));
+    state.expanded = new Set([...hits.entries()]
+      .sort((a, b) => b[1].score - a[1].score).slice(0, 8).map(([id]) => id));
     box.innerHTML = hits.size
       ? `<strong>${hits.size} candidate fund${hits.size === 1 ? "" : "s"} identified.</strong>
          Results below are filtered to these matches.
@@ -464,113 +462,121 @@ async function handleFiles(files) {
 // downloads
 // --------------------------------------------------------------------------
 
-const safe = (s) => String(s).replace(/[^A-Za-z0-9]+/g, "_").replace(/^_|_$/g, "").slice(0, 70);
-
-function fileNameFor(fund, stmt) {
-  const yr = stmt.tax_year || (stmt.period_end || "").slice(0, 4) || "unknown";
-  const ext = stmt.fmt === "html" ? "html" : "pdf";
-  return `${safe(fund.family_name)}__${safe(fund.name)}__FY${yr}__PFIC_AIS.${ext}`;
+let jszipPromise = null;
+function loadJsZip() {
+  jszipPromise ??= new Promise((resolve, reject) => {
+    if (window.JSZip) return resolve(window.JSZip);
+    const s = document.createElement("script");
+    s.src = JSZIP;
+    s.onload = () => resolve(window.JSZip);
+    s.onerror = () => { jszipPromise = null; reject(new Error("could not load the ZIP library")); };
+    document.head.appendChild(s);
+  });
+  return jszipPromise;
 }
 
 /**
- * Build a working-paper page for a statement the manager published as a table
- * rather than a document. There is nothing to download in those cases, so the
- * ZIP would otherwise contain a gap exactly where a fund actually does have a
- * statement. The figures are reproduced as published, with the source URL and
- * retrieval date on the page so the file stands on its own in a file.
+ * Where to fetch statements through. Browsers will not let a page read a PDF
+ * from another site, so the request goes via the site's own /pdf address. The
+ * older stand-alone proxy is kept as a fallback for when this page is not
+ * being served by the Worker (a local preview, for instance).
  */
-export function htmlStatementFile(fund, stmt) {
-  const rows = Object.entries(stmt.figures || {})
-    .map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join("");
-  return `<!doctype html><meta charset="utf-8">
-<title>${esc(fund.name)} — PFIC AIS ${stmt.tax_year ?? ""}</title>
-<style>
- body{font:14px/1.55 system-ui,sans-serif;margin:36px;max-width:760px;color:#14181d}
- h1{font-size:1.2rem;margin:0 0 4px}
- .meta{color:#5a636e;margin-bottom:18px}
- table{border-collapse:collapse;width:100%;margin:14px 0}
- th,td{border:1px solid #dfe3e8;padding:8px 10px;text-align:left;vertical-align:top}
- th{background:#f6f7f9;width:58%;font-weight:600}
- td{font-variant-numeric:tabular-nums}
- .note{background:#fff8e6;border:1px solid #f0d999;padding:11px 13px;border-radius:7px;
-       font-size:.9rem;margin-top:20px}
- a{color:#1d4ed8}
-</style>
-<h1>${esc(fund.name)}</h1>
-<div class="meta">${esc(fund.family_name)}
-  ${fund.tickers.length ? " &middot; " + esc(fund.tickers.join(", ")) : ""}<br>
-  PFIC Annual Information Statement &mdash; fund tax year
-  ${esc(String(stmt.tax_year ?? "unknown"))}${
-    stmt.period_end ? `, period ended ${esc(stmt.period_end)}` : ""}</div>
-<table><tbody>${rows}</tbody></table>
-<div class="note">
-  <strong>This is a transcription, not the manager's own document.</strong>
-  ${esc(fund.family_name)} publishes this statement as a table on its website
-  rather than as a downloadable file, so the figures above were captured from
-  that page and are reproduced exactly as published &mdash; nothing has been
-  recomputed or converted.
-  <br><br>
-  Source: <a href="${esc(stmt.url)}">${esc(stmt.url)}</a><br>
-  Retrieved for this file: ${new Date().toISOString().slice(0, 10)}<br>
-  <strong>Verify against the source page before using it.</strong>
-</div>`;
+let fetchViaPromise = null;
+function fetchVia() {
+  fetchViaPromise ??= (async () => {
+    try {
+      const r = await fetch("pdf/health", { cache: "no-store" });
+      if (r.ok && (await r.json()).ok) return (u) => `pdf?u=${encodeURIComponent(u)}`;
+    } catch { /* fall through */ }
+    if (CFG.PDF_PROXY) return (u) => `${CFG.PDF_PROXY}/?u=${encodeURIComponent(u)}`;
+    return null;
+  })();
+  return fetchViaPromise;
+}
+
+async function fetchPdf(via, url) {
+  let lastError;
+  for (let attempt = 0; attempt < 2; attempt++) {     // one retry: transient failures are common
+    try {
+      const r = await fetch(via(url));
+      if (r.ok) return await r.arrayBuffer();
+      let why = `HTTP ${r.status}`;
+      try { const j = await r.json(); if (j.error) why = j.error + (j.status ? ` (${j.status})` : ""); } catch { /* not JSON */ }
+      lastError = new Error(why);
+      if (r.status === 400 || r.status === 403) break;  // retrying will not change a refusal
+    } catch (e) {
+      lastError = e;
+    }
+  }
+  throw lastError;
 }
 
 async function downloadZip() {
   const items = [...state.selected.values()];
   if (!items.length) return;
-  const prog = $("progress"), bar = $("bar"), ptext = $("ptext");
+  const files = planDownloads(items);
+  if (files.length > 400 &&
+      !confirm(`That is ${files.length} documents in one ZIP. It may take several minutes ` +
+               `and a lot of memory. Continue?`)) return;
+
+  const prog = $("progress"), bar = $("bar"), ptext = $("ptext"), btn = $("btnzip");
   prog.hidden = false;
-  let done = 0, failed = [];
-  const zip = new JSZip();
+  btn.disabled = true;
+  ptext.textContent = "Preparing…";
+  let done = 0;
+  const failed = new Map();        // file name -> reason
 
-  const queue = items.slice();
-  async function worker() {
-    while (queue.length) {
-      const { fund, stmt } = queue.shift();
-      try {
-        if (stmt.fmt === "html") {
-          // Nothing to fetch - the manager published a table, not a file.
-          zip.file(fileNameFor(fund, stmt), htmlStatementFile(fund, stmt));
-        } else {
-          const url = `${CFG.PDF_PROXY}/?u=${encodeURIComponent(stmt.url)}`;
-          const r = await fetch(url);
-          if (!r.ok) throw new Error(`HTTP ${r.status}`);
-          zip.file(fileNameFor(fund, stmt), await r.arrayBuffer());
+  try {
+    const needsFetch = files.some((f) => f.kind === "pdf");
+    const [JSZip, via] = await Promise.all([loadJsZip(), needsFetch ? fetchVia() : null]);
+    if (needsFetch && !via) throw new Error("no download service is available");
+    const zip = new JSZip();
+
+    const queue = files.slice();
+    const worker = async () => {
+      while (queue.length) {
+        const f = queue.shift();
+        try {
+          if (f.kind === "html") {
+            // Nothing to fetch - the manager published a table, not a file.
+            const { fund, stmt } = f.items[0];
+            zip.file(f.name, htmlStatementFile(fund, stmt));
+          } else {
+            zip.file(f.name, await fetchPdf(via, f.url));
+          }
+        } catch (e) {
+          failed.set(f.name, e.message || String(e));
         }
-      } catch (e) {
-        failed.push(`${fund.name} FY${stmt.tax_year}: ${e.message}`);
+        done++;
+        bar.style.width = `${(done / files.length) * 100}%`;
+        ptext.textContent = `${done} / ${files.length}`;
       }
-      done++;
-      bar.style.width = `${(done / items.length) * 100}%`;
-      ptext.textContent = `${done} / ${items.length}`;
+    };
+    await Promise.all(Array.from(
+      { length: Math.min(CFG.MAX_PARALLEL_DOWNLOADS, files.length) }, worker));
+
+    zip.file("manifest.csv", manifestCsv(items, files, failed));
+    if (failed.size) {
+      // Each failed document with its own address, so it can still be
+      // fetched by hand without going back to the site to find it again.
+      zip.file("FAILED.txt",
+        "These documents could not be added to the ZIP. Open each address to download it directly.\r\n\r\n" +
+        files.filter((f) => failed.has(f.name))
+          .map((f) => `${f.name}\r\n  ${f.url}\r\n  reason: ${failed.get(f.name)}`).join("\r\n\r\n"));
     }
+
+    ptext.textContent = "Building the ZIP…";
+    const blob = await zip.generateAsync({ type: "blob" });
+    triggerDownload(blob, `QEF_statements_${new Date().toISOString().slice(0, 10)}.zip`);
+    ptext.textContent = failed.size
+      ? `${done - failed.size} bundled, ${failed.size} failed — see FAILED.txt in the ZIP for direct links`
+      : `${done} bundled.`;
+  } catch (e) {
+    ptext.textContent = `Could not build the ZIP: ${e.message}. "Open in tabs" still works.`;
+  } finally {
+    btn.disabled = false;
+    setTimeout(() => { prog.hidden = true; bar.style.width = "0"; }, 9000);
   }
-  await Promise.all(Array.from({ length: Math.min(CFG.MAX_PARALLEL_DOWNLOADS, items.length) }, worker));
-
-  zip.file("manifest.csv", manifestCsv(items));
-  if (failed.length) zip.file("FAILED.txt", failed.join("\n"));
-
-  const blob = await zip.generateAsync({ type: "blob" });
-  triggerDownload(blob, `QEF_statements_${new Date().toISOString().slice(0, 10)}.zip`);
-  ptext.textContent = failed.length
-    ? `${done - failed.length} bundled, ${failed.length} failed (see FAILED.txt in the ZIP)`
-    : `${done} bundled.`;
-  setTimeout(() => { prog.hidden = true; bar.style.width = "0"; }, 6000);
-}
-
-function manifestCsv(items) {
-  const rows = [["Fund family", "Fund", "Tickers", "Fund tax year", "Period end",
-                 "Format", "File name", "Source URL", "Bytes", "SHA256 (first 16)",
-                 "Published figures"]];
-  for (const { fund, stmt } of items) {
-    const figs = stmt.figures
-      ? Object.entries(stmt.figures).map(([k, v]) => `${k}: ${v}`).join(" | ") : "";
-    rows.push([fund.family_name, fund.name, fund.tickers.join(" "), stmt.tax_year ?? "",
-               stmt.period_end ?? "", stmt.fmt === "html" ? "web table" : "PDF",
-               fileNameFor(fund, stmt), stmt.url, stmt.bytes, stmt.sha256, figs]);
-  }
-  return rows.map((r) => r.map((c) => `"${String(c ?? "").replace(/"/g, '""')}"`).join(",")).join("\r\n");
 }
 
 function triggerDownload(blob, name) {
@@ -584,6 +590,16 @@ function triggerDownload(blob, name) {
 // --------------------------------------------------------------------------
 // events
 // --------------------------------------------------------------------------
+
+function setSelected(fund, stmts, on) {
+  // Always store the full fund from the index, never the filtered copy, so a
+  // selection made under one filter is the same object under another.
+  const full = state.index.funds.find((f) => f.id === fund.id) || fund;
+  for (const s of stmts) {
+    on ? state.selected.set(keyOf(full, s), { fund: full, stmt: s })
+       : state.selected.delete(keyOf(full, s));
+  }
+}
 
 function wire() {
   let t;
@@ -630,25 +646,22 @@ function wire() {
   $("results").addEventListener("click", (e) => {
     const ck = e.target.closest("[data-stmt]");
     if (ck) {
-      const [fundId, url] = ck.dataset.stmt.split("|");
+      const [fundId, url] = splitKey(ck.dataset.stmt);
       const fund = state.index.funds.find((f) => f.id === fundId);
-      const stmt = fund.statements.find((s) => s.url === url);
-      ck.checked ? state.selected.set(ck.dataset.stmt, { fund, stmt })
-                 : state.selected.delete(ck.dataset.stmt);
-      updateTray();
+      const stmt = fund?.statements.find((s) => s.url === url);
+      if (stmt) setSelected(fund, [stmt], ck.checked);
+      render();
       return;
     }
     const fck = e.target.closest("[data-fundck]");
     if (fck) {
-      e.stopPropagation();
-      const fund = visibleFunds().find((f) => f.id === fck.dataset.fundck);
-      for (const s of fund.statements) {
-        fck.checked ? state.selected.set(keyOf(fund, s), { fund, stmt: s })
-                    : state.selected.delete(keyOf(fund, s));
-      }
+      const fund = state.visible.find((f) => f.id === fck.dataset.fundck);
+      if (fund) setSelected(fund, fund.statements, fck.checked);
       render();
       return;
     }
+    // Links and the investee disclosure inside an open fund must not toggle it.
+    if (e.target.closest("a, details")) return;
     const head = e.target.closest("[data-fund]");
     if (head) {
       const id = head.dataset.fund;
@@ -658,19 +671,24 @@ function wire() {
   });
 
   $("selall").addEventListener("change", (e) => {
-    for (const fund of visibleFunds()) {
-      for (const s of fund.statements) {
-        e.target.checked ? state.selected.set(keyOf(fund, s), { fund, stmt: s })
-                         : state.selected.delete(keyOf(fund, s));
-      }
+    const funds = state.visible;
+    const count = funds.reduce((n, f) => n + f.statements.length, 0);
+    if (e.target.checked && count > 1000 &&
+        !confirm(`Select all ${count.toLocaleString()} statements shown? ` +
+                 `Narrow the search or pick a tax year first if that is more than you meant.`)) {
+      e.target.checked = false;
+      return;
     }
+    for (const fund of funds) setSelected(fund, fund.statements, e.target.checked);
     render();
   });
 
   document.querySelectorAll(".tab").forEach((tab) => {
     tab.addEventListener("click", () => {
-      document.querySelectorAll(".tab").forEach((x) => x.classList.remove("active"));
-      tab.classList.add("active");
+      document.querySelectorAll(".tab").forEach((x) => {
+        x.classList.toggle("active", x === tab);
+        x.setAttribute("aria-selected", x === tab);
+      });
       for (const p of ["results", "negatives", "health"]) {
         $("tab-" + p).hidden = p !== tab.dataset.tab;
       }
@@ -679,25 +697,31 @@ function wire() {
 
   const drop = $("drop"), file = $("file");
   drop.addEventListener("click", () => file.click());
-  drop.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") file.click(); });
-  file.addEventListener("change", (e) => handleFiles([...e.target.files]));
+  drop.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); file.click(); }
+  });
+  file.addEventListener("change", (e) => { handleFiles([...e.target.files]); e.target.value = ""; });
   ["dragenter", "dragover"].forEach((ev) =>
     drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add("over"); }));
   ["dragleave", "drop"].forEach((ev) =>
     drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove("over"); }));
   drop.addEventListener("drop", (e) => handleFiles([...e.dataTransfer.files]));
+  // A PDF dropped anywhere else on the page would otherwise make the browser
+  // navigate away to it, losing the selection.
+  ["dragover", "drop"].forEach((ev) =>
+    window.addEventListener(ev, (e) => { if (!e.target.closest?.("#drop")) e.preventDefault(); }));
 
   $("btnzip").addEventListener("click", downloadZip);
   $("btnclear").addEventListener("click", () => { state.selected.clear(); render(); });
   $("btncsv").addEventListener("click", () => {
-    triggerDownload(new Blob([manifestCsv([...state.selected.values()])],
+    triggerDownload(new Blob(["﻿" + manifestCsv([...state.selected.values()])],
       { type: "text/csv" }), "qef_manifest.csv");
   });
   $("btnopen").addEventListener("click", () => {
-    const items = [...state.selected.values()];
-    if (items.length > 12 &&
-        !confirm(`Open ${items.length} tabs? Your browser may block some.`)) return;
-    for (const { stmt } of items) window.open(stmt.url, "_blank", "noopener");
+    const urls = [...new Set([...state.selected.values()].map((x) => x.stmt.url))];
+    if (urls.length > 12 &&
+        !confirm(`Open ${urls.length} tabs? Your browser may block some.`)) return;
+    for (const u of urls) window.open(u, "_blank", "noopener");
   });
 }
 

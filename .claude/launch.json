@@ -5,11 +5,7 @@
       "name": "qef-web",
       "runtimeExecutable": "python",
       "runtimeArgs": [
-        "-m",
-        "http.server",
-        "8099",
-        "--directory",
-        "web"
+        "tools/dev.py"
       ],
       "port": 8099
     }

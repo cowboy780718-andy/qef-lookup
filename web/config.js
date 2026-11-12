@@ -1,15 +1,11 @@
 /**
  * Site configuration.
  *
- * PDF_PROXY  Cloudflare Worker that re-serves fund company PDFs with CORS
- *            headers, so the page can bundle them into a ZIP. Without it the
- *            site still works fully - "Open in tabs" and the per-statement
- *            download links go straight to the manager's site - but ZIP
- *            bundling is unavailable, because browsers block cross-origin
- *            reads of those PDFs.
- *
- *            Deploy worker/worker.js, then paste its URL here, e.g.
- *              "https://qef-pdf-proxy.<your-subdomain>.workers.dev"
+ * PDF_PROXY  The OLD stand-alone download helper, kept only as a fallback.
+ *            Statements are normally fetched through the site's own /pdf
+ *            address (worker/site.js), which needs no setting here. This one
+ *            is used only when /pdf is not there - for example when the page
+ *            is opened from a plain local web server during development.
  */
 window.QEF_CONFIG = {
   PDF_PROXY: "https://qef-pdf-proxy.cowboy780718.workers.dev",

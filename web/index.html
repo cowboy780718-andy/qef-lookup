@@ -20,8 +20,8 @@
 
 <main class="wrap">
 
-  <!-- Disclaimer sits above the tool, not buried in the footer: one line
-       always visible, the full text one click away. -->
+  <!-- The one-line caution sits above the tool; the full disclaimer is in
+       the footer. -->
   <section class="notice">
     <p class="notice-lead">
       <strong>Informational purposes only &mdash; not formal tax or legal advice.</strong>
@@ -37,7 +37,7 @@
         <label for="q">Search by fund name, ticker or fund code</label>
         <input id="q" type="search" autocomplete="off" spellcheck="false"
                placeholder="e.g. XSH, VFV, RBF556, &ldquo;global dividend&rdquo;, Mackenzie">
-        <div class="hint" id="qhint">Partial names are fine. Multiple terms, one per line, are searched together.</div>
+        <div class="hint" id="qhint">Partial names are fine, in any order. Separate several funds with commas: <em>XSH, VFV, global dividend</em>.</div>
       </div>
 
       <div class="findcol">
@@ -82,9 +82,9 @@
 
   <!-- ---------- tabs ---------- -->
   <nav class="tabs" role="tablist">
-    <button class="tab active" data-tab="results" role="tab">Statements</button>
-    <button class="tab" data-tab="negatives" role="tab">Not available</button>
-    <button class="tab" data-tab="health" role="tab">Source health</button>
+    <button class="tab active" data-tab="results" role="tab" aria-selected="true">Statements</button>
+    <button class="tab" data-tab="negatives" role="tab" aria-selected="false">Not available</button>
+    <button class="tab" data-tab="health" role="tab" aria-selected="false">Source health</button>
   </nav>
 
   <section id="tab-results" class="tabpane">
@@ -122,8 +122,10 @@
 
   <section id="tab-health" class="tabpane" hidden>
     <p class="lead">
-      Every source is re-checked on each crawl. A family that breaks shows here and
-      opens a GitHub issue automatically.
+      Every manager is re-checked each night. The two numbers are statements
+      verified and documents examined. Managers marked &ldquo;fetch by hand&rdquo;
+      do publish statements, but not in a way that can be collected for you
+      &mdash; the note says why, and the link goes to their page.
     </p>
     <div id="health"></div>
   </section>
@@ -191,8 +193,6 @@
   <p class="muted" id="built"></p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.mjs" type="module"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="config.js"></script>
 <script src="app.js" type="module"></script>
 </body>

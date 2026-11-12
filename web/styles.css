@@ -21,6 +21,9 @@
   }
 }
 * { box-sizing: border-box; }
+/* The `hidden` attribute loses to any `display:` rule below, which left the
+   pager and the progress bar on screen when they were meant to be gone. */
+[hidden] { display: none !important; }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
   font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -234,3 +237,21 @@ button.ghost { background: none; color: var(--ink-2); }
                  margin: 0; color: var(--ink-2); }
 .fulldisc .notice-body { margin-top: 11px; padding-top: 11px;
                          border-top: 1px solid var(--line); }
+
+/* A statement published under an earlier fund name, and the indirect-PFIC
+   amounts a fund-of-funds lists for its own holders. */
+.asname { color: var(--warn); font-size: .8rem; }
+.investees { padding: 0 13px 10px 40px; background: var(--bg); font-size: .8rem;
+             color: var(--ink-2); border-bottom: 1px solid var(--line); }
+.investees summary { cursor: pointer; color: var(--accent); padding: 2px 0 6px; }
+.investees .hint { margin: 0 0 6px; }
+.investees .inv { display: flex; flex-wrap: wrap; gap: 4px 16px; padding: 5px 0;
+                  border-top: 1px dashed var(--line); }
+.investees .invname { flex-basis: 100%; font-weight: 600; color: var(--ink); }
+.investees b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.dot.none, .dot.unknown { background: var(--ink-2); }
+.hrow .hmsg b { color: var(--ink); font-weight: 600; }
+.hrow .hnum { min-width: 62px; text-align: right; }
+@media (max-width: 720px) {
+  .investees { padding-left: 15px; }
+}
