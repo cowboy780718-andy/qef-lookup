@@ -8,7 +8,7 @@ import assert from "node:assert/strict";
 import {
   queryTerms, queryScore, termScore, identify, planDownloads, manifestCsv,
   htmlStatementFile, healthSummary, fileNameFor, keyOf, splitKey, baseUrl,
-  linksOnly, notDownloadedText,
+  linksOnly, notDownloadedText, familyKeywords, familiesNamed,
 } from "../web/lib.js";
 
 const fund = (id, name, tickers = [], statements = null, family_name = "Example Funds") => ({
@@ -204,4 +204,33 @@ test("a link-only statement is never fetched, and the ZIP says where to get it",
   const csv = manifestCsv(items, files);
   assert.match(csv, /"link only \(not checked\)".*"not downloaded - open the source URL"/);
   assert.equal(notDownloadedText([items[1]]), "");
+});
+
+// --------------------------------------------------------------------------
+// naming a manager in a search
+// --------------------------------------------------------------------------
+
+const FAMS = [
+  { id: "cibc", name: "CIBC Asset Management" },
+  { id: "renaissance", name: "Renaissance Investments (CIBC)" },
+  { id: "scotia", name: "Scotia Global Asset Management (ScotiaFunds, Scotia ETFs)" },
+  { id: "beutel-goodman", name: "Beutel Goodman" },
+  { id: "globalx-ca", name: "Global X Canada" },
+];
+
+test("a manager is identified by its own words, not by 'Asset Management'", () => {
+  assert.deepEqual(familyKeywords(FAMS[0]), ["cibc"]);
+  assert.deepEqual(familyKeywords(FAMS[1]), ["renaissance"]);
+  assert.deepEqual(familyKeywords(FAMS[2]), ["scotia"]);
+  assert.deepEqual(familyKeywords(FAMS[4]), []);          // nothing distinctive: never guessed
+});
+
+test("a search names a manager whatever else is typed with it", () => {
+  const ids = (q) => familiesNamed(q, FAMS).map((f) => f.id);
+  assert.deepEqual(ids("cibc canadian index fund"), ["cibc"]);
+  assert.deepEqual(ids("Scotiabank Canadian Dividend"), ["scotia"]);
+  assert.deepEqual(ids("XSH, beutel goodman income"), ["beutel-goodman"]);
+  assert.deepEqual(ids("goodman"), []);                    // every identifying word is needed
+  assert.deepEqual(ids("global dividend"), []);
+  assert.deepEqual(ids(""), []);
 });

@@ -48,6 +48,32 @@ export function queryTerms(query) {
   return String(query || "").split(/[\n,;]+/).map(norm).filter(Boolean);
 }
 
+// Words in a manager's name that say what it is rather than who it is.
+const GENERIC_NAME = new Set(("asset management managers investments investment funds fund " +
+  "etfs etf canada global capital group partners financial advisors mutual").split(" "));
+
+/** The words that identify a manager: "CIBC Asset Management" -> ["cibc"]. */
+export function familyKeywords(fam) {
+  // "(CIBC)" after Renaissance says whose it is, not what it is called.
+  const name = String(fam?.name || "").replace(/\([^)]*\)/g, " ");
+  return tokens(name).filter((w) => w.length >= 3 && !GENERIC_NAME.has(w));
+}
+
+/**
+ * The managers a search names, whatever else was typed with them:
+ * "cibc canadian index fund" names CIBC. Used to say what is known about a
+ * manager - what it has no statement for - next to whatever the search found.
+ */
+export function familiesNamed(query, families) {
+  const terms = queryTerms(query).map((t) => t.split(" "));
+  if (!terms.length) return [];
+  return (families || []).filter((f) => {
+    const keys = familyKeywords(f);
+    return keys.length > 0 &&
+      terms.some((words) => keys.every((k) => words.some((w) => w.startsWith(k))));
+  });
+}
+
 /** Everything about a fund that a search may hit, normalised once and kept. */
 export function haystack(fund) {
   if (fund._hay === undefined) {

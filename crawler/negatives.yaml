@@ -33,8 +33,8 @@ negatives:
       CIBC's own reporting and governance page says unitholders of these funds
       do not receive PFIC statements.
     action: >-
-      None to fetch. CIBC's Renaissance and Imperial Pools funds do have
-      statements - search those names.
+      None to fetch for these. CIBC's ETFs, and its Renaissance and Imperial
+      Pools funds, do have statements - search the fund's name.
 
   - scope: Renaissance HISA, Renaissance Money Market funds
     family: renaissance
@@ -42,6 +42,10 @@ negatives:
     evidence: https://www.renaissanceinvestments.ca/reporting-governance/pfic
     verified: 2026-08-18
     verified_by: manual
+    note: >-
+      Renaissance's PFIC page leaves these funds out of its statements.
+    action: >-
+      Contact Renaissance Investments to ask for one.
 
   - scope: All funds held inside RRSPs and RRIFs
     family: '*'
@@ -68,29 +72,16 @@ negatives:
     action: >-
       For any other series, ask Fidelity for a personalized statement.
 
-  - scope: Capital Group Canada - all funds
-    family: capitalgroup-ca
-    finding: manual_only
-    evidence: https://www.capitalgroup.com/robots.txt
-    verified: 2026-08-18
-    verified_by: crawler
-    note: >-
-      Capital Group posts its statements, but its site asks automated tools
-      not to fetch its documents, so only its links are listed here.
-    action: >-
-      Search the fund here and open the link, or use Capital Group's tax
-      centre.
-
-  - scope: Evolve ETFs - funds other than EBNK, BOND, CYBR, ESPX, QQQT and QQQY (so including Evolve Future Leadership Fund)
+  - scope: Evolve funds other than EBNK, BOND, CYBR, ESPX, QQQT and QQQY
     family: evolve
     finding: not_available
     evidence: https://evolveetfs.com/2026/10/evolve-to-provide-pfic-reporting-for-u-s-taxpayer-investors-for-certain-evolve-funds/
     verified: 2026-11-11
     verified_by: manual
     note: >-
-      Evolve provides PFIC statements for six funds only (EBNK, BOND, CYBR,
-      ESPX, QQQT, QQQY), starting with the year ended 30 June 2025; none could
-      be located for any other Evolve fund or earlier year.
+      Evolve provides PFIC statements for those six funds only, starting with
+      the year ended 30 June 2025; none could be located for any other Evolve
+      fund (Evolve Future Leadership Fund included) or any earlier year.
     action: >-
       Contact Evolve to ask - it says the list is reviewed every year.
 

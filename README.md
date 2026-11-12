@@ -227,7 +227,7 @@ a timeout, a rate limit - never removes anything.
 
 - **Index coverage is not the same as reality.** A fund absent from the index may
   simply not be covered. Absence is not evidence that no statement exists - only
-  the **Not available** tab and a manager's own note carry that meaning.
+  a manager's own note, shown above its results, carries that meaning.
 - **No figure extraction.** The tool finds and fetches documents. Ordinary
   earnings and net capital gain are not parsed out of PDFs, and no Form 8621
   worksheet is produced, by design. (The one exception is forced: Hamilton

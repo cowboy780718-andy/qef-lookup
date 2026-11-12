@@ -108,8 +108,13 @@ families:
     name: CIBC Asset Management
     country: CA
     mode: static
-    fye: "12-31"
+    # Its page is headed "PFIC Annual Information Statement as at June 30".
+    fye: "06-30"
     hub: https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance/etf-pfic-annual-statement.html
+    caveat: >-
+      CIBC posts statements for its ETFs only, one per ETF at a fixed address
+      that it replaces each year - so only the latest year (to 30 June) is
+      available here. For earlier years, ask CIBC.
     link_include: ['(?i)pfic-etf-.+\.pdf', '(?i)pfic.+\.pdf']
     notes: >-
       IMPORTANT: CIBC-branded mutual funds, CIBC Index Funds, Managed Portfolios
@@ -168,9 +173,7 @@ families:
     fye: "varies"
     hub: https://www.fidelity.ca/en/pfic_etf_statements/
     caveat: >-
-      Fidelity reports amounts per unit PER DAY. Only ETF and ETF Series
-      statements are posted; for other series Fidelity issues a personalized
-      statement on request.
+      Fidelity reports amounts per unit PER DAY.
     link_include: ['(?i)/pfic/\d{4}/.+\.pdf', '(?i)pfic_\d{4}_.+\.pdf']
     notes: >-
       Reports per unit PER DAY - unit-days must be computed to file.
@@ -413,10 +416,8 @@ families:
       page_pattern: '^https://evolveetfs\.com/product/[a-z0-9-]+/$'
       ticker_pattern: '/product/([a-z0-9]+)'
     caveat: >-
-      Evolve began issuing PFIC statements in October 2026, for certain funds
-      only and starting with the year ended 30 June 2025. Its announcement
-      named six: EBNK, BOND, CYBR, ESPX, QQQT and QQQY. For any other Evolve
-      fund no statement was found on its website - ask Evolve.
+      Evolve's statements start with the year ended 30 June 2025; there are
+      none for earlier years.
     notes: >-
       Until October 2026 nothing about PFIC could be found on evolveetfs.com
       and this family was recorded as "none". On 14 October 2026 Evolve

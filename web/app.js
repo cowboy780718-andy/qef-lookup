@@ -14,7 +14,7 @@
 import {
   esc, kb, keyOf, splitKey, queryTerms, queryScore, identify, planDownloads,
   manifestCsv, htmlStatementFile, healthSummary, linksOnly, notDownloadedText,
-  NOT_CRAWLED,
+  NOT_CRAWLED, familiesNamed,
 } from "./lib.js";
 
 const CFG = window.QEF_CONFIG;
@@ -78,16 +78,27 @@ async function boot() {
 
   buildYearChips();
   buildFamilySelect();
-  renderNegatives();
   renderHealth();
   render();
   wire();
 }
 
 function buildYearChips() {
-  $("years").innerHTML = state.index.stats.years
-    .map((y) => `<button class="chip" data-year="${y}" aria-pressed="false">${y}</button>`)
-    .join("") || `<span class="muted">No years indexed yet.</span>`;
+  const years = state.index.stats.years;
+  // "All years" is the state with no year picked, shown as a button so there
+  // is one click back to it instead of un-clicking each year in turn.
+  $("years").innerHTML = years.length
+    ? `<button class="chip" data-year="all" aria-pressed="true">All years</button>` +
+      years.map((y) => `<button class="chip" data-year="${y}" aria-pressed="false">${y}</button>`).join("")
+    : `<span class="muted">No years indexed yet.</span>`;
+}
+
+function syncYearChips() {
+  for (const b of $("years").querySelectorAll("[data-year]")) {
+    const on = b.dataset.year === "all"
+      ? state.years.size === 0 : state.years.has(Number(b.dataset.year));
+    b.setAttribute("aria-pressed", on);
+  }
 }
 
 function buildFamilySelect() {
@@ -165,9 +176,12 @@ function fundCodeHelp(query) {
 function familyMatchPanels(query) {
   const terms = queryTerms(query);
   if (!terms.length) return "";
+  // "scotia canadian dividend fund" names Scotia just as "scotia" does.
+  const named = new Set(familiesNamed(query, state.index.families));
   const hits = (state.index.families || []).filter((f) => {
     // Families with funds would already have appeared in the results.
     if ((f.fund_count || 0) > 0) return false;
+    if (named.has(f)) return true;
     // `covers` is the list of funds a manager says it has statements for but
     // does not post (Sun Life). Searching one of those funds by name should
     // say how to get it, not "nothing matched".
@@ -213,6 +227,31 @@ function familyGuidance(fam) {
     ${fam.hub ? `<p class="go"><a class="gobtn" href="${esc(fam.hub)}" target="_blank"
         rel="noopener">${linkLabel} &rarr;</a></p>` : ""}
   </div>`;
+}
+
+/**
+ * What is known about the manager being looked at, shown above its results:
+ * its standing note, and the funds its own page says have no statement.
+ *
+ * These findings used to sit in a tab of their own, away from the results -
+ * where "no statement for CIBC" beside twenty CIBC statements read as a
+ * contradiction. Next to the results it says which CIBC funds are which.
+ */
+function familyContext() {
+  const fams = state.family
+    ? [familyById(state.family)]
+    : familiesNamed(state.query, state.index.families);
+  return fams.filter((f) => f && !NOT_CRAWLED.has(f.access)).map((f) => {
+    const negs = (state.index.negatives || []).filter((n) => n.family === f.id);
+    return (f.caveat ? `<div class="famnote top"><strong>${esc(f.name)}:</strong> ${
+      esc(f.caveat.trim())}</div>` : "") + negs.map((n) => `<div class="guide none">
+      <h3>No PFIC statement for: <span class="who">${esc(n.scope)}</span></h3>
+      ${n.note ? `<p>${esc(n.note)}</p>` : ""}
+      ${n.action ? `<p class="todo"><strong>What to do:</strong> ${esc(n.action)}</p>` : ""}
+      <p class="src">Checked ${esc(n.verified)}${n.evidence ? ` &middot; <a href="${esc(n.evidence)}"
+        target="_blank" rel="noopener">source</a>` : ""}</p>
+    </div>`).join("");
+  }).join("");
 }
 
 // --------------------------------------------------------------------------
@@ -337,27 +376,31 @@ function render() {
     const fam = state.family ? familyById(state.family) : null;
     const code = fundCodeHelp(state.query);
     const byName = familyMatchPanels(state.query);
+    const context = state.matches ? "" : familyContext();
+    // A manager that HAS statements, none of which fit the search or the
+    // year: say so, and say what is known about it - which is usually why.
+    const hasFunds = fam && (fam.fund_count || 0) > 0;
     $("results").innerHTML = code
       ? code
-      : fam
+      : fam && !hasFunds
       ? familyGuidance(fam)
       : byName
       ? byName
       : `<div class="empty">
-          <p><strong>Nothing matched.</strong></p>
-          <p>If you expected a statement here, try the manager&rsquo;s name on its
-          own &mdash; every company checked is in the index, including those whose
-          statements cannot be collected automatically, and searching the name
-          shows what was found and where to get it.</p>
-          <p>The <em>Not available</em> tab lists the same findings together.</p>
-        </div>`;
+          <p><strong>Nothing matched${hasFunds ? ` for ${esc(fam.name)} with these filters` : ""}.</strong></p>
+          ${hasFunds || context ? "" : `<p>If you expected a statement here, try the manager&rsquo;s
+          name on its own &mdash; every company checked is in the index, including those
+          whose statements cannot be collected automatically, and searching the name
+          shows what was found and where to get it.</p>`}
+        </div>${context}`;
     updateTray();
     return;
   }
 
   // A manager's name typed into the search also brings up its guidance when
   // the manager is fetch-by-hand, even though other funds matched the words.
-  const alsoByName = state.page === 1 && !state.matches ? familyMatchPanels(state.query) : "";
+  const alsoByName = state.page === 1 && !state.matches
+    ? familyContext() + familyMatchPanels(state.query) : "";
 
   $("results").innerHTML = alsoByName + shown.map((f) => {
     const open = state.expanded.has(f.id);
@@ -387,21 +430,6 @@ function render() {
   }).join("");
 
   updateTray();
-}
-
-function renderNegatives() {
-  const negs = state.index.negatives || [];
-  $("negatives").innerHTML = negs.length ? negs.map((n) => `
-    <div class="neg">
-      <h3>${esc(n.scope)}</h3>
-      ${n.note ? `<p class="why">${esc(n.note)}</p>` : ""}
-      ${n.action ? `<p class="why"><strong>What to do:</strong> ${esc(n.action)}</p>` : ""}
-      <div class="tagline">
-        <span class="tag ${esc(n.finding)}">${esc(String(n.finding).replace(/_/g, " "))}</span>
-        <span>verified ${esc(n.verified)} (${esc(n.verified_by)})</span>
-        ${n.evidence ? `<a href="${esc(n.evidence)}" target="_blank" rel="noopener">evidence</a>` : ""}
-      </div>
-    </div>`).join("") : `<div class="empty">No negative findings recorded yet.</div>`;
 }
 
 function renderHealth() {
@@ -492,7 +520,8 @@ async function handleFiles(files) {
          and period against the client&rsquo;s holding before using it.</div>`
       : `<strong>No funds in the index matched this document.</strong>
          That is not the same as &ldquo;not a PFIC&rdquo; &mdash; the fund may simply not be
-         indexed yet, or no statement may be available. Check the <em>Not available</em> tab.`;
+         indexed yet, or no statement may be available. Search the manager&rsquo;s name
+         to see what was found for it.`;
     $("clrmatch")?.addEventListener("click", () => {
       state.matches = null; state.page = 1; box.hidden = true; render();
     });
@@ -658,9 +687,12 @@ function wire() {
 
   $("years").addEventListener("click", (e) => {
     const b = e.target.closest("[data-year]"); if (!b) return;
-    const y = Number(b.dataset.year);
-    state.years.has(y) ? state.years.delete(y) : state.years.add(y);
-    b.setAttribute("aria-pressed", state.years.has(y));
+    if (b.dataset.year === "all") state.years.clear();
+    else {
+      const y = Number(b.dataset.year);
+      state.years.has(y) ? state.years.delete(y) : state.years.add(y);
+    }
+    syncYearChips();
     state.page = 1;
     render();
   });
@@ -737,7 +769,7 @@ function wire() {
         x.classList.toggle("active", x === tab);
         x.setAttribute("aria-selected", x === tab);
       });
-      for (const p of ["results", "negatives", "health"]) {
+      for (const p of ["results", "health"]) {
         $("tab-" + p).hidden = p !== tab.dataset.tab;
       }
     });
