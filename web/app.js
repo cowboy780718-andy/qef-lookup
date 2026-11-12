@@ -243,25 +243,19 @@ function familyGuidance(fam) {
 }
 
 /**
- * What is known about the manager being looked at, shown above its results:
- * its standing note - and, only when the search is about funds that have
- * none, the finding that there is no statement for them (see findingsFor).
+ * Shown above the results only when the search is about funds that have no
+ * statement: the finding that says so (see findingsFor). A manager's standing
+ * note is not repeated here - it is on each of its funds, once opened.
  *
  * `found` is how many funds the search matched.
  */
 function familyContext(found) {
-  const fams = (state.family
-    ? [familyById(state.family)]
-    : familiesNamed(state.query, state.index.families))
-    .filter((f) => f && !NOT_CRAWLED.has(f.access));
-  const notes = fams.filter((f) => f.caveat).map((f) =>
-    `<div class="famnote top"><strong>${esc(f.name)}:</strong> ${esc(f.caveat.trim())}</div>`);
   // Managers with nothing to list already get their own panel saying so.
   const crawled = new Set((state.index.families || [])
     .filter((f) => !NOT_CRAWLED.has(f.access)).map((f) => f.id));
   const negs = findingsFor(state.query, state.index.negatives, state.index.families,
                            found, state.family).filter((n) => crawled.has(n.family));
-  return notes.join("") + negs.map((n) => `<div class="guide none">
+  return negs.map((n) => `<div class="guide none">
       <h3>No PFIC statement for: <span class="who">${esc(n.scope)}</span></h3>
       ${n.note ? `<p>${esc(n.note)}</p>` : ""}
       ${n.action ? `<p class="todo"><strong>What to do:</strong> ${esc(n.action)}</p>` : ""}
