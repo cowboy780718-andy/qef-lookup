@@ -180,6 +180,7 @@ What a block can say, each added for a real manager:
 | `split` | One document covers many funds | Guardian (by pages), Global X (by rows) |
 | `listing_only` | List the manager's links without fetching them | Capital Group, iA Clarington, Lysander, Franklin Templeton |
 | `access: request / manual / none` | Not crawled; `guidance` says why in one sentence, `action` says what to do in one more | Sun Life, PIMCO, AGF |
+| `page` | Where to send a person, when it is not the page the crawler starts from | Hamilton, Evolve |
 | `caveat` | A note shown on every fund of this manager | "amounts are per unit PER DAY" |
 | `covers` | Fund names to match for a manager with nothing to list | Sun Life's 17 funds |
 | `name_fix`, `delay` | Repair a broken text layer; pace a rate-limiting host | Sprott; Harvest |

@@ -219,6 +219,9 @@ families:
     doc_type: html_table
     fye: "04-30"
     hub: https://hamiltonetfs.com/tax-information/
+    # `page` is where a PERSON should be sent for the statements, when that is
+    # not the page the crawler starts from.
+    page: https://hamiltonetfs.com/tax-information/pfic/
     caveat: >-
       Hamilton publishes these as a table on its website, not as a document,
       and reports amounts per unit PER DAY.
@@ -410,6 +413,9 @@ families:
     mode: static
     fye: "06-30"
     hub: https://evolveetfs.com/
+    # Evolve has no PFIC page; its announcement names the funds, and each
+    # fund's own page links its statement.
+    page: https://evolveetfs.com/2026/10/evolve-to-provide-pfic-reporting-for-u-s-taxpayer-investors-for-certain-evolve-funds/
     link_include: ['(?i)_AIS\.pdf']
     name_fix:
       - ['^EVOLVE\b', 'Evolve']

@@ -101,15 +101,28 @@ function syncYearChips() {
   }
 }
 
+/**
+ * The one order managers are listed in, wherever they are listed: those with
+ * statements first, then those with nothing to download, each by name.
+ */
+function familiesInOrder() {
+  const fams = [...(state.index.families || [])]
+    .sort((a, b) => a.name.localeCompare(b.name));
+  return {
+    withDocs: fams.filter((f) => (f.fund_count || 0) > 0),
+    without: fams.filter((f) => !(f.fund_count > 0)),
+  };
+}
+
+/** Where to send a person for a manager's statements: its PFIC page. */
+const pageOf = (fam) => (fam && (fam.page || fam.hub)) || "";
+
 function buildFamilySelect() {
   // Every family we have ever checked appears here, including those with
   // nothing available. A manager missing from the list looks like a manager
   // nobody thought of; a manager listed as "none available" is a question
   // already answered.
-  const fams = [...(state.index.families || [])]
-    .sort((a, b) => a.name.localeCompare(b.name));
-  const withDocs = fams.filter((f) => (f.fund_count || 0) > 0);
-  const without = fams.filter((f) => !(f.fund_count > 0));
+  const { withDocs, without } = familiesInOrder();
 
   const opt = (f) => {
     const tag = f.access === "none" ? " — none available"
@@ -155,7 +168,7 @@ function fundCodeHelp(query) {
        search that name here.</p>
     ${resolve ? `<p><a class="gobtn" href="${esc(resolve)}" target="_blank"
         rel="noopener">Look up ${esc(term)} on the manager&rsquo;s site &rarr;</a></p>`
-      : entry && fam ? `<p><a class="gobtn" href="${esc(fam.hub)}" target="_blank"
+      : entry && fam ? `<p><a class="gobtn" href="${esc(pageOf(fam))}" target="_blank"
         rel="noopener">Open ${esc(entry.manager)} &rarr;</a></p>` : ""}
     ${entry && entry.verified === false ? `<p class="caution">The direct link for
        this prefix is unconfirmed &mdash; if it 404s, search the manager&rsquo;s
@@ -224,7 +237,7 @@ function familyGuidance(fam) {
     ${fam.action ? `<p class="todo"><strong>What to do:</strong> ${esc(fam.action.trim())}</p>` : ""}
     ${covers.length ? `<details class="covers"><summary>The ${covers.length} funds it names</summary>
         <ul>${covers.map((c) => `<li>${esc(c)}</li>`).join("")}</ul></details>` : ""}
-    ${fam.hub ? `<p class="go"><a class="gobtn" href="${esc(fam.hub)}" target="_blank"
+    ${pageOf(fam) ? `<p class="go"><a class="gobtn" href="${esc(pageOf(fam))}" target="_blank"
         rel="noopener">${linkLabel} &rarr;</a></p>` : ""}
   </div>`;
 }
@@ -436,7 +449,11 @@ function render() {
 }
 
 function renderHealth() {
-  const h = state.index.health || [];
+  // Same order as the Fund family list, so a manager is found in the same place.
+  const { withDocs, without } = familiesInOrder();
+  const place = new Map([...withDocs, ...without].map((f, i) => [f.id, i]));
+  const at = (x) => place.get(x.id) ?? Infinity;
+  const h = [...(state.index.health || [])].sort((a, b) => at(a) - at(b));
   const label = { ok: "collected", manual: "fetch by hand", request: "on request",
                   none: "nothing posted",
                   empty: "nothing collected", blocked: "refused", down: "unreachable",
@@ -448,7 +465,7 @@ function renderHealth() {
       <span class="hnum">${NOT_CRAWLED.has(x.status) ? "" : `${x.statements}/${x.candidates}`}</span>
       <span class="hmsg"><b>${esc(label[x.status] || x.status)}</b>${x.message ? " — " + esc(x.message) : ""}${
         x.requests != null ? ` <span class="hstat" title="How the last crawl got these: statements answered from the cache, requests actually sent to the manager, and how long it took">(${x.from_cache ?? 0} cached, ${x.requests} request${x.requests === 1 ? "" : "s"}${x.seconds != null ? `, ${x.seconds}s` : ""})</span>` : ""}</span>
-      <a href="${esc(x.hub)}" target="_blank" rel="noopener">source</a>
+      <a href="${esc(pageOf(familyById(x.id)) || x.hub)}" target="_blank" rel="noopener">source</a>
     </div>`).join("");
 }
 

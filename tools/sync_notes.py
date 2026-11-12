@@ -39,9 +39,11 @@ def main() -> int:
             continue
         out = {}
         for key, value in fam.items():
-            if key == "action":
+            if key in ("action", "page"):
                 continue
             out[key] = s.get(key) if key in FIELDS else value
+            if key == "hub":
+                out["page"] = s.get("page")
             if key == "guidance":
                 out["action"] = s.get("action")
         families.append(out)
