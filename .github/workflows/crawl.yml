@@ -127,7 +127,7 @@ jobs:
           import json
           d = json.load(open('web/data/index.json'))
           s = d['stats']
-          crawled = [h for h in d['health'] if h['status'] not in ('manual', 'none')]
+          crawled = [h for h in d['health'] if h['status'] not in ('manual', 'request', 'none')]
           ok = sum(h['status'] == 'ok' for h in crawled)
           print(f\"{s['funds']} funds, {s['statements']} statements, {ok}/{len(crawled)} sources ok\")
           ")

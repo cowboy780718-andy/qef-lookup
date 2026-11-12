@@ -382,6 +382,89 @@ class HtmlStatements(unittest.TestCase):
             "<tr><td>Some Fund Name</td><td>1.0</td></tr></table>", "https://x/"), [])
 
 
+class LinksOnly(Patched):
+    """Managers whose documents we may list but not fetch."""
+
+    PAGE = ('<h2>2025 PFIC AIS</h2><ul>'
+            '<li><a href="/docs/pfic/2025/ais/mf513_dividend-fund.pdf?v=1">'
+            'IA Clarington Canadian Dividend Fund</a></li>'
+            '<li><a href="/docs/pfic/2025/8937/mf513_dividend-fund_8937.pdf">'
+            'IA Clarington Canadian Dividend Fund</a></li>'
+            '</ul><table><tr><td><a href="/funds/25866">FT Balanced Growth Pool</a></td>'
+            '<td><a href="https://docs.example/s/v85c/25866-pfic-statement">PDF</a></td></tr></table>'
+            '<p><a href="https://m.example/app/uploads/2026/04/Funds-PFIC-Statement_2025.pdf">'
+            '2025</a></p>')
+
+    def test_a_bare_pdf_link_takes_its_name_from_its_table_row(self):
+        rows = {u: label for u, label, _own in crawl.link_rows(self.PAGE, "https://m.example/p")}
+        self.assertEqual(rows["https://docs.example/s/v85c/25866-pfic-statement"],
+                         "FT Balanced Growth Pool")
+        self.assertEqual(rows["https://m.example/docs/pfic/2025/ais/mf513_dividend-fund.pdf?v=1"],
+                         "IA Clarington Canadian Dividend Fund")
+
+    def test_link_furniture_is_removed_from_names(self):
+        self.assertEqual(
+            crawl._link_label("Capital Group U.S. Equity Fund (Canada) ( PDF , 126 KB ) save_alt"),
+            "Capital Group U.S. Equity Fund (Canada)")
+
+    def test_year_comes_from_the_label_then_the_filename_then_the_folder(self):
+        doc = "https://m.example/app/uploads/2026/04/Funds-PFIC-Statement_2025.pdf"
+        self.assertEqual(crawl.listed_year(doc, "2025"), 2025)
+        self.assertEqual(crawl.listed_year(doc, "Download"), 2025)
+        self.assertEqual(crawl.listed_year(
+            "https://m.example/docs/pfic/2024/ais/mf513_dividend-fund.pdf", "Fund"), 2024)
+        self.assertIsNone(crawl.listed_year("https://m.example/pdf/AIS_CGUSE.pdf", "Fund"))
+
+    def test_links_are_recorded_and_nothing_is_fetched(self):
+        self.serve(lambda u, h: self.fail(f"a links-only family requested {u}"))
+        fam = {"id": "fam", "hub": "https://m.example/p",
+               "link_include": ["/pfic/[0-9]{4}/ais/"], "link_exclude": ["8937"],
+               "listing_only": {"why": "robots.txt disallows /docs/"}}
+        manifest, health = {}, {}
+        out = crawl.crawl_listing_only(fam, self.PAGE, {}, manifest, TODAY, health, None, args())
+        self.assertEqual(len(out), 1)
+        self.assertEqual((out[0].fmt, out[0].tax_year, out[0].fund_name),
+                         ("link", 2025, "IA Clarington Canadian Dividend Fund"))
+        self.assertEqual(health["status"], "ok")
+        self.assertIn("not fetched", health["message"])
+        self.assertEqual(self.calls, [])
+
+    def test_a_delisted_link_is_dropped_but_an_empty_page_changes_nothing(self):
+        fam = {"id": "fam", "hub": "https://m.example/p", "link_include": ["/ais/"],
+               "link_exclude": [], "listing_only": {"why": "x"}}
+        manifest = {}
+        crawl.crawl_listing_only(fam, self.PAGE, {}, manifest, TODAY, {}, None, args())
+        self.assertEqual(len(manifest), 1)
+        crawl.crawl_listing_only(fam, "<p>temporarily unavailable</p>", {}, manifest, TODAY, {},
+                                 None, args())
+        self.assertEqual(len(manifest), 1)
+        other = self.PAGE.replace("mf513_dividend-fund.pdf?v=1", "mf700_other-fund.pdf")
+        crawl.crawl_listing_only(fam, other, {}, manifest, TODAY, {}, None, args())
+        self.assertEqual(list(manifest),
+                         ["https://m.example/docs/pfic/2025/ais/mf700_other-fund.pdf"])
+
+    def test_several_links_for_one_fund_all_survive_in_the_index(self):
+        # Unfetched links have no size or hash, and used to look like twins.
+        def mk(year):
+            return crawl.Statement(
+                family="fam", url=f"https://m.example/pfic/{year}/ais/f.pdf",
+                fund_name="Alpha Fund", tickers=[], period_end=None, tax_year=year, sha256="",
+                bytes=0, confidence=0, verified=True, first_seen="", last_seen="", fmt="link")
+        idx = crawl.build_index([mk(2023), mk(2025), mk(2024)],
+                                [{"id": "fam", "name": "Fam"}], [], [])
+        self.assertEqual([s["tax_year"] for s in idx["funds"][0]["statements"]],
+                         [2025, 2024, 2023])
+
+    def test_addresses_hidden_in_page_data_are_found(self):
+        # Starlight: HTML-escaped JSON in an attribute, slashes escaped, no ".pdf".
+        esc = chr(92) + "/"
+        url = "https://s.example/files/191/download/38415/2024-PFIC-Annual-Information-Statement"
+        page = ('<div data-rows="{&quot;href&quot;:&quot;' + url.replace("/", esc)
+                + '?preview=1&quot;}"></div>')
+        self.assertEqual(
+            crawl.scan_urls(page, ["/files/[0-9]+/download/[0-9]+/[0-9]{4}-PFIC"], []), [url])
+
+
 class LinkCollection(unittest.TestCase):
     def test_section_links_ignore_filenames_and_respect_the_section(self):
         html = ('<a href="/a/prospectus.pdf">p</a>'
@@ -573,6 +656,11 @@ class NamesFromRealDocuments(unittest.TestCase):
 
     def test_detached_letter_does_not_hide_the_tax_year(self):
         self.assertEqual(crawl.parse_period("For the Y ear Ended April 30, 2025"), "2025-04-30")
+
+    def test_text_written_as_glyph_names_is_decoded(self):
+        raw = "".join(f"/uni{ord(c):04X}" for c in "PFIC Annual Information Statement")
+        self.assertEqual(crawl._repair_text(raw), "PFIC Annual Information Statement")
+        self.assertEqual(crawl._repair_text("ordinary text / unit"), "ordinary text / unit")
 
     def test_tidy_name_keeps_brackets_and_hyphenated_words(self):
         self.assertEqual(

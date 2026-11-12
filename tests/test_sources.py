@@ -39,7 +39,7 @@ class SourceRegistry(unittest.TestCase):
             self.assertTrue(f["hub"].startswith("https://"), f["id"])
             self.assertRegex(str(f["fye"]), r"^(\d\d-\d\d|varies)$", f["id"])
             self.assertIn(f.get("mode", "static"), ("static", "browser"), f["id"])
-            self.assertIn(f.get("access"), (None, "manual", "none"), f["id"])
+            self.assertIn(f.get("access"), (None, *crawl.NOT_CRAWLED), f["id"])
 
     def test_every_pattern_compiles(self):
         def patterns(f):
@@ -71,7 +71,7 @@ class SourceRegistry(unittest.TestCase):
         # The guidance is what the site shows instead of results. Without it
         # the reader gets "nothing found", which reads as "no statement exists".
         for f in self.families:
-            if f.get("access") in ("manual", "none"):
+            if f.get("access") in crawl.NOT_CRAWLED:
                 self.assertGreater(len((f.get("guidance") or "").strip()), 80, f["id"])
 
     def test_guidance_never_claims_a_manager_does_not_issue_statements(self):

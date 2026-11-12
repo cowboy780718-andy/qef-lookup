@@ -13,7 +13,8 @@
 
 import {
   esc, kb, keyOf, splitKey, queryTerms, queryScore, identify, planDownloads,
-  manifestCsv, htmlStatementFile, healthSummary,
+  manifestCsv, htmlStatementFile, healthSummary, linksOnly, notDownloadedText,
+  NOT_CRAWLED,
 } from "./lib.js";
 
 const CFG = window.QEF_CONFIG;
@@ -101,6 +102,7 @@ function buildFamilySelect() {
 
   const opt = (f) => {
     const tag = f.access === "none" ? " — none available"
+      : f.access === "request" ? " — on request"
       : f.access === "manual" ? " — fetch by hand"
       : (f.fund_count ? "" : " — nothing found yet");
     return `<option value="${esc(f.id)}">${esc(f.name)}${tag}</option>`;
@@ -166,8 +168,16 @@ function familyMatchPanels(query) {
   const hits = (state.index.families || []).filter((f) => {
     // Families with funds would already have appeared in the results.
     if ((f.fund_count || 0) > 0) return false;
+    // `covers` is the list of funds a manager says it has statements for but
+    // does not post (Sun Life). Searching one of those funds by name should
+    // say how to get it, not "nothing matched".
     const hay = ` ${queryTerms(`${f.name} ${f.id}`).join(" ")} `;
-    return terms.some((t) => t.split(" ").every((w) => hay.includes(w)));
+    const covers = (f.covers || []).map((c) => ` ${queryTerms(c).join(" ")} `);
+    return terms.some((t) => {
+      const words = t.split(" ");
+      return words.every((w) => hay.includes(w)) ||
+        (t.length >= 4 && covers.some((c) => words.every((w) => c.includes(w))));
+    });
   });
   return hits.map(familyGuidance).join("");
 }
@@ -184,6 +194,8 @@ function familyGuidance(fam) {
   // One may well be available on request.
   const kind = fam.access === "none"
     ? { cls: "none", head: "No statement available from this manager's website" }
+    : fam.access === "request"
+      ? { cls: "manual", head: "Issued by the manager on request — not posted online" }
     : fam.access === "manual"
       ? { cls: "manual", head: "Available, but must be fetched by hand" }
       : { cls: "unknown", head: "Nothing indexed for this manager yet" };
@@ -238,12 +250,33 @@ function visibleFunds() {
 // render
 // --------------------------------------------------------------------------
 
+/**
+ * What a reader needs to know about a manager before relying on its rows:
+ * that the links were never opened, that only the latest year exists, that
+ * the amounts are per day. Shown at the top of every opened fund.
+ */
+function familyNote(fam) {
+  if (!fam) return "";
+  const parts = [];
+  if (fam.links_only) {
+    parts.push(`These are ${esc(fam.name)}&rsquo;s own links, as listed on its PFIC page.
+      They have <strong>not been opened or checked</strong> here &mdash; its site asks
+      automated tools not to fetch its documents &mdash; so confirm the fund and year when
+      you open one. They cannot be added to a ZIP; use the link.`);
+  }
+  if (fam.caveat) parts.push(esc(fam.caveat.trim()));
+  return parts.length ? `<div class="famnote">${parts.join(" ")}</div>` : "";
+}
+
 function statementRow(f, s) {
   const key = keyOf(f, s);
   const link = s.fmt === "html" ? "open page"
+    : s.fmt === "link" ? "open on the manager&rsquo;s site"
     : s.part ? `open PDF at page ${s.part.page}` : "open PDF";
   const size = s.fmt === "html"
     ? `<span class="fmt-html" title="Published as a table on the manager's page, not as a downloadable document">table</span>`
+    : s.fmt === "link"
+    ? `<span class="fmt-link" title="The manager's own link, as listed on its PFIC page. Not opened or checked by this tool, because the manager's site asks automated tools not to fetch its documents. Cannot be added to a ZIP.">link only</span>`
     : s.part
       ? `<span title="One document covering many funds; this fund starts on page ${s.part.page}">p.&nbsp;${s.part.page}${s.part.pages ? " of " + s.part.pages : ""}</span>`
       : kb(s.bytes);
@@ -265,7 +298,9 @@ function statementRow(f, s) {
           <input type="checkbox" data-stmt="${esc(key)}"
                  ${state.selected.has(key) ? "checked" : ""}>
           <span class="yr">${s.tax_year ?? "&mdash;"}</span>
-          <span class="pe">${s.period_end ? "ended " + esc(s.period_end) : "period unread"}${
+          <span class="pe">${s.period_end ? "ended " + esc(s.period_end)
+            : s.fmt === "link" ? (s.tax_year ? "as listed by the manager" : "year not stated by the manager")
+            : "period unread"}${
             s.name ? ` <span class="asname" title="The manager published this year's statement under a different fund name">as &ldquo;${esc(s.name)}&rdquo;</span>` : ""}</span>
           <a href="${esc(s.url)}" target="_blank" rel="noopener">${link}</a>
           <span class="sz">${size}</span>
@@ -346,7 +381,8 @@ function render() {
         </div>
         <span class="caret">${open ? "&#9662;" : "&#9656;"}</span>
       </div>
-      ${open ? `<div class="stmts">${f.statements.map((s) => statementRow(f, s)).join("")}</div>` : ""}
+      ${open ? `<div class="stmts">${familyNote(fam)}${
+        f.statements.map((s) => statementRow(f, s)).join("")}</div>` : ""}
     </div>`;
   }).join("");
 
@@ -369,14 +405,15 @@ function renderNegatives() {
 
 function renderHealth() {
   const h = state.index.health || [];
-  const label = { ok: "collected", manual: "fetch by hand", none: "nothing posted",
+  const label = { ok: "collected", manual: "fetch by hand", request: "on request",
+                  none: "nothing posted",
                   empty: "nothing collected", blocked: "refused", down: "unreachable",
                   error: "crawler error", unknown: "not checked yet" };
   $("health").innerHTML = h.map((x) => `
     <div class="hrow">
       <span class="dot ${esc(x.status)}" title="${esc(x.status)}"></span>
       <span class="hname">${esc(x.name)}</span>
-      <span class="hnum">${x.status === "manual" || x.status === "none" ? "" : `${x.statements}/${x.candidates}`}</span>
+      <span class="hnum">${NOT_CRAWLED.has(x.status) ? "" : `${x.statements}/${x.candidates}`}</span>
       <span class="hmsg"><b>${esc(label[x.status] || x.status)}</b>${x.message ? " — " + esc(x.message) : ""}</span>
       <a href="${esc(x.hub)}" target="_blank" rel="noopener">source</a>
     </div>`).join("");
@@ -385,9 +422,14 @@ function renderHealth() {
 function updateTray() {
   const n = state.selected.size;
   $("tray").hidden = n === 0;
-  const files = n ? planDownloads([...state.selected.values()]).length : 0;
+  const items = [...state.selected.values()];
+  const files = n ? planDownloads(items).length : 0;
+  const links = linksOnly(items).length;
+  const detail = [];
+  if (files !== n) detail.push(`${files} file${files === 1 ? "" : "s"}`);
+  if (links) detail.push(`${links} link-only, not downloadable`);
   $("traycount").textContent = `${n.toLocaleString()} statement${n === 1 ? "" : "s"} selected` +
-    (files && files !== n ? ` (${files} file${files === 1 ? "" : "s"})` : "");
+    (detail.length ? ` (${detail.join("; ")})` : "");
 }
 
 // --------------------------------------------------------------------------
@@ -548,7 +590,7 @@ async function downloadZip() {
           failed.set(f.name, e.message || String(e));
         }
         done++;
-        bar.style.width = `${(done / files.length) * 100}%`;
+        bar.style.width = `${(done / Math.max(1, files.length)) * 100}%`;
         ptext.textContent = `${done} / ${files.length}`;
       }
     };
@@ -556,6 +598,8 @@ async function downloadZip() {
       { length: Math.min(CFG.MAX_PARALLEL_DOWNLOADS, files.length) }, worker));
 
     zip.file("manifest.csv", manifestCsv(items, files, failed));
+    const links = linksOnly(items);
+    if (links.length) zip.file("NOT_DOWNLOADED.txt", notDownloadedText(items));
     if (failed.size) {
       // Each failed document with its own address, so it can still be
       // fetched by hand without going back to the site to find it again.
@@ -568,9 +612,11 @@ async function downloadZip() {
     ptext.textContent = "Building the ZIP…";
     const blob = await zip.generateAsync({ type: "blob" });
     triggerDownload(blob, `QEF_statements_${new Date().toISOString().slice(0, 10)}.zip`);
-    ptext.textContent = failed.size
+    ptext.textContent = (failed.size
       ? `${done - failed.size} bundled, ${failed.size} failed — see FAILED.txt in the ZIP for direct links`
-      : `${done} bundled.`;
+      : `${done} bundled.`) +
+      (links.length ? ` ${links.length} link-only statement${links.length === 1 ? " is" : "s are"} ` +
+        `listed in NOT_DOWNLOADED.txt — open those on the manager's site.` : "");
   } catch (e) {
     ptext.textContent = `Could not build the ZIP: ${e.message}. "Open in tabs" still works.`;
   } finally {

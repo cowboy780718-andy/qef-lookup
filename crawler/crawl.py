@@ -54,6 +54,12 @@ ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
 CACHE = ROOT / ".cache"
 OUT = REPO / "web" / "data" / "index.json"
+
+# Managers that are listed but deliberately not crawled, and why:
+#   manual   statements are posted, but cannot be collected for you
+#   request  the manager issues statements on request and posts none
+#   none     nothing about PFIC statements could be found on their site
+NOT_CRAWLED = ("manual", "request", "none")
 HOSTS_OUT = REPO / "web" / "data" / "hosts.json"
 
 # Health states that mean a human should look. "blocked" belongs here: it was
@@ -607,6 +613,22 @@ TICKER_PATTERN = re.compile(r"\(([A-Z]{2,5}(?:\.[A-Z]{1,2})?)\)")
 
 _pdf_errors: dict[str, int] = defaultdict(int)
 
+_GLYPH_NAME = re.compile(r"/uni([0-9A-Fa-f]{4})")
+
+
+def _repair_text(text: str) -> str:
+    """Undo a text-layer fault where each letter is written as its glyph name.
+
+    Some of Starlight's statements extract as
+    "/uni0050/uni0046/uni0049/uni0043/uni0020/uni0041..." - which is "PFIC A..."
+    spelled out one Unicode code point at a time. Unrepaired, a perfectly good
+    statement scores zero and is rejected as not being one.
+    """
+    if "/uni" not in text:
+        return text
+    return _GLYPH_NAME.sub(lambda m: chr(int(m.group(1), 16)), text)
+
+
 
 def pdf_text(blob: bytes, pages: int = 3) -> str:
     """Extract text from the first few pages.
@@ -624,8 +646,8 @@ def pdf_text(blob: bytes, pages: int = 3) -> str:
         return ""
     try:
         reader = PdfReader(io.BytesIO(blob))
-        return "\n".join((reader.pages[i].extract_text() or "")
-                         for i in range(min(pages, len(reader.pages))))
+        return _repair_text("\n".join((reader.pages[i].extract_text() or "")
+                                      for i in range(min(pages, len(reader.pages)))))
     except Exception as exc:  # noqa: BLE001
         _pdf_errors[f"{type(exc).__name__}: {str(exc)[:80]}"] += 1
         return ""
@@ -636,7 +658,7 @@ def pdf_pages(blob: bytes, limit: int = 400) -> list[str]:
     try:
         from pypdf import PdfReader
         reader = PdfReader(io.BytesIO(blob))
-        return [(reader.pages[i].extract_text() or "")
+        return [_repair_text(reader.pages[i].extract_text() or "")
                 for i in range(min(limit, len(reader.pages)))]
     except Exception as exc:  # noqa: BLE001
         _pdf_errors[f"{type(exc).__name__}: {str(exc)[:80]}"] += 1
@@ -1322,6 +1344,33 @@ def collect_links(html: str, base: str, include: list[str], exclude: list[str]) 
     return sorted(urls)
 
 
+def scan_urls(page: str, include: list[str], exclude: list[str]) -> list[str]:
+    """Document addresses written anywhere in a page, not only in links.
+
+    Starlight is the case for this. Its documents page builds its table in the
+    browser from data tucked into an HTML attribute, so the statement addresses
+    are in the page source but never as an href - and they do not end in
+    ".pdf" either (/files/191/download/38415/2024-PFIC-Annual-Information-
+    Statement). The family was listed as "statements not posted" for three
+    months on the strength of a link scan that could not see them.
+
+    Opt-in per family (`url_scan: true`), and the family's own link_include
+    has to match, because this looks at every address on the page.
+    """
+    inc = [re.compile(p) for p in include]
+    exc = [re.compile(p) for p in exclude]
+    # The data is HTML-escaped JSON: &quot; for quotes, \/ for slashes.
+    text = htmlmod.unescape(page).replace("\\/", "/")
+    urls = set()
+    for u in re.findall(r"https?://[^\s\"'<>\\?#]+", text):
+        u = u.rstrip(".,;)")
+        if any(r.search(u) for r in inc) and not any(r.search(u) for r in exc):
+            urls.add(u)
+    if urls:
+        print(f"    {len(urls)} document address(es) found in the page's data")
+    return sorted(urls)
+
+
 def section_links(html: str, base: str, cfg: dict | None, exclude: list[str]) -> list[str]:
     """Every PDF linked inside one named section of a page, whatever it is called.
 
@@ -1395,6 +1444,162 @@ def api_links(hub_html: str, fam: dict, include: list[str], exclude: list[str]) 
         f'<script type="application/json">{text}</script>', cfg["url"], include, exclude)
     print(f"    {len(found)} document(s) from the site's document API")
     return found
+
+
+_GENERIC_LABEL = re.compile(
+    r"^(?:pdf|download|view|open|here|click\s+here|english|french|en|fr|"
+    r"statement|document|(?:19|20)\d\d)?$", re.I)
+
+
+def _link_label(text: str) -> str:
+    """The words of a link, without the furniture: "(PDF, 126 KB)", icons, "PDF"."""
+    t = re.sub(r"\s+", " ", htmlmod.unescape(re.sub(r"<[^>]+>", " ", text or "")))
+    t = re.sub(r"\(\s*PDF\b[^)]*\)", " ", t, flags=re.I)
+    t = re.sub(r"\b(?:save_alt|open_in_new|opens?\s+in\s+a?\s*new\s+(?:tab|window))\b", " ", t,
+               flags=re.I)
+    t = re.sub(r"(?:^|\s)PDF(?=\s|$)", " ", t)
+    return re.sub(r"\s+", " ", t).strip(" -–—|:,.")
+
+
+def link_rows(fragment: str, base: str) -> list[tuple[str, str, str]]:
+    """Every link in a piece of HTML as (absolute url, what it is called, its own text).
+
+    A link that says only "PDF" or "2025" takes its name from the table row or
+    list item it sits in - Franklin Templeton's list is a table of fund name in
+    one cell and a bare "PDF" link in the next.
+    """
+    out = []
+    for m in re.finditer(r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
+                         fragment, re.S | re.I):
+        href = htmlmod.unescape(m.group(1)).strip()
+        if not href or href.startswith(("javascript:", "mailto:", "#", "tel:")):
+            continue
+        own = _link_label(m.group(2))
+        label = own
+        if _GENERIC_LABEL.match(label):
+            start = max(fragment.rfind("<tr", 0, m.start()), fragment.rfind("<li", 0, m.start()))
+            ends = [e for e in (fragment.find("</tr>", m.end()), fragment.find("</li>", m.end()))
+                    if e > 0]
+            if start >= 0 and ends and min(ends) - start < 3000:
+                row = _link_label(fragment[start:min(ends)])
+                if not _GENERIC_LABEL.match(row):
+                    label = row
+        out.append((urlparse.urljoin(base, href).split("#")[0], label, own))
+    return out
+
+
+def listed_year(url: str, own_text: str) -> int | None:
+    """The year a listed document is for, from how the manager labels it."""
+    m = re.fullmatch(r"\s*((?:19|20)\d\d)\s*", own_text or "")
+    if m:
+        return int(m.group(1))
+    path = urlparse.urlsplit(url).path
+    in_name = re.findall(r"(?<!\d)(20[0-4]\d)(?!\d)", path.rsplit("/", 1)[-1])
+    if in_name:
+        return int(in_name[-1])       # "Statement_2025.pdf" under /uploads/2026/04/
+    in_path = re.findall(r"/(20[0-4]\d)(?=/)", path)
+    return int(in_path[-1]) if in_path else None
+
+
+def listing_fragments(fam: dict, hub_html: str, browser, args) -> list[tuple[str, str]]:
+    """The pieces of HTML a manager's list of statements is made of."""
+    fragments = [(hub_html, fam["hub"])]
+    for extra in (fam.get("extra_hubs") or []):
+        extra_html = fetch_any(extra, browser, allow_browser=not args.static_only)
+        if extra_html:
+            fragments.append((extra_html, extra))
+    api = fam.get("json_api")
+    if api:
+        status, text, _ = fetch(api["url"], json_body=api.get("body"),
+                                extra_headers={"Referer": fam["hub"]})
+        try:
+            data = json.loads(text) if status == 200 and text else None
+        except ValueError:
+            data = None
+        if data is None:
+            print(f"    ! json_api returned {status}")
+        # The list arrives as HTML held inside JSON. `within` names the key
+        # the list sits under, so links elsewhere on the page are left out.
+        within = api.get("within")
+        stack = [(data, not within)]
+        while stack:
+            node, inside = stack.pop()
+            if isinstance(node, dict):
+                stack.extend((v, inside or k == within) for k, v in node.items())
+            elif isinstance(node, list):
+                stack.extend((v, inside) for v in node)
+            elif isinstance(node, str) and inside and "<a " in node:
+                fragments.append((node, fam["hub"]))
+    return fragments
+
+
+def crawl_listing_only(fam: dict, hub_html: str, defaults: dict, manifest: dict,
+                       today: str, health: dict, browser, args) -> list["Statement"]:
+    """Record a manager's own links to its statements, without fetching them.
+
+    For managers whose robots.txt forbids fetching the documents but not
+    reading the page that lists them: Capital Group ("Disallow: /content"),
+    iA Clarington ("Disallow: /docs/"), Lysander ("Disallow: /*.pdf$") and
+    Franklin Templeton, whose files sit on a host that disallows everything.
+
+    We do what the page invites any visitor to do - read the list - and stop
+    there. No document is requested, so nothing is verified: these entries
+    say "the manager lists a statement for this fund, here", and the site
+    labels them as unchecked. They are never offered to the ZIP proxy.
+    """
+    fid, cfg = fam["id"], fam["listing_only"]
+    inc = [re.compile(p) for p in (fam.get("link_include") or defaults.get("link_include", []))]
+    exc = [re.compile(p) for p in fam.get("link_exclude", defaults.get("link_exclude", []))]
+
+    listed: dict[str, tuple[str, int | None]] = {}
+    for fragment, base in listing_fragments(fam, hub_html, browser, args):
+        for url, label, own in link_rows(fragment, base):
+            if not any(r.search(url) for r in inc) or any(r.search(url) for r in exc):
+                continue
+            year = listed_year(url, own)
+            if year is not None and year < args.since_year:
+                continue
+            name = cfg.get("name") or label
+            if not name or _GENERIC_LABEL.match(name):
+                stem = Path(urlparse.urlsplit(url).path).stem
+                name = re.sub(r"[-_]+", " ", stem).strip()
+            if cfg.get("name_strip"):
+                name = re.sub(cfg["name_strip"], "", name).strip()
+            listed.setdefault(url, (name, year))
+
+    statements = []
+    for url, (name, year) in sorted(listed.items()):
+        first_seen = (manifest.get(url) or {}).get("first_seen") or today
+        _put(manifest, url, {
+            "verify_version": VERIFY_VERSION, "family": fid, "fmt": "link",
+            "verified": True, "confidence": 0, "sha256": "", "bytes": 0,
+            "fund_name": name, "tickers": [], "period_end": None, "tax_year": year,
+            "first_seen": first_seen, "last_seen": today, "checked": today,
+        })
+        statements.append(Statement(
+            family=fid, url=url, fund_name=name, tickers=[], period_end=None,
+            tax_year=year, sha256="", bytes=0, confidence=0, verified=True,
+            first_seen=first_seen, last_seen=today, fmt="link"))
+
+    # A link the manager has taken off its page is no longer a listing. Only
+    # when the page did yield links, so a page that failed to load cannot
+    # empty the family.
+    if listed:
+        with _manifest_lock:
+            stale = [u for u, v in manifest.items()
+                     if v.get("family") == fid and v.get("fmt") == "link" and u not in listed]
+            for u in stale:
+                del manifest[u]
+        if stale:
+            print(f"    - {len(stale)} link(s) no longer listed, removed")
+
+    health["candidates"] = len(listed)
+    health["statements"] = len(statements)
+    health["status"] = "ok" if statements else "empty"
+    health["message"] = ("links only - the documents are not fetched: " + cfg["why"]
+                         if statements else "the page listed no statement links")
+    print(f"    {len(statements)} statement link(s) listed (not fetched)")
+    return statements
 
 
 class Breaker:
@@ -1829,12 +2034,13 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
     # that at face value rather than routing around it: the family stays in the
     # index as a deep link, flagged for manual fetch.
     access = fam.get("access")
-    if access in ("manual", "none"):
+    if access in NOT_CRAWLED:
         health["status"] = access
-        health["message"] = (fam.get("guidance") or "").strip() or (
-            "publisher does not issue statements" if access == "none"
-            else "statements exist but cannot be fetched automatically")
-        print(f"    - {'no statements published' if access == 'none' else 'manual-fetch family'}")
+        health["message"] = (fam.get("guidance") or "").strip() or {
+            "none": "no statement could be located on the manager's website",
+            "request": "issued by the manager on request; none are posted",
+        }.get(access, "statements exist but cannot be fetched automatically")
+        print(f"    - not crawled ({access})")
         return [], health
 
     # Getting the hub at all is the hardest part of several families, and every
@@ -1882,6 +2088,10 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
         print("    ! hub unreachable by every transport")
         return [], health
 
+
+    if fam.get("listing_only"):
+        return crawl_listing_only(fam, html, defaults, manifest, today, health,
+                                  browser, args), health
 
     # Families that publish statements as HTML tables instead of documents.
     if fam.get("doc_type") == "html_table":
@@ -1992,6 +2202,8 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
 
     links = collect_links(html, fam["hub"], include, exclude) + year_urls
     links += section_links(html, fam["hub"], fam.get("link_section"), exclude)
+    if fam.get("url_scan"):
+        links += scan_urls(html, include, exclude)
     links += api_links(html, fam, include, exclude)
 
     # Bilingual managers sometimes split their catalogue across language sites:
@@ -2178,7 +2390,8 @@ def build_index(all_statements: list[Statement], families: list[dict],
         for s in f["statements"]:
             # Table rows have no size, so their content hash stands in for it;
             # otherwise two different rows for one period look like twins.
-            sig = (s["period_end"], s["bytes"] or s["sha256"])
+            # ...and a link we never fetched has neither, so its address does.
+            sig = (s["period_end"], s["bytes"] or s["sha256"] or s["url"])
             if sig in seen:
                 continue
             seen.add(sig)
@@ -2187,7 +2400,8 @@ def build_index(all_statements: list[Statement], families: list[dict],
         f["statements"] = deduped
 
     for f in funds.values():
-        f["statements"].sort(key=lambda s: (s["period_end"] or ""), reverse=True)
+        f["statements"].sort(
+            key=lambda s: (s["period_end"] or str(s["tax_year"] or ""), s["url"]), reverse=True)
         # The fund is shown under its most recent published name. A statement
         # the manager published under a different name keeps that name beside
         # it, so nothing is silently relabelled.
@@ -2213,7 +2427,8 @@ def build_index(all_statements: list[Statement], families: list[dict],
         "families": [
             {**{k: fam.get(k) for k in
                 ("id", "name", "country", "mode", "fye", "hub", "notes",
-                 "access", "guidance")},
+                 "access", "guidance", "caveat", "covers")},
+             "links_only": bool(fam.get("listing_only")),
              # so the UI can explain a family with no statements rather than
              # just showing an empty result
              "statement_count": sum(1 for f in fund_list if f["family"] == fam["id"]
@@ -2314,7 +2529,7 @@ def main() -> int:
     by_id = {f["id"]: f for f in all_families}
     for h in merged_health:
         access = by_id.get(h["id"], {}).get("access")
-        if access in ("manual", "none"):
+        if access in NOT_CRAWLED:
             h["status"] = access
             h["message"] = (by_id[h["id"]].get("guidance") or h.get("message") or "").strip()
 
@@ -2387,11 +2602,17 @@ def main() -> int:
     # deploy - BMO, National Bank, Ninepoint, Sprott, Desjardins, Guardian,
     # 731 statements between them - listed fine and then failed inside every
     # ZIP with "host not allowlisted".
-    hosts = sorted({urlparse.urlsplit(s["url"]).netloc.lower()
-                    for f in index["funds"] for s in f["statements"]
-                    if s.get("fmt", "pdf") == "pdf"})
-    HOSTS_OUT.write_text(json.dumps({"generated": index["generated"], "hosts": hosts},
-                                    indent=1), encoding="utf-8")
+    pdf_urls = [urlparse.urlsplit(s["url"]) for f in index["funds"]
+                for s in f["statements"] if s.get("fmt", "pdf") == "pdf"]
+    hosts = sorted({u.netloc.lower() for u in pdf_urls})
+    # The proxy insists on a ".pdf" address, except for hosts whose statements
+    # genuinely have none (Starlight serves /files/.../2025-PFIC-Annual-
+    # Information-Statement). Either way the reply must be a real PDF.
+    any_path = sorted({u.netloc.lower() for u in pdf_urls
+                       if not u.path.lower().endswith(".pdf")})
+    HOSTS_OUT.write_text(json.dumps(
+        {"generated": index["generated"], "hosts": hosts, "any_path_hosts": any_path},
+        indent=1), encoding="utf-8")
 
     s = index["stats"]
     print(f"\n{'='*62}")

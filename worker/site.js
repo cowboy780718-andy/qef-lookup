@@ -21,7 +21,8 @@
  *
  * It is NOT a general proxy:
  *   - only hosts that the published index actually links to
- *   - only https, only paths ending in .pdf
+ *   - only https, and only paths ending in .pdf (bar the few hosts the index
+ *     marks as publishing statements without that suffix)
  *   - the response must really be a PDF, or it is not passed on
  *   - other websites cannot use it from a browser
  */
@@ -37,6 +38,7 @@ const UPSTREAM_HEADERS = {
 };
 
 let hostsCache = null;
+let anyPathHosts = new Set();
 let hostsLoadedAt = 0;
 
 /** The hosts the index links to. Read from the site's own files, cached briefly. */
@@ -47,6 +49,7 @@ async function allowedHosts(env, request) {
     if (r.ok) {
       const body = await r.json();
       hostsCache = new Set((body.hosts || []).map((h) => String(h).toLowerCase()));
+      anyPathHosts = new Set((body.any_path_hosts || []).map((h) => String(h).toLowerCase()));
       hostsLoadedAt = Date.now();
     }
   } catch {
@@ -99,13 +102,19 @@ async function servePdf(request, env, ctx, url) {
   if (target.username || target.password || target.port) {
     return json({ error: "plain https urls only" }, 400);
   }
-  if (!target.pathname.toLowerCase().endsWith(".pdf")) {
+  const hosts = await allowedHosts(env, request);
+  const host = target.hostname.toLowerCase();
+  // A few managers serve statements from addresses with no ".pdf" on the end;
+  // the index says which. For everyone else the suffix is required. (What
+  // comes back is checked to be a PDF in every case, further down.)
+  const suffixless = anyPathHosts.has(host);
+  if (!suffixless && !target.pathname.toLowerCase().endsWith(".pdf")) {
     return json({ error: "only .pdf targets are served" }, 400);
   }
-  const hosts = await allowedHosts(env, request);
-  if (!hosts.has(target.hostname.toLowerCase())) {
+  if (!hosts.has(host)) {
     return json({ error: "host is not in the index", host: target.hostname }, 403);
   }
+  if (suffixless) target.search = "";     // "?preview=1" and the like
 
   const cache = typeof caches !== "undefined" ? caches.default : null;
   const cacheKey = new Request(target.toString(), { method: "GET" });

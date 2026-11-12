@@ -8,6 +8,7 @@ import assert from "node:assert/strict";
 import {
   queryTerms, queryScore, termScore, identify, planDownloads, manifestCsv,
   htmlStatementFile, healthSummary, fileNameFor, keyOf, splitKey, baseUrl,
+  linksOnly, notDownloadedText,
 } from "../web/lib.js";
 
 const fund = (id, name, tickers = [], statements = null, family_name = "Example Funds") => ({
@@ -182,6 +183,25 @@ test("the working-paper page escapes what it prints and carries investee funds",
 
 test("health counts only the managers that are collected automatically", () => {
   const h = healthSummary([{ status: "ok" }, { status: "ok" }, { status: "empty" },
-                           { status: "manual" }, { status: "none" }, { status: "blocked" }]);
-  assert.deepEqual(h, { ok: 2, total: 4, byHand: 2 });
+                           { status: "manual" }, { status: "none" }, { status: "blocked" },
+                           { status: "request" }]);
+  assert.deepEqual(h, { ok: 2, total: 4, byHand: 3 });
+});
+
+test("a link-only statement is never fetched, and the ZIP says where to get it", () => {
+  const f = fund("cg", "Capital Group U.S. Equity Fund (Canada)", [], [{
+    tax_year: null, period_end: null, fmt: "link", bytes: 0, sha256: "",
+    url: "https://www.capitalgroup.example/content/dam/AIS_CGUSE.pdf",
+  }], "Capital Group Canada");
+  const items = [{ fund: f, stmt: f.statements[0] },
+                 { fund: FUNDS[2], stmt: FUNDS[2].statements[0] }];
+  const files = planDownloads(items);
+  assert.deepEqual(files.map((x) => x.url), ["https://m.example/vfv.pdf"]);
+  assert.equal(linksOnly(items).length, 1);
+  const note = notDownloadedText(items);
+  assert.match(note, /NOT in this ZIP/);
+  assert.match(note, /Capital Group Canada - Capital Group U\.S\. Equity Fund \(Canada\)\r\n {2}https:\/\/www\.capitalgroup\.example\/content\/dam\/AIS_CGUSE\.pdf/);
+  const csv = manifestCsv(items, files);
+  assert.match(csv, /"link only \(not checked\)".*"not downloaded - open the source URL"/);
+  assert.equal(notDownloadedText([items[1]]), "");
 });

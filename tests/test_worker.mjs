@@ -15,13 +15,14 @@ const SITE = "https://qef-lookup.example";
 const PDF = new TextEncoder().encode("%PDF-1.7\n fake body");
 const HTML = new TextEncoder().encode("<!doctype html><title>Not found</title>");
 
-function makeEnv(hosts = ["www.manager.example", "cdn.manager.example"]) {
+function makeEnv(hosts = ["www.manager.example", "cdn.manager.example", "files.manager.example"]) {
   return {
     ASSETS: {
       async fetch(req) {
         const path = new URL(req.url).pathname;
         if (path === "/data/hosts.json") {
-          return new Response(JSON.stringify({ hosts }), { status: 200 });
+          return new Response(
+            JSON.stringify({ hosts, any_path_hosts: ["files.manager.example"] }), { status: 200 });
         }
         return new Response("not found", { status: 404 });
       },
@@ -71,6 +72,21 @@ test("a host that merely ends with an allowed name is still refused", async () =
     assert.notEqual(r.status, 200, t);
   }
   assert.equal(upstreamCalls.length, 0);
+});
+
+test("a host the index marks as suffix-less may be fetched without .pdf; others may not", async () => {
+  stubUpstream(() => new Response(PDF));
+  const ok = await call(
+    "https://files.manager.example/files/191/download/38415/2024-PFIC-Annual-Information-Statement?preview=1");
+  assert.equal(ok.status, 200);
+  assert.equal(upstreamCalls[0].url,
+    "https://files.manager.example/files/191/download/38415/2024-PFIC-Annual-Information-Statement");
+  const no = await call("https://www.manager.example/files/191/download/38415/statement");
+  assert.equal(no.status, 400);
+  // A web page from the suffix-less host is still refused: it is not a PDF.
+  stubUpstream(() => new Response(HTML, { status: 200 }));
+  const page = await call("https://files.manager.example/en/about-us");
+  assert.equal(page.status, 502);
 });
 
 test("refuses http, non-PDF paths, credentials and odd ports", async () => {

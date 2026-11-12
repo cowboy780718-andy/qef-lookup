@@ -255,3 +255,12 @@ button.ghost { background: none; color: var(--ink-2); }
 @media (max-width: 720px) {
   .investees { padding-left: 15px; }
 }
+
+/* Notes about a manager, shown at the top of an opened fund; and the tag on a
+   statement that is only a link. */
+.famnote { padding: 9px 13px 9px 40px; background: color-mix(in srgb, var(--warn) 9%, var(--bg));
+           border-bottom: 1px solid var(--line); font-size: .82rem; color: var(--ink); }
+.fmt-link { border: 1px solid var(--warn); color: var(--warn); border-radius: 5px;
+            padding: 1px 6px; font-size: .72rem; white-space: nowrap; cursor: help; }
+@media (max-width: 720px) { .famnote { padding-left: 15px; } }
+.dot.request { background: var(--accent); }

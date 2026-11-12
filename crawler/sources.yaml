@@ -143,22 +143,23 @@ families:
     name: Capital Group Canada
     country: CA
     mode: static
-    access: manual
-    fye: "varies"
+    fye: "12-31"
     hub: https://www.capitalgroup.com/advisor/ca/en/service/tax-centre.html
-    guidance: >-
-      Capital Group does publish PFIC Annual Information Statements - its tax
-      centre states they are provided for all of its funds. They are not
-      crawled here by the publisher's own instruction: capitalgroup.com
-      /robots.txt sets a blanket "Disallow: /content", and every document
-      lives under /content/dam/. Open the tax centre and download by hand.
+    link_include: ['/AIS_[A-Za-z0-9]+\.pdf']
+    listing_only:
+      why: >-
+        capitalgroup.com/robots.txt disallows /content, where every document is kept
+    caveat: >-
+      Capital Group posts one statement per fund at a fixed address and
+      replaces it each year, so each link leads to the latest year only.
+      Earlier years have to be requested from Capital Group.
     notes: >-
-      NOT CRAWLED, by their instruction. capitalgroup.com/robots.txt carries a
+      LINKS ONLY, by their instruction. capitalgroup.com/robots.txt carries a
       blanket `Disallow: /content`, and every document including the PFIC
-      statements lives under /content/dam/. They do publish statements - the
-      tax centre states they are provided for all of their funds - so this is a
-      crawling restriction, not an availability one. The tool deep-links the tax
-      centre and you fetch by hand. Revisit if robots.txt changes.
+      statements lives under /content/dam/. The tax centre page itself may be
+      read, and it names each fund beside its statement (AIS_{CODE}.pdf), so
+      the links are listed without the documents ever being requested.
+      Revisit if robots.txt changes.
 
   - id: fidelity-ca
     name: Fidelity Investments Canada
@@ -166,6 +167,10 @@ families:
     mode: static
     fye: "varies"
     hub: https://www.fidelity.ca/en/pfic_etf_statements/
+    caveat: >-
+      Fidelity reports amounts per unit PER DAY. Only ETF and ETF Series
+      statements are posted; for other series Fidelity issues a personalized
+      statement on request.
     link_include: ['(?i)/pfic/\d{4}/.+\.pdf', '(?i)pfic_\d{4}_.+\.pdf']
     notes: >-
       Reports per unit PER DAY - unit-days must be computed to file.
@@ -175,22 +180,21 @@ families:
   - id: ia-clarington
     name: iA Clarington Investments
     country: CA
-    mode: browser
-    access: manual
+    mode: static
     fye: "12-31"
     hub: https://iaclarington.com/applicationsandforms/pficstatements
-    guidance: >-
-      iA Clarington publishes PFIC Annual Information Statements on this page.
-      They are not collected here by the publisher's own instruction:
-      iaclarington.com/robots.txt sets "Disallow: /docs/", and every statement
-      lives under /docs/default-source/distributions-and-taxes/pfic/. Open the
-      page and download the fund and year you need directly.
+    link_include: ['(?i)/pfic/\d{4}/ais/.+\.pdf']
+    listing_only:
+      why: >-
+        iaclarington.com/robots.txt disallows /docs/, where every statement is kept
     notes: >-
-      NOT CRAWLED, by their instruction. Their robots.txt opens with
-      "Allow: /*" and then "Disallow: /docs/"; some robots.txt parsers let the
-      broad Allow win, which is how this family was crawled at all. The
-      conservative reading is the correct one - /docs/ is disallowed. Revisit
-      only if robots.txt changes.
+      LINKS ONLY, by their instruction. Their robots.txt opens with
+      "Allow: /*" and then "Disallow: /docs/"; read by the longest-match rule
+      that is a disallow, and every statement lives under
+      /docs/default-source/distributions-and-taxes/pfic/{year}/ais/. The page
+      that lists them may be read and names each fund, so the links are listed
+      without the documents being requested. The same folder holds
+      /pfic/{year}/8937/ - Form 8937 is a different filing and is left out.
 
   - id: renaissance
     name: Renaissance Investments (CIBC)
@@ -211,6 +215,9 @@ families:
     doc_type: html_table
     fye: "04-30"
     hub: https://hamiltonetfs.com/tax-information/
+    caveat: >-
+      Hamilton publishes these as a table on its website, not as a document,
+      and reports amounts per unit PER DAY.
     statement_pages:
       - https://hamiltonetfs.com/tax-information/pfic/
       - https://hamiltonetfs.com/tax-information/pfic-annual-information-statements-2025/
@@ -278,6 +285,9 @@ families:
     mode: browser
     fye: "12-31"
     hub: https://www.globalx.ca/pfic
+    caveat: >-
+      Global X publishes one combined table for all its ETFs, reporting
+      amounts per unit PER DAY. The link opens it at the page this fund is on.
     split:
       by: rows
       name_prefix: Global X
@@ -310,20 +320,48 @@ families:
     name: Sun Life Global Investments
     country: CA
     mode: static
-    access: manual
+    access: request
     fye: "12-31"
-    hub: https://www.sunlifeglobalinvestments.com/en/resources/regulatory-documents/
+    hub: https://www.sunlifeglobalinvestments.com/en/resources/regulatory-documents/#regulatorydocuments-id-4
     guidance: >-
-      Sun Life states on its regulatory documents page that it provides PFIC
-      Annual Information Statements for 17 of its mutual funds - but the
-      statements themselves are not linked anywhere public. The page has a
-      "Passive Foreign Investment Company (PFIC)" section whose documents are
-      prospectuses and financial statements, not PFIC statements, and no
-      /pfic page exists. They are almost certainly issued on request.
-      Contact Sun Life or the advisor of record to obtain one.
+      Sun Life provides PFIC Annual Information Statements for 17 of its
+      mutual funds, but does not post them: its regulatory documents page says
+      to "contact your advisor who can make a request through the Sun Life
+      Wealth Distribution sales team". The 17 funds named on that page (as at
+      11 November 2026) are - mutual fund trusts: Sun Life Granite Balanced
+      Growth Portfolio, Sun Life Granite Balanced Portfolio, Sun Life MFS
+      Diversified Income Fund, Sun Life MFS Global Growth Fund, Sun Life MFS
+      Global Value Fund, Sun Life MFS International Opportunities Fund, Sun
+      Life MFS International Value Fund, Sun Life MFS U.S. Growth Fund, Sun
+      Life MFS U.S. Mid Cap Growth Fund, Sun Life MFS U.S. Value Fund, Sun
+      Life Core Advantage Credit Private Pool, Sun Life KBI Sustainable
+      Infrastructure Private Pool, Sun Life Real Assets Private Pool, Sun Life
+      Money Market Fund; corporate classes: Sun Life MFS Global Growth Class,
+      Sun Life MFS International Opportunities Class, Sun Life MFS U.S. Growth
+      Class. For any other Sun Life fund, no statement is listed there - ask
+      Sun Life.
+    # Fund names the manager lists as having a statement. Searching one of
+    # these brings up the guidance above instead of "nothing matched".
+    covers:
+      - Sun Life Granite Balanced Growth Portfolio
+      - Sun Life Granite Balanced Portfolio
+      - Sun Life MFS Diversified Income Fund
+      - Sun Life MFS Global Growth Fund
+      - Sun Life MFS Global Value Fund
+      - Sun Life MFS International Opportunities Fund
+      - Sun Life MFS International Value Fund
+      - Sun Life MFS U.S. Growth Fund
+      - Sun Life MFS U.S. Mid Cap Growth Fund
+      - Sun Life MFS U.S. Value Fund
+      - Sun Life Core Advantage Credit Private Pool
+      - Sun Life KBI Sustainable Infrastructure Private Pool
+      - Sun Life Real Assets Private Pool
+      - Sun Life Money Market Fund
+      - Sun Life MFS Global Growth Class
+      - Sun Life MFS International Opportunities Class
+      - Sun Life MFS U.S. Growth Class
     notes: >-
-      Publishes but does not post. Every candidate URL tried returned 404 and
-      the site search is blocked to automation.
+      Issued on request only - their own page says so. Checked 2026-11-11.
 
   - id: pimco-ca
     name: PIMCO Canada
@@ -355,6 +393,10 @@ families:
     mode: static
     fye: "12-31"
     hub: https://www.dimensional.com/ca-en/document-center
+    caveat: >-
+      Dimensional posts one statement per fund and replaces it each year, so
+      only the latest year is available here. Earlier years have to be
+      requested from Dimensional.
     json_api:
       url: https://www.dimensional.com/investment-api/v2/document-grid
       body: '{"gridid":"$TOKEN"}'
@@ -411,32 +453,53 @@ families:
     name: Dynamic Funds (1832 Asset Management)
     country: CA
     mode: static
-    access: manual
     fye: "12-31"
-    hub: https://dynamic.ca/en/literature/regulatory-documents/pfic-irs.html
-    guidance: >-
-      Dynamic does publish PFIC statements - they have a dedicated
-      "PFIC Statements & Other IRS Tax Information" page and the documents sit
-      at /content/dam/docs/regulatory/pfic/{year}/{code}.pdf. The list itself
-      is built in the browser and only one document appears in the raw page,
-      and their server rejects the headless browser with an HTTP/2 error, so
-      the full list cannot be collected automatically. Open the page and pick
-      the fund and year by hand.
-    notes: Retry periodically; a site change may expose the list.
+    hub: https://dynamic.ca/en/regulatory/statutory-documents-applications-and-forms/pfic-irs.html
+    extra_hubs:
+      - https://dynamic.ca/en/regulatory/statutory-documents-applications-and-forms/pfic-irs/archive.html
+    link_include: ['(?i)/content/dam/docs/regulatory/pfic/\d{4}/.+\.pdf']
+    # The text layer of these statements splits the first word: "Dy namic ...".
+    name_fix:
+      - ['^Dy\s+namic\b', 'Dynamic']
+    caveat: >-
+      Dynamic keeps its statements for the most recent tax year behind its
+      investor / advisor sign-in, so only earlier years - its public archive -
+      can be collected here. For the latest year, sign in on Dynamic's PFIC
+      page.
+    notes: >-
+      Two pages. The main PFIC page lists the current year, but every entry
+      except the odd one is a "Sign in required" link to their login. The
+      archive page linked from it carries the previous year in full (122
+      statements for 2024) as ordinary public PDFs at
+      /content/dam/docs/regulatory/pfic/{year}/{Fund-Name}.pdf, and robots.txt
+      permits everything. So this family always runs a year behind. It was
+      listed as "fetch by hand" until November 2026 because only the locked
+      current-year page had been looked at.
 
   - id: franklin-templeton-ca
     name: Franklin Templeton Canada
     country: CA
-    mode: browser
-    access: manual
+    mode: static
     fye: "varies"
     hub: https://www.franklintempleton.ca/en-ca/resources/forms/pfic-annual-information-statements
-    guidance: >-
-      Franklin Templeton Canada has a dedicated PFIC Annual Information
-      Statements page. The page loads but its document list did not yield any
-      statement links to the crawler, so the documents could not be collected
-      automatically. Open the page directly - the statements are there.
-    notes: Page renders ~555KB but exposes no PFIC document links. Needs investigation.
+    json_api:
+      url: https://www.franklintempleton.ca/en-ca/resourceapi/resources/forms/pfic-annual-information-statements?first-load=true&segment=investor
+      within: accordionItems
+    link_include: ['franklintempletonprod\.widen\.net/']
+    link_exclude: ['(?i)8937|tax-guide']
+    listing_only:
+      why: >-
+        the documents are kept on franklintempletonprod.widen.net, whose robots.txt disallows everything
+    caveat: >-
+      Franklin Templeton's page does not say which tax year each statement is
+      for; the links lead to whatever it currently posts. Check the period on
+      the document.
+    notes: >-
+      LINKS ONLY. The PFIC page is an empty shell that loads its list from the
+      resourceapi endpoint (which franklintempleton.ca's robots.txt permits):
+      a table per asset class, fund name in one cell and a bare "PDF" link in
+      the next. The PDFs themselves are on a Widen document host that
+      disallows all automated access, so they are listed and never requested.
 
   - id: nei
     name: NEI Investments (Aviso)
@@ -458,15 +521,19 @@ families:
     name: Starlight Capital
     country: CA
     mode: static
-    access: manual
     fye: "12-31"
-    hub: https://starlightcapital.com/en/tax-information
-    guidance: >-
-      Starlight has a PFIC section on its tax information page, but only a
-      PFIC Overview and a PFIC FAQ are linked publicly - the per-fund
-      statements themselves are not posted. Contact Starlight to request the
-      statement for a specific fund.
-    notes: Only overview/FAQ PDFs are exposed; no per-fund statements found.
+    hub: https://starlightcapital.com/en/prices/documents?category=Tax+Information
+    url_scan: true
+    link_include: ['(?i)/files/\d+/download/\d+/\d{4}-PFIC-Annual-Information-Statement$']
+    caveat: >-
+      Starlight reports amounts per unit PER DAY.
+    notes: >-
+      The statements are on the documents page (category "Tax Information"),
+      not on the tax-information page, which links only a PFIC overview and
+      FAQ. The documents table is built in the browser from data held in an
+      HTML attribute, and the addresses carry no ".pdf" - hence url_scan.
+      One statement per fund per year, 2023 onward. Listed as "not posted"
+      until November 2026 because only the tax-information page had been read.
 
   - id: ninepoint
     name: Ninepoint Partners
@@ -511,16 +578,20 @@ families:
     name: Lysander Funds
     country: CA
     mode: static
-    access: manual
     fye: "12-31"
     hub: https://www.lysanderfunds.com/passive-foreign-investment-company-pfic/
-    guidance: >-
-      Lysander does publish PFIC statements - one combined document per year
-      covering all its funds, going back to 2020, all linked from this page.
-      They are NOT collected here by the publisher's own instruction:
-      lysanderfunds.com/robots.txt disallows /app/uploads/, where every
-      document lives. Open the page and download the year you need directly.
-    notes: One combined statement per year, not one per fund. robots.txt blocks retrieval.
+    link_include: ['(?i)pfic[-_]statement']
+    listing_only:
+      name: Lysander Funds - combined statement (all funds)
+      why: >-
+        lysanderfunds.com/robots.txt disallows every .pdf file
+    caveat: >-
+      Lysander issues one combined document per year covering all of its
+      funds; find the fund inside it.
+    notes: >-
+      LINKS ONLY, by their instruction: robots.txt carries "Disallow: /*.pdf$".
+      One combined statement per year (2020 onward), all linked from the PFIC
+      page with the year as the link text.
 
   - id: desjardins
     name: Desjardins Funds

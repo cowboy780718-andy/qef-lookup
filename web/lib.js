@@ -186,6 +186,9 @@ export function planDownloads(items) {
   const files = [];
   for (const item of items) {
     const { fund, stmt } = item;
+    // A link the manager's site does not let us fetch is not a file; it goes
+    // in the manifest and in NOT_DOWNLOADED.txt instead (see linksOnly).
+    if (stmt.fmt === "link") continue;
     if (stmt.fmt === "html") {
       files.push({ kind: "html", url: stmt.url, name: fileNameFor(fund, stmt), items: [item] });
       continue;
@@ -214,6 +217,23 @@ export function planDownloads(items) {
   return files;
 }
 
+/** The selected statements that are links only and so cannot go in a ZIP. */
+export const linksOnly = (items) => items.filter((it) => it.stmt.fmt === "link");
+
+/** The note that goes in the ZIP in place of documents we may not fetch. */
+export function notDownloadedText(items) {
+  const links = linksOnly(items);
+  if (!links.length) return "";
+  return "These statements are NOT in this ZIP.\r\n\r\n" +
+    "The managers below ask automated tools not to fetch their documents, so this\r\n" +
+    "tool lists the manager's own link and stops there. Open each address in your\r\n" +
+    "browser to download the statement, and check the fund and year when you do -\r\n" +
+    "these links have not been opened or verified.\r\n\r\n" +
+    links.map(({ fund, stmt }) =>
+      `${fund.family_name} - ${fund.name}${stmt.tax_year ? ` (${stmt.tax_year})` : ""}\r\n  ${stmt.url}`)
+      .join("\r\n\r\n") + "\r\n";
+}
+
 const csvCell = (c) => {
   let v = String(c ?? "");
   // A cell starting with = + - or @ is run as a formula by Excel. These
@@ -239,11 +259,14 @@ export function manifestCsv(items, files = planDownloads(items), failed = new Ma
     rows.push([
       fund.family_name, fund.name, stmt.name || "", (fund.tickers || []).join(" "),
       stmt.tax_year ?? "", stmt.period_end ?? "",
-      stmt.fmt === "html" ? "web table" : stmt.part ? "PDF (combined document)" : "PDF",
+      stmt.fmt === "html" ? "web table"
+        : stmt.fmt === "link" ? "link only (not checked)"
+        : stmt.part ? "PDF (combined document)" : "PDF",
       f ? f.name : "", stmt.part ? stmt.part.page : "",
       stmt.url, stmt.bytes || "", stmt.sha256 || "", figureText(stmt.figures),
       (stmt.investees || []).map((i) => i.name).join(" | "),
-      why ? `FAILED: ${why}` : "ok",
+      stmt.fmt === "link" ? "not downloaded - open the source URL"
+        : why ? `FAILED: ${why}` : "ok",
     ]);
   }
   return rows.map((r) => r.map(csvCell).join(",")).join("\r\n");
@@ -316,9 +339,11 @@ They are not those funds&rsquo; own statements.</div>${investees}` : ""}
  * header used to count them in the denominator, so a perfect night read
  * "19/33" and looked like fourteen things were broken.
  */
+export const NOT_CRAWLED = new Set(["manual", "request", "none"]);
+
 export function healthSummary(health) {
   const rows = health || [];
-  const crawled = rows.filter((h) => h.status !== "manual" && h.status !== "none");
+  const crawled = rows.filter((h) => !NOT_CRAWLED.has(h.status));
   return {
     ok: crawled.filter((h) => h.status === "ok").length,
     total: crawled.length,
