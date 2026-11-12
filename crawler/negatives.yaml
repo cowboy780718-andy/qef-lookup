@@ -79,21 +79,27 @@ negatives:
       Open the tax centre and download by hand. If robots.txt is relaxed, drop
       the `access: manual` flag in sources.yaml and this entry.
 
-  - scope: Evolve ETFs - all funds, including Evolve Future Leadership Fund
+  - scope: Evolve ETFs - funds other than EBNK, BOND, CYBR, ESPX, QQQT and QQQY (so including Evolve Future Leadership Fund)
     family: evolve
     finding: not_available
-    evidence: https://evolveetfs.com/?s=PFIC
-    verified: 2026-08-19
+    evidence: https://evolveetfs.com/2026/10/evolve-to-provide-pfic-reporting-for-u-s-taxpayer-investors-for-certain-evolve-funds/
+    verified: 2026-11-11
     verified_by: manual
     note: >-
-      No PFIC or QEF material could be located on evolveetfs.com as at this
-      date: a site search for "PFIC" returned nothing, there is no
-      tax-information section, and the documents area carries prospectuses and
-      fund facts only. This records what was found on their public website. It
-      is not a statement about whether Evolve issues one - ask them directly.
-      If no statement can be obtained, the holding falls to the section 1291
-      excess distribution regime, or a mark-to-market election if the fund is
-      marketable on a qualified exchange.
+      On 14 October 2026 Evolve announced PFIC Annual Information Statements
+      for "certain" funds, beginning with the year ended 30 June 2025, and
+      named six: Evolve European Banks Enhanced Yield ETF (EBNK), Evolve
+      Enhanced Yield Bond Fund (BOND), Evolve Cyber Security Index Fund
+      (CYBR), Evolve S&P 500 Enhanced Yield Fund (ESPX), Evolve NASDAQ
+      Technology Index Fund (QQQT) and Evolve NASDAQ Technology Enhanced
+      Yield Index Fund (QQQY). Those are in the index. For every other Evolve
+      fund, no statement could be located on evolveetfs.com as at this date,
+      and none for any fund for periods before 30 June 2025. Evolve says the
+      list "may change without notice and will be reviewed annually", so this
+      records what was found on their website, not what Evolve would provide
+      if asked. Where no statement can be obtained, the holding falls to the
+      section 1291 excess distribution regime, or a mark-to-market election
+      if the fund is marketable on a qualified exchange.
 
   - scope: Bridgehouse Asset Managers - all funds, including GQG Partners Global Quality Equity Fund
     family: bridgehouse
@@ -110,3 +116,94 @@ negatives:
       US taxpayers, and a site search for "PFIC" returned nothing. This records
       what was found on their public website, not whether Bridgehouse issues
       one - contact them directly to ask.
+
+  - scope: AGF Investments - all funds
+    family: agf
+    finding: not_available
+    evidence: https://www.agf.com/ca/en/resources/tax-information/index.jsp
+    verified: 2026-11-11
+    verified_by: manual
+    note: >-
+      No PFIC Annual Information Statement could be located as at this date:
+      AGF's tax information page covers Canadian tax slips and mailing dates and says nothing about PFIC or QEF, and a web search returned none. This records what was found on
+      their public website, not whether AGF Investments would provide a statement if
+      asked - contact them directly.
+
+
+  - scope: Invesco Canada - all funds
+    family: invesco-ca
+    finding: not_available
+    evidence: https://www.invesco.com/ca/en/insights/all-about-PFIC-rules.html
+    verified: 2026-11-11
+    verified_by: manual
+    note: >-
+      No PFIC Annual Information Statement could be located as at this date:
+      Invesco Canada publishes an article explaining the PFIC rules, which says a QEF election needs a statement from the fund company, but no statements or statement page for its own funds could be found, and a web search returned none. This records what was found on
+      their public website, not whether Invesco Canada would provide a statement if
+      asked - contact them directly.
+
+
+  - scope: Scotia Global Asset Management (ScotiaFunds, Scotia ETFs) - all funds
+    family: scotia
+    finding: not_available
+    evidence: https://www.scotiafunds.com/
+    verified: 2026-11-11
+    verified_by: manual
+    note: >-
+      No PFIC Annual Information Statement could be located as at this date:
+      nothing about PFIC or QEF could be found on scotiafunds.com. The same manager, 1832 Asset Management, does publish statements for its Dynamic-branded funds - see Dynamic Funds in this list - but none were found for Scotia-branded funds, and a web search returned none. This records what was found on
+      their public website, not whether Scotia Global Asset Management would provide a statement if
+      asked - contact them directly.
+
+
+  - scope: Fiera Capital - all funds
+    family: fiera
+    finding: not_available
+    evidence: https://www.fieracapital.com/en/
+    verified: 2026-11-11
+    verified_by: manual
+    note: >-
+      No PFIC Annual Information Statement could be located as at this date:
+      nothing about PFIC or QEF could be found on fieracapital.com, and a web search returned none. This records what was found on
+      their public website, not whether Fiera Capital would provide a statement if
+      asked - contact them directly.
+
+
+  - scope: Beutel Goodman - all funds
+    family: beutel-goodman
+    finding: not_available
+    evidence: https://www.beutelgoodman.com/
+    verified: 2026-11-11
+    verified_by: manual
+    note: >-
+      No PFIC Annual Information Statement could be located as at this date:
+      a search of beutelgoodman.com for PFIC returned nothing, and a web search returned none. This records what was found on
+      their public website, not whether Beutel Goodman would provide a statement if
+      asked - contact them directly.
+
+
+  - scope: Picton Mahoney Asset Management - all funds
+    family: picton-mahoney
+    finding: not_available
+    evidence: https://www.pictonmahoney.com/
+    verified: 2026-11-11
+    verified_by: manual
+    note: >-
+      No PFIC Annual Information Statement could be located as at this date:
+      nothing about PFIC or QEF could be found for Picton Mahoney's funds, and a web search returned none. This records what was found on
+      their public website, not whether Picton Mahoney Asset Management would provide a statement if
+      asked - contact them directly.
+
+
+  - scope: FERIQUE Fund Management - all funds
+    family: ferique
+    finding: not_available
+    evidence: https://www.ferique.com/en
+    verified: 2026-11-11
+    verified_by: manual
+    note: >-
+      No PFIC Annual Information Statement could be located as at this date:
+      a search of ferique.com for PFIC returned nothing, and a web search returned none. This records what was found on
+      their public website, not whether FERIQUE Fund Management would provide a statement if
+      asked - contact them directly.
+

@@ -415,20 +415,28 @@ families:
     name: Evolve ETFs
     country: CA
     mode: static
-    access: none
-    fye: "12-31"
+    fye: "06-30"
     hub: https://evolveetfs.com/
-    guidance: >-
-      No PFIC Annual Information Statement could be located on the Evolve ETFs
-      website as at 19 August 2026. Their site has no tax-information section,
-      the documents area carries prospectuses and fund facts only, and a site
-      search for "PFIC" returned nothing. This records what was found on their
-      public website - it is not a statement about whether Evolve issues one.
-      Contact Evolve directly to ask. If no statement can be obtained, the
-      holding falls to the section 1291 excess distribution regime, or a
-      mark-to-market election if the fund is marketable on a qualified
-      exchange.
-    notes: Checked 2026-08-19. Listed deliberately so the search is recorded.
+    link_include: ['(?i)_AIS\.pdf']
+    name_fix:
+      - ['^EVOLVE\b', 'Evolve']
+    follow:
+      page_pattern: '^https://evolveetfs\.com/product/[a-z0-9-]+/$'
+      ticker_pattern: '/product/([a-z0-9]+)'
+    caveat: >-
+      Evolve began issuing PFIC statements in October 2026, for certain funds
+      only and starting with the year ended 30 June 2025. Its announcement
+      named six: EBNK, BOND, CYBR, ESPX, QQQT and QQQY. For any other Evolve
+      fund no statement was found on its website - ask Evolve.
+    notes: >-
+      Until October 2026 nothing about PFIC could be found on evolveetfs.com
+      and this family was recorded as "none". On 14 October 2026 Evolve
+      announced statements for certain funds (June 30 year end), posted among
+      each fund's documents on its /product/{ticker}/ page as
+      ..._{YEAR}_AIS.pdf. There is no single list, so every product page
+      linked from the home page is read; the list "may change without notice".
+      Announcement:
+      https://evolveetfs.com/2026/10/evolve-to-provide-pfic-reporting-for-u-s-taxpayer-investors-for-certain-evolve-funds/
 
   - id: bridgehouse
     name: Bridgehouse Asset Managers (incl. GQG Partners funds)
@@ -505,17 +513,20 @@ families:
     name: NEI Investments (Aviso)
     country: CA
     mode: static
-    access: manual
     fye: "09-30"
-    hub: https://www.neiinvestments.com/
-    guidance: >-
-      NEI does publish PFIC statements - documents exist at
-      neiinvestments.com/content/dam/nei/docs/en/regulatory/pfic/pfic-{code}-en.pdf
-      and cover taxable years ending 30 SEPTEMBER, not December. Their site
-      blocks automated access, so the index of which fund maps to which code
-      could not be collected. Search their site or contact NEI for the fund
-      you need.
-    notes: September 30 year end. Aviso Wealth is the parent.
+    hub: https://www.neiinvestments.com/investment-products/fund-resources/fund-financials.html
+    link_include: ['(?i)/regulatory/pfic/pfic-[0-9a-z]+-en\.pdf']
+    caveat: >-
+      NEI's funds have a 30 SEPTEMBER year end, not December. It posts one
+      statement per fund at a fixed address and replaces it each year, so only
+      the latest year is available here.
+    notes: >-
+      The statements are linked from the "Fund financials" page, in a column
+      headed "PFIC annual statements" - not from any page with PFIC in its
+      name, which is why none was found at first. Files are
+      /content/dam/nei/docs/en/regulatory/pfic/pfic-{fund number}-en.pdf.
+      robots.txt disallows only the advisor-marketing folders. September 30
+      year end. Aviso Wealth is the parent.
 
   - id: starlight
     name: Starlight Capital
@@ -601,6 +612,11 @@ families:
     hub: https://www.fondsdesjardins.com/
     year_urls:
       - https://www.fondsdesjardins.com/information/fnb_doc_spep_{year}_en.pdf
+    caveat: >-
+      Only one Desjardins statement series has been found - for the Desjardins
+      Alt Long/Short Equity Market Neutral ETF, 2021 to 2023. Nothing for 2024
+      or later, or for any other Desjardins fund, could be located as at
+      11 November 2026. Ask Desjardins.
     notes: >-
       Uses the FRENCH acronym: SPEP = Societe de Placement Etranger Passif =
       PFIC. Files are named fnb_doc_spep_{YEAR}_en.pdf ("fnb" = fonds negocies
@@ -626,4 +642,155 @@ families:
       separately and opens the document at its first page. Their tax folder also
       holds PFIC-Form-8937_{year}.pdf - Form 8937 is a different filing
       (organisational actions affecting basis), not an AIS, so it is excluded.
+
+  - id: harvest
+    name: Harvest ETFs
+    country: CA
+    mode: static
+    fye: "12-31"
+    hub: https://harvestportfolios.com/products/
+    # Their server answers 429 (too many requests) at the default pace.
+    delay: 1.5
+    link_include: ['(?i)/tax/\d{4}/PFIC/.+\.pdf']
+    follow:
+      page_pattern: '^https://harvestportfolios\.com/etf/[a-z0-9-]+/?$'
+      ticker_pattern: '/etf/([a-z0-9]+)'
+    caveat: >-
+      Harvest links only the latest year's statement from each fund's page.
+      Earlier years were collected here from the time this manager was added
+      (November 2026); for years before that, ask Harvest.
+    notes: >-
+      No PFIC page and nothing on the tax-information page. Each ETF's own
+      page (/etf/{ticker}) links one "PFIC Annual Information Statement" among
+      its documents, at /wp-content/uploads/tax/{YEAR}/PFIC/{CODE}_{Fund}.pdf,
+      so every fund page linked from the products page is read. Not found
+      until November 2026 because nothing on the site's navigation says PFIC.
+
+  # ---------- Checked, nothing located (listed so the check is on record) ----------
+
+  - id: agf
+    name: AGF Investments
+    country: CA
+    mode: static
+    access: none
+    fye: "12-31"
+    hub: https://www.agf.com/ca/en/resources/tax-information/index.jsp
+    guidance: >-
+      No PFIC Annual Information Statement could be located for AGF Investments as at
+      11 November 2026: AGF's tax information page covers Canadian tax slips and mailing dates and says nothing about PFIC or QEF, and a web search for its PFIC statements
+      returned none. This records what was found on its public website - it is
+      not a statement about whether AGF Investments would provide one. Contact
+      AGF Investments directly to ask. If no statement can be obtained, the holding
+      falls to the section 1291 excess distribution regime, or a
+      mark-to-market election if the fund is marketable on a qualified
+      exchange.
+    notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
+
+  - id: invesco-ca
+    name: Invesco Canada
+    country: CA
+    mode: static
+    access: none
+    fye: "12-31"
+    hub: https://www.invesco.com/ca/en/insights/all-about-PFIC-rules.html
+    guidance: >-
+      No PFIC Annual Information Statement could be located for Invesco Canada as at
+      11 November 2026: Invesco Canada publishes an article explaining the PFIC rules, which says a QEF election needs a statement from the fund company, but no statements or statement page for its own funds could be found, and a web search for its PFIC statements
+      returned none. This records what was found on its public website - it is
+      not a statement about whether Invesco Canada would provide one. Contact
+      Invesco Canada directly to ask. If no statement can be obtained, the holding
+      falls to the section 1291 excess distribution regime, or a
+      mark-to-market election if the fund is marketable on a qualified
+      exchange.
+    notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
+
+  - id: scotia
+    name: Scotia Global Asset Management (ScotiaFunds, Scotia ETFs)
+    country: CA
+    mode: static
+    access: none
+    fye: "12-31"
+    hub: https://www.scotiafunds.com/
+    guidance: >-
+      No PFIC Annual Information Statement could be located for Scotia Global Asset Management as at
+      11 November 2026: nothing about PFIC or QEF could be found on scotiafunds.com. The same manager, 1832 Asset Management, does publish statements for its Dynamic-branded funds - see Dynamic Funds in this list - but none were found for Scotia-branded funds, and a web search for its PFIC statements
+      returned none. This records what was found on its public website - it is
+      not a statement about whether Scotia Global Asset Management would provide one. Contact
+      Scotia Global Asset Management directly to ask. If no statement can be obtained, the holding
+      falls to the section 1291 excess distribution regime, or a
+      mark-to-market election if the fund is marketable on a qualified
+      exchange.
+    notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
+
+  - id: fiera
+    name: Fiera Capital
+    country: CA
+    mode: static
+    access: none
+    fye: "12-31"
+    hub: https://www.fieracapital.com/en/
+    guidance: >-
+      No PFIC Annual Information Statement could be located for Fiera Capital as at
+      11 November 2026: nothing about PFIC or QEF could be found on fieracapital.com, and a web search for its PFIC statements
+      returned none. This records what was found on its public website - it is
+      not a statement about whether Fiera Capital would provide one. Contact
+      Fiera Capital directly to ask. If no statement can be obtained, the holding
+      falls to the section 1291 excess distribution regime, or a
+      mark-to-market election if the fund is marketable on a qualified
+      exchange.
+    notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
+
+  - id: beutel-goodman
+    name: Beutel Goodman
+    country: CA
+    mode: static
+    access: none
+    fye: "12-31"
+    hub: https://www.beutelgoodman.com/
+    guidance: >-
+      No PFIC Annual Information Statement could be located for Beutel Goodman as at
+      11 November 2026: a search of beutelgoodman.com for PFIC returned nothing, and a web search for its PFIC statements
+      returned none. This records what was found on its public website - it is
+      not a statement about whether Beutel Goodman would provide one. Contact
+      Beutel Goodman directly to ask. If no statement can be obtained, the holding
+      falls to the section 1291 excess distribution regime, or a
+      mark-to-market election if the fund is marketable on a qualified
+      exchange.
+    notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
+
+  - id: picton-mahoney
+    name: Picton Mahoney Asset Management
+    country: CA
+    mode: static
+    access: none
+    fye: "12-31"
+    hub: https://www.pictonmahoney.com/
+    guidance: >-
+      No PFIC Annual Information Statement could be located for Picton Mahoney Asset Management as at
+      11 November 2026: nothing about PFIC or QEF could be found for Picton Mahoney's funds, and a web search for its PFIC statements
+      returned none. This records what was found on its public website - it is
+      not a statement about whether Picton Mahoney Asset Management would provide one. Contact
+      Picton Mahoney Asset Management directly to ask. If no statement can be obtained, the holding
+      falls to the section 1291 excess distribution regime, or a
+      mark-to-market election if the fund is marketable on a qualified
+      exchange.
+    notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
+
+  - id: ferique
+    name: FERIQUE Fund Management
+    country: CA
+    mode: static
+    access: none
+    fye: "12-31"
+    hub: https://www.ferique.com/en
+    guidance: >-
+      No PFIC Annual Information Statement could be located for FERIQUE Fund Management as at
+      11 November 2026: a search of ferique.com for PFIC returned nothing, and a web search for its PFIC statements
+      returned none. This records what was found on its public website - it is
+      not a statement about whether FERIQUE Fund Management would provide one. Contact
+      FERIQUE Fund Management directly to ask. If no statement can be obtained, the holding
+      falls to the section 1291 excess distribution regime, or a
+      mark-to-market election if the fund is marketable on a qualified
+      exchange.
+    notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
 

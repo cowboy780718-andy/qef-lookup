@@ -654,6 +654,13 @@ class NamesFromRealDocuments(unittest.TestCase):
                 "Markets Growth Fund (W) 0.50881 0.47847 0.11970 3) The above Fund(s) will")
         self.assertEqual(crawl.parse_fund_name(text), "CI Private Markets Growth Fund - Series W")
 
+    def test_purpose_letter_date_is_not_part_of_the_fund_name(self):
+        text = ("March 31, 2026 Purpose Bitcoin ETF PFIC Annual Information Statement "
+                "for the year ended December 31, 2025")
+        self.assertEqual(crawl.parse_fund_name(text), "Purpose Bitcoin ETF")
+        self.assertTrue(crawl._suspect_name("March 31, 2026 Purpose Bitcoin ETF"))
+        self.assertFalse(crawl._suspect_name("Purpose Bitcoin ETF"))
+
     def test_detached_letter_does_not_hide_the_tax_year(self):
         self.assertEqual(crawl.parse_period("For the Y ear Ended April 30, 2025"), "2025-04-30")
 

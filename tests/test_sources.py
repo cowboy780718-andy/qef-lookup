@@ -39,6 +39,7 @@ class SourceRegistry(unittest.TestCase):
             self.assertTrue(f["hub"].startswith("https://"), f["id"])
             self.assertRegex(str(f["fye"]), r"^(\d\d-\d\d|varies)$", f["id"])
             self.assertIn(f.get("mode", "static"), ("static", "browser"), f["id"])
+            self.assertLessEqual(float(f.get("delay", 0)), 30, f["id"])
             self.assertIn(f.get("access"), (None, *crawl.NOT_CRAWLED), f["id"])
 
     def test_every_pattern_compiles(self):

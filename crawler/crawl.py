@@ -327,9 +327,22 @@ def fetch(url: str, *, binary: bool = False, extra_headers: dict | None = None,
                               timeout=TIMEOUT, allow_redirects=True)
         else:
             r = requests.get(url, headers=h, timeout=TIMEOUT, allow_redirects=True)
+        if r.status_code == 429:
+            _slow_down(url)
         return r.status_code, (r.content if binary else r.text), dict(r.headers)
     except Exception as exc:  # noqa: BLE001
         return f"error:{type(exc).__name__}", None, {}
+
+
+def _slow_down(url: str) -> None:
+    """A 429 is the host asking us to ease off. Do so for the rest of the run."""
+    host = urlparse.urlsplit(url).netloc
+    with _robots_lock:
+        slower = min(max(_host_delay(host) * 2, 1.0), 8.0)
+        if slower > _host_delay(host):
+            _host_delays[host] = slower
+            print(f"    - {host} answered 429 (too many requests); "
+                  f"now waiting {slower:g}s between requests to it")
 
 
 # Client-hint and connection headers some WAFs insist on. Kept separate from
@@ -608,10 +621,19 @@ _NAME_PREFIX_JUNK = re.compile(
 # A letter date that trails the name: "... Senior Debt Fund March 31, 2026".
 _NAME_TRAILING_DATE = re.compile(
     r"\s+(?:" + "|".join(MONTHS) + r")\s+\d{1,2},?\s+\d{4}$", re.I)
+# ...or leads it: Purpose dates its covering letter on the line above the fund,
+# and all eighty of its funds were listed as "March 31, 2026 Purpose ...".
+_NAME_LEADING_DATE = re.compile(
+    r"^(?:" + "|".join(MONTHS) + r")\s+\d{1,2},?\s+\d{4}\s+", re.I)
 TICKER_PATTERN = re.compile(r"\(([A-Z]{2,5}(?:\.[A-Z]{1,2})?)\)")
 
 
 _pdf_errors: dict[str, int] = defaultdict(int)
+
+# Tickers learned from WHERE a document was found rather than from the
+# document: Evolve's statements name no ticker and neither do their file
+# names, but each is linked from /product/{ticker}/.
+_doc_tickers: dict[str, str] = {}
 
 _GLYPH_NAME = re.compile(r"/uni([0-9A-Fa-f]{4})")
 
@@ -720,6 +742,7 @@ def _suspect_name(name: str | None) -> bool:
     """A cached fund name that the current parser would not have produced."""
     return (not name or len(name) > 100 or bool(_NAME_JUNK.search(name))
             or name.count("(") != name.count(")")
+            or bool(_NAME_LEADING_DATE.match(name))
             or bool(re.search(r"^investors\s+in\b|^text\d|this\s+statement|^attention\b|converted\s+into|"
                               r"\b(?:19|20)\d\d$", name, re.I)))
 
@@ -766,6 +789,7 @@ def _clean_name(raw: str) -> str | None:
     name = re.sub(r"^([A-Z])\s+(?=[a-z]{2})", r"\1", name)
     name = _NAME_PREFIX_JUNK.sub("", name)
     name = _NAME_TRAILING_DATE.sub("", name)
+    name = _NAME_LEADING_DATE.sub("", name)
     # RBC writes "Fund - Series F" some years and "Fund – Series F" others.
     name = re.sub(r"\s[–—]\s(?=(?:Series|Class)\b)", " - ", name)
     name = re.sub(r"^(?:the\s+)", "", name, flags=re.I)
@@ -1091,9 +1115,17 @@ def follow_pages(hub_html: str, hub_url: str, fam: dict, browser, args) -> list[
     if not cfg:
         return []
     page_rx = re.compile(cfg["page_pattern"])
-    pages = sorted({urlparse.urljoin(hub_url, h)
-                    for h in re.findall(r'href=["\']([^"\']+)["\']', hub_html)
-                    if page_rx.search(h)})
+    # "/etf/hdif" and "/etf/hdif/" are one page; without the rstrip Harvest's
+    # fund pages were each read twice.
+    by_page: dict[str, str] = {}
+    for h in re.findall(r'href=["\']([^"\']+)["\']', hub_html):
+        if page_rx.search(h):
+            absolute = urlparse.urljoin(hub_url, h)
+            # Prefer the trailing-slash form where both are linked: asking for
+            # the other one costs a redirect on every page, every night.
+            if absolute.endswith("/") or absolute.rstrip("/") not in by_page:
+                by_page[absolute.rstrip("/")] = absolute
+    pages = sorted(by_page.values())
     if args.limit and len(pages) > args.limit:
         step = len(pages) / args.limit
         pages = [pages[int(i * step)] for i in range(args.limit)]
@@ -1102,11 +1134,13 @@ def follow_pages(hub_html: str, hub_url: str, fam: dict, browser, args) -> list[
     print(f"    following {len(pages)} per-fund page(s)")
 
     inc = [re.compile(x) for x in (fam.get("link_include") or [])]
+    ticker_rx = re.compile(cfg["ticker_pattern"]) if cfg.get("ticker_pattern") else None
     found: set[str] = set()
     for i, page in enumerate(pages, 1):
         body = fetch_any(page, browser, allow_browser=not args.static_only)
         if not body:
             continue
+        page_ticker = ticker_rx.search(page) if ticker_rx else None
         # Scan href attributes AND any quoted string that looks like a document
         # URL. Purpose renders its fund pages from embedded JSON, so the
         # statement link never appears as an href and an href-only scan
@@ -1118,6 +1152,8 @@ def follow_pages(hub_html: str, hub_url: str, fam: dict, browser, args) -> list[
                 if inc and not any(r.search(absolute) for r in inc):
                     continue
                 found.add(absolute)
+                if page_ticker:
+                    _doc_tickers[absolute] = page_ticker.group(1).upper()
         if i % 20 == 0:
             print(f"      {i}/{len(pages)} pages, {len(found)} documents so far")
     print(f"    {len(found)} document(s) from per-fund pages")
@@ -1810,6 +1846,8 @@ def process_pdf(url: str, family_id: str, manifest: dict, today: str,
         if name:
             name = re.sub(pattern, replacement, name)
     tickers = parse_tickers(text, url)
+    if url in _doc_tickers and _doc_tickers[url] not in tickers:
+        tickers = sorted([*tickers, _doc_tickers[url]])
     year = int(period[:4]) if period else None
 
     record = {
@@ -2018,6 +2056,12 @@ def crawl_family(fam: dict, defaults: dict, manifest: dict, args, today: str):
               "checked": today, "status": "unknown", "statements": 0, "candidates": 0,
               "message": ""}
     print(f"\n[{fid}] {fam['name']}  ({mode})")
+
+    # A manager whose server is known to rate-limit can be paced from the
+    # start (sources.yaml `delay:`, seconds between requests to its host).
+    if fam.get("delay"):
+        host = urlparse.urlsplit(fam["hub"]).netloc
+        _host_delays[host] = max(_host_delay(host), float(fam["delay"]))
 
     browser = BrowserSession()
     try:
