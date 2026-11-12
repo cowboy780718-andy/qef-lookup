@@ -324,22 +324,11 @@ families:
     fye: "12-31"
     hub: https://www.sunlifeglobalinvestments.com/en/resources/regulatory-documents/#regulatorydocuments-id-4
     guidance: >-
-      Sun Life provides PFIC Annual Information Statements for 17 of its
-      mutual funds, but does not post them: its regulatory documents page says
-      to "contact your advisor who can make a request through the Sun Life
-      Wealth Distribution sales team". The 17 funds named on that page (as at
-      11 November 2026) are - mutual fund trusts: Sun Life Granite Balanced
-      Growth Portfolio, Sun Life Granite Balanced Portfolio, Sun Life MFS
-      Diversified Income Fund, Sun Life MFS Global Growth Fund, Sun Life MFS
-      Global Value Fund, Sun Life MFS International Opportunities Fund, Sun
-      Life MFS International Value Fund, Sun Life MFS U.S. Growth Fund, Sun
-      Life MFS U.S. Mid Cap Growth Fund, Sun Life MFS U.S. Value Fund, Sun
-      Life Core Advantage Credit Private Pool, Sun Life KBI Sustainable
-      Infrastructure Private Pool, Sun Life Real Assets Private Pool, Sun Life
-      Money Market Fund; corporate classes: Sun Life MFS Global Growth Class,
-      Sun Life MFS International Opportunities Class, Sun Life MFS U.S. Growth
-      Class. For any other Sun Life fund, no statement is listed there - ask
-      Sun Life.
+      Sun Life provides PFIC statements for 17 of its funds on request only -
+      they are not posted online (checked 11 November 2026).
+    action: >-
+      Ask the client's advisor to request it through the Sun Life Wealth
+      Distribution sales team.
     # Fund names the manager lists as having a statement. Searching one of
     # these brings up the guidance above instead of "nothing matched".
     covers:
@@ -371,13 +360,11 @@ families:
     fye: "varies"
     hub: https://www.pimco.com/ca/en/resources/tax-center
     guidance: >-
-      PIMCO does publish PFIC statements - the Canadian tax centre has sections
-      headed "2025 / 2024 / 2023 U.S. Taxpayer PFIC / Form 8937 Information".
-      They cannot be fetched automatically: the site runs Akamai Bot Manager
-      and deliberately withholds the panel contents from automated browsers,
-      so the sections sit at "Loader..." forever. In a normal browser they
-      open fine. Open the tax centre, expand the year you need, and search the
-      fund name - it takes about two minutes.
+      PIMCO posts its PFIC statements, but its website blocks automated tools,
+      so they cannot be collected here.
+    action: >-
+      Open PIMCO's tax centre, expand the year you need and
+      search the fund name.
     notes: >-
       PUBLISHES, BUT CANNOT BE CRAWLED. The tax centre carries sections headed
       "2025 / 2024 / 2023 U.S. Taxpayer PFIC / Form 8937 Information", so the
@@ -448,15 +435,12 @@ families:
     fye: "12-31"
     hub: https://www.bridgehousecanada.com/
     guidance: >-
-      No PFIC Annual Information Statement could be located on the Bridgehouse
-      website as at 19 August 2026. Look under Bridgehouse rather than GQG -
-      GQG Partners is the sub-advisor; Bridgehouse is the Canadian manager and
-      the party that would issue the statement. Their Legal & Regulatory page
-      lists Fund Facts, Prospectus, Annual Information Form and proxy records,
-      with nothing on PFIC, QEF or US taxpayers, and a site search for "PFIC"
-      returned nothing. This records what was found on their public website -
-      it is not a statement about whether Bridgehouse issues one. Contact
-      Bridgehouse directly to ask.
+      No PFIC statement is available on Bridgehouse's website: its Legal &
+      Regulatory page has nothing on PFIC, QEF or US taxpayers (checked 19
+      August 2026).
+    action: >-
+      Contact Bridgehouse to ask for one - Bridgehouse, not the sub-advisor
+      GQG Partners, is the manager that would provide it.
     notes: Checked 2026-08-19. Covers the GQG Partners Global Quality Equity Fund.
 
   - id: dynamic
@@ -678,14 +662,10 @@ families:
     fye: "12-31"
     hub: https://www.agf.com/ca/en/resources/tax-information/index.jsp
     guidance: >-
-      No PFIC Annual Information Statement could be located for AGF Investments as at
-      11 November 2026: AGF's tax information page covers Canadian tax slips and mailing dates and says nothing about PFIC or QEF, and a web search for its PFIC statements
-      returned none. This records what was found on its public website - it is
-      not a statement about whether AGF Investments would provide one. Contact
-      AGF Investments directly to ask. If no statement can be obtained, the holding
-      falls to the section 1291 excess distribution regime, or a
-      mark-to-market election if the fund is marketable on a qualified
-      exchange.
+      No PFIC statement is available on AGF's website: its tax information
+      page covers Canadian tax slips only (checked 11 November 2026).
+    action: >-
+      Contact AGF Investments to ask for one.
     notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
 
   - id: invesco-ca
@@ -696,14 +676,11 @@ families:
     fye: "12-31"
     hub: https://www.invesco.com/ca/en/insights/all-about-PFIC-rules.html
     guidance: >-
-      No PFIC Annual Information Statement could be located for Invesco Canada as at
-      11 November 2026: Invesco Canada publishes an article explaining the PFIC rules, which says a QEF election needs a statement from the fund company, but no statements or statement page for its own funds could be found, and a web search for its PFIC statements
-      returned none. This records what was found on its public website - it is
-      not a statement about whether Invesco Canada would provide one. Contact
-      Invesco Canada directly to ask. If no statement can be obtained, the holding
-      falls to the section 1291 excess distribution regime, or a
-      mark-to-market election if the fund is marketable on a qualified
-      exchange.
+      No PFIC statement is available on Invesco Canada's website: it has an
+      article explaining the PFIC rules, but no statements for its own funds
+      (checked 11 November 2026).
+    action: >-
+      Contact Invesco Canada to ask for one.
     notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
 
   - id: scotia
@@ -714,14 +691,11 @@ families:
     fye: "12-31"
     hub: https://www.scotiafunds.com/
     guidance: >-
-      No PFIC Annual Information Statement could be located for Scotia Global Asset Management as at
-      11 November 2026: nothing about PFIC or QEF could be found on scotiafunds.com. The same manager, 1832 Asset Management, does publish statements for its Dynamic-branded funds - see Dynamic Funds in this list - but none were found for Scotia-branded funds, and a web search for its PFIC statements
-      returned none. This records what was found on its public website - it is
-      not a statement about whether Scotia Global Asset Management would provide one. Contact
-      Scotia Global Asset Management directly to ask. If no statement can be obtained, the holding
-      falls to the section 1291 excess distribution regime, or a
-      mark-to-market election if the fund is marketable on a qualified
-      exchange.
+      No PFIC statement is available for Scotia-branded funds: nothing about
+      PFIC or QEF is posted on scotiafunds.com (checked 11 November 2026).
+    action: >-
+      Contact Scotia Global Asset Management to ask for one. Its
+      Dynamic-branded funds do have statements - search Dynamic.
     notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
 
   - id: fiera
@@ -732,14 +706,10 @@ families:
     fye: "12-31"
     hub: https://www.fieracapital.com/en/
     guidance: >-
-      No PFIC Annual Information Statement could be located for Fiera Capital as at
-      11 November 2026: nothing about PFIC or QEF could be found on fieracapital.com, and a web search for its PFIC statements
-      returned none. This records what was found on its public website - it is
-      not a statement about whether Fiera Capital would provide one. Contact
-      Fiera Capital directly to ask. If no statement can be obtained, the holding
-      falls to the section 1291 excess distribution regime, or a
-      mark-to-market election if the fund is marketable on a qualified
-      exchange.
+      No PFIC statement is available on Fiera Capital's website: nothing about
+      PFIC or QEF is posted on fieracapital.com (checked 11 November 2026).
+    action: >-
+      Contact Fiera Capital to ask for one.
     notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
 
   - id: beutel-goodman
@@ -750,14 +720,10 @@ families:
     fye: "12-31"
     hub: https://www.beutelgoodman.com/
     guidance: >-
-      No PFIC Annual Information Statement could be located for Beutel Goodman as at
-      11 November 2026: a search of beutelgoodman.com for PFIC returned nothing, and a web search for its PFIC statements
-      returned none. This records what was found on its public website - it is
-      not a statement about whether Beutel Goodman would provide one. Contact
-      Beutel Goodman directly to ask. If no statement can be obtained, the holding
-      falls to the section 1291 excess distribution regime, or a
-      mark-to-market election if the fund is marketable on a qualified
-      exchange.
+      No PFIC statement is available on Beutel Goodman's website: a search of
+      beutelgoodman.com for PFIC returns nothing (checked 11 November 2026).
+    action: >-
+      Contact Beutel Goodman to ask for one.
     notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
 
   - id: picton-mahoney
@@ -768,14 +734,11 @@ families:
     fye: "12-31"
     hub: https://www.pictonmahoney.com/
     guidance: >-
-      No PFIC Annual Information Statement could be located for Picton Mahoney Asset Management as at
-      11 November 2026: nothing about PFIC or QEF could be found for Picton Mahoney's funds, and a web search for its PFIC statements
-      returned none. This records what was found on its public website - it is
-      not a statement about whether Picton Mahoney Asset Management would provide one. Contact
-      Picton Mahoney Asset Management directly to ask. If no statement can be obtained, the holding
-      falls to the section 1291 excess distribution regime, or a
-      mark-to-market election if the fund is marketable on a qualified
-      exchange.
+      No PFIC statement is available on Picton Mahoney's website: nothing
+      about PFIC or QEF could be found for its funds (checked 11 November
+      2026).
+    action: >-
+      Contact Picton Mahoney to ask for one.
     notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
 
   - id: ferique
@@ -786,13 +749,9 @@ families:
     fye: "12-31"
     hub: https://www.ferique.com/en
     guidance: >-
-      No PFIC Annual Information Statement could be located for FERIQUE Fund Management as at
-      11 November 2026: a search of ferique.com for PFIC returned nothing, and a web search for its PFIC statements
-      returned none. This records what was found on its public website - it is
-      not a statement about whether FERIQUE Fund Management would provide one. Contact
-      FERIQUE Fund Management directly to ask. If no statement can be obtained, the holding
-      falls to the section 1291 excess distribution regime, or a
-      mark-to-market election if the fund is marketable on a qualified
-      exchange.
+      No PFIC statement is available on FERIQUE's website: a search of
+      ferique.com for PFIC returns nothing (checked 11 November 2026).
+    action: >-
+      Contact FERIQUE to ask for one.
     notes: Checked 2026-11-11 (site and web search). Listed deliberately so the search is recorded.
 

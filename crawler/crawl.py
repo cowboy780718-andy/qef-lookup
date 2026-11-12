@@ -2528,7 +2528,7 @@ def build_index(all_statements: list[Statement], families: list[dict],
         "families": [
             {**{k: fam.get(k) for k in
                 ("id", "name", "country", "mode", "fye", "hub", "notes",
-                 "access", "guidance", "caveat", "covers")},
+                 "access", "guidance", "action", "caveat", "covers")},
              "links_only": bool(fam.get("listing_only")),
              # so the UI can explain a family with no statements rather than
              # just showing an empty result

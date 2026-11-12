@@ -185,33 +185,33 @@ function familyMatchPanels(query) {
 /**
  * Panel shown when a family has no statements to list. Empty results are the
  * moment the tool is most likely to mislead: "nothing found" reads as "no
- * statement exists". So say which of the two it is, why, and where to go.
+ * statement exists". So say which of the two it is - in one sentence - and
+ * what to do about it, in one more. Anything longer does not get read.
  */
 function familyGuidance(fam) {
   if (!fam) return "";
   // Wording is deliberate. We report what was found on a manager's public
   // website on a date - never that a manager refuses to issue a statement.
-  // One may well be available on request.
+  // One may well be available on request, which is what the action says.
   const kind = fam.access === "none"
-    ? { cls: "none", head: "No statement available from this manager's website" }
+    ? { cls: "none", head: "No PFIC statement available" }
     : fam.access === "request"
-      ? { cls: "manual", head: "Issued by the manager on request — not posted online" }
+      ? { cls: "manual", head: "On request only" }
     : fam.access === "manual"
-      ? { cls: "manual", head: "Available, but must be fetched by hand" }
-      : { cls: "unknown", head: "Nothing indexed for this manager yet" };
+      ? { cls: "manual", head: "Fetch by hand" }
+      : { cls: "unknown", head: "Nothing indexed yet" };
   const linkLabel = fam.access === "none"
     ? "Open the manager's website"
     : "Open the manager's PFIC page";
+  const covers = fam.covers || [];
   return `<div class="guide ${kind.cls}">
-    <h3>${esc(kind.head)}</h3>
-    <p class="who">${esc(fam.name)}</p>
-    <p>${esc((fam.guidance || fam.notes || "").trim()) ||
-       "No further detail recorded yet."}</p>
-    ${fam.hub ? `<p><a class="gobtn" href="${esc(fam.hub)}" target="_blank"
+    <h3>${esc(kind.head)} <span class="who">${esc(fam.name)}</span></h3>
+    <p>${esc((fam.guidance || "").trim()) || "No further detail recorded yet."}</p>
+    ${fam.action ? `<p class="todo"><strong>What to do:</strong> ${esc(fam.action.trim())}</p>` : ""}
+    ${covers.length ? `<details class="covers"><summary>The ${covers.length} funds it names</summary>
+        <ul>${covers.map((c) => `<li>${esc(c)}</li>`).join("")}</ul></details>` : ""}
+    ${fam.hub ? `<p class="go"><a class="gobtn" href="${esc(fam.hub)}" target="_blank"
         rel="noopener">${linkLabel} &rarr;</a></p>` : ""}
-    <p class="caution">This records what was found on the manager&rsquo;s public
-      website, not whether they will issue a statement. One may be available on
-      request &mdash; contact the manager before concluding otherwise.</p>
   </div>`;
 }
 
@@ -395,6 +395,7 @@ function renderNegatives() {
     <div class="neg">
       <h3>${esc(n.scope)}</h3>
       ${n.note ? `<p class="why">${esc(n.note)}</p>` : ""}
+      ${n.action ? `<p class="why"><strong>What to do:</strong> ${esc(n.action)}</p>` : ""}
       <div class="tagline">
         <span class="tag ${esc(n.finding)}">${esc(String(n.finding).replace(/_/g, " "))}</span>
         <span>verified ${esc(n.verified)} (${esc(n.verified_by)})</span>

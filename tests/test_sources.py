@@ -71,9 +71,22 @@ class SourceRegistry(unittest.TestCase):
     def test_a_family_we_cannot_collect_explains_itself(self):
         # The guidance is what the site shows instead of results. Without it
         # the reader gets "nothing found", which reads as "no statement exists".
+        # It is one sentence saying why, and one saying what to do: a longer
+        # note was not being read.
         for f in self.families:
             if f.get("access") in crawl.NOT_CRAWLED:
-                self.assertGreater(len((f.get("guidance") or "").strip()), 80, f["id"])
+                why = (f.get("guidance") or "").strip()
+                todo = (f.get("action") or "").strip()
+                self.assertGreater(len(why), 40, f["id"])
+                self.assertLess(len(why), 200, f"{f['id']}: keep the reason to one sentence")
+                self.assertGreater(len(todo), 20, f["id"])
+                self.assertLess(len(todo), 160, f"{f['id']}: keep the action to one sentence")
+
+    def test_negative_findings_stay_short(self):
+        for n in load("negatives.yaml")["negatives"]:
+            self.assertLess(len(n.get("note") or ""), 240, n.get("scope"))
+            if n.get("note"):
+                self.assertTrue((n.get("action") or "").strip(), n.get("scope"))
 
     def test_guidance_never_claims_a_manager_does_not_issue_statements(self):
         # We record what was found on a public website on a date. Whether a
@@ -81,10 +94,10 @@ class SourceRegistry(unittest.TestCase):
         banned = re.compile(r"does\s+not\s+issue|do\s+not\s+issue|refuses?\s+to|"
                             r"will\s+not\s+(?:issue|provide)", re.I)
         for f in self.families:
-            for key in ("guidance",):
+            for key in ("guidance", "action"):
                 self.assertIsNone(banned.search(f.get(key) or ""), f"{f['id']}.{key}")
         for n in load("negatives.yaml")["negatives"]:
-            text = f"{n.get('scope', '')} {n.get('note', '')}"
+            text = f"{n.get('scope', '')} {n.get('note', '')} {n.get('action', '')}"
             # CIBC's entry quotes the manager's own statement; that one is theirs.
             if n.get("family") == "cibc":
                 continue
