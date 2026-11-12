@@ -1,0 +1,42 @@
+name: Tests
+
+# Runs on every push that touches code. Nothing here uses the network or the
+# live site; it is the same checks as:
+#
+#     python -m unittest discover -s tests
+#     node --test tests/test_lib.mjs tests/test_worker.mjs
+#
+# If this fails after a push, GitHub emails the repository owner.
+
+on:
+  push:
+    paths:
+      - "crawler/**"
+      - "web/*.js"
+      - "worker/**"
+      - "tests/**"
+      - ".github/workflows/tests.yml"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Crawler tests
+        run: |
+          pip install requests PyYAML pypdf cryptography
+          python -m unittest discover -s tests -v
+
+      - name: Site and download-helper tests
+        run: node --test tests/test_lib.mjs tests/test_worker.mjs

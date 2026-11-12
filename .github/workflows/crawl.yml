@@ -3,7 +3,8 @@ name: Crawl QEF statements
 on:
   schedule:
     # 07:20 UTC daily (~03:20 Toronto). Off the hour on purpose: GitHub queues
-    # scheduled jobs heavily at :00 and delays can run to tens of minutes.
+    # scheduled jobs heavily at :00. Even so it routinely starts hours late;
+    # that is GitHub's free scheduler and nothing here depends on the time.
     - cron: "20 7 * * *"
   workflow_dispatch:
     inputs:
@@ -18,6 +19,10 @@ on:
         description: "Oldest fund tax year to index"
         required: false
         default: "2021"
+      refresh:
+        description: "Re-read every listed document, ignoring the cache (use with 'only')"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -29,16 +34,17 @@ concurrency:
 
 jobs:
   crawl:
+    # Pinned, not "ubuntu-latest": that label moves to a new Ubuntu release
+    # without notice, and the browser's system packages have to exist for it.
     runs-on: ubuntu-24.04
-    # The first scheduled run took 90m22s on a cold cache and finished right
-    # at a 90-minute limit. Later runs reuse the cache and are far quicker, but
-    # a cache eviction puts it back to a full rebuild, so leave real headroom -
+    # A normal night takes about 25 minutes. A cold cache (first run, or a
+    # cache eviction) is a full rebuild of ~90 minutes, so leave real headroom:
     # a cancelled run publishes nothing and reports nothing.
     timeout-minutes: 180
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
@@ -49,21 +55,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r crawler/requirements.txt
 
-      # Chromium is only needed for the WAF-protected hub pages. The PDFs
-      # themselves fetch fine over plain HTTP.
-      # Must never sink the whole run: on 11 Nov 2026 this step hung for ten
-      # minutes and failed, so nothing was crawled at all. Without Chromium the
-      # crawler still does every family that does not need a browser and keeps
-      # the rest from the cache.
+      # Never crawl with a crawler whose own tests fail. They take well under
+      # a second and need no network.
+      - name: Test the crawler
+        run: python -m unittest discover -s tests
+
+      # Chromium is only needed for a few hub pages. It must never sink the
+      # whole run: on 11 Nov 2026 this step hung for ten minutes and failed, so
+      # nothing was crawled at all. Without it the crawler still does every
+      # family that needs no browser and keeps the rest from the cache.
       - name: Install Chromium
         continue-on-error: true
         timeout-minutes: 8
-        run: python -m playwright install --with-deps chromium
+        run: python -m playwright install --with-deps chromium || python -m playwright install chromium
 
-      # The PDF cache is what makes a nightly run cheap: without it every run
+      # The cache is what makes a nightly run cheap: without it every run
       # re-downloads the entire back catalogue.
       - name: Restore crawl cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: crawler/.cache
           key: qef-cache-${{ github.run_id }}
@@ -71,24 +80,36 @@ jobs:
 
       - name: Crawl
         id: crawl
+        env:
+          ONLY: ${{ github.event.inputs.only }}
+          STATIC_ONLY: ${{ github.event.inputs.static_only }}
+          REFRESH: ${{ github.event.inputs.refresh }}
+          SINCE: ${{ github.event.inputs.since_year }}
         run: |
           set -o pipefail
           # The year floor must be passed explicitly. crawl.py's own default is
           # 2015, so leaving it off would quietly widen every nightly run to six
           # extra years of back catalogue that we deliberately excluded.
-          SINCE="${{ github.event.inputs.since_year }}"
-          ARGS="--since-year ${SINCE:-2021}"
-          if [ -n "${{ github.event.inputs.only }}" ]; then ARGS="$ARGS --only ${{ github.event.inputs.only }}"; fi
-          if [ "${{ github.event.inputs.static_only }}" = "true" ]; then ARGS="$ARGS --static-only"; fi
-          echo "Running: crawl.py $ARGS"
-          python crawler/crawl.py $ARGS 2>&1 | tee crawl.log
-          echo "summary<<EOF" >> $GITHUB_OUTPUT
-          tail -25 crawl.log >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          ARGS=(--since-year "${SINCE:-2021}")
+          # Inputs arrive through the environment and are split into separate
+          # arguments here, so nothing typed into the form is run as a command.
+          if [ -n "$ONLY" ]; then read -r -a IDS <<< "$ONLY"; ARGS+=(--only "${IDS[@]}"); fi
+          if [ "$STATIC_ONLY" = "true" ]; then ARGS+=(--static-only); fi
+          if [ "$REFRESH" = "true" ]; then ARGS+=(--refresh); fi
+          echo "Running: crawl.py ${ARGS[*]}"
+          python crawler/crawl.py "${ARGS[@]}" 2>&1 | tee crawl.log
+          {
+            echo '### Crawl summary'
+            echo '```'
+            tail -40 crawl.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
+      # Only when there is a cache to save: saving an empty directory after an
+      # early failure would be restored as "the cache" the following night.
       - name: Save crawl cache
-        if: always()
-        uses: actions/cache/save@v4
+        if: always() && hashFiles('crawler/.cache/manifest.json') != ''
+        uses: actions/cache/save@v6
         with:
           path: crawler/.cache
           key: qef-cache-${{ github.run_id }}
@@ -97,32 +118,46 @@ jobs:
         run: |
           git config user.name  "qef-crawler"
           git config user.email "actions@users.noreply.github.com"
-          git add web/data/index.json
+          git add web/data/index.json web/data/hosts.json
           if git diff --staged --quiet; then
             echo "No index change."
-            # Still push an empty-tree touch? No - GitHub only disables cron
-            # after 60 days with no *repository* activity, and the index does
-            # change at least monthly during filing season.
-          else
-            STATS=$(python -c "import json;d=json.load(open('web/data/index.json'));s=d['stats'];print(f\"{s['funds']} funds, {s['statements']} statements, {s['families_ok']}/{s['families']} sources ok\")")
-            git commit -m "index: $STATS"
-            # Pushing here is what publishes the site: the Worker is connected
-            # to this repo, so the commit triggers a Cloudflare rebuild.
-            git push
+            exit 0
           fi
+          STATS=$(python -c "
+          import json
+          d = json.load(open('web/data/index.json'))
+          s = d['stats']
+          crawled = [h for h in d['health'] if h['status'] not in ('manual', 'none')]
+          ok = sum(h['status'] == 'ok' for h in crawled)
+          print(f\"{s['funds']} funds, {s['statements']} statements, {ok}/{len(crawled)} sources ok\")
+          ")
+          git commit -m "index: $STATS"
+          # Pushing is what publishes the site: Cloudflare rebuilds on every
+          # commit. If something else was pushed while the crawl ran, put this
+          # commit on top of it rather than failing and publishing nothing.
+          for attempt in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "Push rejected (attempt $attempt); rebasing onto the latest master."
+            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"
+          done
+          echo "Could not push the refreshed index." >&2
+          exit 1
 
       # A source that silently stops returning statements is the main failure
       # mode for this kind of tool, so make it loud.
-      - name: Report broken sources
+      - name: Report sources needing attention
         if: always()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
             let idx;
             try { idx = JSON.parse(fs.readFileSync('web/data/index.json','utf8')); }
             catch { return; }
-            const broken = (idx.health||[]).filter(h => ['down','error','empty'].includes(h.status));
+            // "blocked" belongs here. It was left out at first, so BlackRock
+            // sat blocked for weeks without this report ever mentioning it.
+            const broken = (idx.health||[]).filter(h =>
+              ['down','error','empty','blocked'].includes(h.status));
             const title = 'Crawler: sources need attention';
             const existing = (await github.rest.issues.listForRepo({
               owner: context.repo.owner, repo: context.repo.repo,
@@ -144,15 +179,21 @@ jobs:
               return;
             }
 
+            const cell = s => String(s ?? '').replace(/\|/g, '\\|').replace(/\s+/g, ' ');
             const body = [
               `Crawl of ${idx.generated} found ${broken.length} source(s) needing attention.`,
               '',
-              '| Family | Status | Candidates | Verified | Message |',
+              '| Family | Status | Listed | Verified | Message |',
               '|---|---|---:|---:|---|',
-              ...broken.map(h => `| [${h.name}](${h.hub}) | \`${h.status}\` | ${h.candidates} | ${h.statements} | ${h.message||''} |`),
+              ...broken.map(h => `| [${cell(h.name)}](${h.hub}) | \`${h.status}\` | ${h.candidates} | ${h.statements} | ${cell(h.message)} |`),
               '',
-              '`empty` usually means the manager reorganised their tax page and the',
-              'link filter in `crawler/sources.yaml` needs updating.',
+              'What the statuses mean:',
+              '- `empty` - the page loaded but no statements were found on it. Usually the manager reorganised the page and the entry in `crawler/sources.yaml` needs updating.',
+              '- `blocked` - the manager\'s server refused the requests. Statements already collected are kept. If it lasts more than a few nights, look at it.',
+              '- `down` - the page could not be reached at all.',
+              '- `error` - the crawler itself failed on this family; see the run log.',
+              '',
+              'Nothing already in the index is removed while a source is in one of these states.',
             ].join('\n');
 
             if (existing) {

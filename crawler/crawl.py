@@ -36,15 +36,15 @@ import hashlib
 import html as htmlmod
 import io
 import json
+import os
 import re
 import subprocess
 import sys
 import threading
 import time
 import urllib.parse as urlparse
-import urllib.robotparser as robotparser
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 import requests
@@ -54,6 +54,12 @@ ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
 CACHE = ROOT / ".cache"
 OUT = REPO / "web" / "data" / "index.json"
+HOSTS_OUT = REPO / "web" / "data" / "hosts.json"
+
+# Health states that mean a human should look. "blocked" belongs here: it was
+# left out originally, so BlackRock sat blocked for weeks without the nightly
+# report ever mentioning it.
+NEEDS_ATTENTION = ("down", "error", "empty", "blocked")
 
 # Identification, and why it looks like this.
 #
@@ -62,16 +68,19 @@ OUT = REPO / "web" / "data" / "index.json"
 # allows crawling with no crawl-delay - so the block is a crude heuristic, not
 # a stated policy. We therefore send a normal browser UA (these are public
 # documents a person can download by hand from the same URL) but we do NOT
-# hide: every request carries X-Crawler and From headers naming the project,
+# hide: every request carries an X-Crawler header naming the project,
 # we obey robots.txt, and we rate-limit per host (honouring Crawl-delay).
 # If a manager wants us gone, a robots.txt rule will do it.
-BOT_ID = "QEFLookupBot/1.0 (+https://github.com/qef-lookup)"
+# The URL in BOT_ID has to be one a webmaster can actually open. It used to
+# read github.com/qef-lookup, which does not exist - an identification header
+# pointing nowhere is no identification at all.
+BOT_NAME = "QEFLookupBot"
+BOT_ID = f"{BOT_NAME}/1.1 (+https://qef-lookup.cowboy780718.workers.dev)"
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
 HEADERS = {
     "User-Agent": UA,
     "X-Crawler": BOT_ID,
-    "From": "qef-lookup (see X-Crawler)",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "en-CA,en;q=0.9",
     "Sec-Fetch-Dest": "document",
@@ -81,7 +90,7 @@ HEADERS = {
 }
 
 # Bump when SIGNALS/scoring/parsers change, to invalidate cached verdicts.
-VERIFY_VERSION = 4
+VERIFY_VERSION = 5
 
 # Oldest tax year worth indexing. Anything earlier is left on the issuer's own
 # site: the UI points you there rather than pretending the year does not exist.
@@ -99,11 +108,149 @@ PER_HOST_DELAY = 0.34
 MAX_WORKERS = 6
 TIMEOUT = 45
 
+# --------------------------------------------------------------------------
+# cache policy
+# --------------------------------------------------------------------------
+#
+# A published statement does not change once it is up, so looking at it again
+# every night buys almost nothing and costs a request to someone else's server.
+# NEW statements are still found every night, because they are discovered by
+# re-reading the manager's listing page: a URL not in the cache is always
+# fetched. Looking again at a KNOWN document only ever detects a reissue.
+#
+# So each document is looked at again once per window, on its own night (see
+# recheck_due), and with a conditional request where the host supports one, so
+# an unchanged document costs a 304 rather than a download.
+RECHECK_DAYS_OPEN = 10     # current and prior tax year: reissues do happen
+RECHECK_DAYS_CLOSED = 30   # older years, and documents we rejected
+RECHECK_DAYS_MISS = 7      # a URL that was not there, for a recent year
+
+# A verified statement is only forgotten once its URL has positively gone
+# (404/410) on this many consecutive nights. One bad night - a timeout, a 403
+# from a rate limiter, a CDN hiccup - must never erase a statement we hold.
+GONE_STRIKES = 3
+
+# If a host turns away this many requests in a row, stop asking for the rest of
+# the run and serve that family from the cache. Hammering a server that is
+# already refusing us is how a temporary block becomes a permanent one.
+BREAKER_LIMIT = 12
+
 _host_lock = defaultdict(threading.Lock)
 _host_last = defaultdict(float)
-_robots: dict[str, robotparser.RobotFileParser] = {}
+_robots: dict[str, "Robots"] = {}
 _host_delays: dict[str, float] = {}
 _robots_lock = threading.Lock()
+_manifest_lock = threading.RLock()
+
+
+def utc_today():
+    return datetime.now(timezone.utc).date()
+
+
+def recheck_due(url: str, last_checked: str | None, window: int, today: str) -> bool:
+    """Is tonight this URL's night to be looked at again?
+
+    Every URL gets a fixed night in a `window`-day cycle, derived from the URL
+    itself. That spreads the work evenly: with a 30-day window roughly 1/30th
+    of the catalogue is rechecked each night, instead of the whole catalogue
+    falling due on the same night a month after it was first crawled.
+
+    The age test is the safety net for a missed run: anything not looked at
+    for two full windows is due regardless of whose night it is.
+    """
+    day = date.fromisoformat(today)
+    slot = int(hashlib.sha1(url.encode("utf-8")).hexdigest()[:8], 16) % window
+    if (day.toordinal() + slot) % window == 0:
+        return True
+    if not last_checked:
+        return True
+    try:
+        age = (day - date.fromisoformat(last_checked[:10])).days
+    except ValueError:
+        return True
+    return age >= 2 * window
+
+
+class Robots:
+    """robots.txt, evaluated the way RFC 9309 says to: the longest match wins.
+
+    Python's own urllib.robotparser applies the FIRST matching rule in file
+    order instead. iA Clarington's file opens with "Allow: /*" and then lists
+    "Disallow: /docs/", so the standard-library parser reported their documents
+    as open to crawling when they are not - and the crawler duly collected a
+    catalogue it had been asked to leave alone. Longest-match reads that file
+    correctly: "/docs/" is more specific than "/*", so it wins.
+    """
+
+    def __init__(self, text: str = "") -> None:
+        # Each group: (agent tokens, [(allow?, path pattern)], crawl delay)
+        self.groups: list[tuple[list[str], list[tuple[bool, str]], float | None]] = []
+        agents: list[str] = []
+        rules: list[tuple[bool, str]] = []
+        delay: float | None = None
+        in_rules = False
+        for raw in (text or "").splitlines():
+            line = raw.split("#", 1)[0].strip()
+            if ":" not in line:
+                continue
+            key, val = (part.strip() for part in line.split(":", 1))
+            key = key.lower()
+            if key == "user-agent":
+                if in_rules:                     # previous group is complete
+                    self.groups.append((agents, rules, delay))
+                    agents, rules, delay, in_rules = [], [], None, False
+                agents.append(val.lower())
+            elif key in ("allow", "disallow"):
+                in_rules = True
+                if val:                          # an empty Disallow forbids nothing
+                    rules.append((key == "allow", val))
+            elif key == "crawl-delay":
+                in_rules = True
+                try:
+                    delay = float(val)
+                except ValueError:
+                    pass
+        if agents:
+            self.groups.append((agents, rules, delay))
+
+    def _groups(self, token: str) -> list[list[tuple]]:
+        """The rule sets that bind us: any group naming this crawler, and "*".
+
+        Strictly, a named group replaces "*". We apply both and let either
+        veto, because the requests also carry a browser User-Agent that "*"
+        rules are written for. Erring towards staying out is the point.
+        """
+        token = token.lower()
+        named = [g for g in self.groups if any(a != "*" and a in token for a in g[0])]
+        star = [g for g in self.groups if "*" in g[0]]
+        return [gs for gs in (named, star) if gs]
+
+    @staticmethod
+    def _match_len(pattern: str, path: str) -> int:
+        """Length of the pattern if it matches the path, else -1."""
+        anchored = pattern.endswith("$")
+        body = pattern[:-1] if anchored else pattern
+        rx = ".*".join(re.escape(piece) for piece in body.split("*"))
+        if re.match(rx + ("$" if anchored else ""), path):
+            return len(pattern)
+        return -1
+
+    def allowed(self, path: str, token: str = BOT_NAME) -> bool:
+        for group_set in self._groups(token):
+            best, verdict = -1, True
+            for _agents, rules, _delay in group_set:
+                for allow, pattern in rules:
+                    n = self._match_len(pattern, path)
+                    # Longest match wins; on a tie the Allow does.
+                    if n > best or (n == best and n >= 0 and allow):
+                        best, verdict = n, allow
+            if not verdict:
+                return False
+        return True
+
+    def crawl_delay(self, token: str = BOT_NAME) -> float | None:
+        delays = [d for gs in self._groups(token) for _a, _r, d in gs if d is not None]
+        return max(delays) if delays else None
 
 
 # --------------------------------------------------------------------------
@@ -131,32 +278,36 @@ def robots_allows(url: str) -> bool:
     with _robots_lock:
         rp = _robots.get(base)
         if rp is None:
-            rp = robotparser.RobotFileParser()
-            rp.set_url(base + "/robots.txt")
+            text = ""
             try:
                 resp = requests.get(base + "/robots.txt", headers=HEADERS, timeout=15)
-                rp.parse(resp.text.splitlines() if resp.ok else [])
+                # Only a real robots.txt counts. Several of these sites answer
+                # a missing file with their HTML error page and a 200.
+                if resp.ok and "<html" not in resp.text[:500].lower():
+                    text = resp.text
             except Exception:
-                rp.parse([])
-            _robots[base] = rp
+                pass
+            rp = _robots[base] = Robots(text)
             # Respect a published Crawl-delay, taking the stricter of the rule
             # for this crawler by name and the catch-all.
-            delays = [d for d in (rp.crawl_delay(BOT_ID), rp.crawl_delay("*"))
-                      if d is not None]
-            if delays:
-                _host_delays[parts.netloc] = max(float(max(delays)), PER_HOST_DELAY)
+            delay = rp.crawl_delay()
+            if delay is not None:
+                _host_delays[parts.netloc] = max(delay, PER_HOST_DELAY)
                 print(f"    robots.txt Crawl-delay for {parts.netloc}: "
                       f"{_host_delays[parts.netloc]}s")
-    try:
-        # Honour both a rule naming this crawler specifically and the "*" rules
-        # that our browser-shaped UA would fall under. Either one can veto.
-        return rp.can_fetch(BOT_ID, url) and rp.can_fetch(UA, url)
-    except Exception:
-        return True
+    path = parts.path or "/"
+    if parts.query:
+        path += "?" + parts.query
+    return rp.allowed(path)
 
 
-def fetch(url: str, *, binary: bool = False, extra_headers: dict | None = None):
-    """Return (status, content, headers) or (None, None, {}) on failure."""
+def fetch(url: str, *, binary: bool = False, extra_headers: dict | None = None,
+          json_body: str | None = None):
+    """Return (status, content, headers); status is a string on failure.
+
+    `json_body` turns the request into a JSON POST, for the handful of sites
+    whose document list comes from an API call rather than from the page.
+    """
     if not robots_allows(url):
         return "robots-denied", None, {}
     _throttle(url)
@@ -164,7 +315,12 @@ def fetch(url: str, *, binary: bool = False, extra_headers: dict | None = None):
     if extra_headers:
         h.update(extra_headers)
     try:
-        r = requests.get(url, headers=h, timeout=TIMEOUT, allow_redirects=True)
+        if json_body is not None:
+            h.update({"Content-Type": "application/json", "Accept": "application/json"})
+            r = requests.post(url, data=json_body.encode("utf-8"), headers=h,
+                              timeout=TIMEOUT, allow_redirects=True)
+        else:
+            r = requests.get(url, headers=h, timeout=TIMEOUT, allow_redirects=True)
         return r.status_code, (r.content if binary else r.text), dict(r.headers)
     except Exception as exc:  # noqa: BLE001
         return f"error:{type(exc).__name__}", None, {}
@@ -371,7 +527,10 @@ PERIOD_PATTERNS = [
 #
 # So: find the anchor, read *backwards* to a real delimiter, then clean up.
 
-_FUND_ANCHOR = re.compile(r"""\(\s*(?:the\s+)?["“”']?\s*Fund\s*["“”']?\s*\)""", re.I)
+# Also the two-name form Mackenzie used in 2021:
+#   (THE "FUND", or "MDVD/MDVD.U")
+_FUND_ANCHOR = re.compile(
+    r"""\(\s*(?:the\s+)?["“”']?\s*Fund\s*["“”']?\s*(?:,?\s*or\s+[^()]{1,40})?\)""", re.I)
 
 # Headline forms that name the fund outright; tried first.
 # Only the explicit addressee line. A looser "Annual Information Statement
@@ -382,18 +541,37 @@ _FUND_ANCHOR = re.compile(r"""\(\s*(?:the\s+)?["“”']?\s*Fund\s*["“”']?\s
 _NAME_LEAD = [
     re.compile(r"(?:SECURITY\s*HOLDERS|SECURITYHOLDERS|UNITHOLDERS|SHAREHOLDERS|HOLDERS)"
                r"\s+OF\s*:?\s*(?:the\s+)?(?:Fund\s+)?(.{4,110}?)"
-               r"\s*(?:\(|who\s+have|$)", re.I),
+               # Guardian runs straight on: "...Shareholders of Guardian
+               # Canadian Equity Select Fund This statement is provided to..."
+               r"\s*(?:\(|who\s+have|This\s+statement|$)", re.I),
 ]
 
-# CI Global's covering-letter layout puts the name in a table, after a run of
-# repeated column headers that the text layer duplicates.
-# CI's covering-letter layout puts the fund in a table, with the series in
+# "This Information Statement applies to the taxable year of <fund> commencing
+# on ..." - Mackenzie's and Mawer's statements name the fund nowhere else on
+# the page that can be read reliably.
+_NAME_SUBJECT = re.compile(
+    r"applies\s+to\s+the\s+taxable\s+year\s+of\s+(?:the\s+)?(.{4,110}?)"
+    r"\s+(?:commencing|beginning|for\s+the\s+(?:year|period)|from\s|ending\s|\()", re.I)
+
+# CI's covering-letter layout puts the fund in a table, after a run of repeated
+# column headers that the text layer duplicates, with the series in
 # parentheses immediately after the name. The series is not decoration: CI
 # issues roughly 30 documents per fund per year, one per series, identical
 # except for the series code and the per-unit figures. Dropping it merged them
 # into ~30 indistinguishable rows and made picking the right one impossible.
-_NAME_TABLE = re.compile(
-    r"(?:Distributions\s+){1,4}([A-Z][^()\n]{3,90}?)\s*\(([^()\n]{1,28})\)", re.I)
+#
+# Only the lead-in is case-insensitive. The name itself must START with a
+# capital: with the whole pattern case-insensitive, "distributions are
+# converted into U.S. dollars ... (Source: Reuters Forex)" matched, and eight
+# Mackenzie statements were filed under that sentence as if it were a fund.
+_NAME_TABLE = [
+    re.compile(r"(?i:(?:Distributions\s+){1,4})([A-Z][^()\n]{3,90}?)\s*\(([^()\n]{1,28})\)"),
+    # Same table when the text layer emits the headers first and the row after
+    # the numbered paragraphs: "...are as follows: CI Private Markets Growth
+    # Fund (W) 0.50881 ..."
+    re.compile(r"(?i:are\s+as\s+follows\s*:)\s*([A-Z][^()\n]{3,90}?)\s*"
+               r"\(([^()\n]{1,28})\)\s+[\d.-]"),
+]
 
 # RBC and TD lead with the fund name, then the document title. RBC's includes
 # the series ("... Fund - Series F"), which matters: different series carry
@@ -407,8 +585,11 @@ _NAME_JUNK = re.compile(
     r"(?:electing|mutual|requested|below\s+listed|following|underlying|"
     r"mentioned|who\b|fund\b)"
     r"|^(?:fund|the\s+fund|statement|table|information)$"
+    r"|^internal\s+revenue\s+service"
     r"|\b(?:tax\s+filing\s+requirement|ordinary\s+earnings|"
     r"information\s+statement|year\s+end(?:ing|ed)|"
+    r"qualified\s+electing\s+fund|\bmay\s+elect\b|\belect\s+to\s+treat\b|"
+    r"please\s+find|\bis\s+provided\b|\benclosed\b|united\s+states\s+persons?|"
     r"passive\s+foreign\s+investment\s+company|u\.s\.\s+persons?\b)",
     re.I)
 
@@ -416,7 +597,11 @@ _NAME_JUNK = re.compile(
 _NAME_PREFIX_JUNK = re.compile(
     r"^(?:.*?(?:EXCHANGE\s+TRADED\s+FUNDS?|IMPORTANT\s+TAX\s+NOTICE[^:]*:?|"
     r"TD\s+Asset\s+Management(?=\s+TD)|"
+    r"Attention\s*:\s*U\.?S\.?\s+(?:Unit|Share|Security)\s*holders?\s+of|"
     r"TO\s+U\.?S\.?\s+(?:PERSONS|INVESTORS|TAXPAYERS)[^:]*:?)\s*)", re.I)
+# A letter date that trails the name: "... Senior Debt Fund March 31, 2026".
+_NAME_TRAILING_DATE = re.compile(
+    r"\s+(?:" + "|".join(MONTHS) + r")\s+\d{1,2},?\s+\d{4}$", re.I)
 TICKER_PATTERN = re.compile(r"\(([A-Z]{2,5}(?:\.[A-Z]{1,2})?)\)")
 
 
@@ -446,6 +631,77 @@ def pdf_text(blob: bytes, pages: int = 3) -> str:
         return ""
 
 
+def pdf_pages(blob: bytes, limit: int = 400) -> list[str]:
+    """Text of every page, for documents that bundle many funds together."""
+    try:
+        from pypdf import PdfReader
+        reader = PdfReader(io.BytesIO(blob))
+        return [(reader.pages[i].extract_text() or "")
+                for i in range(min(limit, len(reader.pages)))]
+    except Exception as exc:  # noqa: BLE001
+        _pdf_errors[f"{type(exc).__name__}: {str(exc)[:80]}"] += 1
+        return []
+
+
+def split_document(pages: list[str], how: dict) -> list[dict]:
+    """Find the individual funds inside one document that covers many.
+
+    Two publishers do not issue one document per fund:
+
+      * Guardian staples every fund's three-page statement into a single PDF
+        per year - 86 pages, 29 funds. Indexed as one document it surfaced as
+        "Guardian Canadian Equity Select Fund", the first fund in it, and the
+        other 28 could not be found at all.  -> by: pages
+
+      * Global X publishes one table covering every ETF, a row each.
+                                              -> by: rows
+
+    Each fund found becomes its own entry pointing at the page it is on, so a
+    search for the fund lands on the right page of the right document.
+
+    Opt-in per family (sources.yaml `split:`), never guessed: a fund-of-funds'
+    own statement also runs to many pages naming other funds, and those are the
+    parent's indirect amounts - not statements for the funds named.
+    """
+    parts: list[dict] = []
+    seen: set[str] = set()
+    if how.get("by") == "pages":
+        for i, text in enumerate(pages, 1):
+            ok, _score = verify_statement(text)
+            name = parse_fund_name(text) if ok else None
+            if not name or slug(name) in seen:
+                continue
+            seen.add(slug(name))
+            parts.append({"name": name, "page": i, "period_end": parse_period(text),
+                          "tickers": parse_tickers(text, "")})
+    elif how.get("by") == "rows":
+        # A row is "<TICKER> <fund name>". Anchoring the name on the family's
+        # brand keeps this honest: without it "MSCI EAFE Covered Call ETF"
+        # reads as a fund called "EAFE Covered Call ETF" with the ticker MSCI.
+        prefix = re.escape(how["name_prefix"])
+        row = re.compile(
+            r"(?<![A-Za-z0-9.&/])([A-Z]{2,5}(?:\.[A-Z]{1,2})?)\s+"
+            r"(" + prefix + r"(?:(?!\d+\.\d)[^\n]){3,110}?\b(?:ETF|Fund|Portfolio|Pool))"
+            r"(?:\*+)?(?=\s|$)")
+        for i, text in enumerate(pages, 1):
+            for m in row.finditer(" ".join(text.split())):
+                ticker, name = m.group(1), " ".join(m.group(2).split())
+                if ticker in _CODE_STOPWORDS or ticker in seen:
+                    continue
+                seen.add(ticker)
+                parts.append({"name": name, "page": i, "period_end": None,
+                              "tickers": [ticker]})
+    return parts if len(parts) >= 2 else []
+
+
+def _suspect_name(name: str | None) -> bool:
+    """A cached fund name that the current parser would not have produced."""
+    return (not name or len(name) > 100 or bool(_NAME_JUNK.search(name))
+            or name.count("(") != name.count(")")
+            or bool(re.search(r"^investors\s+in\b|^text\d|this\s+statement|^attention\b|converted\s+into|"
+                              r"\b(?:19|20)\d\d$", name, re.I)))
+
+
 def verify_statement(text: str) -> tuple[bool, int]:
     if not text.strip():
         return False, 0
@@ -455,6 +711,11 @@ def verify_statement(text: str) -> tuple[bool, int]:
 
 
 def parse_period(text: str) -> str | None:
+    # Text layers sometimes detach a word's first letter: Global X's 2025
+    # statement reads "For the Y ear Ended April 30, 2025", and unrepaired the
+    # whole document came out with no tax year at all. "A" and "I" are left
+    # alone because they are words in their own right.
+    text = re.sub(r"(?<![A-Za-z&.])([B-HJ-Z])\s(?=[a-z]{2})", r"\1", text or "")
     for rx in PERIOD_PATTERNS:
         m = rx.search(text)
         if m:
@@ -468,6 +729,10 @@ def parse_period(text: str) -> str | None:
 def _clean_name(raw: str) -> str | None:
     name = re.sub(r"\s+", " ", raw or "").strip()
     name = re.sub(r"^Page\s+\d+\s+of\s+\d+\s*", "", name, flags=re.I)
+    # A PDF form-field label that leaks into the text layer ("Text75 MACKENZIE...").
+    name = re.sub(r"^.*?\bText\d+\s+", "", name)
+    # The sentence the (the "Fund") marker sits in: "Investors in <fund> (the "Fund")".
+    name = re.sub(r"^Investors\s+in\s+(?:the\s+)?", "", name, flags=re.I)
     # The (the "Fund") marker ends the name wherever it appears, not only at
     # the end - Fidelity continues straight into boilerplate after it.
     name = _FUND_ANCHOR.split(name)[0].strip()
@@ -476,14 +741,20 @@ def _clean_name(raw: str) -> str | None:
     name = re.sub(r"\s*\(\s*formerly.*$", "", name, flags=re.I)
     # PDF text layers sometimes detach the first glyph: "R ussell Investments",
     # "M ulti-Asset", "I A Clarington". Rejoin a lone leading capital.
-    name = re.sub(r"^([A-Z])\s+(?=[A-Za-z])", r"", name)
+    name = re.sub(r"^([A-Z])\s+(?=[a-z]{2})", r"\1", name)
     name = _NAME_PREFIX_JUNK.sub("", name)
+    name = _NAME_TRAILING_DATE.sub("", name)
+    # RBC writes "Fund - Series F" some years and "Fund – Series F" others.
+    name = re.sub(r"\s[–—]\s(?=(?:Series|Class)\b)", " - ", name)
     name = re.sub(r"^(?:the\s+)", "", name, flags=re.I)
     name = re.sub(r"^Fund\s+(?=[A-Za-z])", "", name)
     # Drop a trailing exchange ticker - "(ETHX.B)", "(XSH)" - but keep
     # descriptive parentheticals such as "(CAD-Hedged)".
     name = re.sub(r"\s*\([A-Z]{2,5}(?:\.[A-Z]{1,2})?\)\s*$", "", name)
-    name = name.strip(" .,:;-–—\"'“”()")
+    name = name.strip(" .,:;-–—\"'“”(")
+    # Trim a stray closing bracket, but not the one that closes "(CAD-Hedged)".
+    while name.endswith(")") and name.count(")") > name.count("("):
+        name = name[:-1].rstrip(" .,:;-–—")
     if not (6 <= len(name) <= 120):
         return None
     if _NAME_JUNK.search(name):
@@ -506,6 +777,12 @@ def parse_fund_name(text: str, extra_pattern: str | None = None) -> str | None:
     # or this eats real spaces: "PH&N Absolute" became "PH&NAbsolute" and
     # "T D One-Click" became "T DOne-Click" on the looser version.
     flat = re.sub(r"(?<![A-Za-z&.])\b([A-Z])\s([A-Z])\b(?![A-Za-z])", r"\1\2", flat)
+    # The same fault inside capitalised headings: "P FIC Annual Information
+    # Statement", "I MPORTANT TAX NOTICE". Unrepaired, the title that marks
+    # where the fund name ends is not recognised, and Ninepoint's statements
+    # were named "Investors in Ninepoint ..." from a sentence further down.
+    flat = re.sub(r"(?<![A-Za-z&.])([A-Z])\s(?=[A-Z]{3,}\b)", r"\1", flat)
+    flat = re.sub(r"\bPFI\sC\b", "PFIC", flat)
 
     # 0. A family-specific override from sources.yaml wins outright.
     if extra_pattern:
@@ -525,7 +802,7 @@ def parse_fund_name(text: str, extra_pattern: str | None = None) -> str | None:
         if m and (n := _clean_name(m.group(1))):
             return n
 
-    # 2. Read backwards from the (the "Fund") anchor to a real delimiter, so the
+    # 3. Read backwards from the (the "Fund") anchor to a real delimiter, so the
     #    first character of the name survives.
     for m in _FUND_ANCHOR.finditer(flat):
         before = flat[max(0, m.start() - 160):m.start()]
@@ -534,10 +811,17 @@ def parse_fund_name(text: str, extra_pattern: str | None = None) -> str | None:
         if (n := _clean_name(chunk)):
             return n
 
-    # 3. CI-style table layout. Carry the series through, formatted the way RBC
-    #    writes it so both families read alike in the UI.
-    m = _NAME_TABLE.search(flat)
+    # 4. "...applies to the taxable year of <fund> commencing on..."
+    m = _NAME_SUBJECT.search(flat)
     if m and (n := _clean_name(m.group(1))):
+        return n
+
+    # 5. CI-style table layout. Carry the series through, formatted the way RBC
+    #    writes it so both families read alike in the UI.
+    for rx in _NAME_TABLE:
+        m = rx.search(flat)
+        if not (m and (n := _clean_name(m.group(1)))):
+            continue
         series = re.sub(r"\s+", " ", m.group(2)).strip()
         if not series or series.lower() in ("the", "fund", "usd", "cad"):
             return n
@@ -567,8 +851,9 @@ URL_CODE_PATTERNS = [
     # recoverable with no extra requests at all.
     re.compile(r"/pfic/\d{4}/([a-z]{2,4}\d{2,5}[a-z]?)_", re.I),
 ]
-_CODE_STOPWORDS = {"THE", "FUND", "ETF", "USD", "CAD", "PFIC", "QEF", "IRS",
-                   "AIS", "US", "EN", "FR", "STMT", "ENV1", "SE", "PDFUA"}
+_CODE_STOPWORDS = {"THE", "FUND", "ETF", "USD", "CAD", "PFIC", "PFICS", "QEF", "IRS",
+                   "IRC", "CRA", "AIS", "US", "EN", "FR", "STMT", "ENV1", "SE", "PDFUA",
+                   "TSX", "NAV", "INC", "LTD", "LLC", "LP", "CDN", "FAQ"}
 
 
 def parse_tickers(text: str, url: str) -> list[str]:
@@ -582,15 +867,31 @@ def parse_tickers(text: str, url: str) -> list[str]:
 
 def tidy_name(name: str) -> str:
     """Publishers shout. Title-case all-caps names but keep real acronyms."""
+    if name and name.count("(") > name.count(")"):
+        name += ")"                     # "(CAD-Hedged" - the bracket was trimmed off
     if not name or not name.isupper():
         return name
-    keep = {"ETF", "US", "USA", "UK", "EAFE", "ESG", "REIT", "TSX", "GIC",
-            "MSCI", "S&P", "EM", "HISA", "ADR", "II", "III", "IV"}
-    out = []
-    for w in name.split():
-        core = w.strip("().,")
-        out.append(w if core in keep else w.capitalize())
-    return " ".join(out)
+    keep = {"ETF", "ETFS", "US", "USA", "UK", "EAFE", "ESG", "REIT", "TSX", "GIC",
+            "MSCI", "S&P", "EM", "HISA", "ADR", "II", "III", "IV", "CAD", "USD",
+            "U.S.", "U.S", "NASDAQ", "AI", "TD", "RBC", "BMO", "CI", "NBI", "IA"}
+
+    def piece(p: str) -> str:
+        if not p or p in keep or "." in p:      # "U.UN", "U.S." stay as written
+            return p
+        return p[0] + p[1:].lower()
+
+    def word(w: str) -> str:
+        # Keep the brackets and punctuation; title-case what is inside them,
+        # treating "-" and "/" as word breaks so "EX-NORTH" becomes "Ex-North"
+        # and "LONG/SHORT" becomes "Long/Short".
+        lead = w[:len(w) - len(w.lstrip("(\"'"))]
+        tail = w[len(w.rstrip(").,;:\"'")):]
+        core = w[len(lead):len(w) - len(tail)]
+        if core in keep:
+            return w
+        return lead + re.sub(r"[^-/]+", lambda m: piece(m.group(0)), core) + tail
+
+    return " ".join(word(w) for w in name.split())
 
 
 # --------------------------------------------------------------------------
@@ -618,6 +919,18 @@ class Statement:
     # rather than a dead link.
     fmt: str = "pdf"
     figures: dict | None = None
+    # Lower-tier PFIC amounts a fund-of-funds publishes alongside its own
+    # figures ("Direct Investee Funds of the Fund"). They belong to the parent
+    # fund's statement and are meaningless on their own.
+    investees: list | None = None
+    # Identity that survives a rename. Fund names drift between years ("Yield
+    # Maximizer" / "YIELD MAXIMIZER(TM)", "U.S" / "U.S.") and funds are renamed
+    # outright, so where a ticker and class are published they define the
+    # fund, and every year's statement lands on one row.
+    fund_key: str | None = None
+    # Set when this is one fund out of a document covering many:
+    # {"page": 37, "pages": 86}. The URL then carries "#page=37".
+    part: dict | None = None
 
 
 def load_manifest() -> dict:
@@ -625,15 +938,30 @@ def load_manifest() -> dict:
     p = CACHE / "manifest.json"
     if p.exists():
         try:
-            return json.loads(p.read_text(encoding="utf-8"))
-        except Exception:
-            pass
+            data = json.loads(p.read_text(encoding="utf-8"))
+            if isinstance(data, dict):
+                return data
+        except Exception as exc:  # noqa: BLE001
+            # Say so. An unreadable cache means re-downloading the whole
+            # catalogue, and that should never happen without a trace.
+            print(f"! cache unreadable ({type(exc).__name__}); starting empty",
+                  file=sys.stderr)
     return {}
 
 
 def save_manifest(m: dict) -> None:
+    """Write the cache atomically: to a temporary file, then swap it in.
+
+    Writing in place meant a run cancelled mid-write left half a JSON file,
+    which load_manifest() then discarded - silently turning the next night
+    into a full re-download of every document.
+    """
     CACHE.mkdir(exist_ok=True)
-    (CACHE / "manifest.json").write_text(json.dumps(m, indent=1), encoding="utf-8")
+    with _manifest_lock:
+        payload = json.dumps(m, separators=(",", ":"))
+    tmp = CACHE / "manifest.json.tmp"
+    tmp.write_text(payload, encoding="utf-8")
+    os.replace(tmp, CACHE / "manifest.json")
 
 
 def derive_candidates(fam: dict, browser: "BrowserSession | None" = None,
@@ -653,12 +981,13 @@ def derive_candidates(fam: dict, browser: "BrowserSession | None" = None,
         return [], {}
 
     st, blob, _ = fetch(d["list_url"], binary=True)
-    if not (isinstance(st, int) and st == 200 and blob and blob.startswith(b"%PDF")):
-        if browser:
-            st, blob, _ = browser.get(d["list_url"])
-        if not (blob and blob.startswith(b"%PDF")):
-            print(f"    ! derive list unavailable ({st})")
-            return [], {}
+    if not (st == 200 and _is_pdf(blob)):
+        st, blob, _ = curl_fetch(d["list_url"], binary=True)
+    if not (st == 200 and _is_pdf(blob)) and browser:
+        st, blob, _ = browser.get(d["list_url"])
+    if not (st == 200 and _is_pdf(blob)):
+        print(f"    ! derive list unavailable ({st})")
+        return [], {}
 
     text = " ".join(pdf_text(blob, pages=12).split())
     pairs = re.findall(d["pair_pattern"], text)
@@ -669,8 +998,12 @@ def derive_candidates(fam: dict, browser: "BrowserSession | None" = None,
         print("    ! derive pattern matched nothing in the list document")
         return [], {}
 
-    this_year = datetime.now(timezone.utc).year
-    oldest = max(since, this_year - int(d.get("years_back", 5)) + 1)
+    # The current calendar year plus `years_back` before it. The current year
+    # is included even though a December-year-end fund cannot have published
+    # it yet: its misses are cached and re-probed weekly, which is exactly how
+    # next season's statements get noticed.
+    this_year = utc_today().year
+    oldest = max(since, this_year - int(d.get("years_back", 5)))
     years = list(range(this_year, oldest - 1, -1))
     urls = []
     for ticker in names:
@@ -774,6 +1107,17 @@ def _cells(row_html: str) -> list[str]:
             for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row_html, re.S | re.I)]
 
 
+_FIGURE_COLUMN = re.compile(r"ordinary|capital\s+gain|distribution", re.I)
+_INVESTEE_PARENT = re.compile(
+    r"For\s+([A-Z]{2,6})(?:\.[A-Z]{1,2})?\s+(?:Series|Class)\s+([A-Z0-9]{1,3})\s+"
+    r"(?:Share|Unit|Security)\s*holders", re.I)
+
+
+def _class_code(cell: str | None) -> str:
+    """'Class E', 'Series E' and 'E' are the same thing written three ways."""
+    return re.sub(r"^(?:class|series)\s+", "", (cell or "").strip(), flags=re.I).strip()
+
+
 def parse_html_statements(page_html: str, url: str) -> list[dict]:
     """Read statements published as an HTML table rather than a PDF.
 
@@ -782,8 +1126,21 @@ def parse_html_statements(page_html: str, url: str) -> list[dict]:
     distributions, with the period in a heading above it. There is no document
     to fetch, so the row itself has to be captured or the fund is invisible.
 
-    Returns one dict per fund row. Figures are copied exactly as published -
-    nothing is recomputed, converted or rounded.
+    The page holds TWO kinds of table, and telling them apart matters:
+
+      * the main table - one row per fund and class. Each row is that fund's
+        own statement.
+
+      * "Direct Investee Funds of the Fund" tables, one per fund-of-funds,
+        each introduced by "For HDIV Series E Shareholders". Their rows are
+        NOT statements for the funds they name: they are the lower-tier PFIC
+        amounts attributable to one unit of the PARENT. An earlier version
+        read them as ordinary rows, so HDIV's indirect share of a fund was
+        published as that fund's own statement - a different number entirely.
+        They are now attached to the parent's statement as `investees`.
+
+    Returns one dict per fund-and-class row. Figures are copied exactly as
+    published, dashes included - nothing is recomputed, converted or rounded.
     """
     text = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", page_html, flags=re.S | re.I)
     text = re.sub(r"\s+", " ", htmlmod.unescape(re.sub(r"<[^>]+>", " ", text)))
@@ -793,47 +1150,115 @@ def parse_html_statements(page_html: str, url: str) -> list[dict]:
         return []
     period = parse_period(text)
 
-    out = []
-    for table in re.findall(r"<table[^>]*>.*?</table>", page_html, re.S | re.I):
-        rows = re.findall(r"<tr[^>]*>(.*?)</tr>", table, re.S | re.I)
+    def figures_of(header: list[str], cells: list[str], skip: set[int]) -> dict | None:
+        """Pair each figure with its column heading, or refuse.
+
+        Some of these tables carry a stray empty heading cell, so the header
+        has one more column than the rows beneath it. Pairing by position
+        would then file every figure under its neighbour's heading - ordinary
+        earnings labelled as capital gains. Realign on the empty cell, and if
+        the columns still do not line up, drop the row rather than guess.
+        """
+        if len(header) != len(cells):
+            squeezed = [h for h in header if h]
+            if len(squeezed) != len(cells):
+                return None
+            # Positions in `skip` were worked out on the original header.
+            skip = {squeezed.index(header[i]) for i in skip if header[i] in squeezed}
+            header = squeezed
+        out = {header[i]: cells[i] for i in range(len(cells))
+               if i not in skip and _FIGURE_COLUMN.search(header[i]) and cells[i] != ""}
+        return out or None
+
+    statements: dict[tuple[str, str], dict] = {}
+    ordered: list[dict] = []
+    investee_tables: list[tuple[str, str, list[dict]]] = []
+    unparsed = 0
+
+    for tm in re.finditer(r"<table[^>]*>.*?</table>", page_html, re.S | re.I):
+        rows = [_cells(r) for r in re.findall(r"<tr[^>]*>(.*?)</tr>", tm.group(0), re.S | re.I)]
+        rows = [r for r in rows if any(r)]
         if len(rows) < 2:
             continue
-        header = [h.lower() for h in _cells(rows[0])]
-        # Only tables that actually name a fund and a per-unit figure qualify.
-        if not any("fund" in h or "ticker" in h for h in header):
+        header = [h.lower() for h in rows[0]]
+        if not any(_FIGURE_COLUMN.search(h) for h in header):
             continue
-        if not any("ordinary" in h or "capital gain" in h or "distribution" in h
-                   for h in header):
+
+        if "investee" in header[0]:
+            lead = re.sub(r"\s+", " ", htmlmod.unescape(
+                re.sub(r"<[^>]+>", " ", page_html[max(0, tm.start() - 1500):tm.start()])))
+            parents = _INVESTEE_PARENT.findall(lead)
+            if not parents:
+                unparsed += len(rows) - 1
+                continue
+            ticker, cls = parents[-1]
+            items, seen = [], set()
+            for c in rows[1:]:
+                figs = figures_of(header, c, {0})
+                if not c[0] or figs is None:
+                    unparsed += 1
+                    continue
+                sig = (c[0], tuple(sorted(figs.items())))
+                if sig in seen:          # the page repeats some tables verbatim
+                    continue
+                seen.add(sig)
+                items.append({"name": c[0], "figures": figs})
+            if items:
+                investee_tables.append((ticker.upper(), cls.upper(), items))
             continue
+
         i_tick = next((i for i, h in enumerate(header) if "ticker" in h), None)
         i_name = next((i for i, h in enumerate(header) if "fund" in h), None)
         i_class = next((i for i, h in enumerate(header) if "class" in h or "series" in h), None)
-
-        for row in rows[1:]:
-            c = _cells(row)
-            if len(c) < 2 or not any(c):
+        if i_tick is None and i_name is None:
+            continue
+        for c in rows[1:]:
+            if len(c) != len(header):
+                unparsed += 1
                 continue
-            name = c[i_name] if i_name is not None and i_name < len(c) else None
-            ticker = c[i_tick] if i_tick is not None and i_tick < len(c) else None
+            name = c[i_name] if i_name is not None else None
+            ticker = (c[i_tick] if i_tick is not None else "").upper()
             if not name and not ticker:
                 continue
             if name and len(name) < 4:
                 continue
-            series = c[i_class] if i_class is not None and i_class < len(c) else None
-            figures = {header[i]: c[i] for i in range(min(len(header), len(c)))
-                       if i not in (i_tick, i_name, i_class) and c[i] not in ("", "-")}
-            if not figures:
+            figs = figures_of(header, c, {i for i in (i_tick, i_name, i_class) if i is not None})
+            if figs is None:
+                unparsed += 1
                 continue
-            full = f"{name} - Series {series}" if series and len(series) <= 6 else name
-            out.append({
-                "fund_name": full or ticker,
-                "tickers": [ticker.upper()] if ticker and re.fullmatch(r"[A-Z.]{2,8}", ticker.upper()) else [],
+            cls = _class_code(c[i_class]) if i_class is not None else ""
+            # The class is part of the fund's identity, not decoration: HYLD
+            # Class E and HYLD Class U carry different per-unit amounts. With
+            # the class left off, both rows had the same name and the second
+            # silently overwrote the first.
+            full = f"{name or ticker} - Class {cls}" if cls and len(cls) <= 6 else (name or ticker)
+            row = {
+                "fund_name": full,
+                "tickers": [ticker] if re.fullmatch(r"[A-Z]{2,6}(?:\.[A-Z]{1,2})?", ticker) else [],
                 "period_end": period,
-                "figures": figures,
+                "figures": figs,
                 "confidence": score,
                 "url": url,
-            })
-    return out
+            }
+            if row["tickers"]:
+                row["fund_key"] = slug(f"{ticker.split('.')[0]} {cls}")
+            key = (ticker.split(".")[0], cls.upper())
+            if key in statements:
+                unparsed += 1            # two rows claiming one fund and class: keep the first
+                continue
+            statements[key] = row
+            ordered.append(row)
+
+    for ticker, cls, items in investee_tables:
+        parent = statements.get((ticker, cls))
+        if parent is None:
+            unparsed += len(items)
+            continue
+        parent.setdefault("investees", []).extend(items)
+
+    if unparsed:
+        print(f"    ! {unparsed} table row(s) on {url} could not be read reliably and were left out")
+    return ordered
 
 
 def collect_json_links(page_html: str, base: str,
@@ -897,105 +1322,296 @@ def collect_links(html: str, base: str, include: list[str], exclude: list[str]) 
     return sorted(urls)
 
 
+def section_links(html: str, base: str, cfg: dict | None, exclude: list[str]) -> list[str]:
+    """Every PDF linked inside one named section of a page, whatever it is called.
+
+    Mawer is the case for this. Its documents page has a "PFIC" accordion
+    whose files are named by content hash -
+    26776e52c358f0ddf878f907772cbf5bcebedc71.pdf - so no filename filter can
+    ever pick them out, and the family sat at "empty" while fourteen current
+    statements were on the page. What identifies them is where they sit: under
+    the PFIC heading. Content verification still decides what is admitted.
+
+    cfg:  start  regex marking the section's heading
+          end    regex marking the next section (optional; else end of page)
+    """
+    if not cfg:
+        return []
+    m = re.search(cfg["start"], html)
+    if not m:
+        print("    ! link_section start marker not found on the hub")
+        return []
+    tail = html[m.end():]
+    if cfg.get("end"):
+        e = re.search(cfg["end"], tail)
+        if e:
+            tail = tail[:e.start()]
+    exc = [re.compile(p) for p in exclude]
+    urls: set[str] = set()
+    for h in re.findall(r'href=["\']([^"\']+)["\']', tail, re.I):
+        absolute = urlparse.urljoin(base, htmlmod.unescape(h.strip())).split("#")[0]
+        if ".pdf" not in absolute.lower():
+            continue
+        if any(r.search(absolute) for r in exc):
+            continue
+        urls.add(absolute)
+    print(f"    {len(urls)} document(s) in the page's PFIC section")
+    return sorted(urls)
+
+
+def api_links(hub_html: str, fam: dict, include: list[str], exclude: list[str]) -> list[str]:
+    """Document URLs from the JSON endpoint a page loads its list from.
+
+    Dimensional is the case for this. Its document centre is an empty shell
+    that asks /investment-api/v2/document-grid for the list, so the page had to
+    be rendered in a browser - and from GitHub's US-based runners that render
+    comes back with a country-selection overlay and no documents, which is why
+    the family worked at home and read "empty" every night in production.
+    Asking the endpoint directly needs no browser and gives the same list.
+
+    cfg:  url            the endpoint
+          body           JSON request body; "$TOKEN" is replaced (optional)
+          token_pattern  regex whose group 1, read from the hub page, is the
+                         token - so an id the site rotates is picked up fresh
+    """
+    cfg = fam.get("json_api")
+    if not cfg:
+        return []
+    body = cfg.get("body")
+    if body and "$TOKEN" in body:
+        m = re.search(cfg["token_pattern"], hub_html)
+        if not m:
+            print("    ! json_api token not found on the hub page")
+            return []
+        body = body.replace("$TOKEN", m.group(1))
+    status, text, _ = fetch(cfg["url"], json_body=body,
+                            extra_headers={"Referer": fam["hub"]})
+    if status != 200 or not text:
+        print(f"    ! json_api returned {status}")
+        return []
+    # Reuse the embedded-JSON walker by presenting the payload the way a page
+    # would carry it.
+    found = collect_json_links(
+        f'<script type="application/json">{text}</script>', cfg["url"], include, exclude)
+    print(f"    {len(found)} document(s) from the site's document API")
+    return found
+
+
+class Breaker:
+    """Counts a family's requests, and stops them once the host is refusing us.
+
+    A 404 is an answer about one document, not a refusal, so it never counts
+    towards the limit - a derived family like BlackRock gets hundreds of them
+    by design.
+    """
+
+    def __init__(self, limit: int = BREAKER_LIMIT) -> None:
+        self.limit = limit
+        self.streak = 0
+        self.tripped = False
+        self.last_status = ""
+        self.fetched = 0        # requests actually sent
+        self.unchanged = 0      # rechecks the host answered with 304
+        self._lock = threading.Lock()
+
+    def record(self, status, good: bool) -> None:
+        with self._lock:
+            self.fetched += 1
+            if status == 304:
+                self.unchanged += 1
+            if good or status in (404, 410):
+                self.streak = 0
+                return
+            self.streak += 1
+            self.last_status = str(status)
+            if self.streak >= self.limit:
+                self.tripped = True
+
+
+def _is_pdf(blob) -> bool:
+    # Not startswith(): a few publishers ship a byte-order mark or a blank
+    # line ahead of the header, and those are perfectly good PDFs.
+    return bool(blob) and b"%PDF" in blob[:1024]
+
+
+# Stricter than url_year(): a cached miss for an old year is never retried, so
+# a year misread out of a hash-like path segment would bury a live document.
+_MISS_YEAR = re.compile(r"(?:^|[-_/.])(20[0-4]\d)(?=[-_/.]|$)")
+
+
+def _miss_year(url: str) -> int | None:
+    years = [int(y) for y in _MISS_YEAR.findall(urlparse.urlsplit(url).path)]
+    return max(years) if years else None
+
+
+def _put(manifest: dict, url: str, record: dict) -> None:
+    """Every cache write goes through here, and always as a fresh dict.
+
+    Documents are processed on worker threads while the main thread
+    checkpoints the cache to disk. Serialising a dict that another thread is
+    adding keys to raises "dictionary changed size during iteration", which
+    used to surface as a family randomly failing with status "error".
+    """
+    with _manifest_lock:
+        manifest[url] = record
+
+
+def cached_statement(prev: dict, url: str, family_id: str, today: str) -> "Statement | None":
+    year = prev.get("tax_year")
+    if year is not None and year < SINCE_YEAR:
+        return None
+    return Statement(
+        family=family_id, url=url, fund_name=prev.get("fund_name"),
+        tickers=prev.get("tickers", []), period_end=prev.get("period_end"),
+        tax_year=year, sha256=prev.get("sha256", ""), bytes=prev.get("bytes", 0),
+        confidence=prev.get("confidence", 0), verified=True,
+        first_seen=prev.get("first_seen", today), last_seen=today)
+
+
+def needs_fetch(url: str, prev: dict, today: str) -> bool:
+    """Decide from the cache alone whether this URL needs a request tonight."""
+    if not prev:
+        return True                       # never seen: always fetch
+    this_year = date.fromisoformat(today).year
+    current = prev.get("verify_version") == VERIFY_VERSION
+    checked = prev.get("checked") or prev.get("last_seen")
+
+    if prev.get("miss"):
+        if not current:
+            return True
+        # A refusal or a timeout says nothing about the document: try again.
+        if prev.get("status") not in ("404", "410", "not-a-pdf"):
+            return True
+        # Positively not there. For an old year that is final. For a recent
+        # one it is exactly where next season's statement will appear, so
+        # keep looking - weekly, not nightly.
+        year = prev.get("probe_year")
+        if year is not None and year < this_year - 1:
+            return False
+        return recheck_due(url, checked, RECHECK_DAYS_MISS, today)
+
+    if prev.get("verified") is None:
+        return True
+    if prev.get("last_error"):
+        return True                       # failed last time: retry until it answers
+    if not prev["verified"]:
+        # Rejected as not-a-statement. Under an older verifier that may have
+        # been our own bug, so look again at once; under the current one,
+        # only occasionally.
+        return (not current) or recheck_due(url, checked, RECHECK_DAYS_CLOSED, today)
+    # A parser fix should reach the records it was written for straight away,
+    # not whenever their turn comes round. (Only for verdicts from an older
+    # verifier, or a genuinely nameless document would be re-read every night.)
+    if not current and _suspect_name(prev.get("fund_name")):
+        return True
+    year = prev.get("tax_year")
+    window = (RECHECK_DAYS_CLOSED if year and year <= this_year - 2
+              else RECHECK_DAYS_OPEN)
+    return recheck_due(url, checked, window, today)
+
+
 def process_pdf(url: str, family_id: str, manifest: dict, today: str,
-                getter=None) -> Statement | None:
-    prev = manifest.get(url, {})
-    headers = {}
-    # Only trust a cached result if it was produced by the current verifier.
-    # Otherwise a document rejected because of a crawler bug stays rejected
-    # forever, since its ETag never changes. Bump VERIFY_VERSION whenever the
-    # signal list, scoring or parsers change.
-    if prev.get("etag") and prev.get("verify_version") == VERIFY_VERSION:
-        headers["If-None-Match"] = prev["etag"]
+                getter=None, breaker: "Breaker | None" = None,
+                prefetched: dict | None = None, via: str | None = None,
+                name_pattern: str | None = None, split: dict | None = None,
+                force: bool = False, name_fix: list | None = None) -> "Statement | None":
+    """Return the verified statement at this URL, or None.
 
-    # Derived sources probe URL templates, so most candidates are misses by
-    # design. Remember them: without this, BlackRock alone re-probes ~900 dead
-    # URLs every single night. Misses for the two most recent tax years are
-    # always re-checked, because that is exactly when a statement appears.
-    if prev.get("miss") and prev.get("verify_version") == VERIFY_VERSION:
-        yr = prev.get("probe_year")
-        # Only skip when the URL positively shows an old year. Treating an
-        # undetectable year as old made every Manulife miss permanent: their
-        # filenames carry no year, so a batch cached while the host was
-        # returning 403 could never be retried even after the transport was
-        # fixed.
-        if yr is not None and yr < datetime.now(timezone.utc).year - 1:
-            return None
+    The cache answers whenever it can (see needs_fetch). When a request is
+    made, three outcomes are kept strictly apart, because confusing them is
+    how statements used to vanish from the index:
 
-    # A published statement does not change once it is up, so re-downloading it
-    # every night buys almost nothing and costs a request to someone else's
-    # server. NEW statements are still found every run, because they are
-    # discovered by re-reading the manager's listing page - a URL not in the
-    # cache is always fetched. Re-fetching a KNOWN document only detects a
-    # reissue.
-    #
-    # The original rule re-fetched the current and prior tax year nightly. That
-    # meant hitting Ninepoint 25 times, Sprott 6 and Purpose 80 every single
-    # night, which tripped their rate limits: the crawl succeeded, got blocked
-    # the next night, recovered, and settled into a visible two-day on/off
-    # cycle for months.
-    #
-    # So trust a recent verdict for every year, just for different windows: a
-    # reissue of a current-year statement is still noticed within ten days, and
-    # closed years are left alone for a month.
-    if (prev.get("verified") and prev.get("verify_version") == VERIFY_VERSION
-            and prev.get("last_seen")):
-        yr = prev.get("tax_year") or 0
-        this_year = datetime.now(timezone.utc).year
-        trust_days = 30 if yr and yr <= this_year - 2 else 10
-        age_days = (datetime.now(timezone.utc).date()
-                    - datetime.fromisoformat(prev["last_seen"]).date()).days
-        if yr and age_days < trust_days:
-            prev["last_seen"] = today
-            manifest[url] = prev
-            return Statement(
-                family=family_id, url=url, fund_name=prev.get("fund_name"),
-                tickers=prev.get("tickers", []), period_end=prev.get("period_end"),
-                tax_year=yr, sha256=prev.get("sha256", ""), bytes=prev.get("bytes", 0),
-                confidence=prev.get("confidence", 0), verified=True,
-                first_seen=prev.get("first_seen", today), last_seen=today,
-            )
+      * the document came back      -> verify it and record the verdict
+      * the host says it is gone    -> a strike; forgotten after GONE_STRIKES
+      * the request simply failed   -> keep what we have and try again
+    """
+    prev = manifest.get(url) or {}
+    current = prev.get("verify_version") == VERIFY_VERSION
+    known_good = bool(prev.get("verified")) and not prev.get("miss")
 
-    if getter is None:
-        status, blob, resp_headers = fetch(url, binary=True, extra_headers=headers)
+    def from_cache() -> "Statement | None":
+        if prev:
+            _put(manifest, url, {**prev, "last_seen": today})
+        return cached_statement(prev, url, family_id, today) if known_good else None
+
+    if not force and not needs_fetch(url, prev, today):
+        return from_cache()
+    if breaker is not None and breaker.tripped:
+        return from_cache()
+
+    # Conditional request, so an unchanged document costs a 304 instead of a
+    # download. Only over plain HTTP, and only when the cached verdict came
+    # from the current verifier - after a parser change we want the bytes back
+    # so the document is read again.
+    conditional = {}
+    if (getter is None and current and not force
+            and prev.get("verified") is not None and not prev.get("miss")):
+        if prev.get("etag"):
+            conditional["If-None-Match"] = prev["etag"]
+        if prev.get("last_modified"):
+            conditional["If-Modified-Since"] = prev["last_modified"]
+
+    if prefetched and url in prefetched:
+        status, blob, resp_headers = prefetched.pop(url)   # already fetched by the transport probe
+    elif getter is None:
+        status, blob, resp_headers = fetch(url, binary=True, extra_headers=conditional)
     else:
         status, blob, resp_headers = getter(url)
+    resp_headers = {str(k).lower(): v for k, v in (resp_headers or {}).items()}
 
-    if not isinstance(status, int) or status != 200 or not blob or not blob.startswith(b"%PDF"):
-        m = re.search(r"[-_/](20\d{2})[-_/]", url)
-        manifest[url] = {"miss": True, "status": str(status), "last_seen": today,
-                         "verify_version": VERIFY_VERSION, "family": family_id,
-                         "probe_year": int(m.group(1)) if m else None}
+    settled = {k: v for k, v in prev.items() if k not in ("last_error", "gone_strikes")}
+
+    if status == 304 and conditional:
+        if breaker is not None:
+            breaker.record(status, True)
+        _put(manifest, url, {**settled, "checked": today, "last_seen": today})
+        return cached_statement(prev, url, family_id, today) if known_good else None
+
+    good = status == 200 and _is_pdf(blob)
+    if breaker is not None:
+        breaker.record(status, good)
+
+    text = pdf_text(blob) if good else ""
+    # A document we already hold that suddenly cannot be read at all is a bad
+    # download (truncated, or a transient encryption hiccup), not a verdict.
+    unreadable = good and known_good and not text.strip()
+
+    if not good or unreadable:
+        label = ("unreadable" if unreadable
+                 else "not-a-pdf" if status == 200 else str(status))
+        if known_good:
+            # 404/410 and "200 but an HTML page" both mean the document has
+            # been taken down. Anything else is a failed request.
+            gone = label in ("404", "410", "not-a-pdf")
+            strikes = prev.get("gone_strikes", 0) + 1 if gone else 0
+            if strikes < GONE_STRIKES:
+                _put(manifest, url, {**prev, "last_seen": today,
+                                     "last_error": label, "gone_strikes": strikes})
+                return cached_statement(prev, url, family_id, today)
+            print(f"    * gone on {GONE_STRIKES} consecutive checks, dropping: {url}")
+        _put(manifest, url, {"miss": True, "status": label, "checked": today,
+                             "last_seen": today, "verify_version": VERIFY_VERSION,
+                             "family": family_id, "probe_year": _miss_year(url)})
         return None
 
-    if status == 304 and prev.get("verified") is not None:
-        prev["last_seen"] = today
-        manifest[url] = prev
-        if not prev.get("verified"):
-            return None
-        return Statement(
-            family=family_id, url=url, fund_name=prev.get("fund_name"),
-            tickers=prev.get("tickers", []), period_end=prev.get("period_end"),
-            tax_year=prev.get("tax_year"), sha256=prev.get("sha256", ""),
-            bytes=prev.get("bytes", 0), confidence=prev.get("confidence", 0),
-            verified=True, first_seen=prev.get("first_seen", today), last_seen=today,
-        )
-
     digest = hashlib.sha256(blob).hexdigest()
-    if prev.get("sha256") and prev["sha256"] != digest:
+    if known_good and prev.get("sha256") and prev["sha256"] != digest:
         print(f"    * CONTENT CHANGED (reissue?): {url}")
 
-    text = pdf_text(blob)
     ok, score = verify_statement(text)
     period = parse_period(text)
-    name = parse_fund_name(text)
+    name = parse_fund_name(text, name_pattern)
+    for pattern, replacement in (name_fix or []):
+        if name:
+            name = re.sub(pattern, replacement, name)
     tickers = parse_tickers(text, url)
     year = int(period[:4]) if period else None
 
-    manifest[url] = {
+    record = {
         "verify_version": VERIFY_VERSION,
         "family": family_id,
-        "etag": resp_headers.get("ETag"),
+        "etag": resp_headers.get("etag"),
+        "last_modified": resp_headers.get("last-modified"),
         "sha256": digest,
         "bytes": len(blob),
         "verified": ok,
@@ -1004,9 +1620,18 @@ def process_pdf(url: str, family_id: str, manifest: dict, today: str,
         "tickers": tickers,
         "period_end": period,
         "tax_year": year,
-        "first_seen": prev.get("first_seen", today),
+        "first_seen": prev.get("first_seen") or today,
         "last_seen": today,
+        "checked": today,
     }
+    if via and via != "plain HTTP":
+        record["via"] = via               # which client this host serves, for next time
+    if ok and split:
+        pages = pdf_pages(blob)
+        record["pages"] = len(pages)
+        record["parts"] = split_document(pages, split)
+    _put(manifest, url, record)
+
     if not ok:
         return None
     if year is not None and year < SINCE_YEAR:
@@ -1015,8 +1640,171 @@ def process_pdf(url: str, family_id: str, manifest: dict, today: str,
         family=family_id, url=url, fund_name=name, tickers=tickers,
         period_end=period, tax_year=year, sha256=digest, bytes=len(blob),
         confidence=score, verified=True,
-        first_seen=prev.get("first_seen", today), last_seen=today,
+        first_seen=record["first_seen"], last_seen=today,
     )
+
+
+def _spread(items: list, n: int) -> list:
+    """Up to n items sampled evenly across the list, never just its head.
+
+    Links sort alphabetically, which usually means by year, so a head slice
+    would test only the oldest catalogue - the entries most likely to be dead.
+    """
+    if n <= 0 or len(items) <= n:
+        return list(items)
+    step = len(items) / n
+    return [items[int(i * step)] for i in range(n)]
+
+
+def fetch_documents(links: list[str], fam: dict, manifest: dict, today: str,
+                    browser: "BrowserSession", args, health: dict) -> list["Statement"]:
+    """Turn candidate URLs into verified statements, with as few requests as possible.
+
+    Most nights most documents are answered from the cache and nothing is
+    fetched at all. Only when something does need fetching do we work out which
+    HTTP client this host will serve documents to - and that is remembered from
+    one night to the next rather than rediscovered.
+    """
+    fid = fam["id"]
+    breaker = Breaker()
+    statements: list[Statement] = []
+    pending: list[str] = []
+
+    split = fam.get("split")
+    forced: set[str] = set()
+    for u in links:
+        prev = manifest.get(u) or {}
+        # A document cached before this family was marked as bundled has
+        # never been split; that cannot wait a month for its recheck night.
+        if (split and prev.get("verified") and "parts" not in prev) or args.refresh:
+            forced.add(u)
+        if u in forced or needs_fetch(u, prev, today):
+            pending.append(u)
+        else:
+            st = process_pdf(u, fid, manifest, today)
+            if st:
+                statements.append(st)
+    health["from_cache"] = len(links) - len(pending)
+
+    def finish(status: str | None = None, message: str = "") -> list[Statement]:
+        health["requests"] = breaker.fetched
+        health["unchanged"] = breaker.unchanged
+        health["statements"] = len(statements)
+        health["status"] = status or ("ok" if statements else "empty")
+        if message:
+            health["message"] = message
+        elif not statements:
+            health["message"] = "candidates found but none verified as PFIC statements"
+        print(f"    {len(statements)} verified statement(s)  "
+              f"[{health['from_cache']} from cache, {breaker.fetched} request(s), "
+              f"{breaker.unchanged} unchanged]")
+        return statements
+
+    if not pending:
+        return finish()
+
+    def known_good(u: str) -> bool:
+        p = manifest.get(u) or {}
+        return bool(p.get("verified")) and not p.get("miss")
+
+    transports = [("plain HTTP", lambda u: fetch(u, binary=True)),
+                  ("curl", lambda u: curl_fetch(u, binary=True))]
+    if not args.static_only:
+        transports.append(("browser", browser.get))
+
+    # Which client served this family's documents last time? Every publisher
+    # blocks a different combination (Manulife 403s plain HTTP and hands every
+    # PDF to curl), so the answer is recorded per document and reused.
+    with _manifest_lock:
+        history = [v.get("via", "plain HTTP") for v in manifest.values()
+                   if v.get("family") == fid and v.get("verified") and not v.get("miss")]
+    preferred = max(set(history), key=history.count) if history else None
+    if preferred:
+        transports.sort(key=lambda t: t[0] != preferred)
+
+    # Probe a few of tonight's documents to confirm the transport. Start with
+    # ones we know exist; a derived family's candidates are mostly URLs that
+    # were never there, and three 404s in a row used to get BlackRock reported
+    # as "blocked" for weeks when nothing was wrong at all.
+    sample = [u for u in pending if known_good(u)][:2]
+    sample += [u for u in _spread(pending, 12 if fam.get("derive") and not preferred else 4)
+               if u not in sample]
+
+    chosen = None
+    fetched: dict[str, tuple] = {}
+    refusals: list[str] = []
+    for u in sample:
+        for name, fn in transports:
+            status, blob, hdrs = fn(u)
+            if status == 200 and _is_pdf(blob):
+                chosen = (name, fn)
+                fetched = {u: (status, blob, hdrs)}
+                break
+            if status in (404, 410):
+                # An answer, not a refusal. With a transport on record there
+                # is nothing to learn by asking two more clients the same
+                # question; without one, a 404 may be a disguised block (iA
+                # Clarington served a 404 page to everything but a browser).
+                if preferred:
+                    if name == preferred:
+                        fetched[u] = (status, blob, hdrs)
+                    break
+                continue
+            refusals.append(f"{name}={status}")
+        if chosen:
+            break
+
+    if chosen is None:
+        if refusals:
+            print("    ! documents unreachable by any transport")
+            return finish("blocked", "documents unreachable "
+                          f"({'; '.join(refusals[:6])}); cached statements kept")
+        # Every probe was answered "not there". Nothing is blocked - tonight's
+        # candidates simply do not exist (yet).
+        chosen = transports[0]
+    name, fn = chosen
+    getter = None if name == "plain HTTP" else fn
+    if name != "plain HTTP":
+        health["pdf_transport"] = name
+        print(f"    - documents fetched via {name}")
+    # `fetched` holds the probe's own results, so those documents are not
+    # requested a second time below.
+
+    def one(u: str) -> "Statement | None":
+        return process_pdf(u, fid, manifest, today, getter=getter, breaker=breaker,
+                           prefetched=fetched, via=name,
+                           name_pattern=fam.get("name_pattern"),
+                           name_fix=fam.get("name_fix"),
+                           split=split, force=u in forced)
+
+    if name == "browser":
+        # Playwright's sync API is bound to the thread that created it.
+        for i, u in enumerate(pending, 1):
+            st = one(u)
+            if st:
+                statements.append(st)
+            if i % 25 == 0:
+                print(f"      {i}/{len(pending)} fetched")
+            if i % 200 == 0:
+                save_manifest(manifest)
+    else:
+        with futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+            # Checkpoint periodically. CI Global alone lists ~15,000 documents;
+            # losing hours of downloads because the run was interrupted between
+            # family boundaries is not an acceptable failure mode.
+            for n, st in enumerate(pool.map(one, pending), 1):
+                if st:
+                    statements.append(st)
+                if n % 250 == 0:
+                    save_manifest(manifest)
+                    print(f"      {n}/{len(pending)} processed")
+
+    if breaker.tripped:
+        print(f"    ! host refused {breaker.limit} requests in a row "
+              f"(last: {breaker.last_status}); stopped asking")
+        return finish("blocked", f"host refused {breaker.limit} requests in a row "
+                      f"(last: {breaker.last_status}); cached statements kept")
+    return finish()
 
 
 def crawl_family(fam: dict, defaults: dict, manifest: dict, args, today: str):
@@ -1100,44 +1888,87 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
         pages = list(fam.get("statement_pages") or [])
         if not pages:
             pages = [fam["hub"]]
+        # Managers add a new page each year, at a URL nobody can predict:
+        # Hamilton's 2024 statements live at /pfic/, 2025 at
+        # /pfic-annual-information-statements-2025/. A hand-kept list of pages
+        # therefore goes stale every spring - the 2026 page was up for months
+        # and never read. So also pick up any page the hub (or a page already
+        # known) links that matches the family's pattern.
+        page_rx = (re.compile(fam["statement_page_pattern"])
+                   if fam.get("statement_page_pattern") else None)
+
+        def discover(source_html: str, source_url: str) -> None:
+            if not page_rx:
+                return
+            for h in re.findall(r'href=["\']([^"\'#]+)', source_html):
+                absolute = urlparse.urljoin(source_url, htmlmod.unescape(h))
+                if page_rx.search(absolute) and absolute not in pages:
+                    print(f"    + discovered statement page {absolute}")
+                    pages.append(absolute)
+
+        discover(html, fam["hub"])
         statements: list[Statement] = []
-        for page_url in pages:
+        pages_read = 0
+        for page_url in pages:              # grows while iterating, by design
+            if pages_read >= 25:
+                break
             page = html if page_url == fam["hub"] else None
             if page is None:
-                st, body, _ = fetch(page_url)
-                page = body if isinstance(st, int) and st == 200 and body else None
-                if page is None and not args.static_only:
-                    page = browser.html(page_url)
+                page = fetch_any(page_url, browser, allow_browser=not args.static_only)
             if not page:
                 print(f"    ! could not read {page_url}")
                 continue
+            pages_read += 1
+            discover(page, page_url)
             rows = parse_html_statements(page, page_url)
-            print(f"    {len(rows)} row(s) from {page_url.rsplit('/', 2)[-2]}")
+            print(f"    {len(rows)} row(s) from {page_url.rstrip('/').rsplit('/', 1)[-1]}")
+            seen_keys: set[str] = set()
             for r in rows:
                 year = int(r["period_end"][:4]) if r["period_end"] else None
                 if year is not None and year < args.since_year:
                     continue
                 digest = hashlib.sha256(
-                    json.dumps([r["fund_name"], r["period_end"], r["figures"]],
-                               sort_keys=True).encode()).hexdigest()
+                    json.dumps([r["fund_name"], r["period_end"], r["figures"],
+                                r.get("investees")], sort_keys=True).encode()).hexdigest()
                 # Record in the manifest like any other statement, so the index
                 # rebuild sees it. Many rows share one page URL, so the key is
                 # synthesised and the real link kept in "url".
-                key = f"{page_url}#{slug(r['fund_name'])}|{r['period_end']}"
-                manifest[key] = {
+                # The ticker goes into the key as well as the name: Hamilton's
+                # 2024 page lists AMAX and HBA under the same fund name, and
+                # keyed on the name alone one row overwrote the other.
+                key = (f"{page_url}#{r.get('fund_key') or ''}:"
+                       f"{slug(r['fund_name'])}|{r['period_end']}")
+                seen_keys.add(key)
+                first_seen = (manifest.get(key) or {}).get("first_seen") or today
+                _put(manifest, key, {
                     "verify_version": VERIFY_VERSION, "family": fid, "url": page_url,
                     "verified": True, "confidence": r["confidence"], "sha256": digest,
                     "bytes": 0, "fund_name": r["fund_name"], "tickers": r["tickers"],
                     "period_end": r["period_end"], "tax_year": year,
                     "fmt": "html", "figures": r["figures"],
-                    "first_seen": manifest.get(key, {}).get("first_seen", today),
-                    "last_seen": today,
-                }
+                    "investees": r.get("investees"), "fund_key": r.get("fund_key"),
+                    "first_seen": first_seen, "last_seen": today, "checked": today,
+                })
                 statements.append(Statement(
                     family=fid, url=page_url, fund_name=r["fund_name"],
                     tickers=r["tickers"], period_end=r["period_end"], tax_year=year,
                     sha256=digest, bytes=0, confidence=r["confidence"], verified=True,
-                    first_seen=today, last_seen=today, fmt="html", figures=r["figures"]))
+                    first_seen=first_seen, last_seen=today, fmt="html",
+                    figures=r["figures"], investees=r.get("investees"),
+                    fund_key=r.get("fund_key")))
+            # A row the manager has since taken off a page we just read in full
+            # is no longer published; keeping it would show a statement that
+            # the source page does not carry. Only when the page yielded rows,
+            # so a half-loaded page cannot wipe its own history.
+            if rows:
+                with _manifest_lock:
+                    stale = [k for k, v in manifest.items()
+                             if v.get("fmt") == "html" and v.get("url") == page_url
+                             and k not in seen_keys]
+                    for k in stale:
+                        del manifest[k]
+                if stale:
+                    print(f"    - {len(stale)} row(s) no longer on that page, removed")
         health["candidates"] = len(pages)
         health["statements"] = len(statements)
         health["status"] = "ok" if statements else "empty"
@@ -1153,13 +1984,15 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
     # expanded over the year range reaches them.
     year_urls: list[str] = []
     for tmpl in (fam.get("year_urls") or []):
-        this_year = datetime.now(timezone.utc).year
+        this_year = utc_today().year
         for yr in range(this_year, max(args.since_year, this_year - 8) - 1, -1):
             year_urls.append(tmpl.format(year=yr))
     if year_urls:
         print(f"    {len(year_urls)} templated URL(s) to probe")
 
     links = collect_links(html, fam["hub"], include, exclude) + year_urls
+    links += section_links(html, fam["hub"], fam.get("link_section"), exclude)
+    links += api_links(html, fam, include, exclude)
 
     # Bilingual managers sometimes split their catalogue across language sites:
     # National Bank's French page lists 15 ETF tickers its English page does
@@ -1189,86 +2022,45 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
         health["skipped_old"] = before - len(links)
         print(f"    {before - len(links)} candidate(s) older than "
               f"{args.since_year} skipped by URL")
-    if args.limit and len(links) > args.limit:
-        # Sample evenly rather than taking the head. Links sort alphabetically,
-        # which usually means by year, so a head slice would test only the
-        # oldest catalogue - exactly the entries most likely to be dead.
-        step = len(links) / args.limit
-        links = [links[int(i * step)] for i in range(args.limit)]
+    listed = len(links)
+    if args.limit:
+        links = _spread(links, args.limit)     # a smoke test: sample, and nothing else
+    else:
+        # Statements we verified earlier that tonight's listing no longer
+        # links. Managers prune their pages (Mawer shows only the latest year)
+        # while the older documents stay downloadable - those are worth
+        # keeping. But a delisted document whose URL has also died must not
+        # sit in the index as a dead link forever, and nothing would ever look
+        # at it again unless it is put back in the queue here. It then follows
+        # the normal schedule: rechecked occasionally, dropped once it is gone.
+        listed_set = set(links)
+        with _manifest_lock:
+            orphans = sorted(
+                u for u, v in manifest.items()
+                if v.get("family") == fid and v.get("verified") and not v.get("miss")
+                and v.get("fmt", "pdf") == "pdf" and u not in listed_set
+                and not too_old(u, args.since_year))
+        if orphans:
+            health["delisted"] = len(orphans)
+            print(f"    {len(orphans)} held statement(s) no longer listed; kept on the recheck schedule")
+            links += orphans
     health["candidates"] = len(links)
-    print(f"    {len(links)} candidate PDF link(s)")
+    print(f"    {listed} candidate PDF link(s) listed")
 
     if not links:
         health["status"] = "empty"
         health["message"] = "hub reachable but no candidate PDFs matched"
         return [], health
 
-    # Probe one document over plain HTTP. If the host answers with something
-    # that is not a PDF (iA Clarington serves a 404 HTML page to non-browsers
-    # while serving the real file to Chromium), switch the whole family to
-    # browser fetching rather than discarding a catalogue that is really there.
-    # Sample a spread of documents, not just the first. Publishers leave dead
-    # links on their pages for years (iA Clarington still lists 2021 files that
-    # 404), so a single failed probe proves nothing about the host.
-    # Then pick the transport that actually serves the documents. Manulife 403s
-    # every PDF over plain HTTP and hands all of them to curl.
-    probe_idx = sorted({0, len(links) // 2, len(links) - 1})
-    transports = [("plain HTTP", lambda u: fetch(u, binary=True)),
-                  ("curl", lambda u: curl_fetch(u, binary=True))]
-    if not args.static_only:
-        transports.append(("browser", browser.get))
-
-    transport_name, getter, probe_results = None, None, []
-    for i in probe_idx:
-        for name, fn in transports:
-            st, blob, _ = fn(links[i])
-            probe_results.append(f"{name}={st}")
-            if isinstance(st, int) and st == 200 and blob and blob.startswith(b"%PDF"):
-                transport_name = name
-                getter = None if name == "plain HTTP" else fn
-                break
-        if transport_name:
-            break
-
-    if transport_name is None:
-        health["status"] = "blocked"
-        health["message"] = f"documents unreachable ({'; '.join(probe_results[:6])})"
-        print("    ! documents unreachable by any transport")
-        return [], health
-    if transport_name != "plain HTTP":
-        health["pdf_transport"] = transport_name
-        print(f"    - documents fetched via {transport_name}")
-
-    statements: list[Statement] = []
-    if transport_name == "browser":
-        # Playwright's sync API is single-threaded; go sequentially.
-        for i, u in enumerate(links, 1):
-            st = process_pdf(u, fid, manifest, today, getter=getter)
-            if st:
-                statements.append(st)
-            if i % 25 == 0:
-                print(f"      {i}/{len(links)} fetched")
-            if i % 200 == 0:
-                save_manifest(manifest)
-    else:
-        with futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
-            # Checkpoint periodically. CI Global alone lists ~15,000 documents;
-            # losing hours of downloads because the run was interrupted between
-            # family boundaries is not an acceptable failure mode.
-            for n, st in enumerate(
-                    pool.map(lambda u: process_pdf(u, fid, manifest, today, getter=getter),
-                             links), 1):
-                if st:
-                    statements.append(st)
-                if n % 250 == 0:
-                    save_manifest(manifest)
-                    print(f"      {n}/{len(links)} processed")
-
-    health["statements"] = len(statements)
-    health["status"] = "ok" if statements else "empty"
-    if not statements:
-        health["message"] = "candidates found but none verified as PFIC statements"
-    print(f"    {len(statements)} verified statement(s)")
+    statements = fetch_documents(links, fam, manifest, today, browser, args, health)
+    # A hub that lists nothing while we still hold its statements has not
+    # gone quiet - its page has changed shape under us (or failed to render),
+    # and new statements will be missed until someone looks. Say so, rather
+    # than reporting "ok" on the strength of the cache.
+    if not listed and health["status"] == "ok":
+        health["status"] = "empty"
+        health["message"] = ("hub reachable but it listed no documents tonight; "
+                             f"{len(statements)} cached statement(s) kept")
     return statements, health
 
 
@@ -1293,6 +2085,23 @@ def statements_from_manifest(manifest: dict, since: int) -> list[Statement]:
         if not v.get("verified") or v.get("miss"):
             continue
         year = v.get("tax_year")
+        if v.get("parts"):
+            # One document, many funds: one entry per fund, each opening the
+            # document at that fund's page.
+            for p in v["parts"]:
+                p_end = p.get("period_end") or v.get("period_end")
+                p_year = int(p_end[:4]) if p_end else year
+                if p_year is not None and p_year < since:
+                    continue
+                out.append(Statement(
+                    family=v.get("family", "unknown"), url=f"{url}#page={p['page']}",
+                    fund_name=p["name"], tickers=p.get("tickers", []),
+                    period_end=p_end, tax_year=p_year, sha256=v.get("sha256", ""),
+                    bytes=v.get("bytes", 0), confidence=v.get("confidence", 0),
+                    verified=True, first_seen=v.get("first_seen", ""),
+                    last_seen=v.get("last_seen", ""),
+                    part={"page": p["page"], "pages": v.get("pages")}))
+            continue
         if year is not None and year < since:
             continue
         out.append(Statement(
@@ -1305,6 +2114,7 @@ def statements_from_manifest(manifest: dict, since: int) -> list[Statement]:
             confidence=v.get("confidence", 0), verified=True,
             first_seen=v.get("first_seen", ""), last_seen=v.get("last_seen", ""),
             fmt=v.get("fmt", "pdf"), figures=v.get("figures"),
+            investees=v.get("investees"), fund_key=v.get("fund_key"),
         ))
     return out
 
@@ -1315,9 +2125,17 @@ def build_index(all_statements: list[Statement], families: list[dict],
     funds: dict[str, dict] = {}
 
     for st in all_statements:
-        name = tidy_name(st.fund_name or
-                         Path(urlparse.urlsplit(st.url).path).stem.replace("_", " "))
-        key = f"{st.family}::{slug(name)}"
+        fam = fam_by_id.get(st.family, {})
+        if st.fund_name:
+            name = tidy_name(st.fund_name)
+        elif fam.get("split"):
+            # A combined document whose funds could not be told apart.
+            name = f"{fam.get('name', st.family)} - combined statement (all funds)"
+        else:
+            # No readable name: fall back on the filename, made presentable.
+            stem = Path(urlparse.urlsplit(st.url).path).stem
+            name = re.sub(r"[-_]+", " ", stem).strip()
+        key = f"{st.family}::{st.fund_key or slug(name)}"
         f = funds.setdefault(key, {
             "id": key,
             "family": st.family,
@@ -1331,6 +2149,7 @@ def build_index(all_statements: list[Statement], families: list[dict],
             if t not in f["tickers"]:
                 f["tickers"].append(t)
         entry = {
+            "name": name,
             "period_end": st.period_end,
             "tax_year": st.tax_year,
             "url": st.url,
@@ -1341,6 +2160,10 @@ def build_index(all_statements: list[Statement], families: list[dict],
         }
         if st.figures:
             entry["figures"] = st.figures
+        if st.investees:
+            entry["investees"] = st.investees
+        if st.part:
+            entry["part"] = st.part
         f["statements"].append(entry)
 
     # CI republishes the same statement under consecutive document ids - byte
@@ -1353,7 +2176,9 @@ def build_index(all_statements: list[Statement], families: list[dict],
         seen: set[tuple] = set()
         deduped = []
         for s in f["statements"]:
-            sig = (s["period_end"], s["bytes"])
+            # Table rows have no size, so their content hash stands in for it;
+            # otherwise two different rows for one period look like twins.
+            sig = (s["period_end"], s["bytes"] or s["sha256"])
             if sig in seen:
                 continue
             seen.add(sig)
@@ -1363,6 +2188,13 @@ def build_index(all_statements: list[Statement], families: list[dict],
 
     for f in funds.values():
         f["statements"].sort(key=lambda s: (s["period_end"] or ""), reverse=True)
+        # The fund is shown under its most recent published name. A statement
+        # the manager published under a different name keeps that name beside
+        # it, so nothing is silently relabelled.
+        f["name"] = f["statements"][0]["name"]
+        for s in f["statements"]:
+            if slug(s["name"]) == slug(f["name"]):
+                del s["name"]
         f["years"] = sorted({s["tax_year"] for s in f["statements"] if s["tax_year"]},
                             reverse=True)
 
@@ -1404,6 +2236,9 @@ def main() -> int:
     ap.add_argument("--rebuild-only", action="store_true",
                     help="rebuild the index from the cache without any network access")
     ap.add_argument("--limit", type=int, default=0, help="max PDFs per family")
+    ap.add_argument("--refresh", action="store_true",
+                    help="download and re-read every listed document, ignoring the "
+                         "cache; use with --only after changing a family's settings")
     ap.add_argument("--since-year", type=int, default=SINCE_YEAR,
                     help=f"oldest tax year to index (default {SINCE_YEAR}); "
                          "raising this is the biggest lever on crawl time")
@@ -1421,7 +2256,7 @@ def main() -> int:
                 if args.only else all_families)
 
     manifest = load_manifest()
-    today = datetime.now(timezone.utc).date().isoformat()
+    today = utc_today().isoformat()
 
     all_statements: list[Statement] = []
     health: list[dict] = []
@@ -1513,7 +2348,10 @@ def main() -> int:
                 tax_year=s.get("tax_year"), sha256=s.get("sha256", ""),
                 bytes=s.get("bytes", 0), confidence=s.get("confidence", 0),
                 verified=True, first_seen="", last_seen="",
-                fmt=s.get("fmt", "pdf"), figures=s.get("figures")))
+                fmt=s.get("fmt", "pdf"), figures=s.get("figures"),
+                investees=s.get("investees"),
+                fund_key=(f.get("id") or "").split("::", 1)[-1] or None,
+                part=s.get("part")))
             carried += 1
     if carried:
         print(f"\ncarried forward {carried} statement(s) from families not "
@@ -1543,6 +2381,18 @@ def main() -> int:
     # keeps the negatives register serializable without quoting every date.
     OUT.write_text(json.dumps(index, indent=1, default=str), encoding="utf-8")
 
+    # The hosts the download proxy may fetch from: exactly the ones the index
+    # links to, regenerated with it. This list used to be typed by hand into
+    # the proxy and redeployed by hand, so every manager added after the first
+    # deploy - BMO, National Bank, Ninepoint, Sprott, Desjardins, Guardian,
+    # 731 statements between them - listed fine and then failed inside every
+    # ZIP with "host not allowlisted".
+    hosts = sorted({urlparse.urlsplit(s["url"]).netloc.lower()
+                    for f in index["funds"] for s in f["statements"]
+                    if s.get("fmt", "pdf") == "pdf"})
+    HOSTS_OUT.write_text(json.dumps({"generated": index["generated"], "hosts": hosts},
+                                    indent=1), encoding="utf-8")
+
     s = index["stats"]
     print(f"\n{'='*62}")
     print(f"families ok : {s['families_ok']}/{s['families']}")
@@ -1556,7 +2406,7 @@ def main() -> int:
         for msg, n in sorted(_pdf_errors.items(), key=lambda kv: -kv[1]):
             print(f"  {n:>5}x  {msg}")
 
-    broken = [h for h in merged_health if h["status"] in ("down", "error", "empty")]
+    broken = [h for h in merged_health if h["status"] in NEEDS_ATTENTION]
     if broken:
         print(f"\nneeds attention ({len(broken)}):")
         for h in broken:

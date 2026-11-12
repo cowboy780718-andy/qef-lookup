@@ -92,8 +92,15 @@ families:
     fye: "12-31"
     hub: https://www.mawer.com/documents
     link_include: ['(?i)pfic']
+    link_section:
+      start: '>\s*PFIC\s*</div>\s*</button>'
+      end: '<div class="tw-font-\[800\]'
     notes: >-
-      Served from an Azure CDN. Path changed between years:
+      Served from an Azure CDN. The documents page has a "PFIC" accordion
+      holding one statement per fund for the latest year only, and since the
+      2025 statements the files are named by content hash
+      (26776e52...71.pdf), not by fund - so they are collected by where they
+      sit on the page (link_section), not by filename. Earlier naming:
       2023 -> /assets/documents/{fund}-pfic-reporting-dec-31-2023.pdf
       2024 -> /assets/documents/pfic/{fund}-pfic-reporting-2024.pdf
 
@@ -207,6 +214,9 @@ families:
     statement_pages:
       - https://hamiltonetfs.com/tax-information/pfic/
       - https://hamiltonetfs.com/tax-information/pfic-annual-information-statements-2025/
+    # New years are picked up automatically: any page the hub (or a page
+    # above) links whose address matches this is read as a statement page.
+    statement_page_pattern: '(?i)hamiltonetfs\.com/tax-information/pfic[^/]*/?$'
     notes: >-
       There is no document to download - the statement IS a table on the page,
       so the rows are captured and reproduced verbatim. April 30 year end.
@@ -214,8 +224,9 @@ families:
       Coverage narrows sharply between years: the 2024 page lists 20 ETFs
       including HBA, the 2025 page only 6. Absence from the newer page is a
       real finding, not a crawl failure - check with the manager.
-      Add a new page to statement_pages each year; the URL pattern changes
-      (2024 lives at /pfic/, 2025 at /pfic-annual-information-statements-2025/).
+      The URL pattern changes each year (2024 lives at /pfic/, 2025 at
+      /pfic-annual-information-statements-2025/, 2026 at ...-2026/), so new
+      pages are discovered from the hub rather than listed by hand.
 
   # ---------- Tier B: JavaScript-rendered document lists ----------
 
@@ -267,10 +278,16 @@ families:
     mode: browser
     fye: "12-31"
     hub: https://www.globalx.ca/pfic
+    split:
+      by: rows
+      name_prefix: Global X
     notes: >-
       WordPress; PDFs under /wp-content/uploads/{YYYY}/{MM}/.
-      Reports per unit PER DAY. Many funds renamed from Horizons to Global X,
-      so the alias table matters here.
+      One combined document per year: a table with a row for every ETF,
+      followed by a page of indirect ("direct investee") amounts for each
+      fund-of-funds. Each row is indexed as its own fund, opening the document
+      at the page the row is on. Reports per unit PER DAY. April 30 year end.
+      robots.txt asks for a 30-second crawl delay, which is honoured.
 
   - id: purpose
     name: Purpose Investments
@@ -335,9 +352,20 @@ families:
   - id: dimensional-ca
     name: Dimensional Fund Advisors Canada
     country: CA
-    mode: browser
-    fye: "varies"
+    mode: static
+    fye: "12-31"
     hub: https://www.dimensional.com/ca-en/document-center
+    json_api:
+      url: https://www.dimensional.com/investment-api/v2/document-grid
+      body: '{"gridid":"$TOKEN"}'
+      token_pattern: 'data-gridid="([^"]+)"'
+    notes: >-
+      The document centre is an empty shell that loads its list from the
+      document-grid endpoint, so the list is read from that endpoint directly
+      (the grid id is read fresh off the page each night). One statement per
+      fund at a fixed address with no year in it - each year's statement
+      REPLACES the last at the same URL, so only the latest year is ever
+      available here; earlier years have to be requested from Dimensional.
 
   # ---------- Confirmed non-publishers, listed so the check is visible ----------
 
@@ -471,6 +499,9 @@ families:
     fye: "12-31"
     hub: https://sprott.com/investment-strategies/exchange-listed-products/physical-bullion-funds/tax-guide/
     link_include: ['(?i)/media/[^/]+/\d{4}-[a-z]+-pfic\.pdf']
+    # The text layer of these statements splits the name: "SPROT T PHYSICAL ...", "SPRO TT PHYSICAL ...".
+    name_fix:
+      - ['(?i)spro\s*t\s*t\s*(?=physical)', 'SPROTT ']
     notes: >-
       Physical bullion trusts (PHYS, PSLV, CEF, SPUT, SPPP, COP). Filenames are
       {YEAR}-{ticker}-pfic.pdf, so both the year and the exchange ticker come
@@ -516,9 +547,12 @@ families:
     hub: https://www.guardiancapital.com/investmentsolutions/reg-documents/
     link_include: ['(?i)PFIC[-_]Investor[-_]Statement']
     link_exclude: ['(?i)8937']
+    split:
+      by: pages
     notes: >-
-      One combined investor statement per year (2021-2025) rather than one per
-      fund; the funds are listed inside the document. Their tax folder also
+      One PDF per year (2021-2025) that staples together every fund's own
+      statement - about 30 funds, three pages each. Each fund is indexed
+      separately and opens the document at its first page. Their tax folder also
       holds PFIC-Form-8937_{year}.pdf - Form 8937 is a different filing
       (organisational actions affecting basis), not an AIS, so it is excluded.
 
