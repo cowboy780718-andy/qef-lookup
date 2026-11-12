@@ -1125,7 +1125,11 @@ def url_year(url: str) -> int | None:
 ARCHIVE_HOST = "web.archive.org"
 ARCHIVE_CDX = "https://web.archive.org/cdx/search/cdx"
 ARCHIVE_LIST_DAYS = 30
-ARCHIVE_DELAY = 3.0            # seconds between requests to the archive; it throttles hard
+ARCHIVE_DELAY = 10.0           # seconds between requests to the archive: it throttles hard
+ARCHIVE_COOLDOWN = 300         # seconds to stand off when it answers 429
+ARCHIVE_PATIENCE = 3           # refusals in a row before leaving it for the night
+_archive_queue: list = []      # (family, copies still to read, its health row)
+_host_delays[ARCHIVE_HOST] = ARCHIVE_DELAY
 _ARCHIVED = re.compile(r"^https://web\.archive\.org/web/(\d{14})(?:id_)?/(https?://.+)$")
 
 
@@ -1144,7 +1148,8 @@ def _https(url: str) -> str:
     return re.sub(r"^http://([^/:]+)(?::80)?/", r"https://\1/", url)
 
 
-def archive_captures(fam: dict, manifest: dict, today: str, since: int) -> list[list[str]]:
+def archive_captures(fam: dict, manifest: dict, today: str, since: int,
+                     health: dict | None = None) -> list[list[str]]:
     """What the archive holds under this manager's document folder.
 
     Returns [capture time, original address, content digest] rows, one per
@@ -1170,6 +1175,9 @@ def archive_captures(fam: dict, manifest: dict, today: str, since: int) -> list[
     if status != 200 or text is None:
         print(f"    ! the archive's list could not be read ({status}); "
               f"using the {len(held)} capture(s) already known")
+        if health is not None:
+            health["detail"] = ("the Internet Archive's list of earlier statements could not "
+                                "be read tonight; it will be asked again")
         return held
     seen: dict[tuple[str, str], list[str]] = {}
     for line in text.splitlines():
@@ -1187,8 +1195,8 @@ def archive_captures(fam: dict, manifest: dict, today: str, since: int) -> list[
 
 
 def archive_candidates(fam: dict, manifest: dict, today: str, since: int,
-                       listed: list[str], include: list[str],
-                       exclude: list[str]) -> tuple[list[str], list[str]]:
+                       listed: list[str], include: list[str], exclude: list[str],
+                       health: dict | None = None) -> tuple[list[str], list[str]]:
     """Earlier documents worth looking for: (at the manager, in the archive).
 
     `listed` is what the manager's page links tonight.
@@ -1199,7 +1207,7 @@ def archive_candidates(fam: dict, manifest: dict, today: str, since: int,
     now = set(listed)
     at_manager: list[str] = []
     copies: list[str] = []
-    for stamp, original, _digest in archive_captures(fam, manifest, today, since):
+    for stamp, original, _digest in archive_captures(fam, manifest, today, since, health):
         original = _https(original)
         if not any(p.search(original) for p in inc) or any(p.search(original) for p in exc):
             continue
@@ -2253,38 +2261,101 @@ def fetch_documents(links: list[str], fam: dict, manifest: dict, today: str,
 
 
 def fetch_archived(copies: list[str], fam: dict, manifest: dict, today: str,
-                   browser: "BrowserSession", args, health: dict) -> list["Statement"]:
-    """Read the archived copies of statements the manager has taken down.
+                   health: dict) -> list["Statement"]:
+    """The archived copies of statements the manager has taken down.
 
-    Skipped for any document just found at the manager under a dated address:
-    that is the same file, and the manager's own copy is the one to show.
+    Answers from the cache whatever has been read before, and leaves the rest
+    for drain_archive() at the end of the run. Skipped altogether for any
+    document just found at the manager under a dated address: that is the same
+    file, and the manager's own copy is the one to show.
     """
-    wanted = []
+    cached: list[Statement] = []
+    pending: list[str] = []
     for u in copies:
         original = archive_parts(u)[1]
         rec = manifest.get(original) or {}
         if rec.get("verified") and not rec.get("miss") and url_year(original) is not None:
             continue
-        wanted.append(u)
-    if not wanted:
-        return []
-    _host_delays[ARCHIVE_HOST] = max(_host_delay(ARCHIVE_HOST), ARCHIVE_DELAY)
-    print(f"    {len(wanted)} archived cop{'y' if len(wanted) == 1 else 'ies'} of earlier statements")
-    # Its own tally and its own circuit breaker: the archive being slow or
-    # refusing tonight says nothing about the manager, and must not turn a
-    # healthy source "blocked".
-    tally: dict = {}
-    plain = argparse.Namespace(**{**vars(args), "static_only": True})
-    found = fetch_documents(wanted, {**fam, "derive": None}, manifest, today, browser, plain, tally)
-    health["archived"] = len(found)
-    health["from_cache"] = health.get("from_cache", 0) + tally.get("from_cache", 0)
-    health["requests"] = health.get("requests", 0) + tally.get("requests", 0)
-    health["statements"] = health.get("statements", 0) + len(found)
-    if found and health.get("status") == "empty":
-        health["status"] = "ok"
-    if tally.get("status") == "blocked":
-        health["detail"] = "the Internet Archive refused requests tonight; earlier years will be retried"
-    return found
+        if needs_fetch(u, manifest.get(u) or {}, today):
+            pending.append(u)
+            continue
+        st = process_pdf(u, fam["id"], manifest, today)
+        if st:
+            cached.append(st)
+    if cached:
+        health["archived"] = len(cached)
+        health["statements"] = health.get("statements", 0) + len(cached)
+        if health.get("status") == "empty":
+            health["status"] = "ok"
+    if pending:
+        print(f"    {len(pending)} archived cop{'y' if len(pending) == 1 else 'ies'} "
+              f"of earlier statements left for the end of the run")
+        _archive_queue.append((fam, pending, health))
+    return cached
+
+
+def drain_archive(manifest: dict, today: str) -> None:
+    """Read the queued archived copies, patiently, with whatever time is left.
+
+    This runs after every manager has been crawled, for two reasons. The
+    archive serves a few files and then answers 429 for some minutes - most of
+    all to shared addresses like a build server's - so reading from it is
+    mostly waiting, and no manager's own crawl should wait behind it. And it is
+    the one part of a run that can simply be cut short: a copy never changes,
+    so whatever is not read tonight is read tomorrow.
+    """
+    queue = list(_archive_queue)
+    _archive_queue.clear()
+    total = sum(len(p) for _, p, _ in queue)
+    if not total:
+        return
+    print(f"\n[earlier years] {total} archived cop{'y' if total == 1 else 'ies'} "
+          f"to read from the Internet Archive")
+    state = {"closed": False, "refused": 0}
+
+    def get(url: str):
+        while True:
+            status, blob, hdrs = fetch(url, binary=True)
+            if status != 429:
+                state["refused"] = 0
+                return status, blob, hdrs
+            state["refused"] += 1
+            cut_short = _deadline is not None and time.monotonic() + ARCHIVE_COOLDOWN > _deadline
+            if state["refused"] >= ARCHIVE_PATIENCE or cut_short:
+                # Asking again while refused only lengthens the refusal.
+                state["closed"] = True
+                return status, blob, hdrs
+            print(f"    - the archive asked us to wait; pausing {ARCHIVE_COOLDOWN / 60:g} min")
+            time.sleep(ARCHIVE_COOLDOWN)
+
+    done = 0
+    for fam, pending, health in queue:
+        breaker = Breaker()
+        got = left = 0
+        for u in pending:
+            if state["closed"] or out_of_time():
+                left += 1
+                continue
+            st = process_pdf(u, fam["id"], manifest, today, getter=get, breaker=breaker,
+                             via="plain HTTP", name_pattern=fam.get("name_pattern"),
+                             name_fix=fam.get("name_fix"), split=fam.get("split"))
+            done += 1
+            got += bool(st)
+            if state["closed"] and not st:
+                left += 1
+            if done % 20 == 0:
+                save_manifest(manifest)
+                print(f"      {done}/{total} read")
+        health["archived"] = health.get("archived", 0) + got
+        health["statements"] = health.get("statements", 0) + got
+        health["requests"] = health.get("requests", 0) + breaker.fetched
+        if got and health.get("status") == "empty":
+            health["status"] = "ok"
+        if left:
+            health["detail"] = (f"{left} archived cop{'y' if left == 1 else 'ies'} of earlier years "
+                                "still to read - the Internet Archive serves only so many at a time")
+        print(f"    {fam['id']}: {got} read" + (f", {left} left for the next run" if left else ""))
+    save_manifest(manifest)
 
 
 def crawl_family(fam: dict, defaults: dict, manifest: dict, args, today: str):
@@ -2518,7 +2589,7 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
         earlier += earlier_year_urls(links, args.since_year)
     if fam.get("archive"):
         at_manager, archived_copies = archive_candidates(
-            fam, manifest, today, args.since_year, links, include, exclude)
+            fam, manifest, today, args.since_year, links, include, exclude, health)
         earlier += at_manager
     earlier = sorted(set(earlier) - set(links))
     if earlier:
@@ -2567,7 +2638,7 @@ def _crawl_family_inner(fam: dict, defaults: dict, manifest: dict, args, today: 
         return [], health
 
     statements = fetch_documents(links, fam, manifest, today, browser, args, health)
-    statements += fetch_archived(archived_copies, fam, manifest, today, browser, args, health)
+    statements += fetch_archived(archived_copies, fam, manifest, today, health)
     # A hub that lists nothing while we still hold its statements has not
     # gone quiet - its page has changed shape under us (or failed to render),
     # and new statements will be missed until someone looks. Say so, rather
@@ -2822,6 +2893,8 @@ def main() -> int:
         # already paid for.
         save_manifest(manifest)
 
+    # Last, because it is mostly waiting and can be cut short (see there).
+    drain_archive(manifest, today)
     save_manifest(manifest)
 
     # Assemble from the whole cache so a partial run updates its families

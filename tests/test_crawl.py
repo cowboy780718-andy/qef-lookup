@@ -701,6 +701,16 @@ if __name__ == "__main__":
 class EarlierYears(Patched):
     """Statements a manager has taken down: its old addresses, then the archive."""
 
+    def setUp(self):
+        super().setUp()
+        self._cooldown = crawl.ARCHIVE_COOLDOWN
+        crawl.ARCHIVE_COOLDOWN = 0
+        crawl._archive_queue.clear()
+
+    def tearDown(self):
+        crawl.ARCHIVE_COOLDOWN = self._cooldown
+        super().tearDown()
+
     FAM = {"id": "fam", "hub": "https://m.example/pfic",
            "archive": {"prefix": "m.example/docs/"}}
     INCLUDE = [r"(?i)pfic.*\.pdf$"]
@@ -776,20 +786,53 @@ class EarlierYears(Patched):
         m = {}
         crawl.process_pdf(live, "fam", m, TODAY)
         self.calls.clear()
-        health = {}
-        got = crawl.fetch_archived([copy], self.FAM, m, TODAY, None, args(), health)
+        got = crawl.fetch_archived([copy], self.FAM, m, TODAY, {})
+        crawl.drain_archive(m, TODAY)
         self.assertEqual(got, [])
         self.assertEqual(self.calls, [])
+
+    def test_copies_are_read_at_the_end_of_the_run_and_from_the_cache_after_that(self):
+        copies = [f"https://web.archive.org/web/2024010100000{i}id_/https://m.example/docs/pfic-{i}.pdf"
+                  for i in range(3)]
+        self.serve(lambda u, h: (200, PDF, {}))
+        m, health = {}, {"status": "ok", "statements": 5}
+        self.assertEqual(crawl.fetch_archived(copies, self.FAM, m, TODAY, health), [])
+        self.assertEqual(self.calls, [])                 # nothing asked during the manager's crawl
+        crawl.drain_archive(m, TODAY)
+        self.assertEqual(len(self.calls), 3)
+        self.assertEqual(health["archived"], 3)
+        self.assertEqual(health["statements"], 8)
+        self.calls.clear()
+        again = {"status": "ok", "statements": 5}
+        self.assertEqual(len(crawl.fetch_archived(copies, self.FAM, m, "2026-11-12", again)), 3)
+        crawl.drain_archive(m, "2026-11-12")
+        self.assertEqual(self.calls, [])
+        self.assertEqual(again["statements"], 8)
+
+    def test_a_refusal_is_waited_out_and_the_copy_asked_for_again(self):
+        url = "https://web.archive.org/web/20240101000000id_/https://m.example/docs/pfic-1.pdf"
+        answers = [(429, b"", {}), (200, PDF, {})]
+        self.serve(lambda u, h: answers.pop(0))
+        m, health = {}, {"status": "ok", "statements": 0}
+        crawl.fetch_archived([url], self.FAM, m, TODAY, health)
+        crawl.drain_archive(m, TODAY)
+        self.assertEqual(health["archived"], 1)
+        self.assertNotIn("detail", health)
 
     def test_the_archive_refusing_does_not_mark_the_manager_blocked(self):
         copies = [f"https://web.archive.org/web/2024010100000{i}id_/https://m.example/docs/pfic-{i}.pdf"
                   for i in range(4)]
         self.serve(lambda u, h: (429, b"", {}))
         health = {"status": "ok", "statements": 5, "requests": 2, "from_cache": 3}
-        got = crawl.fetch_archived(copies, self.FAM, {}, TODAY, None, args(), health)
+        m = {}
+        got = crawl.fetch_archived(copies, self.FAM, m, TODAY, health)
+        crawl.drain_archive(m, TODAY)
         self.assertEqual(got, [])
         self.assertEqual(health["status"], "ok")
         self.assertEqual(health["statements"], 5)
+        self.assertIn("still to read", health["detail"])
+        # ...and it stops asking once the archive has refused three times running.
+        self.assertEqual(len(self.calls), crawl.ARCHIVE_PATIENCE)
 
     def test_this_years_addresses_are_tried_with_earlier_years(self):
         got = crawl.earlier_year_urls(
