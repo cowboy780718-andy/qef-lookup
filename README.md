@@ -2,234 +2,249 @@
 
 **Live:** https://qef-lookup.cowboy780718.workers.dev
 
-| Piece | Where | Deployed by |
-|---|---|---|
-| Site | `qef-lookup` Worker | Auto — pushing to `master` triggers a Cloudflare build |
-| PDF proxy | `qef-pdf-proxy` Worker | Manual, one-off. Its code does not change. |
-| Crawler | GitHub Actions, nightly ~07:20 UTC | Commits `web/data/index.json`, which publishes the site |
-
-The loop: crawler runs → commits a refreshed index → the push triggers a
-Cloudflare build → the live site updates. Nothing to upload by hand.
-
-**Only `wrangler.toml` at the repo root belongs to the site.** If Cloudflare ever
-offers a PR renaming it to `qef-pdf-proxy`, decline: that would deploy the
-website's files over the proxy and silently break ZIP downloads.
-
-
 Find and bulk-download PFIC Annual Information Statements (QEF statements) for
-Form 8621 work, instead of navigating twenty fund company websites by hand.
+Form 8621 work, instead of navigating forty fund company websites by hand.
 
-Runs entirely on free infrastructure. No server, no database, no monthly bill.
+Runs entirely on free infrastructure. No server to look after, no database, no
+monthly bill.
 
 ---
 
 ## What it does
 
-1. **Identify** — search by fund name, ticker or fund code, or drop a client PDF
-   (bank statement, T3, brokerage report) and let the page pull fund names out of it.
-2. **Locate** — a pre-built index of every statement the crawler has found and
+1. **Identify** - search by fund name, ticker or fund code (several at once,
+   separated by commas), or drop a client PDF (brokerage statement, T3) and let
+   the page pick the fund names out of it. The PDF is read inside the browser
+   and never uploaded.
+2. **Locate** - a pre-built index of every statement the crawler has found and
    verified, so lookups are instant rather than a live search.
-3. **Select a period** — filter by the *fund's* tax year, or a custom period-end
-   range. The fund's year, not the calendar year: BMO and RBC GAM run to 30 June,
-   CI to 31 March.
-4. **Bulk download** — multi-select across funds and years, get one ZIP with
+3. **Select a period** - filter by the *fund's* tax year, or a custom period-end
+   range. The fund's year, not the calendar year: BMO and RBC run to 30 June,
+   CI to 31 March, NEI to 30 September, Hamilton and Global X to 30 April.
+4. **Bulk download** - multi-select across funds and years, get one ZIP with
    normalised filenames and a manifest CSV for the working paper file.
-5. **Stay working** — a nightly crawl re-checks every source and opens a GitHub
-   issue the moment one breaks.
+5. **Stay working** - a nightly crawl re-checks every source, and opens a GitHub
+   issue when one needs attention.
 
-### The negative findings register
+### What each manager is, to this tool
 
-"No statement exists for this fund" is a research result with the same
-working-paper value as a found PDF, and it is where most of the time goes. The
-**Not offered** tab records those findings with evidence and a verification
-date, so a dead end is investigated once rather than once per client.
+Every manager that has been looked at is in the *Fund family* list, whatever was
+found - a manager missing from the list looks like one nobody thought of.
 
-The canonical case is CIBC: CIBC-branded mutual funds, CIBC Index Funds, Managed
-Portfolios and Axiom Portfolios receive **no** statement, while sister brands
-Renaissance and Imperial Pools **do**. Same bank, opposite answers, nothing on
-the surface to tell you which is which.
+| Kind | Meaning | Count |
+|---|---|---:|
+| Collected | Statements are fetched, opened and verified. They can go in a ZIP. | 27 |
+| Links only | The manager's own links are listed, but the documents are never fetched, because its `robots.txt` asks automated tools not to. Shown as "link only - not checked". | 4 |
+| On request | The manager says it issues statements on request and posts none (Sun Life). | 1 |
+| Fetch by hand | Statements are posted but cannot be collected (PIMCO). | 1 |
+| Nothing located | No statement could be found on the manager's public website on the date given. | 8 |
+
+Wording matters for the last group. The tool records what was found on a public
+website on a date. It never says a manager "does not issue" statements - one may
+be available on request - and a test (`tests/test_sources.py`) fails the build
+if that phrasing creeps into the registry.
 
 ---
 
-## Architecture
+## How it fits together
 
 ```
 GitHub Actions (nightly)  ->  crawler/crawl.py  ->  web/data/index.json  ->  git commit
-                                                          |
-                              Cloudflare Pages  <---------+   (static site)
-                                     |
-                                     +--> Cloudflare Worker (PDF proxy, for ZIP bundling)
+                                                    web/data/hosts.json        |
+                                                                               v
+                                     Cloudflare (rebuilds the site on every commit)
+                                       |-- files under web/   the page, the index
+                                       '-- worker/site.js     /pdf?u=...  (ZIP downloads)
 ```
 
-| Piece | Service | Free tier |
+| Piece | Where it runs | How it gets deployed |
 |---|---|---|
-| Crawler | GitHub Actions | Unlimited minutes on a public repo |
-| Index | Static JSON in the repo | — |
-| Website | Cloudflare Pages | Unlimited sites, custom domain |
-| PDF proxy | Cloudflare Worker | 100,000 requests/day |
-| Alerting | GitHub Issues | — |
+| Crawler | GitHub Actions, nightly | Nothing to deploy - it runs from the repo |
+| Site | Cloudflare Worker `qef-lookup` | Automatically, on every push to `master` |
+| Download helper (`/pdf`) | Part of the same Worker | With the site |
+
+The loop: crawler runs -> commits a refreshed index -> the push triggers a
+Cloudflare build -> the live site updates. Nothing is uploaded by hand.
 
 **Client documents never leave your machine.** PDFs dropped on the page are
-parsed in the browser with PDF.js. There is no upload endpoint, because there is
-no server.
+parsed in the browser with PDF.js. There is no upload endpoint.
 
 **Nothing is rehosted.** The index stores links; documents are served from each
-manager's own site. The Worker proxies bytes on demand so the browser can bundle
-a ZIP, and caches them at the edge — it never becomes a document archive.
+manager's own site. `/pdf` fetches a statement on demand so the browser can put
+it in a ZIP - browsers will not let a page read another site's PDF directly -
+and it is not an archive.
+
+**The `/pdf` helper is not an open proxy.** It only fetches from hosts listed in
+`web/data/hosts.json`, which the crawler regenerates from the index every night;
+the reply must really be a PDF; and other websites cannot use it.
+
+> `worker/worker.js` + `worker/wrangler.toml` are the *old* stand-alone proxy
+> (`qef-pdf-proxy`). Its list of allowed hosts was kept by hand and went stale,
+> which is why ZIPs failed for six managers. The page now only falls back to it
+> if `/pdf` is missing. Once `/pdf` is seen working on the live site, the old
+> Worker can be deleted from Cloudflare.
+>
+> **Only `wrangler.toml` at the repo root belongs to the site.** If Cloudflare
+> ever offers a pull request renaming it to `qef-pdf-proxy`, decline it.
 
 ---
 
 ## Working with the nightly crawler
 
-`web/data/index.json` is generated, and the nightly job commits it. If you also
-change it locally you will get a merge conflict on a 6MB file.
+`web/data/index.json` and `web/data/hosts.json` are generated, and the nightly
+job commits them. If you also change them locally you will get a merge conflict
+on a 6 MB file.
 
 **Always Pull before you Push.** In GitHub Desktop, if the top bar shows a
 number next to a down arrow, click that first.
 
-If a conflict happens anyway, do not hand-merge it. Take the crawler's copy and
-regenerate:
+If a conflict happens anyway, do not hand-merge it. Take the crawler's copy:
 
 ```bash
-git checkout --theirs web/data/index.json
-git add web/data/index.json
-python crawler/crawl.py --rebuild-only --since-year 2021
+git checkout --theirs web/data/index.json web/data/hosts.json
+git add web/data/index.json web/data/hosts.json
 ```
 
-## Setup
+### Running things by hand (GitHub -> Actions -> "Crawl QEF statements" -> Run workflow)
 
-### 1. Run the crawler locally
+| Field | Use |
+|---|---|
+| `only` | Crawl just these managers, e.g. `mackenzie tdam` (ids are in `crawler/sources.yaml`) |
+| `refresh` | Re-read every listed document, ignoring the cache. Use with `only` after changing a manager's settings |
+| `static_only` | Skip the managers that need a headless browser |
+| `since_year` | Oldest fund tax year to index (the nightly run uses 2021) |
+
+---
+
+## Running it on your own computer
 
 ```bash
 pip install -r crawler/requirements.txt
 python -m playwright install chromium
-python crawler/crawl.py --limit 20      # smoke test
-python crawler/crawl.py                 # full run
 ```
-
-Useful flags: `--only mackenzie tdam`, `--static-only`, `--limit N`.
-
-### 2. Serve the site locally
 
 ```bash
-python -m http.server 8080 --directory web
+python crawler/crawl.py --since-year 2021 --only mawer --limit 5   # try one manager
+python -m unittest discover -s tests                                # crawler tests
+python tools/dev.py --test tests/test_lib.mjs tests/test_worker.mjs # site and /pdf tests
+python tools/dev.py                                                 # the site, at http://localhost:8099
 ```
 
-### 3. Deploy the site (Cloudflare Pages)
+`tools/dev.py` starts the site exactly as Cloudflare serves it - static files
+plus `worker/site.js` for `/pdf` - so ZIP downloads can be tried locally. It
+uses Node if that is installed, or otherwise the copy bundled with Playwright,
+so nothing extra needs installing. Given arguments, it passes them to that same
+runtime, which is how the second line above runs the JavaScript tests.
 
-Connect the repo in the Cloudflare dashboard, set **build output directory** to
-`web` and leave the build command empty. That is the whole deployment.
-
-### 4. Deploy the PDF proxy (needed only for ZIP bundling)
+Before changing how names, periods or verification work, run
 
 ```bash
-cd worker && npx wrangler deploy
+python crawler/regress.py
 ```
 
-Paste the resulting `*.workers.dev` URL into `web/config.js` as `PDF_PROXY`.
-Without it the site still works — per-statement links and "Open in tabs" go
-straight to the manager's site — but ZIP bundling is unavailable, because
-browsers block cross-origin reads of PDFs that don't send CORS headers.
-
-### 5. Turn on the nightly crawl
-
-Actions are enabled on push. The workflow commits `web/data/index.json`, which
-triggers a Pages rebuild.
+It re-downloads a sample of real statements from the published index and shows
+every one whose fund name, period or verdict would now come out differently.
 
 ---
 
-## Adding a fund family
+## Adding a manager
 
-Add a block to `crawler/sources.yaml`. No code changes.
+Add a block to `crawler/sources.yaml`. No code changes for the common cases.
 
 ```yaml
   - id: newfamily
     name: New Family Investments
     country: CA
-    mode: static          # or: browser
-    fye: "12-31"          # or "varies"
+    mode: static          # or: browser (the page builds its list with JavaScript)
+    fye: "12-31"          # fund year end, or "varies"
     hub: https://example.com/tax/pfic
     link_include: ['(?i)pfic.*\.pdf']
 ```
 
-Then add the PDF host to `ALLOWED_HOSTS` in `worker/worker.js` so the proxy will
-fetch it. Test with `python crawler/crawl.py --only newfamily --limit 5`.
+Then `python crawler/crawl.py --only newfamily --limit 5`. The download helper
+picks the new host up by itself on the next nightly run.
+
+What a block can say, each added for a real manager:
+
+| Key | For | Example |
+|---|---|---|
+| `link_include` / `link_exclude` | Which links on the page are statements | most |
+| `extra_hubs` | A second page to read with the same filters | NBI's French page, Dynamic's archive |
+| `follow` | One page per fund, each linking its own statement | Manulife, Purpose, Evolve, Harvest |
+| `link_section` | Take every PDF under one heading, whatever it is called | Mawer (files named by hash) |
+| `url_scan` | Addresses that are in the page's data but not in a link | Starlight |
+| `json_api` | The page loads its list from an endpoint | Dimensional, Franklin Templeton |
+| `derive` | Statements exist at a predictable address but are not linked | BlackRock |
+| `year_urls` | One document per year at a fixed address | Desjardins |
+| `doc_type: html_table` | The statement is a table on the page, not a file | Hamilton |
+| `split` | One document covers many funds | Guardian (by pages), Global X (by rows) |
+| `listing_only` | List the manager's links without fetching them | Capital Group, iA Clarington, Lysander, Franklin Templeton |
+| `access: request / manual / none` | Not crawled; `guidance` explains | Sun Life, PIMCO, AGF |
+| `caveat` | A note shown on every fund of this manager | "amounts are per unit PER DAY" |
+| `covers` | Fund names to match for a manager with nothing to list | Sun Life's 17 funds |
+| `name_fix`, `delay` | Repair a broken text layer; pace a rate-limiting host | Sprott; Harvest |
 
 ---
 
 ## How a document gets into the index
 
-Link text lies, filenames lie, and URL patterns drift between years — Mawer and
-TD both moved their paths mid-catalogue. So a PDF is admitted only after its
-**text** has been checked:
+Link text lies, filenames lie, and URL patterns drift between years. So a PDF is
+admitted only after its **text** has been checked:
 
-- scores against markers of a real statement (`qualified electing fund`,
+- it scores against markers of a real statement (`qualified electing fund`,
   `1.1295-1`, `ordinary earnings`, `net capital gain`, `Form 8621`),
-- loses points for FAQ / sample / specimen language,
-- needs a score of 3+,
-- has its **period end read out of the document**, falling back to the family's
-  declared fiscal year end only when the text is unreadable.
+- loses points for FAQ / sample / specimen language, and needs a score of 3+,
+- has its **period end read out of the document** - never assumed from the
+  manager's usual year end.
 
-Content hashes are stored, so a manager reissuing a corrected statement shows up
-as a change rather than passing silently.
+"Links only" entries are the exception, and are labelled as such everywhere:
+nothing was opened, so nothing was verified.
+
+A statement that has been verified is only dropped from the index after its
+address has positively gone (404) on three nights running. One failed request -
+a timeout, a rate limit - never removes anything.
 
 ---
 
 ## Crawler etiquette
 
-- `robots.txt` is honoured; a rule naming `QEFLookupBot` or `*` will stop it.
-- One request per host per second.
-- Every request carries an `X-Crawler` header naming the project.
-- Statements are fetched, verified, and linked — not mirrored.
-
-One thing to know: several hosts (Mackenzie, Global X, Sun Life) sit behind a
-WAF that rejects Python's TLS fingerprint regardless of headers, while serving
-the identical page to a browser and serving their PDFs to anyone. Rather than
-spoof a TLS fingerprint, the crawler escalates to real headless Chromium for the
-hub page — one request per family per run. Mackenzie's `robots.txt` explicitly
-allows crawling with no crawl-delay, so the block is a crude heuristic rather
-than a stated policy. If a manager does state one, add them to a skip list.
+- `robots.txt` is honoured, read by the standard longest-match rule; a rule
+  naming `QEFLookupBot` or `*` will stop it. Where a manager's file forbids its
+  documents but not its listing page, only the listing page is read.
+- A published `Crawl-delay` is respected. Otherwise about three requests a
+  second per host, slowing automatically when a host answers 429.
+- A known document is looked at again only every 10 days (30 for closed tax
+  years), on a night of its own, with a conditional request - so most nights most
+  managers receive a handful of requests, not their whole catalogue.
+- If a host refuses twelve requests in a row, it is left alone for the night.
+- Every request carries an `X-Crawler` header naming the project and its address.
+- Bot-protection is not worked around. PIMCO's tax centre withholds its content
+  from automated browsers on purpose, so PIMCO is "fetch by hand".
 
 ---
-
-## Known gaps that affect the workflow
-
-**Fund codes are missing for mutual funds.** Only ~12% of indexed funds carry a
-searchable code, and the split is not random:
-
-| Product type | Code coverage | Why |
-|---|---|---|
-| ETFs (iShares, Vanguard, Mackenzie, Fidelity) | ~100% | Exchange ticker appears in the URL and document |
-| Mutual funds (RBC, TD, Renaissance, iA Clarington, CIBC, most of CI) | ~0% | Identified by FundSERV codes (RBF556, TDB900), which client statements show but PFIC statements do not |
-
-Practical effect: dropping in a client statement matches on **fund name**, which
-works because most statements print the name alongside the code — but searching
-by `RBF556` alone will find nothing. Closing this needs a FundSERV-code-to-fund
-mapping from a separate source; it cannot be extracted from the statements.
-
-**Global X publishes one combined table** covering all its ETFs rather than one
-document per fund, so it does not fit the one-document-one-fund model and
-currently indexes as a single entry. Its `robots.txt` also requests a 30-second
-crawl delay, which the crawler honours, making it a deliberately slow family.
-
-**Four families yield nothing yet** — Manulife, Purpose, Sun Life and PIMCO
-return their hub but no documents, because their lists are built by JavaScript
-in ways the generic expansion does not reach. BMO times out. Each needs its own
-selector work.
 
 ## Limitations, stated plainly
 
 - **Index coverage is not the same as reality.** A fund absent from the index may
-  simply not be crawled yet. Absence is not evidence that no statement exists —
-  only the **Not offered** tab carries that meaning.
+  simply not be covered. Absence is not evidence that no statement exists - only
+  the **Not available** tab and a manager's own note carry that meaning.
 - **No figure extraction.** The tool finds and fetches documents. Ordinary
-  earnings and net capital gain per share are not parsed, and no Form 8621
-  worksheet is produced, by design.
-- **Fidelity and Global X report per unit *per day*** — unit-days must be
-  computed when filing. The tool does not do this.
-- **Personalised statements can't be crawled.** Fidelity issues these on request
-  for non-ETF series; several managers do the same. The register flags it.
-- **Scanned client PDFs won't parse.** The page will say so rather than upload
-  the file somewhere to OCR it.
+  earnings and net capital gain are not parsed out of PDFs, and no Form 8621
+  worksheet is produced, by design. (The one exception is forced: Hamilton
+  publishes its statements as a web table, so the table row is transcribed
+  verbatim, because there is no file.)
+- **Several managers report per unit *per day*** (Fidelity, Hamilton, Global X,
+  Starlight, Mackenzie) - unit-days must be computed. The tool does not do this.
+- **Some managers post only the latest year** at a fixed address (Dimensional,
+  NEI, Capital Group, Harvest). Earlier years appear here only from the date the
+  manager was first crawled.
+- **Fund codes are mostly missing for mutual funds.** Client statements show
+  FundSERV codes (RBF556, TDB900); PFIC statements rarely print them. RBC and
+  National Bank put the code in the file name, so those are searchable. For the
+  rest, searching a code explains whose it is and where to resolve it to a name.
+- **Personalised statements can't be crawled** (Fidelity's non-ETF series, and
+  others on request).
+- **Scanned client PDFs won't parse.** The page says so rather than upload the
+  file somewhere to OCR it.
 - **Always confirm** the statement matches the fund, series and period before
-  filing. A match from a dropped document is a lead, not a determination.
+  using it. A match from a dropped document is a lead, not a determination.
