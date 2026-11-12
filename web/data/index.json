@@ -179,7 +179,7 @@
    "access": null,
    "guidance": null,
    "action": null,
-   "caveat": "Fidelity reports amounts per unit PER DAY.",
+   "caveat": "Fidelity reports amounts per unit PER DAY. Only its ETFs and ETF Series have statements here; for any other series, ask Fidelity.",
    "covers": null,
    "links_only": false,
    "statement_count": 213,
@@ -217869,6 +217869,11 @@
   {
    "scope": "CIBC-branded mutual funds, CIBC Index Funds, CIBC Managed Portfolios, Axiom Portfolios",
    "family": "cibc",
+   "match": [
+    "axiom",
+    "cibc managed portfolio",
+    "cibc index fund"
+   ],
    "finding": "not_available",
    "evidence": "https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance.html",
    "verified": "2026-08-18",
@@ -217879,6 +217884,11 @@
   {
    "scope": "Renaissance HISA, Renaissance Money Market funds",
    "family": "renaissance",
+   "match": [
+    "renaissance hisa",
+    "renaissance high interest",
+    "renaissance money market"
+   ],
    "finding": "not_available",
    "evidence": "https://www.renaissanceinvestments.ca/reporting-governance/pfic",
    "verified": "2026-08-18",

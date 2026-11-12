@@ -173,7 +173,8 @@ families:
     fye: "varies"
     hub: https://www.fidelity.ca/en/pfic_etf_statements/
     caveat: >-
-      Fidelity reports amounts per unit PER DAY.
+      Fidelity reports amounts per unit PER DAY. Only its ETFs and ETF Series
+      have statements here; for any other series, ask Fidelity.
     link_include: ['(?i)/pfic/\d{4}/.+\.pdf', '(?i)pfic_\d{4}_.+\.pdf']
     notes: >-
       Reports per unit PER DAY - unit-days must be computed to file.

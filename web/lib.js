@@ -74,6 +74,29 @@ export function familiesNamed(query, families) {
   });
 }
 
+/**
+ * The "no statement" findings a search should be told about.
+ *
+ * Only when the search is about the funds a finding covers:
+ *   - it names them outright - a finding's `match` phrases, e.g. "axiom"; or
+ *   - it names the manager (or the manager is picked) and found nothing.
+ * Never merely because a manager was named: "No PFIC statement" above a list
+ * of that manager's statements reads as a contradiction, and nobody searching
+ * "Fidelity" knows which series of which fund it is talking about.
+ */
+export function findingsFor(query, negatives, families, found, picked = "") {
+  const terms = queryTerms(query).map((t) => t.split(" "));
+  if (!terms.length) return [];
+  const says = (phrase) => {
+    const keys = norm(phrase).split(" ");
+    return terms.some((words) => keys.every((k) => words.some((w) => w.startsWith(k))));
+  };
+  const named = new Set(familiesNamed(query, families).map((f) => f.id));
+  if (picked) named.add(picked);
+  return (negatives || []).filter((n) =>
+    (n.match || []).some(says) || (!found && named.has(n.family)));
+}
+
 /** Everything about a fund that a search may hit, normalised once and kept. */
 export function haystack(fund) {
   if (fund._hay === undefined) {

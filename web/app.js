@@ -14,7 +14,7 @@
 import {
   esc, kb, keyOf, splitKey, queryTerms, queryScore, identify, planDownloads,
   manifestCsv, htmlStatementFile, healthSummary, linksOnly, notDownloadedText,
-  NOT_CRAWLED, familiesNamed,
+  NOT_CRAWLED, familiesNamed, findingsFor,
 } from "./lib.js";
 
 const CFG = window.QEF_CONFIG;
@@ -231,27 +231,30 @@ function familyGuidance(fam) {
 
 /**
  * What is known about the manager being looked at, shown above its results:
- * its standing note, and the funds its own page says have no statement.
+ * its standing note - and, only when the search is about funds that have
+ * none, the finding that there is no statement for them (see findingsFor).
  *
- * These findings used to sit in a tab of their own, away from the results -
- * where "no statement for CIBC" beside twenty CIBC statements read as a
- * contradiction. Next to the results it says which CIBC funds are which.
+ * `found` is how many funds the search matched.
  */
-function familyContext() {
-  const fams = state.family
+function familyContext(found) {
+  const fams = (state.family
     ? [familyById(state.family)]
-    : familiesNamed(state.query, state.index.families);
-  return fams.filter((f) => f && !NOT_CRAWLED.has(f.access)).map((f) => {
-    const negs = (state.index.negatives || []).filter((n) => n.family === f.id);
-    return (f.caveat ? `<div class="famnote top"><strong>${esc(f.name)}:</strong> ${
-      esc(f.caveat.trim())}</div>` : "") + negs.map((n) => `<div class="guide none">
+    : familiesNamed(state.query, state.index.families))
+    .filter((f) => f && !NOT_CRAWLED.has(f.access));
+  const notes = fams.filter((f) => f.caveat).map((f) =>
+    `<div class="famnote top"><strong>${esc(f.name)}:</strong> ${esc(f.caveat.trim())}</div>`);
+  // Managers with nothing to list already get their own panel saying so.
+  const crawled = new Set((state.index.families || [])
+    .filter((f) => !NOT_CRAWLED.has(f.access)).map((f) => f.id));
+  const negs = findingsFor(state.query, state.index.negatives, state.index.families,
+                           found, state.family).filter((n) => crawled.has(n.family));
+  return notes.join("") + negs.map((n) => `<div class="guide none">
       <h3>No PFIC statement for: <span class="who">${esc(n.scope)}</span></h3>
       ${n.note ? `<p>${esc(n.note)}</p>` : ""}
       ${n.action ? `<p class="todo"><strong>What to do:</strong> ${esc(n.action)}</p>` : ""}
       <p class="src">Checked ${esc(n.verified)}${n.evidence ? ` &middot; <a href="${esc(n.evidence)}"
         target="_blank" rel="noopener">source</a>` : ""}</p>
     </div>`).join("");
-  }).join("");
 }
 
 // --------------------------------------------------------------------------
@@ -376,7 +379,7 @@ function render() {
     const fam = state.family ? familyById(state.family) : null;
     const code = fundCodeHelp(state.query);
     const byName = familyMatchPanels(state.query);
-    const context = state.matches ? "" : familyContext();
+    const context = state.matches ? "" : familyContext(0);
     // A manager that HAS statements, none of which fit the search or the
     // year: say so, and say what is known about it - which is usually why.
     const hasFunds = fam && (fam.fund_count || 0) > 0;
@@ -400,7 +403,7 @@ function render() {
   // A manager's name typed into the search also brings up its guidance when
   // the manager is fetch-by-hand, even though other funds matched the words.
   const alsoByName = state.page === 1 && !state.matches
-    ? familyContext() + familyMatchPanels(state.query) : "";
+    ? familyContext(funds.length) + familyMatchPanels(state.query) : "";
 
   $("results").innerHTML = alsoByName + shown.map((f) => {
     const open = state.expanded.has(f.id);

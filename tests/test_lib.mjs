@@ -8,7 +8,7 @@ import assert from "node:assert/strict";
 import {
   queryTerms, queryScore, termScore, identify, planDownloads, manifestCsv,
   htmlStatementFile, healthSummary, fileNameFor, keyOf, splitKey, baseUrl,
-  linksOnly, notDownloadedText, familyKeywords, familiesNamed,
+  linksOnly, notDownloadedText, familyKeywords, familiesNamed, findingsFor,
 } from "../web/lib.js";
 
 const fund = (id, name, tickers = [], statements = null, family_name = "Example Funds") => ({
@@ -233,4 +233,21 @@ test("a search names a manager whatever else is typed with it", () => {
   assert.deepEqual(ids("goodman"), []);                    // every identifying word is needed
   assert.deepEqual(ids("global dividend"), []);
   assert.deepEqual(ids(""), []);
+});
+
+test("a 'no statement' finding is shown only to a search about the funds it covers", () => {
+  const NEGS = [
+    { family: "cibc", scope: "CIBC mutual funds, Axiom Portfolios", match: ["axiom", "cibc managed portfolio"] },
+    { family: "renaissance", scope: "Renaissance HISA" },
+  ];
+  const shown = (q, found, picked) => findingsFor(q, NEGS, FAMS, found, picked).map((n) => n.family);
+  assert.deepEqual(shown("cibc", 20), []);                        // statements listed below: say nothing
+  assert.deepEqual(shown("", 20, "cibc"), []);                    // manager picked, nothing typed
+  assert.deepEqual(shown("axiom balanced growth", 0), ["cibc"]);  // names the funds outright
+  assert.deepEqual(shown("Axiom", 3), ["cibc"]);                  // ...whatever else matched
+  assert.deepEqual(shown("cibc managed balanced portfolio", 2), ["cibc"]);
+  assert.deepEqual(shown("cibc canadian equity fund", 0), ["cibc"]);   // names the manager, found nothing
+  assert.deepEqual(shown("canadian equity fund", 0, "cibc"), ["cibc"]); // manager picked, found nothing
+  assert.deepEqual(shown("renaissance", 150), []);
+  assert.deepEqual(shown("mackenzie bond", 0), []);
 });

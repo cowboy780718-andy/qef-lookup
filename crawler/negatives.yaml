@@ -13,6 +13,10 @@
 #   scope        - what the finding covers (fund family, a fund range, one fund)
 #   note         - ONE sentence: why there is nothing to list
 #   action       - ONE sentence: what the reader should do about it
+#   match        - optional: words that name the funds covered ("axiom"). A
+#                  search containing them is shown this finding. Without them
+#                  it is shown only when a search names the manager and finds
+#                  nothing - never above a list of that manager's statements.
 #   finding      - not_offered | offered_on_request | registered_only | unreachable
 #   evidence     - a URL a reviewer can open, or a documented statement by the manager
 #   verified     - ISO date the finding was last confirmed
@@ -25,6 +29,7 @@ negatives:
 
   - scope: CIBC-branded mutual funds, CIBC Index Funds, CIBC Managed Portfolios, Axiom Portfolios
     family: cibc
+    match: [axiom, cibc managed portfolio, cibc index fund]
     finding: not_available
     evidence: https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance.html
     verified: 2026-08-18
@@ -38,6 +43,7 @@ negatives:
 
   - scope: Renaissance HISA, Renaissance Money Market funds
     family: renaissance
+    match: [renaissance hisa, renaissance high interest, renaissance money market]
     finding: not_available
     evidence: https://www.renaissanceinvestments.ca/reporting-governance/pfic
     verified: 2026-08-18
