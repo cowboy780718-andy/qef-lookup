@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12T05:24:04+00:00",
+ "generated": "2026-11-12T16:36:35+00:00",
  "stats": {
   "families": 41,
   "families_ok": 30,
@@ -218017,9 +218017,10 @@
    "candidates": 209,
    "message": "hub needed browser",
    "derived_names": 0,
-   "from_cache": 143,
-   "requests": 66,
-   "unchanged": 0
+   "from_cache": 197,
+   "requests": 12,
+   "unchanged": 11,
+   "seconds": 17
   },
   {
    "id": "tdam",
@@ -218034,7 +218035,8 @@
    "derived_names": 0,
    "from_cache": 391,
    "requests": 26,
-   "unchanged": 0
+   "unchanged": 25,
+   "seconds": 9
   },
   {
    "id": "vanguard-ca",
@@ -218048,9 +218050,10 @@
    "message": "",
    "derived_names": 0,
    "skipped_old": 148,
-   "from_cache": 129,
-   "requests": 59,
-   "unchanged": 0
+   "from_cache": 167,
+   "requests": 21,
+   "unchanged": 15,
+   "seconds": 8
   },
   {
    "id": "russell-ca",
@@ -218065,7 +218068,8 @@
    "derived_names": 0,
    "from_cache": 232,
    "requests": 10,
-   "unchanged": 0
+   "unchanged": 9,
+   "seconds": 4
   },
   {
    "id": "ci-gam",
@@ -218079,9 +218083,10 @@
    "message": "",
    "derived_names": 0,
    "skipped_old": 136,
-   "from_cache": 12070,
-   "requests": 579,
-   "unchanged": 0
+   "from_cache": 12077,
+   "requests": 572,
+   "unchanged": 0,
+   "seconds": 202
   },
   {
    "id": "mawer",
@@ -218094,9 +218099,10 @@
    "candidates": 14,
    "message": "",
    "derived_names": 0,
-   "from_cache": 0,
-   "requests": 14,
-   "unchanged": 0
+   "from_cache": 14,
+   "requests": 0,
+   "unchanged": 0,
+   "seconds": 0
   },
   {
    "id": "cibc",
@@ -218109,9 +218115,10 @@
    "candidates": 20,
    "message": "",
    "derived_names": 0,
-   "from_cache": 18,
-   "requests": 2,
-   "unchanged": 0
+   "from_cache": 19,
+   "requests": 1,
+   "unchanged": 0,
+   "seconds": 1
   },
   {
    "id": "blackrock-ishares-ca",
@@ -218124,9 +218131,10 @@
    "candidates": 864,
    "message": "",
    "derived_names": 72,
-   "from_cache": 0,
-   "requests": 864,
-   "unchanged": 0
+   "from_cache": 825,
+   "requests": 39,
+   "unchanged": 14,
+   "seconds": 15
   },
   {
    "id": "capitalgroup-ca",
@@ -218137,7 +218145,8 @@
    "status": "ok",
    "statements": 16,
    "candidates": 16,
-   "message": "links only - the documents are not fetched: capitalgroup.com/robots.txt disallows /content, where every document is kept"
+   "message": "links only - the documents are not fetched: capitalgroup.com/robots.txt disallows /content, where every document is kept",
+   "seconds": 2
   },
   {
    "id": "fidelity-ca",
@@ -218153,7 +218162,8 @@
    "skipped_old": 36,
    "from_cache": 205,
    "requests": 8,
-   "unchanged": 0
+   "unchanged": 0,
+   "seconds": 3
   },
   {
    "id": "ia-clarington",
@@ -218164,7 +218174,8 @@
    "status": "ok",
    "statements": 80,
    "candidates": 80,
-   "message": "links only - the documents are not fetched: iaclarington.com/robots.txt disallows /docs/, where every statement is kept"
+   "message": "links only - the documents are not fetched: iaclarington.com/robots.txt disallows /docs/, where every statement is kept",
+   "seconds": 0
   },
   {
    "id": "renaissance",
@@ -218179,7 +218190,8 @@
    "derived_names": 0,
    "from_cache": 150,
    "requests": 19,
-   "unchanged": 0
+   "unchanged": 18,
+   "seconds": 8
   },
   {
    "id": "hamilton-etfs",
@@ -218190,7 +218202,8 @@
    "status": "ok",
    "statements": 58,
    "candidates": 3,
-   "message": ""
+   "message": "",
+   "seconds": 14
   },
   {
    "id": "rbc-gam",
@@ -218205,7 +218218,8 @@
    "derived_names": 0,
    "from_cache": 875,
    "requests": 46,
-   "unchanged": 0
+   "unchanged": 45,
+   "seconds": 57
   },
   {
    "id": "bmo-gam",
@@ -218219,9 +218233,10 @@
    "message": "hub needed curl",
    "derived_names": 0,
    "skipped_old": 2,
-   "from_cache": 153,
-   "requests": 64,
-   "unchanged": 0
+   "from_cache": 191,
+   "requests": 26,
+   "unchanged": 0,
+   "seconds": 73
   },
   {
    "id": "manulife-im",
@@ -218234,9 +218249,10 @@
    "candidates": 61,
    "message": "",
    "derived_names": 0,
-   "from_cache": 57,
-   "requests": 4,
-   "unchanged": 0
+   "from_cache": 58,
+   "requests": 3,
+   "unchanged": 2,
+   "seconds": 65
   },
   {
    "id": "globalx-ca",
@@ -218250,9 +218266,10 @@
    "message": "",
    "derived_names": 0,
    "delisted": 1,
-   "from_cache": 0,
-   "requests": 2,
-   "unchanged": 0
+   "from_cache": 2,
+   "requests": 0,
+   "unchanged": 0,
+   "seconds": 13
   },
   {
    "id": "purpose",
@@ -218266,9 +218283,10 @@
    "message": "hub needed browser",
    "derived_names": 0,
    "delisted": 2,
-   "from_cache": 0,
-   "requests": 81,
-   "unchanged": 0
+   "from_cache": 75,
+   "requests": 6,
+   "unchanged": 5,
+   "seconds": 1415
   },
   {
    "id": "sunlife-gi",
@@ -218279,7 +218297,8 @@
    "status": "request",
    "statements": 0,
    "candidates": 0,
-   "message": "Sun Life provides PFIC statements for 17 of its funds on request only - they are not posted online (checked 11 November 2026)."
+   "message": "Sun Life provides PFIC statements for 17 of its funds on request only - they are not posted online (checked 11 November 2026).",
+   "seconds": 0
   },
   {
    "id": "pimco-ca",
@@ -218290,7 +218309,8 @@
    "status": "manual",
    "statements": 0,
    "candidates": 0,
-   "message": "PIMCO posts its PFIC statements, but its website blocks automated tools, so they cannot be collected here."
+   "message": "PIMCO posts its PFIC statements, but its website blocks automated tools, so they cannot be collected here.",
+   "seconds": 0
   },
   {
    "id": "dimensional-ca",
@@ -218301,12 +218321,14 @@
    "status": "empty",
    "statements": 19,
    "candidates": 19,
-   "message": "hub reachable but it listed no documents tonight; 19 cached statement(s) kept",
+   "message": "hub reachable but it listed no documents tonight; 19 cached statement(s) kept (document API answered with 253468 bytes but no statement links)",
+   "detail": "document API answered with 253468 bytes but no statement links",
    "derived_names": 0,
    "delisted": 19,
-   "from_cache": 0,
-   "requests": 19,
-   "unchanged": 0
+   "from_cache": 18,
+   "requests": 1,
+   "unchanged": 0,
+   "seconds": 4
   },
   {
    "id": "evolve",
@@ -218319,9 +218341,10 @@
    "candidates": 6,
    "message": "",
    "derived_names": 0,
-   "from_cache": 0,
-   "requests": 6,
-   "unchanged": 0
+   "from_cache": 6,
+   "requests": 0,
+   "unchanged": 0,
+   "seconds": 201
   },
   {
    "id": "bridgehouse",
@@ -218332,7 +218355,8 @@
    "status": "none",
    "statements": 0,
    "candidates": 0,
-   "message": "No PFIC statement is available on Bridgehouse's website: its Legal & Regulatory page has nothing on PFIC, QEF or US taxpayers (checked 19 August 2026)."
+   "message": "No PFIC statement is available on Bridgehouse's website: its Legal & Regulatory page has nothing on PFIC, QEF or US taxpayers (checked 19 August 2026).",
+   "seconds": 0
   },
   {
    "id": "dynamic",
@@ -218345,9 +218369,10 @@
    "candidates": 123,
    "message": "",
    "derived_names": 0,
-   "from_cache": 0,
-   "requests": 123,
-   "unchanged": 0
+   "from_cache": 119,
+   "requests": 4,
+   "unchanged": 3,
+   "seconds": 2
   },
   {
    "id": "franklin-templeton-ca",
@@ -218358,7 +218383,8 @@
    "status": "ok",
    "statements": 67,
    "candidates": 67,
-   "message": "links only - the documents are not fetched: the documents are kept on franklintempletonprod.widen.net, whose robots.txt disallows everything"
+   "message": "links only - the documents are not fetched: the documents are kept on franklintempletonprod.widen.net, whose robots.txt disallows everything",
+   "seconds": 1
   },
   {
    "id": "nei",
@@ -218372,9 +218398,10 @@
    "message": "",
    "derived_names": 0,
    "skipped_old": 4,
-   "from_cache": 0,
-   "requests": 41,
-   "unchanged": 0
+   "from_cache": 35,
+   "requests": 6,
+   "unchanged": 1,
+   "seconds": 4
   },
   {
    "id": "starlight",
@@ -218387,9 +218414,10 @@
    "candidates": 27,
    "message": "",
    "derived_names": 0,
-   "from_cache": 0,
-   "requests": 27,
-   "unchanged": 0
+   "from_cache": 26,
+   "requests": 1,
+   "unchanged": 0,
+   "seconds": 3
   },
   {
    "id": "ninepoint",
@@ -218402,9 +218430,10 @@
    "candidates": 25,
    "message": "",
    "derived_names": 0,
-   "from_cache": 0,
-   "requests": 25,
-   "unchanged": 0
+   "from_cache": 23,
+   "requests": 2,
+   "unchanged": 1,
+   "seconds": 1
   },
   {
    "id": "nbi",
@@ -218419,7 +218448,8 @@
    "derived_names": 0,
    "from_cache": 444,
    "requests": 31,
-   "unchanged": 0
+   "unchanged": 24,
+   "seconds": 11
   },
   {
    "id": "sprott",
@@ -218432,9 +218462,10 @@
    "candidates": 6,
    "message": "",
    "derived_names": 0,
-   "from_cache": 5,
-   "requests": 1,
-   "unchanged": 0
+   "from_cache": 6,
+   "requests": 0,
+   "unchanged": 0,
+   "seconds": 1
   },
   {
    "id": "lysander",
@@ -218445,7 +218476,8 @@
    "status": "ok",
    "statements": 5,
    "candidates": 5,
-   "message": "links only - the documents are not fetched: lysanderfunds.com/robots.txt disallows every .pdf file"
+   "message": "links only - the documents are not fetched: lysanderfunds.com/robots.txt disallows every .pdf file",
+   "seconds": 1
   },
   {
    "id": "desjardins",
@@ -218458,9 +218490,10 @@
    "candidates": 6,
    "message": "",
    "derived_names": 0,
-   "from_cache": 0,
-   "requests": 6,
-   "unchanged": 0
+   "from_cache": 6,
+   "requests": 0,
+   "unchanged": 0,
+   "seconds": 1
   },
   {
    "id": "guardian",
@@ -218473,9 +218506,10 @@
    "candidates": 5,
    "message": "",
    "derived_names": 0,
-   "from_cache": 0,
-   "requests": 5,
-   "unchanged": 0
+   "from_cache": 5,
+   "requests": 0,
+   "unchanged": 0,
+   "seconds": 2
   },
   {
    "id": "harvest",
@@ -218488,9 +218522,10 @@
    "candidates": 28,
    "message": "",
    "derived_names": 0,
-   "from_cache": 0,
-   "requests": 28,
-   "unchanged": 0
+   "from_cache": 22,
+   "requests": 6,
+   "unchanged": 5,
+   "seconds": 56
   },
   {
    "id": "agf",
@@ -218501,7 +218536,8 @@
    "status": "none",
    "statements": 0,
    "candidates": 0,
-   "message": "No PFIC statement is available on AGF's website: its tax information page covers Canadian tax slips only (checked 11 November 2026)."
+   "message": "No PFIC statement is available on AGF's website: its tax information page covers Canadian tax slips only (checked 11 November 2026).",
+   "seconds": 0
   },
   {
    "id": "invesco-ca",
@@ -218512,7 +218548,8 @@
    "status": "none",
    "statements": 0,
    "candidates": 0,
-   "message": "No PFIC statement is available on Invesco Canada's website: it has an article explaining the PFIC rules, but no statements for its own funds (checked 11 November 2026)."
+   "message": "No PFIC statement is available on Invesco Canada's website: it has an article explaining the PFIC rules, but no statements for its own funds (checked 11 November 2026).",
+   "seconds": 0
   },
   {
    "id": "scotia",
@@ -218523,7 +218560,8 @@
    "status": "none",
    "statements": 0,
    "candidates": 0,
-   "message": "No PFIC statement is available for Scotia-branded funds: nothing about PFIC or QEF is posted on scotiafunds.com (checked 11 November 2026)."
+   "message": "No PFIC statement is available for Scotia-branded funds: nothing about PFIC or QEF is posted on scotiafunds.com (checked 11 November 2026).",
+   "seconds": 0
   },
   {
    "id": "fiera",
@@ -218534,7 +218572,8 @@
    "status": "none",
    "statements": 0,
    "candidates": 0,
-   "message": "No PFIC statement is available on Fiera Capital's website: nothing about PFIC or QEF is posted on fieracapital.com (checked 11 November 2026)."
+   "message": "No PFIC statement is available on Fiera Capital's website: nothing about PFIC or QEF is posted on fieracapital.com (checked 11 November 2026).",
+   "seconds": 0
   },
   {
    "id": "beutel-goodman",
@@ -218545,7 +218584,8 @@
    "status": "none",
    "statements": 0,
    "candidates": 0,
-   "message": "No PFIC statement is available on Beutel Goodman's website: a search of beutelgoodman.com for PFIC returns nothing (checked 11 November 2026)."
+   "message": "No PFIC statement is available on Beutel Goodman's website: a search of beutelgoodman.com for PFIC returns nothing (checked 11 November 2026).",
+   "seconds": 0
   },
   {
    "id": "picton-mahoney",
@@ -218556,7 +218596,8 @@
    "status": "none",
    "statements": 0,
    "candidates": 0,
-   "message": "No PFIC statement is available on Picton Mahoney's website: nothing about PFIC or QEF could be found for its funds (checked 11 November 2026)."
+   "message": "No PFIC statement is available on Picton Mahoney's website: nothing about PFIC or QEF could be found for its funds (checked 11 November 2026).",
+   "seconds": 0
   },
   {
    "id": "ferique",
@@ -218567,7 +218608,8 @@
    "status": "none",
    "statements": 0,
    "candidates": 0,
-   "message": "No PFIC statement is available on FERIQUE's website: a search of ferique.com for PFIC returns nothing (checked 11 November 2026)."
+   "message": "No PFIC statement is available on FERIQUE's website: a search of ferique.com for PFIC returns nothing (checked 11 November 2026).",
+   "seconds": 0
   }
  ],
  "fund_code_prefixes": [
