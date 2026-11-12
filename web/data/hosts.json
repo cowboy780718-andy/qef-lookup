@@ -1,13 +1,17 @@
 {
- "generated": "2026-11-10T16:02:46+00:00",
+ "generated": "2026-11-12T05:24:04+00:00",
  "hosts": [
   "az-prd-mawer-com-cms-bda9ehd8a2fqgdgn.a02.azurefd.net",
   "bmo.bynder.com",
   "documents.purposeinvest.com",
+  "dynamic.ca",
+  "evolve-cdn.tor1.cdn.digitaloceanspaces.com",
   "fund-docs.vanguard.com",
   "funds.cifinancial.com",
+  "harvestportfolios.com",
   "russellinvestments.com",
   "sprott.com",
+  "starlightcapital.com",
   "www.blackrock.com",
   "www.cibc.com",
   "www.dimensional.com",
@@ -18,11 +22,14 @@
   "www.mackenzieinvestments.com",
   "www.manulifeim.com",
   "www.nbinvestments.ca",
+  "www.neiinvestments.com",
   "www.ninepoint.com",
   "www.rbcgam.com",
   "www.renaissanceinvestments.ca",
   "www.td.com",
   "www.vanguard.ca"
  ],
- "any_path_hosts": []
+ "any_path_hosts": [
+  "starlightcapital.com"
+ ]
 }
