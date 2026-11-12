@@ -264,3 +264,11 @@ button.ghost { background: none; color: var(--ink-2); }
             padding: 1px 6px; font-size: .72rem; white-space: nowrap; cursor: help; }
 @media (max-width: 720px) { .famnote { padding-left: 15px; } }
 .dot.request { background: var(--accent); }
+
+/* On a phone the two date boxes did not fit side by side and the second one
+   ran past the edge of the panel. */
+@media (max-width: 720px) {
+  .range { flex-wrap: wrap; }
+  .range input[type=date] { flex: 1 1 130px; min-width: 0; }
+  .fgroup { min-width: 0; width: 100%; }
+}
