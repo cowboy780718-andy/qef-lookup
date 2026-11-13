@@ -34,8 +34,12 @@ class Patched(unittest.TestCase):
 
     def setUp(self):
         self._saved = {n: getattr(crawl, n) for n in
-                       ("fetch", "curl_fetch", "pdf_text", "SINCE_YEAR")}
+                       ("fetch", "curl_fetch", "pdf_text", "SINCE_YEAR", "save_manifest")}
         crawl.SINCE_YEAR = 2021
+        # A test must never write the real cache: one that reached
+        # save_manifest() once replaced a 10 MB cache with its own two records.
+        self.saves = 0
+        crawl.save_manifest = lambda m: setattr(self, "saves", self.saves + 1)
         crawl.pdf_text = lambda blob, pages=3: STATEMENT_TEXT
         self.calls = []
 
@@ -757,6 +761,23 @@ class EarlierYears(Patched):
         self.assertEqual(self.candidates(m, today="2027-01-20"), first)
         self.serve(lambda u, h: (200, "", {}))
         self.assertEqual(self.candidates(m, today="2027-01-21"), first)
+
+    def test_a_list_kept_in_the_repository_stands_in_when_the_archive_will_not_give_one(self):
+        import json, tempfile
+        from pathlib import Path
+        rows = [l.split(" ") for l in self.LISTING.splitlines()]
+        saved = crawl.ARCHIVE_LISTS
+        with tempfile.TemporaryDirectory() as tmp:
+            crawl.ARCHIVE_LISTS = Path(tmp) / "archive_lists.json"
+            crawl.ARCHIVE_LISTS.write_text(json.dumps(
+                {"fam": {"prefix": "m.example/docs/", "captures": rows}}), encoding="utf-8")
+            try:
+                self.serve(lambda u, h: (503, None, {}))
+                at_manager, copies = self.candidates({})
+            finally:
+                crawl.ARCHIVE_LISTS = saved
+        self.assertEqual(at_manager, ["https://m.example/docs/2023/pfic-xyz.pdf"])
+        self.assertEqual(len(copies), 3)
 
     def test_a_shared_folder_only_yields_the_files_the_pfic_page_links(self):
         self.serve(lambda u, h: (200, self.LISTING, {}))

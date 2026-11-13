@@ -1125,9 +1125,13 @@ def url_year(url: str) -> int | None:
 ARCHIVE_HOST = "web.archive.org"
 ARCHIVE_CDX = "https://web.archive.org/cdx/search/cdx"
 ARCHIVE_LIST_DAYS = 30
-ARCHIVE_DELAY = 10.0           # seconds between requests to the archive: it throttles hard
+ARCHIVE_DELAY = 5.0            # seconds between requests to the archive: it throttles hard
 ARCHIVE_COOLDOWN = 300         # seconds to stand off when it answers 429
-ARCHIVE_PATIENCE = 3           # refusals in a row before leaving it for the night
+ARCHIVE_PATIENCE = 3           # refusals in a row before giving up, on a run with no deadline
+# The archive's list for a manager, kept in the repository for when the
+# archive will not give it: two nights running it refused Harvest's from the
+# build server, and without the list the old addresses are not known at all.
+ARCHIVE_LISTS = ROOT / "archive_lists.json"
 _archive_queue: list = []      # (family, copies still to read, its health row)
 _host_delays[ARCHIVE_HOST] = ARCHIVE_DELAY
 _ARCHIVED = re.compile(r"^https://web\.archive\.org/web/(\d{14})(?:id_)?/(https?://.+)$")
@@ -1159,6 +1163,10 @@ def archive_captures(fam: dict, manifest: dict, today: str, since: int,
     key = f"archive-list::{fam['id']}"
     prev = manifest.get(key) or {}
     held = prev.get("captures") or []
+    if not held and ARCHIVE_LISTS.exists():
+        kept = json.loads(ARCHIVE_LISTS.read_text(encoding="utf-8")).get(fam["id"]) or {}
+        if kept.get("prefix") == cfg["prefix"]:
+            held = kept.get("captures") or []
     age = ((date.fromisoformat(today) - date.fromisoformat(prev["checked"])).days
            if prev.get("checked") else None)
     asked = prev.get("prefix") == cfg["prefix"]
@@ -2320,9 +2328,15 @@ def drain_archive(manifest: dict, today: str) -> None:
                 state["refused"] = 0
                 return status, blob, hdrs
             state["refused"] += 1
-            cut_short = _deadline is not None and time.monotonic() + ARCHIVE_COOLDOWN > _deadline
-            if state["refused"] >= ARCHIVE_PATIENCE or cut_short:
-                # Asking again while refused only lengthens the refusal.
+            # It refuses in spells - a few files, then nothing for some
+            # minutes - so on a nightly run the time left in the budget is
+            # spent waiting those out, one request per stand-off. With no
+            # deadline to stop it, a few refusals running is enough.
+            if _deadline is None:
+                give_up = state["refused"] >= ARCHIVE_PATIENCE
+            else:
+                give_up = time.monotonic() + ARCHIVE_COOLDOWN > _deadline
+            if give_up:
                 state["closed"] = True
                 return status, blob, hdrs
             print(f"    - the archive asked us to wait; pausing {ARCHIVE_COOLDOWN / 60:g} min")
