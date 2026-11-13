@@ -1,10 +1,10 @@
 {
- "generated": "2026-11-12T20:19:13+00:00",
+ "generated": "2026-11-13T16:20:10+00:00",
  "stats": {
   "families": 41,
-  "families_ok": 30,
-  "funds": 4760,
-  "statements": 15494,
+  "families_ok": 31,
+  "funds": 4824,
+  "statements": 15822,
   "years": [
    2026,
    2025,
@@ -138,7 +138,7 @@
    "caveat": "CIBC posts statements for its ETFs only, one per ETF at a fixed address that it replaces each year. Earlier years shown here are archived copies, where one exists; otherwise ask CIBC.",
    "covers": null,
    "links_only": false,
-   "statement_count": 22,
+   "statement_count": 24,
    "fund_count": 20
   },
   {
@@ -228,8 +228,8 @@
    "caveat": null,
    "covers": null,
    "links_only": false,
-   "statement_count": 169,
-   "fund_count": 169
+   "statement_count": 473,
+   "fund_count": 224
   },
   {
    "id": "hamilton-etfs",
@@ -570,8 +570,8 @@
    "caveat": null,
    "covers": null,
    "links_only": false,
-   "statement_count": 6,
-   "fund_count": 6
+   "statement_count": 28,
+   "fund_count": 15
   },
   {
    "id": "lysander",
@@ -157565,11 +157565,22 @@
      "sha256": "bff6944f48e3dd3c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420215507/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-csbi-en.pdf",
+     "bytes": 81930,
+     "sha256": "8d2dc7fd389ff5cd",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -157691,11 +157702,22 @@
      "sha256": "252b6a7ed109c938",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420215543/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-cieh-en.pdf",
+     "bytes": 80712,
+     "sha256": "e62263fba8c8c149",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -158551,7 +158573,7 @@
      "url": "https://www.dimensional.com/chmedia/236685/source/download/pfic-annual-information-statement_dgrs_global-real-estate-securities-fund-ca.pdf",
      "bytes": 191137,
      "sha256": "d84fe9a96b677c81",
-     "confidence": 13,
+     "confidence": 15,
      "fmt": "pdf"
     }
    ],
@@ -193750,6 +193772,71 @@
    ]
   },
   {
+   "id": "rbc-gam::bluebay-global-convertible-bond-fund-canada-series-ft5",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "BlueBay Global Convertible Bond Fund (Canada) - Series FT5",
+   "tickers": [
+    "RBF612"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf612_e.pdf",
+     "bytes": 154727,
+     "sha256": "c0df27070fcb1cf9",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf612_e.pdf",
+     "bytes": 139294,
+     "sha256": "3d67481ef3bc5a8b",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF612_e.pdf",
+     "bytes": 107775,
+     "sha256": "dfe4ce658e5466c7",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf612_e.pdf",
+     "bytes": 107864,
+     "sha256": "a3720a9c1cadf486",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-06-30",
+     "tax_year": 2021,
+     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf612_e.pdf",
+     "bytes": 107821,
+     "sha256": "765960007fd13698",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
    "id": "rbc-gam::bluebay-global-convertible-bond-fund-canada-series-f",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
@@ -193801,71 +193888,6 @@
      "url": "https://www.rbcgam.com/documents/pfic/2021/rbf690_e.pdf",
      "bytes": 105998,
      "sha256": "b4dcf28f0bd3cbbc",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024,
-    2023,
-    2022,
-    2021
-   ]
-  },
-  {
-   "id": "rbc-gam::bluebay-global-convertible-bond-fund-canada-series-ft5",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "BlueBay Global Convertible Bond Fund (Canada) \u2013 Series FT5",
-   "tickers": [
-    "RBF612"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf612_e.pdf",
-     "bytes": 154727,
-     "sha256": "c0df27070fcb1cf9",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf612_e.pdf",
-     "bytes": 139294,
-     "sha256": "3d67481ef3bc5a8b",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF612_e.pdf",
-     "bytes": 107775,
-     "sha256": "dfe4ce658e5466c7",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2022-06-30",
-     "tax_year": 2022,
-     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf612_e.pdf",
-     "bytes": 107864,
-     "sha256": "a3720a9c1cadf486",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2021-06-30",
-     "tax_year": 2021,
-     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf612_e.pdf",
-     "bytes": 107821,
-     "sha256": "765960007fd13698",
      "confidence": 14,
      "fmt": "pdf"
     }
@@ -194079,7 +194101,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "PH&N Absolute Return Fund \u2013 Series F",
+   "name": "PH&N Absolute Return Fund - Series F",
    "tickers": [
     "RBF5450"
    ],
@@ -195069,7 +195091,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "PH&N Monthly Income Fund \u2013 Series F",
+   "name": "PH&N Monthly Income Fund - Series F",
    "tickers": [
     "RBF5660"
    ],
@@ -195218,7 +195240,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "PH&N Short Term Bond & Mortgage Fund \u2013 Series F",
+   "name": "PH&N Short Term Bond & Mortgage Fund - Series F",
    "tickers": [
     "RBF5250"
    ],
@@ -196084,6 +196106,61 @@
    ]
   },
   {
+   "id": "rbc-gam::rbc-balanced-fund-series-ft8",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Balanced Fund - Series FT8",
+   "tickers": [
+    "RBF1577"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf1577_e.pdf",
+     "bytes": 158811,
+     "sha256": "305e5cfdea953d82",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf1577_e.pdf",
+     "bytes": 147373,
+     "sha256": "708e97c6c215bbf5",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF1577_e.pdf",
+     "bytes": 317046,
+     "sha256": "7837e9a86f71836f",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf1577_e.pdf",
+     "bytes": 112937,
+     "sha256": "33062611ed9f990b",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
    "id": "rbc-gam::rbc-balanced-fund-series-f",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
@@ -196191,61 +196268,6 @@
      "url": "https://www.rbcgam.com/documents/pfic/2022/rbf577_e.pdf",
      "bytes": 112938,
      "sha256": "f4b9eb1d2e3f9ad8",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024,
-    2023,
-    2022
-   ]
-  },
-  {
-   "id": "rbc-gam::rbc-balanced-fund-series-ft8",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Balanced Fund \u2013 Series FT8",
-   "tickers": [
-    "RBF1577"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf1577_e.pdf",
-     "bytes": 158811,
-     "sha256": "305e5cfdea953d82",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf1577_e.pdf",
-     "bytes": 147373,
-     "sha256": "708e97c6c215bbf5",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF1577_e.pdf",
-     "bytes": 317046,
-     "sha256": "7837e9a86f71836f",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2022-06-30",
-     "tax_year": 2022,
-     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf1577_e.pdf",
-     "bytes": 112937,
-     "sha256": "33062611ed9f990b",
      "confidence": 14,
      "fmt": "pdf"
     }
@@ -198405,6 +198427,51 @@
    ]
   },
   {
+   "id": "rbc-gam::rbc-global-balanced-fund-series-ft5",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Global Balanced Fund - Series FT5",
+   "tickers": [
+    "RBF533"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf533_e.pdf",
+     "bytes": 159774,
+     "sha256": "25663be22016628d",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf533_e.pdf",
+     "bytes": 148885,
+     "sha256": "31bb01f9a6c59dc0",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF533_e.pdf",
+     "bytes": 318539,
+     "sha256": "5d28cdd08aed5ecb",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023
+   ]
+  },
+  {
    "id": "rbc-gam::rbc-global-balanced-fund-series-f",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
@@ -198467,51 +198534,6 @@
     2023,
     2022,
     2021
-   ]
-  },
-  {
-   "id": "rbc-gam::rbc-global-balanced-fund-series-ft5",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Global Balanced Fund \u2013 Series FT5",
-   "tickers": [
-    "RBF533"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf533_e.pdf",
-     "bytes": 159774,
-     "sha256": "25663be22016628d",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf533_e.pdf",
-     "bytes": 148885,
-     "sha256": "31bb01f9a6c59dc0",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF533_e.pdf",
-     "bytes": 318539,
-     "sha256": "5d28cdd08aed5ecb",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024,
-    2023
    ]
   },
   {
@@ -200049,6 +200071,51 @@
    ]
   },
   {
+   "id": "rbc-gam::rbc-long-short-north-american-equity-fund-series-f-2021",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Long/Short North American Equity Fund - Series F_2021",
+   "tickers": [
+    "RBF12100"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf12100_e.pdf",
+     "bytes": 157959,
+     "sha256": "ec0d3309249e24bc",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf12100_e.pdf",
+     "bytes": 142520,
+     "sha256": "b4c7e3f60958c961",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF12100_e.pdf",
+     "bytes": 107947,
+     "sha256": "5bb9ffa02c7de97c",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023
+   ]
+  },
+  {
    "id": "rbc-gam::rbc-long-short-north-american-equity-fund-series-f-apr22",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
@@ -200215,51 +200282,6 @@
    ],
    "duplicates_hidden": 0,
    "years": [
-    2023
-   ]
-  },
-  {
-   "id": "rbc-gam::rbc-long-short-north-american-equity-fund-series-f-2021",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Long/Short North American Equity Fund \u2013 Series F_2021",
-   "tickers": [
-    "RBF12100"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf12100_e.pdf",
-     "bytes": 157959,
-     "sha256": "ec0d3309249e24bc",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf12100_e.pdf",
-     "bytes": 142520,
-     "sha256": "b4c7e3f60958c961",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF12100_e.pdf",
-     "bytes": 107947,
-     "sha256": "5bb9ffa02c7de97c",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024,
     2023
    ]
   },
@@ -201083,7 +201105,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC O\u2019Shaughnessy U.S. Value Fund \u2013 Series F",
+   "name": "RBC O\u2019Shaughnessy U.S. Value Fund - Series F",
    "tickers": [
     "RBF616"
    ],
@@ -201148,7 +201170,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Private Canadian Corporate Bond Pool \u2013 Series F",
+   "name": "RBC Private Canadian Corporate Bond Pool - Series F",
    "tickers": [
     "RBF20907"
    ],
@@ -201599,7 +201621,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC QUBE Global Equity Fund \u2013 Series F",
+   "name": "RBC QUBE Global Equity Fund - Series F",
    "tickers": [
     "RBF680"
    ],
@@ -201654,7 +201676,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC QUBE Low Volatility Canadian Equity Fund \u2013 Series F",
+   "name": "RBC QUBE Low Volatility Canadian Equity Fund - Series F",
    "tickers": [
     "RBF689"
    ],
@@ -202694,6 +202716,71 @@
    ]
   },
   {
+   "id": "rbc-gam::rbc-select-very-conservative-portfolio-series-ft5",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Select Very Conservative Portfolio - Series FT5",
+   "tickers": [
+    "RBF5664"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf5664_e.pdf",
+     "bytes": 179904,
+     "sha256": "c641df8579ac9f2e",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf5664_e.pdf",
+     "bytes": 170723,
+     "sha256": "53317a4ec85c12c9",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF5664_e.pdf",
+     "bytes": 322276,
+     "sha256": "e9f13111f787a9a9",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf5664_e.pdf",
+     "bytes": 122366,
+     "sha256": "e3cc0f7944ffa3aa",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-06-30",
+     "tax_year": 2021,
+     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf5664_e.pdf",
+     "bytes": 107781,
+     "sha256": "7305d520ce78fda1",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
    "id": "rbc-gam::rbc-select-very-conservative-portfolio-series-f",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
@@ -202769,71 +202856,6 @@
     }
    ],
    "duplicates_hidden": 3,
-   "years": [
-    2025,
-    2024,
-    2023,
-    2022,
-    2021
-   ]
-  },
-  {
-   "id": "rbc-gam::rbc-select-very-conservative-portfolio-series-ft5",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Select Very Conservative Portfolio \u2013 Series FT5",
-   "tickers": [
-    "RBF5664"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf5664_e.pdf",
-     "bytes": 179904,
-     "sha256": "c641df8579ac9f2e",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf5664_e.pdf",
-     "bytes": 170723,
-     "sha256": "53317a4ec85c12c9",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF5664_e.pdf",
-     "bytes": 322276,
-     "sha256": "e9f13111f787a9a9",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2022-06-30",
-     "tax_year": 2022,
-     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf5664_e.pdf",
-     "bytes": 122366,
-     "sha256": "e3cc0f7944ffa3aa",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2021-06-30",
-     "tax_year": 2021,
-     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf5664_e.pdf",
-     "bytes": 107781,
-     "sha256": "7305d520ce78fda1",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
    "years": [
     2025,
     2024,
@@ -203932,11 +203954,21 @@
      "sha256": "1cb38a89b6c47f33",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_eq_PrivP_EN.pdf",
+     "bytes": 101787,
+     "sha256": "155d078fb048e994",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -203955,11 +203987,21 @@
      "sha256": "df587e6b4260e646",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_fi_PrivP_EN.pdf",
+     "bytes": 112142,
+     "sha256": "974fcdd06ef9aa48",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -203978,11 +204020,21 @@
      "sha256": "a9b97c69ac4fb15c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/CConsFI_P_a_EN.pdf",
+     "bytes": 85793,
+     "sha256": "d26841fbcaf01fc2",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204001,11 +204053,21 @@
      "sha256": "c14c20fb439c2bca",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/CConsFI_P_f_EN.pdf",
+     "bytes": 86172,
+     "sha256": "4be58b2130ff61d7",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204024,11 +204086,21 @@
      "sha256": "9e4643fc04839081",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/CConsFI_P_o_EN.pdf",
+     "bytes": 85802,
+     "sha256": "409bdf759a7b0ba6",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204055,6 +204127,75 @@
    ]
   },
   {
+   "id": "renaissance::cibc-conservative-fixed-income-pool-series-a",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "CIBC Conservative Fixed Income Pool Series A",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/CConsFI_P_a_EN.pdf",
+     "bytes": 82844,
+     "sha256": "3100e38b175ea906",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::cibc-conservative-fixed-income-pool-series-f",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "CIBC Conservative Fixed Income Pool Series F",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/CConsFI_P_f_EN.pdf",
+     "bytes": 82843,
+     "sha256": "043d89d8289f92c9",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::cibc-conservative-fixed-income-pool-series-o",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "CIBC Conservative Fixed Income Pool Series O",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/CConsFI_P_o_EN.pdf",
+     "bytes": 82844,
+     "sha256": "cd7e46cce5ef47c7",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
    "id": "renaissance::cibc-core-fixed-income-pool-class-a",
    "family": "renaissance",
    "family_name": "Renaissance Investments (CIBC)",
@@ -204070,11 +204211,21 @@
      "sha256": "0bff5fb49c09ca16",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/CCoreFI_P_a_EN.pdf",
+     "bytes": 85422,
+     "sha256": "bfdf27a4e80ff3d1",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204093,11 +204244,21 @@
      "sha256": "50d069f82ea4e027",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/CCoreFI_P_f_EN.pdf",
+     "bytes": 85427,
+     "sha256": "773c370ab27d4361",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204116,11 +204277,21 @@
      "sha256": "a73ff3f2da67cfbf",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/CCoreFI_P_o_EN.pdf",
+     "bytes": 85436,
+     "sha256": "b7634fa959d83d95",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204147,6 +204318,75 @@
    ]
   },
   {
+   "id": "renaissance::cibc-core-fixed-income-pool-series-a",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "CIBC Core Fixed Income Pool Series A",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/CCoreFI_P_a_EN.pdf",
+     "bytes": 81904,
+     "sha256": "8a94b33268397d0c",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::cibc-core-fixed-income-pool-series-f",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "CIBC Core Fixed Income Pool Series F",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/CCoreFI_P_f_EN.pdf",
+     "bytes": 81919,
+     "sha256": "3f089a3ad616695c",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::cibc-core-fixed-income-pool-series-o",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "CIBC Core Fixed Income Pool Series O",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/CCoreFI_P_o_EN.pdf",
+     "bytes": 81915,
+     "sha256": "a27a51057dae8798",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
    "id": "renaissance::cibc-core-plus-fixed-income-pool-class-a",
    "family": "renaissance",
    "family_name": "Renaissance Investments (CIBC)",
@@ -204162,11 +204402,21 @@
      "sha256": "a30a0294e6f22af2",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/CCorePlusFI_P_a_EN.pdf",
+     "bytes": 85495,
+     "sha256": "de5d6dae4ec8865c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204185,11 +204435,21 @@
      "sha256": "5a5880769f4e54fc",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/CCorePlusFI_P_f_EN.pdf",
+     "bytes": 85477,
+     "sha256": "e379d9a47d06face",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204208,11 +204468,21 @@
      "sha256": "42baa89873fea2ea",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/CCorePlusFI_P_o_EN.pdf",
+     "bytes": 85505,
+     "sha256": "8d31115c43524eb9",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204236,6 +204506,75 @@
    "duplicates_hidden": 0,
    "years": [
     2025
+   ]
+  },
+  {
+   "id": "renaissance::cibc-core-plus-fixed-income-pool-series-a",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "CIBC Core Plus Fixed Income Pool Series A",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/CCorePlusFI_P_a_EN.pdf",
+     "bytes": 81960,
+     "sha256": "c34a890e113b5719",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::cibc-core-plus-fixed-income-pool-series-f",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "CIBC Core Plus Fixed Income Pool Series F",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/CCorePlusFI_P_f_EN.pdf",
+     "bytes": 81954,
+     "sha256": "bd8edbb5733f589f",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::cibc-core-plus-fixed-income-pool-series-o",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "CIBC Core Plus Fixed Income Pool Series O",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/CCorePlusFI_P_o_EN.pdf",
+     "bytes": 81950,
+     "sha256": "3f0070beb42fa361",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -204277,11 +204616,21 @@
      "sha256": "cf57de483af43492",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/eqt_inc_PrivP_EN.pdf",
+     "bytes": 108558,
+     "sha256": "e923df9246032539",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204323,11 +204672,21 @@
      "sha256": "86a4f14df3218722",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/gbl_eqty_PrivP_EN.pdf",
+     "bytes": 120924,
+     "sha256": "33ac78ea34b6a020",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204346,11 +204705,21 @@
      "sha256": "7af4bd92607810e6",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/int_eqty_PrivP_EN.pdf",
+     "bytes": 123802,
+     "sha256": "605679c45f239775",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204392,11 +204761,21 @@
      "sha256": "597d2ec2b80cb577",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_inc_PrivP_fp_EN.pdf",
+     "bytes": 83582,
+     "sha256": "3819af29ae162fc8",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204415,11 +204794,21 @@
      "sha256": "52af175147916c96",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_inc_PrivP_fpt4_EN.pdf",
+     "bytes": 83644,
+     "sha256": "acfb180e2576ec44",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204438,11 +204827,21 @@
      "sha256": "7ba5f854ec49000a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_inc_PrivP_fpt6_EN.pdf",
+     "bytes": 83615,
+     "sha256": "da3dde77f8da3860",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204461,11 +204860,21 @@
      "sha256": "9c00b75734cbde18",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_inc_PrivP_np_EN.pdf",
+     "bytes": 83617,
+     "sha256": "07d139e8fbacf93b",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204484,11 +204893,21 @@
      "sha256": "be50832c23f58c85",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_inc_PrivP_npt4_EN.pdf",
+     "bytes": 83613,
+     "sha256": "62637debcbc27088",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204507,11 +204926,21 @@
      "sha256": "a701ed5ef9b09ac5",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_inc_PrivP_npt6_EN.pdf",
+     "bytes": 83634,
+     "sha256": "6464bba09d6b636b",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204530,11 +204959,21 @@
      "sha256": "a39b9363692174f1",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_inc_PrivP_o_EN.pdf",
+     "bytes": 83540,
+     "sha256": "6881a5547c7090e8",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204553,11 +204992,21 @@
      "sha256": "20639ed7aa94ed4f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_inc_PrivP_p_EN.pdf",
+     "bytes": 83568,
+     "sha256": "7ded5aaa5078a3e1",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204576,11 +205025,21 @@
      "sha256": "4602e0ebdfe588ee",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_inc_PrivP_pt4_EN.pdf",
+     "bytes": 83594,
+     "sha256": "f1cfb252febec5c8",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204599,11 +205058,21 @@
      "sha256": "5651614565853d50",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_inc_PrivP_pt6_EN.pdf",
+     "bytes": 83614,
+     "sha256": "fec2ba40b7d3b4d9",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204622,11 +205091,21 @@
      "sha256": "d0f7bb6e5d9b1372",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_PrivP_fp_EN.pdf",
+     "bytes": 83556,
+     "sha256": "a77e29cae7998d96",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204645,11 +205124,21 @@
      "sha256": "d611a19df8890eb4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_PrivP_fpt4_EN.pdf",
+     "bytes": 83615,
+     "sha256": "7bfae58f3a1cddab",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204668,11 +205157,21 @@
      "sha256": "5e0d262505629e7b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_PrivP_fpt6_EN.pdf",
+     "bytes": 83601,
+     "sha256": "367da955b01af69b",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204691,11 +205190,21 @@
      "sha256": "8ab16b540608081e",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_PrivP_np_EN.pdf",
+     "bytes": 80845,
+     "sha256": "161211d20e27da9c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204714,11 +205223,21 @@
      "sha256": "e7d0888f63f1d19c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_PrivP_npt4_EN.pdf",
+     "bytes": 83589,
+     "sha256": "7d764be8992477e8",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204737,11 +205256,21 @@
      "sha256": "4dc7d62ff2bf0545",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_PrivP_npt6_EN.pdf",
+     "bytes": 83602,
+     "sha256": "721680927da7974e",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204760,11 +205289,21 @@
      "sha256": "ec23f44b2d2d3311",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_PrivP_o_EN.pdf",
+     "bytes": 83530,
+     "sha256": "39eeaba0e5c1cd70",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204783,11 +205322,21 @@
      "sha256": "be7a1abe470ae580",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_PrivP_p_EN.pdf",
+     "bytes": 83283,
+     "sha256": "4c80a993fc5d5f3b",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204806,11 +205355,21 @@
      "sha256": "232b869d8de905bf",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_PrivP_pt4_EN.pdf",
+     "bytes": 83557,
+     "sha256": "399d24c552dddf67",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204829,11 +205388,21 @@
      "sha256": "2c7cb69730e890bf",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mult_gbl_bal_PrivP_pt6_EN.pdf",
+     "bytes": 83590,
+     "sha256": "7a39c2f9356fe902",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204852,11 +205421,21 @@
      "sha256": "ff4baf6581d6d89f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_fp_EN.pdf",
+     "bytes": 81639,
+     "sha256": "811ed802a16fe5f6",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204875,11 +205454,21 @@
      "sha256": "1d5c0fa408c153f7",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_fpt4_EN.pdf",
+     "bytes": 81893,
+     "sha256": "443d1a357b9f5413",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204898,11 +205487,21 @@
      "sha256": "ffb428ca7db9f5d8",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_fpt6_EN.pdf",
+     "bytes": 81872,
+     "sha256": "81bb672e169337cf",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204921,11 +205520,21 @@
      "sha256": "c4c519266c5453ea",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_fhp_EN.pdf",
+     "bytes": 81705,
+     "sha256": "06e0322a54342e67",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204944,11 +205553,21 @@
      "sha256": "1260a12a1001c2a0",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_fhpt4_EN.pdf",
+     "bytes": 81894,
+     "sha256": "50bae2c93bec5cdf",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204967,11 +205586,21 @@
      "sha256": "645c1db8809ccc6a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_fhpt6_EN.pdf",
+     "bytes": 81900,
+     "sha256": "0d4f4dfd058e338e",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -204990,11 +205619,21 @@
      "sha256": "f6f295a58e046fe7",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_hp_EN.pdf",
+     "bytes": 81670,
+     "sha256": "095d16ba81df0038",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205013,11 +205652,21 @@
      "sha256": "a05e97852c50f8cf",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_hpt4_EN.pdf",
+     "bytes": 81862,
+     "sha256": "6319c0e1ddb0741d",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205036,11 +205685,21 @@
      "sha256": "1dc90c25e2a8712c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_hpt6_EN.pdf",
+     "bytes": 81899,
+     "sha256": "f3499980344dc916",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205059,11 +205718,21 @@
      "sha256": "60524a7bd634142c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_np_EN.pdf",
+     "bytes": 79388,
+     "sha256": "12946f25a24315ee",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205082,11 +205751,21 @@
      "sha256": "2debe6a200b49407",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_npt4_EN.pdf",
+     "bytes": 81884,
+     "sha256": "5c12afe67db36796",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205105,11 +205784,21 @@
      "sha256": "fbaf4899ae663cee",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_npt6_EN.pdf",
+     "bytes": 81902,
+     "sha256": "31e649099bd1b01d",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205128,11 +205817,21 @@
      "sha256": "0a9b003451958166",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_nhp_EN.pdf",
+     "bytes": 79405,
+     "sha256": "b7fd9f2b769087f2",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205151,11 +205850,21 @@
      "sha256": "e3937f8c836fd3fc",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_nhpt4_EN.pdf",
+     "bytes": 81820,
+     "sha256": "c94a411af67d8a0e",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205174,11 +205883,21 @@
      "sha256": "246b012ca02b790a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_nhpt6_EN.pdf",
+     "bytes": 81827,
+     "sha256": "bab22390fda58c61",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205197,11 +205916,21 @@
      "sha256": "8c2058b3e70b6949",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_o_EN.pdf",
+     "bytes": 81643,
+     "sha256": "eb3b97bd0abcc805",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205220,11 +205949,21 @@
      "sha256": "b5354e8a0a91525f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_oh_EN.pdf",
+     "bytes": 81654,
+     "sha256": "bbf625f3d66ca00b",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205243,11 +205982,21 @@
      "sha256": "6910c18293d9f8c8",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_s_EN.pdf",
+     "bytes": 81601,
+     "sha256": "3503284452cae181",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205266,11 +206015,21 @@
      "sha256": "9e51798d7f267435",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_p_EN.pdf",
+     "bytes": 81687,
+     "sha256": "9b9e9fef4511f8fd",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205289,11 +206048,21 @@
      "sha256": "ec314795be2dec18",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_pt4_EN.pdf",
+     "bytes": 81757,
+     "sha256": "3724d150ccf8e14c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205312,11 +206081,21 @@
      "sha256": "2277645e4cbd1571",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/multi_sec_fi_privp_pt6_EN.pdf",
+     "bytes": 81789,
+     "sha256": "75946518db196688",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205335,11 +206114,21 @@
      "sha256": "1e873f501226a0d8",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/real_assets_PrivP_EN.pdf",
+     "bytes": 125203,
+     "sha256": "93f02efac0683b57",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205358,11 +206147,21 @@
      "sha256": "ecb06bdb71816a06",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_eqty_PrivP_EN.pdf",
+     "bytes": 121632,
+     "sha256": "9304499ab371895c",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205381,11 +206180,21 @@
      "sha256": "9bedd1120a5a2aa9",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/ultra_st_inc_PrivP_EN.pdf",
+     "bytes": 82218,
+     "sha256": "69181e1908e74a04",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -205404,11 +206213,31 @@
      "sha256": "65b85e699ff967a3",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_all_cap_EN.pdf",
+     "bytes": 121450,
+     "sha256": "347e962e38bcbbcf",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_all_cap_EN.pdf",
+     "bytes": 120158,
+     "sha256": "739e8ce7d072fa92",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205427,11 +206256,31 @@
      "sha256": "54dc4992afd17b53",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_bal_EN.pdf",
+     "bytes": 121866,
+     "sha256": "6c5fa55a15e93371",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_bal_EN.pdf",
+     "bytes": 120445,
+     "sha256": "e7f17a7f9b68c8ec",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205450,11 +206299,31 @@
      "sha256": "a27c629fa0c588b6",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_bnd_EN.pdf",
+     "bytes": 133450,
+     "sha256": "0a0d19fc2146dd4c",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_bnd_EN.pdf",
+     "bytes": 135140,
+     "sha256": "6488968abfa4ee2f",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205473,11 +206342,31 @@
      "sha256": "e547753cc2dbdff6",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_cor_val_a_EN.pdf",
+     "bytes": 119931,
+     "sha256": "ac4d94755df454cb",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_cor_val_a_EN.pdf",
+     "bytes": 118855,
+     "sha256": "d491c51545fd22db",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205496,11 +206385,31 @@
      "sha256": "2213a3258080625c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_cor_val_f_EN.pdf",
+     "bytes": 119920,
+     "sha256": "843d969c05eeaaf4",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_cor_val_f_EN.pdf",
+     "bytes": 118858,
+     "sha256": "d2efaf70e3c8f574",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205519,11 +206428,31 @@
      "sha256": "b96dc3cce1812735",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_cor_val_o_EN.pdf",
+     "bytes": 119303,
+     "sha256": "20299a2e6b9c6f93",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_cor_val_o_EN.pdf",
+     "bytes": 118136,
+     "sha256": "9a6d63105001a662",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205542,11 +206471,77 @@
      "sha256": "079c293dc6cb06ce",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_div_EN.pdf",
+     "bytes": 128088,
+     "sha256": "b40a406af3b15748",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_div_EN.pdf",
+     "bytes": 129151,
+     "sha256": "a79962eef14bad6a",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-canadian-equity-private-pool",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Canadian Equity Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_eq_PrivP_EN.pdf",
+     "bytes": 141627,
+     "sha256": "37b097735a81b743",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-canadian-fixed-income-private-pool",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Canadian Fixed Income Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_fi_PrivP_EN.pdf",
+     "bytes": 159656,
+     "sha256": "a307ed418880c8b5",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -205565,11 +206560,31 @@
      "sha256": "57937aa37c399b5b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_grwth_EN.pdf",
+     "bytes": 121390,
+     "sha256": "f766c5aa64a31212",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_grwth_EN.pdf",
+     "bytes": 120107,
+     "sha256": "3e4bebc2e87ffdff",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205588,11 +206603,31 @@
      "sha256": "737578a524f27678",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_mthly_inc_EN.pdf",
+     "bytes": 128105,
+     "sha256": "a82746893f229366",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_mthly_inc_EN.pdf",
+     "bytes": 129153,
+     "sha256": "bd1c526e853603de",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205611,11 +206646,54 @@
      "sha256": "c3f6ab85467c1307",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/cdn_sm_cap_EN.pdf",
+     "bytes": 121417,
+     "sha256": "c8592f305e6c5538",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_sm_cap_EN.pdf",
+     "bytes": 119652,
+     "sha256": "e2be71cb712df42d",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-canadian-t-bill-fund",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Canadian T-Bill Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/cdn_tbill_EN.pdf",
+     "bytes": 124196,
+     "sha256": "b7b8c39c88b267d3",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -205634,11 +206712,31 @@
      "sha256": "3f90e91001ff640f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/china_plus_EN.pdf",
+     "bytes": 120917,
+     "sha256": "2b741bffc88eed4f",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/china_plus_EN.pdf",
+     "bytes": 118503,
+     "sha256": "9744032d46df0470",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205657,11 +206755,54 @@
      "sha256": "78b71976f6827ffb",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/corp_bnd_EN.pdf",
+     "bytes": 133406,
+     "sha256": "6fe75889187745eb",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/corp_bnd_EN.pdf",
+     "bytes": 135438,
+     "sha256": "a8431f484ffb55d1",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-diversified-income-fund",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Diversified Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/div_inc_EN.pdf",
+     "bytes": 129088,
+     "sha256": "31a78f7f28448e51",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -205680,11 +206821,54 @@
      "sha256": "df9f23ab4dc5908f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/emerg_mkts_EN.pdf",
+     "bytes": 121728,
+     "sha256": "8bab9e1c0ce025a1",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/emerg_mkts_EN.pdf",
+     "bytes": 119425,
+     "sha256": "2f393141ed615fd7",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-equity-income-private-pool",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Equity Income Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/eqt_inc_PrivP_EN.pdf",
+     "bytes": 154306,
+     "sha256": "32547210380d0a38",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -205703,11 +206887,31 @@
      "sha256": "f71e3582faa64d01",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/flex_yield_EN.pdf",
+     "bytes": 148812,
+     "sha256": "0034c8578dc92516",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/flex_yield_EN.pdf",
+     "bytes": 153889,
+     "sha256": "348ea16254fe7c97",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205726,11 +206930,156 @@
      "sha256": "3644e67e2f3c7993",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/flot_rtrn_rt_inc_EN.pdf",
+     "bytes": 146097,
+     "sha256": "0430b3652583ca6d",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/flot_rtrn_rt_inc_EN.pdf",
+     "bytes": 150781,
+     "sha256": "7f850bfd280ee476",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-global-equity-private-pool",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Global Equity Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/gbl_eqty_PrivP_EN.pdf",
+     "bytes": 168234,
+     "sha256": "af2c71742412ab6a",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-global-focus-currency-neutral-fund-class-a",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Global Focus Currency Neutral Fund Class A",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/gbl_foc_cn_a_EN.pdf",
+     "bytes": 118917,
+     "sha256": "e8272b61da827fa2",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-global-focus-currency-neutral-fund-class-f",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Global Focus Currency Neutral Fund Class F",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/gbl_foc_cn_f_EN.pdf",
+     "bytes": 118928,
+     "sha256": "f6bdb4161abd456e",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-global-focus-currency-neutral-fund-class-o",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Global Focus Currency Neutral Fund Class O",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/gbl_foc_cn_o_EN.pdf",
+     "bytes": 118195,
+     "sha256": "24057e69e9b408e7",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-global-focus-fund",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Global Focus Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/gbl_foc_EN.pdf",
+     "bytes": 119718,
+     "sha256": "e6a68a0dbac67a86",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/gbl_foc_EN.pdf",
+     "bytes": 118228,
+     "sha256": "d0bf84ed90b62895",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024,
+    2022
    ]
   },
   {
@@ -205749,11 +207098,31 @@
      "sha256": "94a8f7fce5491e08",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/gbl_grwth_cn_a_EN.pdf",
+     "bytes": 119597,
+     "sha256": "5e358e54780bde9f",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/gbl_grwth_cn_a_EN.pdf",
+     "bytes": 119026,
+     "sha256": "97e9cc26ce780899",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205772,11 +207141,31 @@
      "sha256": "26c75854e4a6b3bf",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/gbl_grwth_cn_f_EN.pdf",
+     "bytes": 120223,
+     "sha256": "9851674bb7bc224a",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/gbl_grwth_cn_f_EN.pdf",
+     "bytes": 118966,
+     "sha256": "7fd448fadc0dd98a",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205795,11 +207184,31 @@
      "sha256": "f6c9aa01e54df8dd",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/gbl_grwth_cn_o_EN.pdf",
+     "bytes": 120376,
+     "sha256": "2d342cb8d8ee1928",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/gbl_grwth_cn_o_EN.pdf",
+     "bytes": 119014,
+     "sha256": "9e7a88f6bd54f2f7",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205818,11 +207227,31 @@
      "sha256": "c9e0b9da9434f856",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/gbl_grwth_EN.pdf",
+     "bytes": 120995,
+     "sha256": "ed112ade41cc855c",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/gbl_grwth_EN.pdf",
+     "bytes": 119428,
+     "sha256": "95d0f3ff5f06f306",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205841,11 +207270,31 @@
      "sha256": "65dd5b27bfcda686",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/glbl_hlth_care_EN.pdf",
+     "bytes": 121391,
+     "sha256": "7e6faf8c18db0ecc",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_hlth_care_EN.pdf",
+     "bytes": 120111,
+     "sha256": "e38458d33c611ce0",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205864,11 +207313,31 @@
      "sha256": "89e386d325e65e79",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/glbl_infra_cn_a_EN.pdf",
+     "bytes": 120760,
+     "sha256": "a4fe07fc1cc8f728",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_infra_cn_a_EN.pdf",
+     "bytes": 119412,
+     "sha256": "32205558d9450ad8",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205887,11 +207356,31 @@
      "sha256": "222ae31d1844a58c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/glbl_infra_cn_f_EN.pdf",
+     "bytes": 120892,
+     "sha256": "07b758bdf00588ef",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_infra_cn_f_EN.pdf",
+     "bytes": 119667,
+     "sha256": "55901591c06ab7df",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205910,11 +207399,31 @@
      "sha256": "386e113dffafe229",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/glbl_infra_cn_o_EN.pdf",
+     "bytes": 120929,
+     "sha256": "02a0bd3d96e216c4",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_infra_cn_o_EN.pdf",
+     "bytes": 119661,
+     "sha256": "968eda4a167a5d84",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205933,11 +207442,31 @@
      "sha256": "a6037b7054753b9e",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/glbl_infra_EN.pdf",
+     "bytes": 122680,
+     "sha256": "563166302af3b261",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_infra_EN.pdf",
+     "bytes": 121658,
+     "sha256": "f7abfbfbfe6853b8",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205956,11 +207485,31 @@
      "sha256": "a59f81f9e5532f5b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/glbl_mrk_EN.pdf",
+     "bytes": 119762,
+     "sha256": "70a9efdbb016cfcd",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_mrk_EN.pdf",
+     "bytes": 118523,
+     "sha256": "851b58920cc6c849",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -205979,11 +207528,31 @@
      "sha256": "a629fabce90bc940",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/glbl_real_est_cn_a_EN.pdf",
+     "bytes": 120511,
+     "sha256": "c326a45ac52614c0",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_real_est_cn_a_EN.pdf",
+     "bytes": 119209,
+     "sha256": "20cb28d2a0a946c0",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206002,11 +207571,31 @@
      "sha256": "472786c1f01effed",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/glbl_real_est_cn_f_EN.pdf",
+     "bytes": 120835,
+     "sha256": "2465f0490472ead0",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_real_est_cn_f_EN.pdf",
+     "bytes": 119631,
+     "sha256": "1dbe3efe3a99ef34",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206025,11 +207614,31 @@
      "sha256": "a06150d513ee0b88",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/glbl_real_est_cn_o_EN.pdf",
+     "bytes": 120878,
+     "sha256": "2592409011c836fa",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_real_est_cn_O_EN.pdf",
+     "bytes": 119652,
+     "sha256": "3e6bc8d0c4194a62",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206048,11 +207657,31 @@
      "sha256": "6135ed24cdff0ee8",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/glbl_real_est_EN.pdf",
+     "bytes": 122549,
+     "sha256": "5b00b759e32676a2",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_real_est_EN.pdf",
+     "bytes": 121465,
+     "sha256": "b52015ecd04847f7",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206094,11 +207723,54 @@
      "sha256": "4f0d94ea82a692ea",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/glbl_sml_cap_EN.pdf",
+     "bytes": 120520,
+     "sha256": "4e23abf2645bb638",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_sml_cap_EN.pdf",
+     "bytes": 118533,
+     "sha256": "f3dab8c01285c345",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-global-value-fund",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Global Value Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/glbl_val_EN.pdf",
+     "bytes": 120064,
+     "sha256": "53089d54ecd3fe9e",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -206117,11 +207789,31 @@
      "sha256": "ada410a2d7edbbcc",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/mil_hi_inc_EN.pdf",
+     "bytes": 128034,
+     "sha256": "37048dbf7d67da11",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mil_hi_inc_EN.pdf",
+     "bytes": 129074,
+     "sha256": "db1ff76904466fb0",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206140,11 +207832,31 @@
      "sha256": "f53825dbfffe6a14",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/hi_yld_bnd_EN.pdf",
+     "bytes": 131368,
+     "sha256": "a102618b3c7d39b1",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/hi_yld_bnd_EN.pdf",
+     "bytes": 132747,
+     "sha256": "9022937bcc379889",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206186,11 +207898,31 @@
      "sha256": "4ccacd5620c725ec",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/int_eq_cn_a_EN.pdf",
+     "bytes": 119623,
+     "sha256": "f943d8febd82f48f",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/int_eq_cn_a_EN.pdf",
+     "bytes": 119046,
+     "sha256": "9047f92b3b9edd23",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206209,11 +207941,31 @@
      "sha256": "ebd5a3e86e53d639",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/int_eq_cn_f_EN.pdf",
+     "bytes": 120385,
+     "sha256": "72042734345198ba",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/int_eq_cn_f_EN.pdf",
+     "bytes": 119036,
+     "sha256": "a3761c2ba1ba3838",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206232,11 +207984,31 @@
      "sha256": "3318c32a0d3aa891",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/int_eq_cn_o_EN.pdf",
+     "bytes": 120400,
+     "sha256": "9b5e4598a75b3f7c",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/int_eq_cn_o_EN.pdf",
+     "bytes": 119028,
+     "sha256": "9c2d5cac2ee16d09",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206255,11 +208027,537 @@
      "sha256": "9a599ea2d6b1d0a6",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/int_eq_EN.pdf",
+     "bytes": 121000,
+     "sha256": "e3188d063ee4c1a4",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/intl_eq_EN.pdf",
+     "bytes": 119418,
+     "sha256": "1453986776f8b29f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-international-equity-private-pool",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance International Equity Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/int_eqty_PrivP_EN.pdf",
+     "bytes": 164848,
+     "sha256": "05b764b7afc63e1f",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-income-private-pool-class-f-premium",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Income Private Pool Class F-Premium",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_inc_PrivP_fp_EN.pdf",
+     "bytes": 122734,
+     "sha256": "67f96c14bfb7e228",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-income-private-pool-class-f-premium-t4",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Income Private Pool Class F-Premium T4",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_inc_PrivP_fpt4_EN.pdf",
+     "bytes": 122758,
+     "sha256": "1b77c9f9fbff6a98",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-income-private-pool-class-f-premium-t6",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Income Private Pool Class F-Premium T6",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_inc_PrivP_fpt6_EN.pdf",
+     "bytes": 122764,
+     "sha256": "cb1c729e039ff090",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-income-private-pool-class-n-premium",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Income Private Pool Class N-Premium",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_inc_PrivP_np_EN.pdf",
+     "bytes": 122753,
+     "sha256": "038e22ba8ed0afe6",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-income-private-pool-class-n-premium-t4",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Income Private Pool Class N-Premium T4",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_inc_PrivP_npt4_EN.pdf",
+     "bytes": 122752,
+     "sha256": "6cda90f584be6cac",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-income-private-pool-class-n-premium-t6",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Income Private Pool Class N-Premium T6",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_inc_PrivP_npt6_EN.pdf",
+     "bytes": 122770,
+     "sha256": "c0760bdf7a9f76bd",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-income-private-pool-class-o",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Income Private Pool Class O",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_inc_PrivP_o_EN.pdf",
+     "bytes": 122028,
+     "sha256": "03745183e04fc648",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-income-private-pool-premium-class",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Income Private Pool Premium Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_inc_PrivP_p_EN.pdf",
+     "bytes": 122729,
+     "sha256": "7f064e21fe92aa55",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-income-private-pool-premium-t4-class",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Income Private Pool Premium-T4 Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_inc_PrivP_pt4_EN.pdf",
+     "bytes": 122748,
+     "sha256": "6bad2d649a85bf04",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-income-private-pool-premium-t6-class",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Income Private Pool Premium-T6 Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_inc_PrivP_pt6_EN.pdf",
+     "bytes": 122742,
+     "sha256": "ac7c8b5b8d39b6c6",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-private-pool-class-f-premium",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Private Pool Class F-Premium",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_PrivP_fp_EN.pdf",
+     "bytes": 122028,
+     "sha256": "94f9118d5e54393d",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-private-pool-class-f-premium-t4",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Private Pool Class F-Premium T4",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_PrivP_fpt4_EN.pdf",
+     "bytes": 122722,
+     "sha256": "a337a58201e2960e",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-private-pool-class-f-premium-t6",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Private Pool Class F-Premium T6",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_PrivP_fpt6_EN.pdf",
+     "bytes": 122742,
+     "sha256": "f8f8eed0953a0700",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-private-pool-class-n-premium",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Private Pool Class N-Premium",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_PrivP_np_EN.pdf",
+     "bytes": 119465,
+     "sha256": "44f88832d4f7c423",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-private-pool-class-n-premium-t4",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Private Pool Class N-Premium T4",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_PrivP_npt4_EN.pdf",
+     "bytes": 122746,
+     "sha256": "8aec9620e9bed268",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-private-pool-class-n-premium-t6",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Private Pool Class N-Premium T6",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_PrivP_npt6_EN.pdf",
+     "bytes": 122731,
+     "sha256": "ac77c3fc737ef5fc",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-private-pool-class-o",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Private Pool Class O",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_PrivP_o_EN.pdf",
+     "bytes": 121991,
+     "sha256": "a97d4a83e4932dfb",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-private-pool-premium-class",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Private Pool Premium Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_PrivP_p_EN.pdf",
+     "bytes": 120548,
+     "sha256": "5393a161dd2f4ada",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-private-pool-premium-t4-class",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Private Pool Premium-T4 Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_PrivP_pt4_EN.pdf",
+     "bytes": 122727,
+     "sha256": "8e85f9617adef97d",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-asset-global-balanced-private-pool-premium-t6-class",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Asset Global Balanced Private Pool Premium-T6 Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_gbl_bal_PrivP_pt6_EN.pdf",
+     "bytes": 122730,
+     "sha256": "978c385f30db1ed2",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-multi-sector-fixed-income-private-pool",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Multi-Sector Fixed Income Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/mult_sect_fi_PrivP_EN.pdf",
+     "bytes": 185739,
+     "sha256": "9841984f12c694f3",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -206278,11 +208576,31 @@
      "sha256": "fdff31b5ca5bf69e",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_con_inc_port_a_EN.pdf",
+     "bytes": 124086,
+     "sha256": "cec44be15657fb58",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_con_inc_port_a_EN.pdf",
+     "bytes": 122264,
+     "sha256": "4f366d106a7bd8d9",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206301,11 +208619,31 @@
      "sha256": "ef2885b0f1aa4761",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_con_inc_port_f_EN.pdf",
+     "bytes": 124090,
+     "sha256": "572c08f5328633b5",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_con_inc_port_f_EN.pdf",
+     "bytes": 122290,
+     "sha256": "e81c0214ba460107",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206324,11 +208662,31 @@
      "sha256": "c2d88a9a4878c3a8",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_con_inc_port_ft4_EN.pdf",
+     "bytes": 124093,
+     "sha256": "455273acdf871057",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_con_inc_port_ft4_EN.pdf",
+     "bytes": 122279,
+     "sha256": "8d2c30d99944a30f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206347,11 +208705,31 @@
      "sha256": "88e78afbe1a0cd8b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_con_inc_port_ft6_EN.pdf",
+     "bytes": 124100,
+     "sha256": "6a2979f1b5e56ed6",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_con_inc_port_ft6_EN.pdf",
+     "bytes": 122302,
+     "sha256": "0e9f1a8477164560",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206370,11 +208748,31 @@
      "sha256": "657137ede2b38f8f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_con_inc_port_o_EN.pdf",
+     "bytes": 121334,
+     "sha256": "302f6dd15252c257",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_con_inc_port_o_EN.pdf",
+     "bytes": 119926,
+     "sha256": "b00a9cc93353f80d",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206393,11 +208791,31 @@
      "sha256": "4db8ec5b8fe2f46b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_con_inc_port_t4_EN.pdf",
+     "bytes": 124072,
+     "sha256": "2ad22581e80faa0e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_con_inc_port_t4_EN.pdf",
+     "bytes": 122276,
+     "sha256": "628429ef70085fce",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206416,11 +208834,31 @@
      "sha256": "c4b179a44a866e40",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_con_inc_port_t6_EN.pdf",
+     "bytes": 124074,
+     "sha256": "88e7481f3300752d",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_con_inc_port_t6_EN.pdf",
+     "bytes": 122264,
+     "sha256": "0685580dddae51e7",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206439,11 +208877,31 @@
      "sha256": "e19aeadb4aff5f4c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_con_inc_port_e_EN.pdf",
+     "bytes": 124067,
+     "sha256": "f855592a5df04089",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_con_inc_port_e_EN.pdf",
+     "bytes": 122273,
+     "sha256": "16c46dbb16d09064",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206462,11 +208920,192 @@
      "sha256": "5f171eecd37c7ef9",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_con_inc_port_s_EN.pdf",
+     "bytes": 124127,
+     "sha256": "6ac3b12ca6525a40",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_con_inc_port_s_EN.pdf",
+     "bytes": 122286,
+     "sha256": "a19ffa0957262b30",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-optimal-global-equity-currency-neutral-portfolio-class-a",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Optimal Global Equity Currency Neutral Portfolio Class A",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_cn_a_EN.pdf",
+     "bytes": 121674,
+     "sha256": "4d7c7a721317df31",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-optimal-global-equity-currency-neutral-portfolio-class-f",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Optimal Global Equity Currency Neutral Portfolio Class F",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_cn_f_EN.pdf",
+     "bytes": 121683,
+     "sha256": "5b44130f1c37093d",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-optimal-global-equity-currency-neutral-portfolio-class-ft4",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Optimal Global Equity Currency Neutral Portfolio Class FT4",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_cn_ft4_EN.pdf",
+     "bytes": 124408,
+     "sha256": "a5908e7b4f06a5c7",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-optimal-global-equity-currency-neutral-portfolio-class-ft6",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Optimal Global Equity Currency Neutral Portfolio Class FT6",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_cn_FT6_EN.pdf",
+     "bytes": 124425,
+     "sha256": "24d8cc18a8c811e4",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-optimal-global-equity-currency-neutral-portfolio-class-o",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Optimal Global Equity Currency Neutral Portfolio Class O",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_cn_o_EN.pdf",
+     "bytes": 121076,
+     "sha256": "ba9b7de9ddfe91c4",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-optimal-global-equity-currency-neutral-portfolio-class-t4",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Optimal Global Equity Currency Neutral Portfolio Class T4",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_cn_t4_EN.pdf",
+     "bytes": 124398,
+     "sha256": "2571994349091664",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-optimal-global-equity-currency-neutral-portfolio-class-t6",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Optimal Global Equity Currency Neutral Portfolio Class T6",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_cn_t6_EN.pdf",
+     "bytes": 124374,
+     "sha256": "4532fde00f5887c6",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -206485,11 +209124,31 @@
      "sha256": "bddb9adafdc08434",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gbl_eq_a_EN.pdf",
+     "bytes": 122157,
+     "sha256": "8835273891610024",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_a_EN.pdf",
+     "bytes": 120965,
+     "sha256": "1f829f4f30490dcb",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206508,11 +209167,31 @@
      "sha256": "f78fb033a4eb900d",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gbl_eq_f_EN.pdf",
+     "bytes": 122173,
+     "sha256": "cb57b89221718e26",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_F_EN.pdf",
+     "bytes": 120957,
+     "sha256": "e9905a9245383446",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206531,11 +209210,31 @@
      "sha256": "feb874d942943cd6",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gbl_eq_ft4_EN.pdf",
+     "bytes": 125164,
+     "sha256": "ab23f6007041a56c",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_ft4_EN.pdf",
+     "bytes": 124307,
+     "sha256": "d2e0714b10bb79fe",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206554,11 +209253,31 @@
      "sha256": "28f4a976322cb295",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gbl_eq_ft6_EN.pdf",
+     "bytes": 125177,
+     "sha256": "16bacd6146078123",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_ft6_EN.pdf",
+     "bytes": 124310,
+     "sha256": "0aa4a266bba533f2",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206577,11 +209296,31 @@
      "sha256": "f1a32cca054253a3",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gbl_eq_o_EN.pdf",
+     "bytes": 122174,
+     "sha256": "e82fcf261bda003d",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_O_EN.pdf",
+     "bytes": 120978,
+     "sha256": "a046f2782a8a8359",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206600,11 +209339,31 @@
      "sha256": "65f230402deb12a6",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gbl_eq_t4_EN.pdf",
+     "bytes": 125157,
+     "sha256": "5f3d1af2ff7b282a",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_t4_EN.pdf",
+     "bytes": 124297,
+     "sha256": "6fc054302a570fc4",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206623,11 +209382,31 @@
      "sha256": "ecf1af744cc69e78",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gbl_eq_t6_EN.pdf",
+     "bytes": 125138,
+     "sha256": "210ce87701ced293",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_t6_EN.pdf",
+     "bytes": 124291,
+     "sha256": "682c88a3cbae203c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206646,11 +209425,31 @@
      "sha256": "447debfc79240eed",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gbl_eq_et4_EN.pdf",
+     "bytes": 125211,
+     "sha256": "e946a1334b677ae5",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gbl_eq_et4_EN.pdf",
+     "bytes": 124333,
+     "sha256": "d20a73104e136e92",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206669,11 +209468,31 @@
      "sha256": "0630962b9a931e90",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_a_EN.pdf",
+     "bytes": 122817,
+     "sha256": "768a519f37b3ddc7",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt_inc_port_a_EN.pdf",
+     "bytes": 121509,
+     "sha256": "0f3d0b02e9d4816b",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206692,11 +209511,31 @@
      "sha256": "263f733ef25381c5",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_f_en.pdf",
+     "bytes": 124261,
+     "sha256": "30e55e1b272bfb03",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt_inc_port_f_en.pdf",
+     "bytes": 123125,
+     "sha256": "29c8b9d7b0cedb17",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206715,11 +209554,31 @@
      "sha256": "debcc241c690216b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_ft4_EN.pdf",
+     "bytes": 124586,
+     "sha256": "0c803997b86eedea",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt_inc_port_ft4_EN.pdf",
+     "bytes": 123844,
+     "sha256": "dcf25aa82b47332e",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206738,11 +209597,31 @@
      "sha256": "6de6beac309ec231",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_ft6_EN.pdf",
+     "bytes": 124578,
+     "sha256": "b52595313e919b24",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt_inc_port_ft6_EN.pdf",
+     "bytes": 123856,
+     "sha256": "a21353d67998a291",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206761,11 +209640,31 @@
      "sha256": "c37f459170a3bde4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_o_EN.pdf",
+     "bytes": 122424,
+     "sha256": "8eff4896e6358b5b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt_inc_port_o_EN.pdf",
+     "bytes": 122367,
+     "sha256": "818b8b3471ff761a",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206784,11 +209683,31 @@
      "sha256": "c79ae12bd0ab7411",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_t4_EN.pdf",
+     "bytes": 124566,
+     "sha256": "d8583825f55e3263",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt-inc_port_t4_EN.pdf",
+     "bytes": 123621,
+     "sha256": "2caa9f26460b5f58",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206807,11 +209726,31 @@
      "sha256": "26a13b80aa2d3ceb",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_t6_EN.pdf",
+     "bytes": 124553,
+     "sha256": "a960988b0263e112",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt-inc_port_t6_EN.pdf",
+     "bytes": 123606,
+     "sha256": "969b333593ce7981",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206830,11 +209769,31 @@
      "sha256": "31480762f79dd79d",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_t8_EN.pdf",
+     "bytes": 124563,
+     "sha256": "62df888d48beb942",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gw-inc_port_t8_EN.pdf",
+     "bytes": 123606,
+     "sha256": "f64d8d8410c7c9f5",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206853,11 +209812,97 @@
      "sha256": "ebde2b4202d984a5",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_e_EN.pdf",
+     "bytes": 124313,
+     "sha256": "9759fd8d9b1969fa",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt-inc_port_e_EN.pdf",
+     "bytes": 121521,
+     "sha256": "4be57b291b6e35c9",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-optimal-growth-income-portfolio-elite-t6-class",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Optimal Growth & Income Portfolio Elite-T6 Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_et6_EN.pdf",
+     "bytes": 123739,
+     "sha256": "774fe69660fef5d0",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt-inc_port_et6_EN.pdf",
+     "bytes": 123651,
+     "sha256": "51c579fd2e1da049",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-optimal-growth-income-portfolio-elite-t8-class",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Optimal Growth & Income Portfolio Elite-T8 Class",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_et8_EN.pdf",
+     "bytes": 122865,
+     "sha256": "af09646cdcd67986",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt-inc_port_et8_EN.pdf",
+     "bytes": 123662,
+     "sha256": "0f7b034b0394fda8",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024,
+    2022
    ]
   },
   {
@@ -206876,11 +209921,31 @@
      "sha256": "c4c77135cfd15885",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_s_EN.pdf",
+     "bytes": 123729,
+     "sha256": "5ee77dd9b4f82332",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt-inc_port_s_EN.pdf",
+     "bytes": 121549,
+     "sha256": "d7e607db4e24fc45",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206899,11 +209964,31 @@
      "sha256": "de80b5bc72b741ed",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_s4_EN.pdf",
+     "bytes": 124629,
+     "sha256": "6f9256e649bfa13a",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt-inc_port_s4_EN.pdf",
+     "bytes": 123653,
+     "sha256": "e41ed0e7c742a3ef",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206922,11 +210007,31 @@
      "sha256": "04ea9da6bcddaf9b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_gwt_inc_port_s6_EN.pdf",
+     "bytes": 124634,
+     "sha256": "9207a644b49e8186",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_gwt-inc_port_s6_EN.pdf",
+     "bytes": 123664,
+     "sha256": "93bd5da434ac3199",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206945,11 +210050,31 @@
      "sha256": "15d801dfea8cc737",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_a_EN.pdf",
+     "bytes": 124341,
+     "sha256": "2cc2d510799cecd4",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_a_EN.pdf",
+     "bytes": 123298,
+     "sha256": "9b8b4a890d13777e",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206968,11 +210093,31 @@
      "sha256": "694661c7d7f6ba8b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_f_EN.pdf",
+     "bytes": 124317,
+     "sha256": "1023d0cc55f5de47",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_f_EN.pdf",
+     "bytes": 123536,
+     "sha256": "3476367a696d3512",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -206991,11 +210136,31 @@
      "sha256": "51247646a7bb11e3",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_ft6_EN.pdf",
+     "bytes": 124360,
+     "sha256": "8f2f5c2932b4b579",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_FT6_EN.pdf",
+     "bytes": 123555,
+     "sha256": "11c3df8dc1a70172",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207014,11 +210179,31 @@
      "sha256": "31a224640a9d2944",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_o_EN.pdf",
+     "bytes": 124340,
+     "sha256": "0dc4651590699680",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_o_EN.pdf",
+     "bytes": 123558,
+     "sha256": "9160c77b7d942f0f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207037,11 +210222,31 @@
      "sha256": "4a2a56c9ee7406cf",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_t6_EN.pdf",
+     "bytes": 124308,
+     "sha256": "764b81b75c510ff0",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_t6_EN.pdf",
+     "bytes": 123347,
+     "sha256": "6915d50ad7b8ce9d",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207060,11 +210265,31 @@
      "sha256": "1c31d230e7201bfc",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_t8_EN.pdf",
+     "bytes": 124337,
+     "sha256": "ac189bdee9f23b59",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_t8_EN.pdf",
+     "bytes": 123327,
+     "sha256": "3e00c1a4da5375eb",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207083,11 +210308,31 @@
      "sha256": "fd4067fd5049c419",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_e_EN.pdf",
+     "bytes": 124334,
+     "sha256": "261d5f16d0468a57",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_E_EN.pdf",
+     "bytes": 123314,
+     "sha256": "43dfd6f37ea80b94",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207106,11 +210351,31 @@
      "sha256": "23dde7d051bb9469",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_et6_EN.pdf",
+     "bytes": 124388,
+     "sha256": "304bef7cebf30086",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_eT6_EN.pdf",
+     "bytes": 123365,
+     "sha256": "90875a1faa8f41b4",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207129,11 +210394,31 @@
      "sha256": "4cd6e8ae89b70a34",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_et8_EN.pdf",
+     "bytes": 124390,
+     "sha256": "041a677e0e7d8faf",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_et8_EN.pdf",
+     "bytes": 123366,
+     "sha256": "2773b6ddbb3fa61d",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207152,11 +210437,31 @@
      "sha256": "8933fbf265cc0efe",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_s_EN.pdf",
+     "bytes": 124361,
+     "sha256": "b065e3ffe33dd1b2",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_s_EN.pdf",
+     "bytes": 123322,
+     "sha256": "0c238cad0e80f1d3",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207175,11 +210480,31 @@
      "sha256": "d0ab595dc7303d9f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_st6_EN.pdf",
+     "bytes": 124417,
+     "sha256": "1d573ebece7b117e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_st6_EN.pdf",
+     "bytes": 123366,
+     "sha256": "cf32034ae1d726bb",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207198,11 +210523,31 @@
      "sha256": "4a505b59c04c9f3a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_inc_port_st8_EN.pdf",
+     "bytes": 124393,
+     "sha256": "6e520171817ee4ad",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_inc_port_st8_EN.pdf",
+     "bytes": 123351,
+     "sha256": "ee0b194f7bace36f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207221,11 +210566,31 @@
      "sha256": "6c55b94e4865ae68",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_infl_a_EN.pdf",
+     "bytes": 121270,
+     "sha256": "d6f2fb962b74c584",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_infl_a_EN.pdf",
+     "bytes": 120051,
+     "sha256": "d78fa4ee8d17ef14",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207244,11 +210609,31 @@
      "sha256": "0852e5484be11208",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_infl_f_EN.pdf",
+     "bytes": 121273,
+     "sha256": "b3621ff0f633703f",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_infl_f_EN.pdf",
+     "bytes": 120051,
+     "sha256": "7bffb34ebb9d5ba4",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207267,11 +210652,54 @@
      "sha256": "d8a23f5a2fabb8b1",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/opt_infl_o_EN.pdf",
+     "bytes": 121258,
+     "sha256": "2d82261e1466428d",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/opt_infl_o_EN.pdf",
+     "bytes": 120056,
+     "sha256": "53cabd5d974e7ee7",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-real-assets-private-pool",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Real Assets Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/real_assets_PrivP_EN.pdf",
+     "bytes": 172999,
+     "sha256": "eeb85826e729d575",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -207290,11 +210718,31 @@
      "sha256": "920d81eac62a47c9",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/rel_rtrn_bnd_EN.pdf",
+     "bytes": 124852,
+     "sha256": "8b3dd36b4eddf4f8",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/rel_rtrn_bnd_EN.pdf",
+     "bytes": 123790,
+     "sha256": "b6e2a7b111c54994",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207313,11 +210761,31 @@
      "sha256": "588cd6e9662417f5",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/shrt_trm_inc_EN.pdf",
+     "bytes": 133445,
+     "sha256": "6997ed45596503b9",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/shrt_trm_inc_EN.pdf",
+     "bytes": 135508,
+     "sha256": "63370ccd83fac34d",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207336,11 +210804,31 @@
      "sha256": "1176aa328aeb7576",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/usd_corp_bnd_EN.pdf",
+     "bytes": 133367,
+     "sha256": "90c00fd9e22233a0",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/usd_corp_bnd_EN.pdf",
+     "bytes": 135494,
+     "sha256": "f4d0d70145fb7ef6",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207359,11 +210847,31 @@
      "sha256": "8ba26a1e6437f1d6",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_ddiv_inc_a_EN.pdf",
+     "bytes": 122203,
+     "sha256": "0b8aeecd754e726d",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_ddiv_inc_a_EN.pdf",
+     "bytes": 121140,
+     "sha256": "d8c4895d1d5c4cc2",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207382,11 +210890,54 @@
      "sha256": "11b6329c27ee96ea",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_ddiv_inc_f_EN.pdf",
+     "bytes": 122195,
+     "sha256": "b01407449cdfa2f3",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_ddiv_inc_f_EN.pdf",
+     "bytes": 121134,
+     "sha256": "96c965760e6cc77c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-u-s-dollar-diversified-income-fund-class-f-premium",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance U.S. Dollar Diversified Income Fund Class F-Premium",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_ddiv_inc_fp_EN.pdf",
+     "bytes": 121165,
+     "sha256": "e863f95d4b98cb46",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -207405,11 +210956,31 @@
      "sha256": "cd63e6c2850b2d8c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_ddiv_inc_o_EN.pdf",
+     "bytes": 122225,
+     "sha256": "c8c861e75e5341a1",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_ddiv_inc_0_EN.pdf",
+     "bytes": 121388,
+     "sha256": "df0c8b08c6df6e17",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207428,11 +210999,31 @@
      "sha256": "d967fd97060c1ae6",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_ddiv_inc_p_EN.pdf",
+     "bytes": 122273,
+     "sha256": "25bf825185a19c4e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_ddiv_inc_p_EN.pdf",
+     "bytes": 121156,
+     "sha256": "4b9acaf516180ad4",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207451,11 +211042,31 @@
      "sha256": "2d5199c32692ef4d",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_eq_EN.pdf",
+     "bytes": 119744,
+     "sha256": "dc940ef10c185b8c",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_eq_EN.pdf",
+     "bytes": 118505,
+     "sha256": "946a4e68bd4ef603",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207474,11 +211085,31 @@
      "sha256": "1c1af7d129129ee4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_eq_grwth_cn_a_EN.pdf",
+     "bytes": 119654,
+     "sha256": "90e827d6c26e3336",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_eq_grwth_cn_a_EN.pdf",
+     "bytes": 118453,
+     "sha256": "3f59b5cced736523",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207497,11 +211128,31 @@
      "sha256": "825d42f713126af7",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_eq_grwth_cn_f_EN.pdf",
+     "bytes": 119630,
+     "sha256": "22029efe55637b41",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_eq_grwth_cn_f_EN.pdf",
+     "bytes": 118425,
+     "sha256": "a8302033a6a7568f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207520,11 +211171,31 @@
      "sha256": "4cf703baf6595acf",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_eq_grwth_cn_o_EN.pdf",
+     "bytes": 119666,
+     "sha256": "e399ad3aa19dad50",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_eq_grwth_cn_o_EN.pdf",
+     "bytes": 118442,
+     "sha256": "ac6ea8c7eaef64df",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207543,11 +211214,31 @@
      "sha256": "e6e3e30c861aa15c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_eq_grwth_EN.pdf",
+     "bytes": 121051,
+     "sha256": "1872be8c97de0c22",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_eq_grwth_EN.pdf",
+     "bytes": 119652,
+     "sha256": "7ba8e64a71e5af89",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
    ]
   },
   {
@@ -207566,11 +211257,54 @@
      "sha256": "18a9294c611296c8",
      "confidence": 14,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_eq_inc_EN.pdf",
+     "bytes": 154167,
+     "sha256": "48f6ed82e51981f5",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_eq_inc_EN.pdf",
+     "bytes": 160947,
+     "sha256": "fa7aafb59fcf9d36",
+     "confidence": 14,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-u-s-equity-private-pool",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance U.S. Equity Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_eqty_PrivP_EN.pdf",
+     "bytes": 165037,
+     "sha256": "99953e887dab0d54",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -207589,11 +211323,54 @@
      "sha256": "7eac20249d2000cd",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2024/us_eq_val_EN.pdf",
+     "bytes": 121023,
+     "sha256": "7ee0dfcbe763e9ab",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/us_eq_val_EN.pdf",
+     "bytes": 119669,
+     "sha256": "58616c399970bb60",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2022
+   ]
+  },
+  {
+   "id": "renaissance::renaissance-ultra-short-term-income-private-pool",
+   "family": "renaissance",
+   "family_name": "Renaissance Investments (CIBC)",
+   "country": "CA",
+   "name": "Renaissance Ultra Short-Term Income Private Pool",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.renaissanceinvestments.ca/sites/default/files/downloads/statutory/renaissance/pfic/2022/ultra_st_inc_PrivP_EN.pdf",
+     "bytes": 118274,
+     "sha256": "2130c5d66b163444",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -211097,6 +214874,79 @@
    ]
   },
   {
+   "id": "sprott::1-sprott-physical-gold-and-silver-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "1 Sprott Physical Gold And Silver Trust",
+   "tickers": [
+    "CEF"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://sprott.com/media/ns5p33v0/2024-cef-pfic.pdf",
+     "bytes": 128097,
+     "sha256": "92d0f5ca3a8b068a",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
+   ]
+  },
+  {
+   "id": "sprott::1-sprott-physical-gold-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "1 Sprott Physical Gold Trust",
+   "tickers": [
+    "PHYS"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://sprott.com/media/axwn4rsh/2024-phys-pfic.pdf",
+     "bytes": 128079,
+     "sha256": "a9b793b227c09e36",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
+   ]
+  },
+  {
+   "id": "sprott::sprott-physical-platinum-palladium-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "SPROTT Physical Platinum & Palladium Trust",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://sprott.com/media/4948/2021-sppp-pfic.pdf",
+     "bytes": 102290,
+     "sha256": "d83bfca9f36dcbd2",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2021
+   ]
+  },
+  {
    "id": "sprott::spro-tt-physical-gold-and-silver-trust",
    "family": "sprott",
    "family_name": "Sprott",
@@ -211137,31 +214987,6 @@
      "url": "https://sprott.com/media/wu3albxo/2025-phys-pfic.pdf",
      "bytes": 235027,
      "sha256": "a769071ad4034861",
-     "confidence": 10,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025
-   ]
-  },
-  {
-   "id": "sprott::spro-tt-physical-platinum-and-palladium-trust",
-   "family": "sprott",
-   "family_name": "Sprott",
-   "country": "CA",
-   "name": "Spro Tt Physical Platinum And Palladium Trust",
-   "tickers": [
-    "SPPP"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://sprott.com/media/bdrb3li0/2025-sppp-pfic.pdf",
-     "bytes": 190847,
-     "sha256": "bb8ce2c731c78ae9",
      "confidence": 10,
      "fmt": "pdf"
     }
@@ -211222,6 +215047,270 @@
    ]
   },
   {
+   "id": "sprott::sprott-physical-copper-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Sprott Physical Copper Trust",
+   "tickers": [
+    "COP.UN"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://sprott.com/media/bktde0c4/2024-cop-pfic.pdf",
+     "bytes": 72794,
+     "sha256": "79f584e293b0b220",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
+   ]
+  },
+  {
+   "id": "sprott::sprott-physical-gold-and-silver-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Sprott Physical Gold And Silver Trust",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://sprott.com/media/xnhdjpgl/2023-cef-pfic.pdf",
+     "bytes": 709647,
+     "sha256": "ff2feac003cf6c3f",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://sprott.com/media/6214/2022-cef-pfic.pdf",
+     "bytes": 67099,
+     "sha256": "8f3132ec28a61620",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://sprott.com/media/4951/2021-cef-pfic.pdf",
+     "bytes": 100703,
+     "sha256": "feaae4f9af1f9b12",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
+   "id": "sprott::sprott-physical-gold-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Sprott Physical Gold Trust",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://sprott.com/media/31nhsy4m/2023-phys-pfic.pdf",
+     "bytes": 161469,
+     "sha256": "3581cc21e505e60d",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://sprott.com/media/6210/2022-phys-pfic.pdf",
+     "bytes": 66724,
+     "sha256": "5e35057fcf2c1b77",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://sprott.com/media/4950/2021-phys-pfic.pdf",
+     "bytes": 100742,
+     "sha256": "23ca6e6e056d844b",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
+   "id": "sprott::sprott-physical-platinum-and-palladium-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Sprott Physical Platinum And Palladium Trust",
+   "tickers": [
+    "SPPP"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://sprott.com/media/bdrb3li0/2025-sppp-pfic.pdf",
+     "bytes": 190847,
+     "sha256": "bb8ce2c731c78ae9",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://sprott.com/media/qkgdzexn/2024-sppp-pfic.pdf",
+     "bytes": 72329,
+     "sha256": "d8494b815948e654",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://sprott.com/media/wr4h1t5m/2023-sppp-pfic.pdf",
+     "bytes": 135274,
+     "sha256": "379ca15bd725879d",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://sprott.com/media/6211/2022-sppp-pfic.pdf",
+     "bytes": 67096,
+     "sha256": "75c5a73062a83365",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "sprott::sprott-physical-silver-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Sprott Physical Silver Trust",
+   "tickers": [
+    "PSLV"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://sprott.com/media/owtlyf2b/2024-pslv-pfic.pdf",
+     "bytes": 72145,
+     "sha256": "766dcbb0e6dccb4a",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.sprott.com/media/vunmva5c/2023-pslv-pfic.pdf",
+     "bytes": 134215,
+     "sha256": "c8394cc2c503ed8b",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://sprott.com/media/6212/2022-pslv-pfic.pdf",
+     "bytes": 66852,
+     "sha256": "2ce6cd9ac9e379b1",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://sprott.com/media/4949/2021-pslv-pfic.pdf",
+     "bytes": 101458,
+     "sha256": "b50ba1a1131b4cc0",
+     "confidence": 10,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024,
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
+   "id": "sprott::sprott-physical-uranium-trust",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Sprott Physical Uranium Trust",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://www.sprott.com/media/fhbdvlk1/2023-sput-pfic.pdf",
+     "bytes": 137442,
+     "sha256": "77ba68d70a449474",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://sprott.com/media/6213/2022-sput-pfic.pdf",
+     "bytes": 66889,
+     "sha256": "ba9611106148d059",
+     "confidence": 10,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-12-31",
+     "tax_year": 2021,
+     "url": "https://www.sprott.com/media/4983/2021-sput-pfic.pdf",
+     "bytes": 107383,
+     "sha256": "43b6620cb4eb9852",
+     "confidence": 11,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
    "id": "sprott::sprott-physical-uranium-trust-u-un",
    "family": "sprott",
    "family_name": "Sprott",
@@ -211237,11 +215326,44 @@
      "sha256": "589d7e169c849fd3",
      "confidence": 10,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://sprott.com/media/bu0dhwvi/2024-sput-pfic.pdf",
+     "bytes": 71645,
+     "sha256": "372fd3d31512f353",
+     "confidence": 10,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
+   ]
+  },
+  {
+   "id": "sprott::uranium-participation-corporation",
+   "family": "sprott",
+   "family_name": "Sprott",
+   "country": "CA",
+   "name": "Uranium Participation Corporation",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2021-07-18",
+     "tax_year": 2021,
+     "url": "https://sprott.com/media/4984/2021-upc-pfic.pdf",
+     "bytes": 107837,
+     "sha256": "7c155993e2f6d945",
+     "confidence": 11,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2021
    ]
   },
   {
@@ -213111,7 +217233,7 @@
      "url": "https://www.td.com/content/dam/tdcom/canada/tdam/en/investor/pdf/pfic/mftpficdvgwse-2023.pdf",
      "bytes": 201333,
      "sha256": "cf3fef8354517efa",
-     "confidence": 13,
+     "confidence": 15,
      "fmt": "pdf"
     },
     {
@@ -221220,48 +225342,48 @@
    "name": "Mackenzie Investments",
    "mode": "static",
    "hub": "https://www.mackenzieinvestments.com/en/legal-and-privacy/passive-foreign-investment-company-statements",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 209,
    "candidates": 209,
    "message": "hub needed browser",
    "derived_names": 0,
-   "from_cache": 197,
-   "requests": 12,
-   "unchanged": 11,
-   "seconds": 19
+   "from_cache": 201,
+   "requests": 8,
+   "unchanged": 2,
+   "seconds": 16
   },
   {
    "id": "tdam",
    "name": "TD Asset Management",
    "mode": "static",
    "hub": "https://www.td.com/ca/en/asset-management/resources/pfic-reporting",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 417,
    "candidates": 417,
    "message": "",
    "derived_names": 0,
-   "from_cache": 391,
-   "requests": 26,
-   "unchanged": 25,
-   "seconds": 9
+   "from_cache": 400,
+   "requests": 17,
+   "unchanged": 0,
+   "seconds": 7
   },
   {
    "id": "vanguard-ca",
    "name": "Vanguard Investments Canada",
    "mode": "static",
    "hub": "https://www.vanguard.ca/en/tools-and-resources/tax-centre",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 182,
    "candidates": 188,
    "message": "",
    "derived_names": 0,
    "skipped_old": 148,
-   "from_cache": 167,
-   "requests": 21,
-   "unchanged": 15,
+   "from_cache": 171,
+   "requests": 17,
+   "unchanged": 2,
    "seconds": 7
   },
   {
@@ -221269,118 +225391,119 @@
    "name": "Russell Investments Canada",
    "mode": "static",
    "hub": "https://russellinvestments.com/content/ri/ca/en/legal/pfic.html",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 242,
    "candidates": 242,
    "message": "",
    "derived_names": 0,
-   "from_cache": 232,
-   "requests": 10,
-   "unchanged": 9,
-   "seconds": 4
+   "from_cache": 230,
+   "requests": 12,
+   "unchanged": 0,
+   "seconds": 5
   },
   {
    "id": "ci-gam",
    "name": "CI Global Asset Management",
    "mode": "static",
    "hub": "https://funds.cifinancial.com/en/funds/pfic-documents",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 12595,
    "candidates": 12649,
    "message": "",
    "derived_names": 0,
    "skipped_old": 136,
-   "from_cache": 12077,
-   "requests": 572,
+   "from_cache": 12029,
+   "requests": 620,
    "unchanged": 0,
-   "seconds": 199
+   "seconds": 217
   },
   {
    "id": "mawer",
    "name": "Mawer Investment Management",
    "mode": "static",
    "hub": "https://www.mawer.com/documents",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 53,
    "candidates": 53,
    "message": "",
    "derived_names": 0,
-   "from_cache": 14,
-   "requests": 39,
+   "from_cache": 52,
+   "requests": 1,
    "unchanged": 0,
-   "seconds": 22
+   "seconds": 1
   },
   {
    "id": "cibc",
    "name": "CIBC Asset Management",
    "mode": "static",
    "hub": "https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance/etf-pfic-annual-statement.html",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
-   "statements": 22,
+   "statements": 24,
    "candidates": 20,
    "message": "",
    "derived_names": 0,
-   "from_cache": 19,
-   "requests": 18,
+   "from_cache": 18,
+   "requests": 5,
    "unchanged": 0,
-   "archived": 2,
-   "seconds": 60
+   "archived": 4,
+   "seconds": 1,
+   "detail": "13 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
   },
   {
    "id": "blackrock-ishares-ca",
    "name": "BlackRock / iShares Canada",
    "mode": "static",
    "hub": "https://www.blackrock.com/ca/investors/en/resources/tax-information-centre",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 288,
    "candidates": 864,
    "message": "",
    "derived_names": 72,
-   "from_cache": 825,
-   "requests": 39,
+   "from_cache": 817,
+   "requests": 47,
    "unchanged": 14,
-   "seconds": 14
+   "seconds": 17
   },
   {
    "id": "capitalgroup-ca",
    "name": "Capital Group Canada",
    "mode": "static",
    "hub": "https://www.capitalgroup.com/advisor/ca/en/service/tax-centre.html",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 16,
    "candidates": 16,
    "message": "links only - the documents are not fetched: capitalgroup.com/robots.txt disallows /content, where every document is kept",
-   "seconds": 1
+   "seconds": 0
   },
   {
    "id": "fidelity-ca",
    "name": "Fidelity Investments Canada",
    "mode": "static",
    "hub": "https://www.fidelity.ca/en/pfic_etf_statements/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 213,
    "candidates": 213,
    "message": "",
    "derived_names": 0,
    "skipped_old": 36,
-   "from_cache": 205,
-   "requests": 8,
+   "from_cache": 200,
+   "requests": 13,
    "unchanged": 0,
-   "seconds": 4
+   "seconds": 5
   },
   {
    "id": "ia-clarington",
    "name": "iA Clarington Investments",
    "mode": "static",
    "hub": "https://iaclarington.com/applicationsandforms/pficstatements",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 80,
    "candidates": 80,
@@ -221392,23 +225515,23 @@
    "name": "Renaissance Investments (CIBC)",
    "mode": "static",
    "hub": "https://www.renaissanceinvestments.ca/reporting-governance/pfic",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
-   "statements": 169,
-   "candidates": 169,
+   "statements": 473,
+   "candidates": 473,
    "message": "",
    "derived_names": 0,
-   "from_cache": 150,
-   "requests": 19,
-   "unchanged": 18,
-   "seconds": 13
+   "from_cache": 148,
+   "requests": 325,
+   "unchanged": 0,
+   "seconds": 157
   },
   {
    "id": "hamilton-etfs",
    "name": "Hamilton ETFs",
    "mode": "browser",
    "hub": "https://hamiltonetfs.com/tax-information/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 58,
    "candidates": 3,
@@ -221420,58 +225543,58 @@
    "name": "RBC Global Asset Management / PH&N",
    "mode": "browser",
    "hub": "https://www.rbcgam.com/en/ca/products/pfic-reporting",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 921,
    "candidates": 921,
    "message": "",
    "derived_names": 0,
-   "from_cache": 875,
-   "requests": 46,
-   "unchanged": 45,
-   "seconds": 55
+   "from_cache": 877,
+   "requests": 44,
+   "unchanged": 0,
+   "seconds": 34
   },
   {
    "id": "bmo-gam",
    "name": "BMO Global Asset Management",
    "mode": "static",
    "hub": "https://bmogam.com/ca-en/resources/legal-and-regulatory-documents/pfic/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 217,
    "candidates": 217,
    "message": "hub needed curl",
    "derived_names": 0,
    "skipped_old": 2,
-   "from_cache": 191,
-   "requests": 26,
+   "from_cache": 197,
+   "requests": 20,
    "unchanged": 0,
-   "seconds": 71
+   "seconds": 68
   },
   {
    "id": "manulife-im",
    "name": "Manulife Investment Management",
    "mode": "browser",
    "hub": "https://www.manulifeim.com/retail/ca/en/regulatory/passive-foreign-investment-company-pfic",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 61,
    "candidates": 61,
    "message": "",
    "derived_names": 0,
-   "from_cache": 58,
-   "requests": 3,
-   "unchanged": 2,
+   "from_cache": 51,
+   "requests": 10,
+   "unchanged": 0,
+   "seconds": 59,
    "archived": 0,
-   "detail": "the Internet Archive refused requests tonight; earlier years will be retried",
-   "seconds": 88
+   "detail": "43 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
   },
   {
    "id": "globalx-ca",
    "name": "Global X Investments Canada (formerly Horizons)",
    "mode": "browser",
    "hub": "https://www.globalx.ca/pfic",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 2,
    "candidates": 2,
@@ -221488,24 +225611,24 @@
    "name": "Purpose Investments",
    "mode": "static",
    "hub": "https://www.purposeinvest.com/funds",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 81,
    "candidates": 81,
    "message": "hub needed browser",
    "derived_names": 0,
    "delisted": 2,
-   "from_cache": 75,
-   "requests": 6,
-   "unchanged": 5,
-   "seconds": 1427
+   "from_cache": 74,
+   "requests": 7,
+   "unchanged": 6,
+   "seconds": 1374
   },
   {
    "id": "sunlife-gi",
    "name": "Sun Life Global Investments",
    "mode": "static",
    "hub": "https://www.sunlifeglobalinvestments.com/en/resources/regulatory-documents/#regulatorydocuments-id-4",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "request",
    "statements": 0,
    "candidates": 0,
@@ -221517,7 +225640,7 @@
    "name": "PIMCO Canada",
    "mode": "browser",
    "hub": "https://www.pimco.com/ca/en/resources/tax-center",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -221529,41 +225652,39 @@
    "name": "Dimensional Fund Advisors Canada",
    "mode": "static",
    "hub": "https://www.dimensional.com/ca-en/document-center",
-   "checked": "2026-11-12",
-   "status": "empty",
+   "checked": "2026-11-13",
+   "status": "ok",
    "statements": 19,
    "candidates": 19,
-   "message": "hub reachable but it listed no documents tonight; 19 cached statement(s) kept (document API answered with 253468 bytes but no statement links)",
-   "detail": "document API answered with 253468 bytes but no statement links",
+   "message": "",
    "derived_names": 0,
-   "delisted": 19,
-   "from_cache": 18,
-   "requests": 1,
-   "unchanged": 0,
-   "seconds": 4
+   "from_cache": 17,
+   "requests": 2,
+   "unchanged": 1,
+   "seconds": 2
   },
   {
    "id": "evolve",
    "name": "Evolve ETFs",
    "mode": "static",
    "hub": "https://evolveetfs.com/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 6,
    "candidates": 6,
    "message": "",
    "derived_names": 0,
-   "from_cache": 6,
-   "requests": 0,
+   "from_cache": 5,
+   "requests": 1,
    "unchanged": 0,
-   "seconds": 178
+   "seconds": 161
   },
   {
    "id": "bridgehouse",
    "name": "Bridgehouse Asset Managers (incl. GQG Partners funds)",
    "mode": "static",
    "hub": "https://www.bridgehousecanada.com/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -221575,23 +225696,23 @@
    "name": "Dynamic Funds (1832 Asset Management)",
    "mode": "static",
    "hub": "https://dynamic.ca/en/regulatory/statutory-documents-applications-and-forms/pfic-irs.html",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 379,
    "candidates": 493,
    "message": "",
    "derived_names": 0,
-   "from_cache": 119,
-   "requests": 374,
-   "unchanged": 3,
-   "seconds": 129
+   "from_cache": 483,
+   "requests": 10,
+   "unchanged": 9,
+   "seconds": 4
   },
   {
    "id": "franklin-templeton-ca",
    "name": "Franklin Templeton Canada",
    "mode": "static",
    "hub": "https://www.franklintempleton.ca/en-ca/resources/forms/pfic-annual-information-statements",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 67,
    "candidates": 67,
@@ -221603,26 +225724,26 @@
    "name": "NEI Investments (Aviso)",
    "mode": "static",
    "hub": "https://www.neiinvestments.com/investment-products/fund-resources/fund-financials.html",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 48,
    "candidates": 41,
    "message": "",
    "derived_names": 0,
    "skipped_old": 4,
-   "from_cache": 35,
-   "requests": 42,
-   "unchanged": 3,
+   "from_cache": 37,
+   "requests": 4,
+   "unchanged": 2,
    "archived": 7,
-   "detail": "the Internet Archive refused requests tonight; earlier years will be retried",
-   "seconds": 143
+   "seconds": 4,
+   "detail": "75 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
   },
   {
    "id": "starlight",
    "name": "Starlight Capital",
    "mode": "static",
    "hub": "https://starlightcapital.com/en/prices/documents?category=Tax+Information",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 27,
    "candidates": 27,
@@ -221631,14 +225752,14 @@
    "from_cache": 26,
    "requests": 1,
    "unchanged": 0,
-   "seconds": 4
+   "seconds": 3
   },
   {
    "id": "ninepoint",
    "name": "Ninepoint Partners",
    "mode": "static",
    "hub": "https://www.ninepoint.com/pfic-annual-information-statements/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 25,
    "candidates": 25,
@@ -221654,39 +225775,41 @@
    "name": "National Bank Investments",
    "mode": "static",
    "hub": "https://www.nbinvestments.ca/regulatory-documents/pfic-statements.html",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 475,
    "candidates": 475,
    "message": "",
    "derived_names": 0,
-   "from_cache": 444,
-   "requests": 31,
-   "unchanged": 27,
-   "seconds": 11
+   "from_cache": 454,
+   "requests": 21,
+   "unchanged": 0,
+   "seconds": 8
   },
   {
    "id": "sprott",
    "name": "Sprott",
    "mode": "static",
    "hub": "https://sprott.com/investment-strategies/exchange-listed-products/physical-bullion-funds/tax-guide/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
-   "statements": 6,
-   "candidates": 6,
+   "statements": 28,
+   "candidates": 33,
    "message": "",
    "derived_names": 0,
-   "from_cache": 6,
-   "requests": 0,
+   "from_cache": 5,
+   "requests": 28,
    "unchanged": 0,
-   "seconds": 16
+   "seconds": 43,
+   "archived": 0,
+   "detail": "5 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
   },
   {
    "id": "lysander",
    "name": "Lysander Funds",
    "mode": "static",
    "hub": "https://www.lysanderfunds.com/passive-foreign-investment-company-pfic/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 5,
    "candidates": 5,
@@ -221698,7 +225821,7 @@
    "name": "Desjardins Funds",
    "mode": "static",
    "hub": "https://www.fondsdesjardins.com/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 3,
    "candidates": 6,
@@ -221707,46 +225830,47 @@
    "from_cache": 6,
    "requests": 0,
    "unchanged": 0,
-   "seconds": 2
+   "seconds": 1
   },
   {
    "id": "guardian",
    "name": "Guardian Capital",
    "mode": "static",
    "hub": "https://www.guardiancapital.com/investmentsolutions/reg-documents/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 5,
    "candidates": 5,
    "message": "",
    "derived_names": 0,
-   "from_cache": 5,
-   "requests": 0,
+   "from_cache": 4,
+   "requests": 1,
    "unchanged": 0,
-   "seconds": 3
+   "seconds": 11
   },
   {
    "id": "harvest",
    "name": "Harvest ETFs",
    "mode": "static",
    "hub": "https://harvestportfolios.com/products/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "ok",
    "statements": 41,
    "candidates": 140,
    "message": "",
    "derived_names": 0,
-   "from_cache": 22,
-   "requests": 118,
-   "unchanged": 5,
-   "seconds": 366
+   "detail": "the Internet Archive's list of earlier statements could not be read tonight; it will be asked again",
+   "from_cache": 133,
+   "requests": 7,
+   "unchanged": 4,
+   "seconds": 61
   },
   {
    "id": "agf",
    "name": "AGF Investments",
    "mode": "static",
    "hub": "https://www.agf.com/ca/en/resources/tax-information/index.jsp",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -221758,7 +225882,7 @@
    "name": "Invesco Canada",
    "mode": "static",
    "hub": "https://www.invesco.com/ca/en/insights/all-about-PFIC-rules.html",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -221770,7 +225894,7 @@
    "name": "Scotia Global Asset Management (ScotiaFunds, Scotia ETFs)",
    "mode": "static",
    "hub": "https://www.scotiafunds.com/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -221782,7 +225906,7 @@
    "name": "Fiera Capital",
    "mode": "static",
    "hub": "https://www.fieracapital.com/en/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -221794,7 +225918,7 @@
    "name": "Beutel Goodman",
    "mode": "static",
    "hub": "https://www.beutelgoodman.com/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -221806,7 +225930,7 @@
    "name": "Picton Mahoney Asset Management",
    "mode": "static",
    "hub": "https://www.pictonmahoney.com/",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -221818,7 +225942,7 @@
    "name": "FERIQUE Fund Management",
    "mode": "static",
    "hub": "https://www.ferique.com/en",
-   "checked": "2026-11-12",
+   "checked": "2026-11-13",
    "status": "none",
    "statements": 0,
    "candidates": 0,
