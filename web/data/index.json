@@ -1,10 +1,10 @@
 {
- "generated": "2026-11-13T16:20:10+00:00",
+ "generated": "2026-11-14T16:31:20+00:00",
  "stats": {
   "families": 41,
-  "families_ok": 31,
-  "funds": 4824,
-  "statements": 15822,
+  "families_ok": 30,
+  "funds": 4851,
+  "statements": 15897,
   "years": [
    2026,
    2025,
@@ -31,7 +31,7 @@
    "covers": null,
    "links_only": false,
    "statement_count": 209,
-   "fund_count": 62
+   "fund_count": 63
   },
   {
    "id": "tdam",
@@ -138,7 +138,7 @@
    "caveat": "CIBC posts statements for its ETFs only, one per ETF at a fixed address that it replaces each year. Earlier years shown here are archived copies, where one exists; otherwise ask CIBC.",
    "covers": null,
    "links_only": false,
-   "statement_count": 24,
+   "statement_count": 26,
    "fund_count": 20
   },
   {
@@ -642,8 +642,8 @@
    "caveat": "Harvest's own pages link only the latest year. The earlier years listed here are files still on its server that it no longer links.",
    "covers": null,
    "links_only": false,
-   "statement_count": 41,
-   "fund_count": 28
+   "statement_count": 114,
+   "fund_count": 54
   },
   {
    "id": "agf",
@@ -157679,11 +157679,22 @@
      "sha256": "f97fb3a58a57886c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420220951/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-cint-en.pdf",
+     "bytes": 79660,
+     "sha256": "91f47343a7fa5ded",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -157851,11 +157862,22 @@
      "sha256": "3702121586c038a3",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420220555/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-cqli-en.pdf",
+     "bytes": 82004,
+     "sha256": "9d4dee442b3233bf",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -158550,7 +158572,7 @@
      "url": "https://www.dimensional.com/chmedia/236869/source/download/pfic-annual-information-statement_digf_investment-grade-fixed-income-fund-ca.pdf",
      "bytes": 192890,
      "sha256": "e14af288719e8e12",
-     "confidence": 13,
+     "confidence": 15,
      "fmt": "pdf"
     }
    ],
@@ -176681,6 +176703,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRTJ_Blockchain%20Technologies%20ETF%20AIS%20Form.pdf",
+     "bytes": 266302,
+     "sha256": "9c39d427f77e8643",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTJ_Blockchain%20Technologies%20ETF.pdf",
@@ -176688,12 +176719,148 @@
      "sha256": "7c9b6b11648fddbb",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HBLK_PFIC_2022.pdf",
+     "bytes": 247714,
+     "sha256": "93c227719484d476",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "harvest::hrts-big-pharma-split-corp",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "HRTS Big Pharma Split Corp",
+   "tickers": [
+    "HRTS"
+   ],
+   "statements": [
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTS_Big%20Pharma%20Split%20Corp.pdf",
+     "bytes": 244723,
+     "sha256": "e695978f36e3e100",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
     2023
+   ]
+  },
+  {
+   "id": "harvest::hrts-big-pharma-split-corp-updated",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "HRTS Big Pharma Split Corp (Updated)",
+   "tickers": [
+    "HRTS"
+   ],
+   "statements": [
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTS_Big%20Pharma%20Split%20Corp%20%28Updated%29.pdf",
+     "bytes": 296686,
+     "sha256": "7c37668c44b89392",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2023
+   ]
+  },
+  {
+   "id": "harvest::hrts-big-pharma-split-corp-ais-form",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "HRTS Big Pharma Split Corp. AIS Form",
+   "tickers": [
+    "HRTS"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRTS_Big%20Pharma%20Split%20Corp.%20AIS%20Form.pdf",
+     "bytes": 195886,
+     "sha256": "dadb06c095b9c08b",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
+   ]
+  },
+  {
+   "id": "harvest::harvest-amazon-enhanced-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Amazon Enhanced High Income Shares ETF",
+   "tickers": [
+    "HRQD"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRQD_Harvest%20Amazon%20Enhanced%20High%20Income%20Shares%20ETF%20AIS%20Form.pdf",
+     "bytes": 265682,
+     "sha256": "d170144aadb5b7be",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
+   ]
+  },
+  {
+   "id": "harvest::harvest-amazon-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Amazon High Income Shares ETF",
+   "tickers": [
+    "HRQB"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRQB_Harvest%20Amazon%20High%20Income%20Shares%20ETF%20AIS%20Form.pdf",
+     "bytes": 265596,
+     "sha256": "d883abb7082945bc",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
    ]
   },
   {
@@ -176715,11 +176882,21 @@
      "sha256": "ce2106720f4eb212",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVN_Harvest%20Balanced%20Income%20%26%20Growth%20ETF%20AIS%20Form.pdf",
+     "bytes": 278814,
+     "sha256": "f65a597add046113",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -176741,11 +176918,44 @@
      "sha256": "868ff6aa828c773f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVO_Harvest%20Balanced%20Income%20%26%20Growth%20Enhanced%20ETF%20AIS%20Form.pdf",
+     "bytes": 279222,
+     "sha256": "bbe2c630380b150f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
+   ]
+  },
+  {
+   "id": "harvest::harvest-banks-buildings-income-fund",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Banks & Buildings Income Fund",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HBB_PFIC_2022.pdf",
+     "bytes": 249457,
+     "sha256": "77de680befb2f7a8",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -176801,6 +177011,31 @@
    ]
   },
   {
+   "id": "harvest::harvest-brand-leaders-enhanced-income-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Brand Leaders Enhanced Income ETF",
+   "tickers": [
+    "HBFE"
+   ],
+   "statements": [
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HBFE_PFIC_2022.pdf",
+     "bytes": 257054,
+     "sha256": "50da269954ee78d7",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
    "id": "harvest::harvest-brand-leaders-plus-income-etf",
    "family": "harvest",
    "family_name": "Harvest ETFs",
@@ -176819,11 +177054,91 @@
      "sha256": "d484af882f15875b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRT9_Harvest%20Brand%20Leaders%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 264462,
+     "sha256": "ee2c116dcf8fad27",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRT9_Harvest%20Brand%20Leaders%20Plus%20Income%20ETF.pdf",
+     "bytes": 246158,
+     "sha256": "d715370b33d845f2",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HBF_PFIC_2022.pdf",
+     "bytes": 248221,
+     "sha256": "2924fb1afa8ef347",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "harvest::harvest-broadcom-enhanced-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Broadcom Enhanced High Income Shares ETF",
+   "tickers": [
+    "HRQG"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2025/PFIC/HRQG_Harvest%20Broadcom%20Enhanced%20High%20Income%20Shares%20ETF.pdf",
+     "bytes": 155974,
+     "sha256": "d4b36181c37a5536",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025
+   ]
+  },
+  {
+   "id": "harvest::harvest-canadian-equity-enhanced-income-leaders-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Canadian Equity Enhanced Income Leaders ETF",
+   "tickers": [
+    "HLFE"
+   ],
+   "statements": [
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HLFE_PFIC_2022.pdf",
+     "bytes": 257109,
+     "sha256": "15af167b1ee80394",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -176847,6 +177162,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRQA_Harvest%20Canadian%20Equity%20Income%20Leaders%20ETF%20AIS%20Form.pdf",
+     "bytes": 265666,
+     "sha256": "1f035ce7b6013b10",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRQA_Harvest%20Canadian%20Equity%20Income%20Leaders%20ETF.pdf",
@@ -176854,12 +177178,83 @@
      "sha256": "be56fdb02ea580be",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HLIF_PFIC_2022.pdf",
+     "bytes": 248721,
+     "sha256": "b492f2d278328565",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
-    2023
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "harvest::harvest-canadian-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Canadian High Income Shares ETF",
+   "tickers": [
+    "HRQ1"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2025/PFIC/HRQ1_Harvest%20Canadian%20High%20Income%20Shares%20ETF.pdf",
+     "bytes": 155633,
+     "sha256": "b2435658b5971eb4",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "harvest::harvest-canadian-income-growth-fund",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Canadian Income & Growth Fund",
+   "tickers": [
+    "HRT3"
+   ],
+   "statements": [
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRT3_Harvest%20Canadian%20Income%20%26%20Growth%20Fund.pdf",
+     "bytes": 243506,
+     "sha256": "d84c12c442b33652",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HCF_PFIC_2022.pdf",
+     "bytes": 249101,
+     "sha256": "0e7de83ef4601da2",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2023,
+    2022
    ]
   },
   {
@@ -176881,11 +177276,21 @@
      "sha256": "b4b46da5e47cb282",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVJ_Harvest%20Canadian%20T-Bill%20ETF%20Updated%20AIS%20Form.pdf",
+     "bytes": 264941,
+     "sha256": "8b0a24b93465d34c",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -176909,6 +177314,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRTX_Harvest%20Clean%20Energy%20ETF%20AIS%20Form.pdf",
+     "bytes": 264061,
+     "sha256": "3feea858dcbd1245",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTX_Harvest%20Clean%20Energy%20ETF.pdf",
@@ -176916,12 +177330,98 @@
      "sha256": "653872db46c30248",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HCLN_PFIC_2022.pdf",
+     "bytes": 247480,
+     "sha256": "6072c748e7ab4a52",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
-    2023
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "harvest::harvest-coinbase-enhanced-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Coinbase Enhanced High Income Shares ETF",
+   "tickers": [
+    "HRQH"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2025/PFIC/HRQH_Harvest%20Coinbase%20Enhanced%20High%20Income%20Shares%20ETF.pdf",
+     "bytes": 155561,
+     "sha256": "18047c9365eaa812",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "harvest::harvest-coinbase-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Coinbase High Income Shares ETF",
+   "tickers": [
+    "HRV2"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2025/PFIC/HRV2_Harvest%20Coinbase%20High%20Income%20Shares%20ETF.pdf",
+     "bytes": 155930,
+     "sha256": "b926387dc10f28d5",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "harvest::harvest-costco-enhanced-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Costco Enhanced High Income Shares ETF",
+   "tickers": [
+    "HRV6"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2025/PFIC/HRV6_Harvest%20Costco%20Enhanced%20High%20Income%20Shares%20ETF.pdf",
+     "bytes": 155602,
+     "sha256": "890b9d7fa52aaf0f",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
    ]
   },
   {
@@ -176943,11 +177443,31 @@
      "sha256": "e9135649d3ebf1dc",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVF_Harvest%20Diversified%20Equity%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 279050,
+     "sha256": "d798604e732e0b59",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRVF_Harvest%20Diversified%20Equity%20Income%20ETF_updated.pdf",
+     "bytes": 260281,
+     "sha256": "e93a3a16c47c7737",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2023
    ]
   },
   {
@@ -176971,6 +177491,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRAX_Harvest%20Diversified%20Monthly%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 278207,
+     "sha256": "64b865761099243b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRAX_Harvest%20Diversified%20Monthly%20Income%20ETF.pdf",
@@ -176978,12 +177507,98 @@
      "sha256": "7a5feec9a5352935",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HDIF_PFIC_2022.pdf",
+     "bytes": 259952,
+     "sha256": "6addadf7f1c1057a",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
-    2023
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "harvest::harvest-esg-equity-income-index-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest ESG Equity Income Index ETF",
+   "tickers": [
+    "HESG"
+   ],
+   "statements": [
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HESG_PFIC_2022.pdf",
+     "bytes": 247623,
+     "sha256": "be0704aac2022e5b",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
+   ]
+  },
+  {
+   "id": "harvest::harvest-eli-lilly-enhanced-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Eli Lilly Enhanced High Income Shares ETF",
+   "tickers": [
+    "HRVR"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVR_Harvest%20Eli%20Lilly%20Enhanced%20High%20Income%20Shares%20ETF%20AIS%20Form.pdf",
+     "bytes": 264705,
+     "sha256": "2dbac5acfd5e8adb",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
+   ]
+  },
+  {
+   "id": "harvest::harvest-eli-lilly-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Eli Lilly High Income Shares ETF",
+   "tickers": [
+    "HRQE"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRQE_Harvest%20Eli%20Lilly%20High%20Income%20Shares%20ETF%20AIS%20Form.pdf",
+     "bytes": 265747,
+     "sha256": "d86529bcda68983f",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
    ]
   },
   {
@@ -177007,6 +177622,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRT0_Harvest%20Energy%20Leaders%20Plus%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 264862,
+     "sha256": "77974a01d2f0034b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRT0_Harvest%20Energy%20Leaders%20Plus%20Income%20ETF.pdf",
@@ -177014,12 +177638,23 @@
      "sha256": "179db89a21f16366",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HPF_PFIC_2022.pdf",
+     "bytes": 248610,
+     "sha256": "6ef0ec497598cffa",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
-    2023
+    2024,
+    2023,
+    2022
    ]
   },
   {
@@ -177043,6 +177678,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRA4_Harvest%20Equal%20Weight%20Global%20Utilities%20Enhanced%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 275166,
+     "sha256": "a030934a5cdcf13e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRA4_Harvest%20Equal%20Weight%20Global%20Utilities%20Enhanced%20Income%20ETF.pdf",
@@ -177050,12 +177694,23 @@
      "sha256": "35009f3c451ba7e1",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HUTE_PFIC_2022.pdf",
+     "bytes": 257509,
+     "sha256": "6ae930b0aa040825",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
-    2023
+    2024,
+    2023,
+    2022
    ]
   },
   {
@@ -177079,6 +177734,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRTM_Harvest%20Equal%20Weight%20Global%20Utilities%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 266711,
+     "sha256": "ab181049dda059c2",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTM_Harvest%20Equal%20Weight%20Global%20Utilities%20Income%20ETF.pdf",
@@ -177086,12 +177750,23 @@
      "sha256": "d673f035424d4b2c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HUTL_PFIC_2022.pdf",
+     "bytes": 248500,
+     "sha256": "de68579bd2757c34",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
-    2023
+    2024,
+    2023,
+    2022
    ]
   },
   {
@@ -177113,11 +177788,41 @@
      "sha256": "ab865566b7a5f60b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRTF_Harvest%20Global%20Gold%20Giants%20Index%20ETF%20AIS%20Form.pdf",
+     "bytes": 266028,
+     "sha256": "3ddfcf53e4c7bd92",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTF_Harvest%20Global%20Gold%20Giants%20Index%20ETF.pdf",
+     "bytes": 245254,
+     "sha256": "16a0005dd4d4ec8b",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HGGG_PFIC_2022.pdf",
+     "bytes": 247535,
+     "sha256": "d1254988b4956cba",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2023,
+    2022
    ]
   },
   {
@@ -177141,6 +177846,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRTG_Harvest%20Global%20REIT%20Leaders%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 264428,
+     "sha256": "d42362ae95ab58ef",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTG_Harvest%20Global%20REIT%20Leaders%20Income%20ETF.pdf",
@@ -177153,6 +177867,7 @@
    "duplicates_hidden": 0,
    "years": [
     2025,
+    2024,
     2023
    ]
   },
@@ -177177,6 +177892,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRA1_Harvest%20Healthcare%20Leaders%20Enhanced%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 275659,
+     "sha256": "c7b257b4e84ddf5d",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRA1_Harvest%20Healthcare%20Leaders%20Enhanced%20Income%20ETF.pdf",
@@ -177184,12 +177908,23 @@
      "sha256": "c9082ef96d77d422",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HHLE_PFIC_2022.pdf",
+     "bytes": 256725,
+     "sha256": "f9749678deaeba7f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
-    2023
+    2024,
+    2023,
+    2022
    ]
   },
   {
@@ -177213,6 +177948,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRTH_Harvest%20Healthcare%20Leaders%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 264978,
+     "sha256": "5ef62aee16681bca",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTH_Harvest%20Healthcare%20Leaders%20Income%20ETF.pdf",
@@ -177220,12 +177964,23 @@
      "sha256": "423568c75d27fbc4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HHL_PFIC_2022.pdf",
+     "bytes": 247846,
+     "sha256": "cb686b0ab4ae6b91",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
-    2023
+    2024,
+    2023,
+    2022
    ]
   },
   {
@@ -177247,11 +178002,21 @@
      "sha256": "3724f24a971658cb",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVP_Harvest%20Industrial%20Leaders%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 264271,
+     "sha256": "89687b30eb17a186",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -177307,6 +178072,191 @@
    ]
   },
   {
+   "id": "harvest::harvest-meta-enhanced-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Meta Enhanced High Income Shares ETF",
+   "tickers": [
+    "HRV3"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2025/PFIC/HRV3_Harvest%20Meta%20Enhanced%20High%20Income%20Shares%20ETF.pdf",
+     "bytes": 156303,
+     "sha256": "88460044663b0316",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "harvest::harvest-microsoft-enhanced-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Microsoft Enhanced High Income Shares ETF",
+   "tickers": [
+    "HRVU"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVU_Harvest%20Microsoft%20Enhanced%20High%20Income%20Shares%20ETF%20AIS%20Form.pdf",
+     "bytes": 266063,
+     "sha256": "cfcd65969a67b8f7",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
+   ]
+  },
+  {
+   "id": "harvest::harvest-microsoft-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Microsoft High Income Shares ETF",
+   "tickers": [
+    "HRVS"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVS_Harvest%20Microsoft%20High%20Income%20Shares%20ETF%20AIS%20Form.pdf",
+     "bytes": 264272,
+     "sha256": "16fd4ad0a9924e3b",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
+   ]
+  },
+  {
+   "id": "harvest::harvest-nvidia-enhanced-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest NVIDIA Enhanced High Income Shares ETF",
+   "tickers": [
+    "HRVY"
+   ],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVY_Harvest%20NVIDIA%20Enhanced%20High%20Income%20Shares%20ETF%20AIS%20Form.pdf",
+     "bytes": 264225,
+     "sha256": "9a387137f6b21166",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
+   ]
+  },
+  {
+   "id": "harvest::harvest-nvidia-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest NVIDIA High Income Shares ETF",
+   "tickers": [
+    "HRVX"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2025/PFIC/HRVX_Harvest%20NVIDIA%20High%20Income%20Shares%20ETF.pdf",
+     "bytes": 156315,
+     "sha256": "990bf98c7b0e8c98",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVX_Harvest%20NVIDIA%20High%20Income%20Shares%20ETF%20AIS%20Form.pdf",
+     "bytes": 264340,
+     "sha256": "42deeb5a83e78409",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024
+   ]
+  },
+  {
+   "id": "harvest::harvest-netflix-enhanced-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Netflix Enhanced High Income Shares ETF",
+   "tickers": [
+    "HRV9"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2025/PFIC/HRV9_Harvest%20Netfilx%20Enhanced%20High%20Income%20Shares%20ETF.pdf",
+     "bytes": 155610,
+     "sha256": "61451fa4b933fc45",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
+   "id": "harvest::harvest-palantir-enhanced-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Palantir Enhanced High Income Shares ETF",
+   "tickers": [
+    "HRV5"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2025/PFIC/HRV5_Harvest%20Palantir%20Enhanced%20High%20Income%20Shares%20ETF.pdf",
+     "bytes": 155942,
+     "sha256": "1e5a57dbcfb0bc8b",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
+   ]
+  },
+  {
    "id": "harvest::harvest-premium-yield-7-10-year-treasury-etf",
    "family": "harvest",
    "family_name": "Harvest ETFs",
@@ -177325,11 +178275,21 @@
      "sha256": "1994817a6f75c729",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVL_Harvest%20Premium%20Yield%207-10%20Year%20Treasury%20ETF%20AIS%20Form.pdf",
+     "bytes": 264380,
+     "sha256": "86207bb117b196ba",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -177351,11 +178311,31 @@
      "sha256": "510968c3da6b10e5",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRAS_Harvest%20Premium%20Yield%20Treasury%20ETF%20Updated%20AIS%20Form.pdf",
+     "bytes": 266331,
+     "sha256": "fae7ee1d141d7c5d",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRAS_Harvset%20Premium%20Yield%20Treasury%20ETF_updated.pdf",
+     "bytes": 245112,
+     "sha256": "6943b2308b62093e",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2023
    ]
   },
   {
@@ -177379,6 +178359,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRA3_Harvest%20Tech%20Achievers%20Enhanced%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 275471,
+     "sha256": "4e3925ebecb76fb3",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRA3_Harvest%20Tech%20Achievers%20Enhanced%20Income%20ETF.pdf",
@@ -177386,12 +178375,23 @@
      "sha256": "694e133b20ea318c",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HTAE_PFIC_2022.pdf",
+     "bytes": 257103,
+     "sha256": "2c03a85bed55cf9b",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
-    2023
+    2024,
+    2023,
+    2022
    ]
   },
   {
@@ -177415,6 +178415,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HR21_Harvest%20Tech%20Achievers%20Growth%20%26%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 267201,
+     "sha256": "1d480ede5fe3926e",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HR21_Harvest%20Tech%20Achievers%20Growth%20%26%20Income%20ETF.pdf",
@@ -177422,12 +178431,48 @@
      "sha256": "9786d34d4752b867",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HTA_PFIC_2022.pdf",
+     "bytes": 249110,
+     "sha256": "98d69e3a21901d0f",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
-    2023
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "harvest::harvest-tesla-enhanced-high-income-shares-etf",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "Harvest Tesla Enhanced High Income Shares ETF",
+   "tickers": [
+    "HRV1"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2025/PFIC/HRV1_Harvest%20Tesla%20Enhanced%20High%20Income%20Shares%20ETF.pdf",
+     "bytes": 155978,
+     "sha256": "1508c6b7e491dcec",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
    ]
   },
   {
@@ -177449,11 +178494,31 @@
      "sha256": "6d49ef9408a50bc4",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRVG_Harvest%20Travel%20%26%20Leisure%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 265054,
+     "sha256": "7b213b8d0e176617",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRVG_Harvest%20Travel%20%26%20Leisure%20Income%20ETF_updated.pdf",
+     "bytes": 239165,
+     "sha256": "9d3e417bd4ef2c88",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2023
    ]
   },
   {
@@ -177477,6 +178542,15 @@
      "fmt": "pdf"
     },
     {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRTY_Harvest%20Travel%20%26%20Leisure%20Index%20ETF%20AIS%20Form.pdf",
+     "bytes": 264928,
+     "sha256": "4fd4d2a709299196",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
      "period_end": "2023-12-31",
      "tax_year": 2023,
      "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTY_Harvest%20Travel%20%26%20Leisure%20Index%20ETF.pdf",
@@ -177484,12 +178558,23 @@
      "sha256": "f04fa5789e01f1e2",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/TRVL_PFIC_2022.pdf",
+     "bytes": 248615,
+     "sha256": "2b320b6bfd82e661",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
     2025,
-    2023
+    2024,
+    2023,
+    2022
    ]
   },
   {
@@ -177511,11 +178596,64 @@
      "sha256": "f9daff0edee04ec9",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2024/PFIC/HRTP_Harvest%20US%20Bank%20Leaders%20Income%20ETF%20AIS%20Form.pdf",
+     "bytes": 265012,
+     "sha256": "ab40ff4de7dfe935",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2023/PFIC/HRTP_Harvest%20US%20Bank%20leaders%20Income%20ETF.pdf",
+     "bytes": 246247,
+     "sha256": "744387caf051d77a",
+     "confidence": 15,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/HUBL_PFIC_2022.pdf",
+     "bytes": 249208,
+     "sha256": "97b42b5ed8b791e1",
+     "confidence": 15,
+     "fmt": "pdf"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "harvest::prm-pfic-2022",
+   "family": "harvest",
+   "family_name": "Harvest ETFs",
+   "country": "CA",
+   "name": "PRM PFIC 2022",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2022-12-31",
+     "tax_year": 2022,
+     "url": "https://harvestportfolios.com/wp-content/uploads/tax/2022/PRM_PFIC_2022.pdf",
+     "bytes": 247430,
+     "sha256": "6ba3c90ffdf4c9bd",
+     "confidence": 15,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2022
    ]
   },
   {
@@ -179462,15 +180600,6 @@
    ],
    "statements": [
     {
-     "period_end": "2025-12-31",
-     "tax_year": 2025,
-     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2026-mwmn-en.pdf",
-     "bytes": 159854,
-     "sha256": "82797d00d31ccfa4",
-     "confidence": 13,
-     "fmt": "pdf"
-    },
-    {
      "period_end": "2024-12-31",
      "tax_year": 2024,
      "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2025-mwmn-en.pdf",
@@ -179509,11 +180638,35 @@
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025,
     2024,
     2023,
     2022,
     2021
+   ]
+  },
+  {
+   "id": "mackenzie::mackenzie-global-women-sleadership-etf",
+   "family": "mackenzie",
+   "family_name": "Mackenzie Investments",
+   "country": "CA",
+   "name": "Mackenzie Global Women\u2019sleadership ETF",
+   "tickers": [
+    "MWMN"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-12-31",
+     "tax_year": 2025,
+     "url": "https://www.mackenzieinvestments.com/content/dam/mackenzie/en/pfic/pfic-2026-mwmn-en.pdf",
+     "bytes": 159854,
+     "sha256": "82797d00d31ccfa4",
+     "confidence": 13,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025
    ]
   },
   {
@@ -194311,7 +195464,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "PH&N Bond Fund \u2013 Series F",
+   "name": "PH&N Bond Fund - Series F",
    "tickers": [
     "RBF5110"
    ],
@@ -196045,7 +197198,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Asian Equity Fund \u2013 Series F",
+   "name": "RBC Asian Equity Fund - Series F",
    "tickers": [
     "RBF625"
    ],
@@ -196907,7 +198060,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Canadian Equity Income Fund \u2013 Series F",
+   "name": "RBC Canadian Equity Income Fund - Series F",
    "tickers": [
     "RBF646"
    ],
@@ -197192,7 +198345,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Canadian Short-Term Income Fund \u2013 Series F",
+   "name": "RBC Canadian Short-Term Income Fund - Series F",
    "tickers": [
     "RBF947"
    ],
@@ -197257,7 +198410,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Canadian Small & Mid-Cap Resources Fund \u2013 Series F",
+   "name": "RBC Canadian Small & Mid-Cap Resources Fund - Series F",
    "tickers": [
     "RBF5527"
    ],
@@ -198301,7 +199454,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC European Equity Fund \u2013 Series FT5",
+   "name": "RBC European Equity Fund - Series FT5",
    "tickers": [
     "RBF5622"
    ],
@@ -198651,7 +199804,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Global Corporate Bond Fund \u2013 Series F",
+   "name": "RBC Global Corporate Bond Fund - Series F",
    "tickers": [
     "RBF638"
    ],
@@ -198967,7 +200120,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Global Equity Focus Fund \u2013 Series F",
+   "name": "RBC Global Equity Focus Fund - Series F",
    "tickers": [
     "RBF5415",
     "RBF667"
@@ -199769,7 +200922,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC International Equity Fund \u2013 Series F",
+   "name": "RBC International Equity Fund - Series F",
    "tickers": [
     "RBF5411",
     "RBF621"
@@ -200516,6 +201669,71 @@
    ]
   },
   {
+   "id": "rbc-gam::rbc-managed-payout-solution-enhanced-series-f",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Managed Payout Solution - Enhanced - Series F",
+   "tickers": [
+    "RBF662"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf662_e.pdf",
+     "bytes": 164383,
+     "sha256": "c886a39ac4e73de2",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf662_e.pdf",
+     "bytes": 156382,
+     "sha256": "5424a61104beeced",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF662_e.pdf",
+     "bytes": 320444,
+     "sha256": "7bdfd866785f864b",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf662_e.pdf",
+     "bytes": 114810,
+     "sha256": "3503f716589ca025",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-06-30",
+     "tax_year": 2021,
+     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf662_e.pdf",
+     "bytes": 111622,
+     "sha256": "4bc8a7034ee05c7a",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
    "id": "rbc-gam::rbc-managed-payout-solution-enhanced-plus-series-f",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
@@ -200567,71 +201785,6 @@
      "url": "https://www.rbcgam.com/documents/pfic/2021/rbf635_e.pdf",
      "bytes": 111206,
      "sha256": "70a772b468369c33",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024,
-    2023,
-    2022,
-    2021
-   ]
-  },
-  {
-   "id": "rbc-gam::rbc-managed-payout-solution-enhanced-series-f",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Managed Payout Solution - Enhanced \u2013 Series F",
-   "tickers": [
-    "RBF662"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf662_e.pdf",
-     "bytes": 164383,
-     "sha256": "c886a39ac4e73de2",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf662_e.pdf",
-     "bytes": 156382,
-     "sha256": "5424a61104beeced",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF662_e.pdf",
-     "bytes": 320444,
-     "sha256": "7bdfd866785f864b",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2022-06-30",
-     "tax_year": 2022,
-     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf662_e.pdf",
-     "bytes": 114810,
-     "sha256": "3503f716589ca025",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2021-06-30",
-     "tax_year": 2021,
-     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf662_e.pdf",
-     "bytes": 111622,
-     "sha256": "4bc8a7034ee05c7a",
      "confidence": 14,
      "fmt": "pdf"
     }
@@ -200780,7 +201933,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Monthly Income Fund \u2013 Series F",
+   "name": "RBC Monthly Income Fund - Series F",
    "tickers": [
     "RBF602"
    ],
@@ -201741,7 +202894,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC QUBE Low Volatility Canadian Equity Fund \u2013 Series FT5",
+   "name": "RBC QUBE Low Volatility Canadian Equity Fund - Series FT5",
    "tickers": [
     "RBF529"
    ],
@@ -202422,7 +203575,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Select Conservative Portfolio \u2013 Series F",
+   "name": "RBC Select Conservative Portfolio - Series F",
    "tickers": [
     "RBF5516",
     "RBF657"
@@ -216207,7 +217360,7 @@
      "url": "https://www.td.com/content/dam/tdcom/canada/tdam/en/investor/pdf/pfic/mftpficactprefetfae-2023.pdf",
      "bytes": 187750,
      "sha256": "ccccd7a852821a39",
-     "confidence": 13,
+     "confidence": 15,
      "fmt": "pdf"
     },
     {
@@ -218193,7 +219346,7 @@
      "url": "https://www.td.com/content/dam/tdcom/canada/tdam/en/investor/pdf/pfic/mftpfichybdse-2023.pdf",
      "bytes": 188814,
      "sha256": "6a99cd50e5435c35",
-     "confidence": 13,
+     "confidence": 15,
      "fmt": "pdf"
     },
     {
@@ -219623,7 +220776,7 @@
      "url": "https://www.td.com/content/dam/tdcom/canada/tdam/en/investor/pdf/pfic/mftpficqcdnlvetfae-2023.pdf",
      "bytes": 188003,
      "sha256": "fdbd333c7cfb3a70",
-     "confidence": 13,
+     "confidence": 15,
      "fmt": "pdf"
     },
     {
@@ -225342,97 +226495,97 @@
    "name": "Mackenzie Investments",
    "mode": "static",
    "hub": "https://www.mackenzieinvestments.com/en/legal-and-privacy/passive-foreign-investment-company-statements",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 209,
    "candidates": 209,
    "message": "hub needed browser",
    "derived_names": 0,
-   "from_cache": 201,
-   "requests": 8,
-   "unchanged": 2,
-   "seconds": 16
+   "from_cache": 203,
+   "requests": 6,
+   "unchanged": 0,
+   "seconds": 18
   },
   {
    "id": "tdam",
    "name": "TD Asset Management",
    "mode": "static",
    "hub": "https://www.td.com/ca/en/asset-management/resources/pfic-reporting",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 417,
    "candidates": 417,
    "message": "",
    "derived_names": 0,
-   "from_cache": 400,
-   "requests": 17,
+   "from_cache": 391,
+   "requests": 26,
    "unchanged": 0,
-   "seconds": 7
+   "seconds": 9
   },
   {
    "id": "vanguard-ca",
    "name": "Vanguard Investments Canada",
    "mode": "static",
    "hub": "https://www.vanguard.ca/en/tools-and-resources/tax-centre",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 182,
    "candidates": 188,
    "message": "",
    "derived_names": 0,
    "skipped_old": 148,
-   "from_cache": 171,
-   "requests": 17,
-   "unchanged": 2,
-   "seconds": 7
+   "from_cache": 176,
+   "requests": 12,
+   "unchanged": 0,
+   "seconds": 5
   },
   {
    "id": "russell-ca",
    "name": "Russell Investments Canada",
    "mode": "static",
    "hub": "https://russellinvestments.com/content/ri/ca/en/legal/pfic.html",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 242,
    "candidates": 242,
    "message": "",
    "derived_names": 0,
-   "from_cache": 230,
-   "requests": 12,
+   "from_cache": 225,
+   "requests": 17,
    "unchanged": 0,
-   "seconds": 5
+   "seconds": 7
   },
   {
    "id": "ci-gam",
    "name": "CI Global Asset Management",
    "mode": "static",
    "hub": "https://funds.cifinancial.com/en/funds/pfic-documents",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 12595,
    "candidates": 12649,
-   "message": "",
+   "message": "hub needed browser",
    "derived_names": 0,
-   "skipped_old": 136,
-   "from_cache": 12029,
-   "requests": 620,
+   "delisted": 12604,
+   "from_cache": 12037,
+   "requests": 612,
    "unchanged": 0,
-   "seconds": 217
+   "seconds": 225
   },
   {
    "id": "mawer",
    "name": "Mawer Investment Management",
    "mode": "static",
    "hub": "https://www.mawer.com/documents",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 53,
    "candidates": 53,
    "message": "",
    "derived_names": 0,
-   "from_cache": 52,
-   "requests": 1,
-   "unchanged": 0,
+   "from_cache": 50,
+   "requests": 3,
+   "unchanged": 2,
    "seconds": 1
   },
   {
@@ -225440,41 +226593,41 @@
    "name": "CIBC Asset Management",
    "mode": "static",
    "hub": "https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance/etf-pfic-annual-statement.html",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
-   "statements": 24,
+   "statements": 26,
    "candidates": 20,
    "message": "",
    "derived_names": 0,
-   "from_cache": 18,
-   "requests": 5,
+   "from_cache": 17,
+   "requests": 6,
    "unchanged": 0,
-   "archived": 4,
-   "seconds": 1,
-   "detail": "13 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
+   "archived": 6,
+   "seconds": 2,
+   "detail": "11 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
   },
   {
    "id": "blackrock-ishares-ca",
    "name": "BlackRock / iShares Canada",
    "mode": "static",
    "hub": "https://www.blackrock.com/ca/investors/en/resources/tax-information-centre",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 288,
    "candidates": 864,
    "message": "",
    "derived_names": 72,
-   "from_cache": 817,
-   "requests": 47,
-   "unchanged": 14,
-   "seconds": 17
+   "from_cache": 819,
+   "requests": 45,
+   "unchanged": 10,
+   "seconds": 16
   },
   {
    "id": "capitalgroup-ca",
    "name": "Capital Group Canada",
    "mode": "static",
    "hub": "https://www.capitalgroup.com/advisor/ca/en/service/tax-centre.html",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 16,
    "candidates": 16,
@@ -225486,52 +226639,52 @@
    "name": "Fidelity Investments Canada",
    "mode": "static",
    "hub": "https://www.fidelity.ca/en/pfic_etf_statements/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 213,
    "candidates": 213,
    "message": "",
    "derived_names": 0,
    "skipped_old": 36,
-   "from_cache": 200,
-   "requests": 13,
+   "from_cache": 207,
+   "requests": 6,
    "unchanged": 0,
-   "seconds": 5
+   "seconds": 3
   },
   {
    "id": "ia-clarington",
    "name": "iA Clarington Investments",
    "mode": "static",
    "hub": "https://iaclarington.com/applicationsandforms/pficstatements",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 80,
    "candidates": 80,
    "message": "links only - the documents are not fetched: iaclarington.com/robots.txt disallows /docs/, where every statement is kept",
-   "seconds": 0
+   "seconds": 20
   },
   {
    "id": "renaissance",
    "name": "Renaissance Investments (CIBC)",
    "mode": "static",
    "hub": "https://www.renaissanceinvestments.ca/reporting-governance/pfic",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 473,
    "candidates": 473,
    "message": "",
    "derived_names": 0,
-   "from_cache": 148,
-   "requests": 325,
-   "unchanged": 0,
-   "seconds": 157
+   "from_cache": 444,
+   "requests": 29,
+   "unchanged": 9,
+   "seconds": 11
   },
   {
    "id": "hamilton-etfs",
    "name": "Hamilton ETFs",
    "mode": "browser",
    "hub": "https://hamiltonetfs.com/tax-information/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 58,
    "candidates": 3,
@@ -225543,49 +226696,50 @@
    "name": "RBC Global Asset Management / PH&N",
    "mode": "browser",
    "hub": "https://www.rbcgam.com/en/ca/products/pfic-reporting",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 921,
    "candidates": 921,
    "message": "",
    "derived_names": 0,
-   "from_cache": 877,
-   "requests": 44,
+   "from_cache": 881,
+   "requests": 40,
    "unchanged": 0,
-   "seconds": 34
+   "seconds": 31
   },
   {
    "id": "bmo-gam",
    "name": "BMO Global Asset Management",
    "mode": "static",
    "hub": "https://bmogam.com/ca-en/resources/legal-and-regulatory-documents/pfic/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 217,
    "candidates": 217,
    "message": "hub needed curl",
    "derived_names": 0,
    "skipped_old": 2,
-   "from_cache": 197,
-   "requests": 20,
+   "from_cache": 194,
+   "requests": 23,
    "unchanged": 0,
-   "seconds": 68
+   "seconds": 70
   },
   {
    "id": "manulife-im",
    "name": "Manulife Investment Management",
    "mode": "browser",
    "hub": "https://www.manulifeim.com/retail/ca/en/regulatory/passive-foreign-investment-company-pfic",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 61,
    "candidates": 61,
-   "message": "",
+   "message": "hub needed curl",
    "derived_names": 0,
-   "from_cache": 51,
-   "requests": 10,
+   "from_cache": 54,
+   "pdf_transport": "curl",
+   "requests": 7,
    "unchanged": 0,
-   "seconds": 59,
+   "seconds": 74,
    "archived": 0,
    "detail": "43 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
   },
@@ -225594,7 +226748,7 @@
    "name": "Global X Investments Canada (formerly Horizons)",
    "mode": "browser",
    "hub": "https://www.globalx.ca/pfic",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 2,
    "candidates": 2,
@@ -225604,14 +226758,14 @@
    "from_cache": 2,
    "requests": 0,
    "unchanged": 0,
-   "seconds": 13
+   "seconds": 14
   },
   {
    "id": "purpose",
    "name": "Purpose Investments",
    "mode": "static",
    "hub": "https://www.purposeinvest.com/funds",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 81,
    "candidates": 81,
@@ -225621,14 +226775,14 @@
    "from_cache": 74,
    "requests": 7,
    "unchanged": 6,
-   "seconds": 1374
+   "seconds": 1420
   },
   {
    "id": "sunlife-gi",
    "name": "Sun Life Global Investments",
    "mode": "static",
    "hub": "https://www.sunlifeglobalinvestments.com/en/resources/regulatory-documents/#regulatorydocuments-id-4",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "request",
    "statements": 0,
    "candidates": 0,
@@ -225640,7 +226794,7 @@
    "name": "PIMCO Canada",
    "mode": "browser",
    "hub": "https://www.pimco.com/ca/en/resources/tax-center",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -225652,23 +226806,25 @@
    "name": "Dimensional Fund Advisors Canada",
    "mode": "static",
    "hub": "https://www.dimensional.com/ca-en/document-center",
-   "checked": "2026-11-13",
-   "status": "ok",
+   "checked": "2026-11-14",
+   "status": "empty",
    "statements": 19,
    "candidates": 19,
-   "message": "",
+   "message": "hub reachable but it listed no documents tonight; 19 cached statement(s) kept (document API answered with 253468 bytes but no statement links)",
+   "detail": "document API answered with 253468 bytes but no statement links",
    "derived_names": 0,
-   "from_cache": 17,
-   "requests": 2,
-   "unchanged": 1,
-   "seconds": 2
+   "delisted": 19,
+   "from_cache": 16,
+   "requests": 3,
+   "unchanged": 2,
+   "seconds": 5
   },
   {
    "id": "evolve",
    "name": "Evolve ETFs",
    "mode": "static",
    "hub": "https://evolveetfs.com/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 6,
    "candidates": 6,
@@ -225677,14 +226833,14 @@
    "from_cache": 5,
    "requests": 1,
    "unchanged": 0,
-   "seconds": 161
+   "seconds": 163
   },
   {
    "id": "bridgehouse",
    "name": "Bridgehouse Asset Managers (incl. GQG Partners funds)",
    "mode": "static",
    "hub": "https://www.bridgehousecanada.com/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -225696,23 +226852,23 @@
    "name": "Dynamic Funds (1832 Asset Management)",
    "mode": "static",
    "hub": "https://dynamic.ca/en/regulatory/statutory-documents-applications-and-forms/pfic-irs.html",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 379,
    "candidates": 493,
    "message": "",
    "derived_names": 0,
-   "from_cache": 483,
-   "requests": 10,
-   "unchanged": 9,
-   "seconds": 4
+   "from_cache": 487,
+   "requests": 6,
+   "unchanged": 5,
+   "seconds": 3
   },
   {
    "id": "franklin-templeton-ca",
    "name": "Franklin Templeton Canada",
    "mode": "static",
    "hub": "https://www.franklintempleton.ca/en-ca/resources/forms/pfic-annual-information-statements",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 67,
    "candidates": 67,
@@ -225724,18 +226880,18 @@
    "name": "NEI Investments (Aviso)",
    "mode": "static",
    "hub": "https://www.neiinvestments.com/investment-products/fund-resources/fund-financials.html",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 48,
    "candidates": 41,
    "message": "",
    "derived_names": 0,
    "skipped_old": 4,
-   "from_cache": 37,
-   "requests": 4,
+   "from_cache": 36,
+   "requests": 5,
    "unchanged": 2,
    "archived": 7,
-   "seconds": 4,
+   "seconds": 2,
    "detail": "75 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
   },
   {
@@ -225743,31 +226899,31 @@
    "name": "Starlight Capital",
    "mode": "static",
    "hub": "https://starlightcapital.com/en/prices/documents?category=Tax+Information",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 27,
    "candidates": 27,
    "message": "",
    "derived_names": 0,
-   "from_cache": 26,
-   "requests": 1,
+   "from_cache": 24,
+   "requests": 3,
    "unchanged": 0,
-   "seconds": 3
+   "seconds": 4
   },
   {
    "id": "ninepoint",
    "name": "Ninepoint Partners",
    "mode": "static",
    "hub": "https://www.ninepoint.com/pfic-annual-information-statements/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 25,
    "candidates": 25,
    "message": "",
    "derived_names": 0,
-   "from_cache": 23,
-   "requests": 2,
-   "unchanged": 1,
+   "from_cache": 22,
+   "requests": 3,
+   "unchanged": 2,
    "seconds": 1
   },
   {
@@ -225775,32 +226931,32 @@
    "name": "National Bank Investments",
    "mode": "static",
    "hub": "https://www.nbinvestments.ca/regulatory-documents/pfic-statements.html",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 475,
    "candidates": 475,
    "message": "",
    "derived_names": 0,
-   "from_cache": 454,
-   "requests": 21,
+   "from_cache": 438,
+   "requests": 37,
    "unchanged": 0,
-   "seconds": 8
+   "seconds": 14
   },
   {
    "id": "sprott",
    "name": "Sprott",
    "mode": "static",
    "hub": "https://sprott.com/investment-strategies/exchange-listed-products/physical-bullion-funds/tax-guide/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 28,
    "candidates": 33,
    "message": "",
    "derived_names": 0,
-   "from_cache": 5,
-   "requests": 28,
+   "from_cache": 33,
+   "requests": 0,
    "unchanged": 0,
-   "seconds": 43,
+   "seconds": 1,
    "archived": 0,
    "detail": "5 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
   },
@@ -225809,7 +226965,7 @@
    "name": "Lysander Funds",
    "mode": "static",
    "hub": "https://www.lysanderfunds.com/passive-foreign-investment-company-pfic/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 5,
    "candidates": 5,
@@ -225821,7 +226977,7 @@
    "name": "Desjardins Funds",
    "mode": "static",
    "hub": "https://www.fondsdesjardins.com/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 3,
    "candidates": 6,
@@ -225830,47 +226986,46 @@
    "from_cache": 6,
    "requests": 0,
    "unchanged": 0,
-   "seconds": 1
+   "seconds": 2
   },
   {
    "id": "guardian",
    "name": "Guardian Capital",
    "mode": "static",
    "hub": "https://www.guardiancapital.com/investmentsolutions/reg-documents/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
    "statements": 5,
    "candidates": 5,
    "message": "",
    "derived_names": 0,
-   "from_cache": 4,
-   "requests": 1,
+   "from_cache": 5,
+   "requests": 0,
    "unchanged": 0,
-   "seconds": 11
+   "seconds": 3
   },
   {
    "id": "harvest",
    "name": "Harvest ETFs",
    "mode": "static",
    "hub": "https://harvestportfolios.com/products/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "ok",
-   "statements": 41,
-   "candidates": 140,
+   "statements": 114,
+   "candidates": 213,
    "message": "",
    "derived_names": 0,
-   "detail": "the Internet Archive's list of earlier statements could not be read tonight; it will be asked again",
-   "from_cache": 133,
-   "requests": 7,
-   "unchanged": 4,
-   "seconds": 61
+   "from_cache": 136,
+   "requests": 77,
+   "unchanged": 3,
+   "seconds": 172
   },
   {
    "id": "agf",
    "name": "AGF Investments",
    "mode": "static",
    "hub": "https://www.agf.com/ca/en/resources/tax-information/index.jsp",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -225882,7 +227037,7 @@
    "name": "Invesco Canada",
    "mode": "static",
    "hub": "https://www.invesco.com/ca/en/insights/all-about-PFIC-rules.html",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -225894,7 +227049,7 @@
    "name": "Scotia Global Asset Management (ScotiaFunds, Scotia ETFs)",
    "mode": "static",
    "hub": "https://www.scotiafunds.com/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -225906,7 +227061,7 @@
    "name": "Fiera Capital",
    "mode": "static",
    "hub": "https://www.fieracapital.com/en/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -225918,7 +227073,7 @@
    "name": "Beutel Goodman",
    "mode": "static",
    "hub": "https://www.beutelgoodman.com/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -225930,7 +227085,7 @@
    "name": "Picton Mahoney Asset Management",
    "mode": "static",
    "hub": "https://www.pictonmahoney.com/",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -225942,7 +227097,7 @@
    "name": "FERIQUE Fund Management",
    "mode": "static",
    "hub": "https://www.ferique.com/en",
-   "checked": "2026-11-13",
+   "checked": "2026-11-14",
    "status": "none",
    "statements": 0,
    "candidates": 0,
