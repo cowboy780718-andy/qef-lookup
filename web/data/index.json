@@ -1,10 +1,10 @@
 {
- "generated": "2026-11-16T19:22:20+00:00",
+ "generated": "2026-11-17T19:14:52+00:00",
  "stats": {
   "families": 41,
   "families_ok": 30,
-  "funds": 4849,
-  "statements": 15900,
+  "funds": 4852,
+  "statements": 15931,
   "years": [
    2026,
    2025,
@@ -138,8 +138,8 @@
    "caveat": "CIBC posts statements for its ETFs only, one per ETF at a fixed address that it replaces each year. Earlier years shown here are archived copies, where one exists; otherwise ask CIBC.",
    "covers": null,
    "links_only": false,
-   "statement_count": 29,
-   "fund_count": 20
+   "statement_count": 37,
+   "fund_count": 22
   },
   {
    "id": "blackrock-ishares-ca",
@@ -300,8 +300,8 @@
    "caveat": null,
    "covers": null,
    "links_only": false,
-   "statement_count": 61,
-   "fund_count": 61
+   "statement_count": 84,
+   "fund_count": 62
   },
   {
    "id": "globalx-ca",
@@ -157473,11 +157473,22 @@
      "sha256": "ecebeb46d21bc99e",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420224757/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-cafr-en.pdf",
+     "bytes": 81986,
+     "sha256": "34c707928dbc5f65",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -157496,11 +157507,22 @@
      "sha256": "339a960292a55e9f",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420230413/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-ccbi-en.pdf",
+     "bytes": 81843,
+     "sha256": "ec192684d0ee1147",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -157519,11 +157541,22 @@
      "sha256": "f25749eb9913eb34",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420225254/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-ccei-en.pdf",
+     "bytes": 80226,
+     "sha256": "7a1f0437fa2d8f29",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -157584,6 +157617,30 @@
    ]
   },
   {
+   "id": "cibc::cibc-emerging-markets-equity-index-etf",
+   "family": "cibc",
+   "family_name": "CIBC Asset Management",
+   "country": "CA",
+   "name": "CIBC Emerging Markets Equity Index ETF",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420232020/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-cemi-en.pdf",
+     "bytes": 79503,
+     "sha256": "aefdfc201aa84749",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
+   ]
+  },
+  {
    "id": "cibc::cibc-flexible-yield-etf-cad-hedged-class-a",
    "family": "cibc",
    "family_name": "CIBC Asset Management",
@@ -157633,11 +157690,22 @@
      "sha256": "60c7a9218749ef64",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420224723/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-cgbi-en.pdf",
+     "bytes": 82011,
+     "sha256": "9ad65188fc148313",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -157929,11 +157997,46 @@
      "sha256": "baf847f001761184",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420225041/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-cqlu-en.pdf",
+     "bytes": 81942,
+     "sha256": "793f4b74b386f03d",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
+   ]
+  },
+  {
+   "id": "cibc::cibc-u-s-equity-index-etf",
+   "family": "cibc",
+   "family_name": "CIBC Asset Management",
+   "country": "CA",
+   "name": "CIBC U.S. Equity Index ETF",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420231817/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-cuei-en.pdf",
+     "bytes": 80249,
+     "sha256": "4ac2ec61ff8fa495",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
    ]
   },
   {
@@ -157952,11 +158055,22 @@
      "sha256": "be96c51c6fcebfdb",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250420225355/https://www.cibc.com/content/dam/personal_banking/investments/pdfs/mutual_funds/reporting_and_governance/pfic-etf-cueh-en.pdf",
+     "bytes": 80698,
+     "sha256": "46b3832fcc7ae9bf",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -158444,7 +158558,7 @@
      "url": "https://www.dimensional.com/chmedia/236423/source/download/pfic-annual-information-statement_dgcf_global-40-equity-60-fixed-income-portfolio-ca.pdf",
      "bytes": 218130,
      "sha256": "379bea32f29764b9",
-     "confidence": 13,
+     "confidence": 15,
      "fmt": "pdf"
     }
    ],
@@ -181895,11 +182009,22 @@
      "sha256": "f0d7696e2fb06d18",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20251217130057/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/4045-Manulife-Bond-Fund-En.pdf",
+     "bytes": 119403,
+     "sha256": "ef49f933445c8ed7",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-12-17"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -181987,11 +182112,22 @@
      "sha256": "6b799ad44bd4a3c7",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://web.archive.org/web/20250320220836/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/579-manulife-climate-action-fund-en.pdf",
+     "bytes": 116202,
+     "sha256": "949b92090a1a91b9",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-03-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -182033,11 +182169,22 @@
      "sha256": "f19754e96abade56",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20260114124103/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/154-Manulife-Corporate-Bond-Fund-En.pdf",
+     "bytes": 117199,
+     "sha256": "36b4ef1069ae1d26",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2026-01-14"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -182056,11 +182203,22 @@
      "sha256": "55d4cdde1b1e0259",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250429050446/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/849-Manulife-Dividend-Income-Class-En.pdf",
+     "bytes": 124630,
+     "sha256": "87efb69df3e1d026",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-04-29"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -182079,11 +182237,22 @@
      "sha256": "3682efd27fad9931",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://web.archive.org/web/20241211164200/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/446-Manulife-Dividend-Income-Fund-En.pdf",
+     "bytes": 117805,
+     "sha256": "89349ab498b550f8",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2024-12-11"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -182171,11 +182340,22 @@
      "sha256": "c1d28224a67a8ebf",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250911062907/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/848-manulife-fundamental-balanced-class-en.pdf",
+     "bytes": 127475,
+     "sha256": "f7c84bc7e634c1f0",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-09-11"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -182240,11 +182420,22 @@
      "sha256": "ae8dd0cc74122d75",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20251005124208/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/4158-Manulife-Fundamental-Income-Fund-En.pdf",
+     "bytes": 119040,
+     "sha256": "3a1c857790bf7ae9",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-10-05"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -182286,11 +182477,22 @@
      "sha256": "1e3dc25416d32d93",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20251107151138/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/636-Manulife-Global-Balanced-Private-Trust-En.pdf",
+     "bytes": 131641,
+     "sha256": "1fb04581359051fc",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-11-07"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -182378,11 +182580,33 @@
      "sha256": "ce2d797b97c91f79",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250915125942/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/615-Manulife-Global-Equity-Private-Pool-En.pdf",
+     "bytes": 115908,
+     "sha256": "e9076c2d67e1e0e0",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-09-15"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://web.archive.org/web/20240702104849/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/615-Manulife-Global-Equity-Private-Pool-En.pdf",
+     "bytes": 116045,
+     "sha256": "62b6602541f24ffd",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2024-07-02"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024,
+    2023
    ]
   },
   {
@@ -182447,11 +182671,22 @@
      "sha256": "dccc351bb4098ba6",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20251107153028/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/528-Manulife-Global-Thematic-Opportunities-Fund-En.pdf",
+     "bytes": 116430,
+     "sha256": "ba13cec3c174f38b",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-11-07"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -182493,11 +182728,22 @@
      "sha256": "b3454c93496bf330",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://web.archive.org/web/20250320221533/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/640-Manulife-International-Equity-Private-Trust-En.pdf",
+     "bytes": 117014,
+     "sha256": "a4a2cb771384f664",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-03-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -182516,11 +182762,22 @@
      "sha256": "a5dfe45b375df2ef",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250513191057/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/803-Manulife-Monthly-High-Income-Class-En.pdf",
+     "bytes": 123167,
+     "sha256": "92f896fa54bae8a2",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-05-13"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -182539,11 +182796,46 @@
      "sha256": "7ea40d94016f8c86",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://web.archive.org/web/20250320213653/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/131-Manulife-Monthly-High-Income-Fund-En.pdf",
+     "bytes": 118018,
+     "sha256": "bf80755248e03247",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-03-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
+   ]
+  },
+  {
+   "id": "manulife-im::manulife-multifactor-developed-international-index-etf",
+   "family": "manulife-im",
+   "family_name": "Manulife Investment Management",
+   "country": "CA",
+   "name": "Manulife Multifactor Developed International Index ETF",
+   "tickers": [],
+   "statements": [
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20251107161800/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/MINT-Manulife-Multifactor-Developed-International-Index-ETF-En.pdf",
+     "bytes": 113563,
+     "sha256": "1d5da65c268cc990",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-11-07"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2024
    ]
   },
   {
@@ -182608,11 +182900,22 @@
      "sha256": "e25921eb3f8de4f1",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20260114131210/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/bskt-manulife-smart-core-bond-etf-unhedged-en.pdf",
+     "bytes": 113010,
+     "sha256": "d650b5ab771a91c7",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2026-01-14"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -182631,11 +182934,22 @@
      "sha256": "a38c96571d81730a",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250915132758/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/CDIV-Manulife-Smart-Dividend-ETF-En.pdf",
+     "bytes": 112594,
+     "sha256": "287c28611155bde9",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-09-15"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -182677,11 +182991,22 @@
      "sha256": "ebf153b61c8eca10",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20250915125606/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/TERM-Manulife-Smart-Short-Term-Bond-ETF-En.pdf",
+     "bytes": 112903,
+     "sha256": "3590f94b1fd991ce",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-09-15"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -182815,11 +183140,22 @@
      "sha256": "8d532bf1386dbfe3",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://web.archive.org/web/20250320222218/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/517-Manulife-Strategic-Investment-Grade-Global-Bond-Fund-En.pdf",
+     "bytes": 117561,
+     "sha256": "89bc739d09eb4788",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-03-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -182861,11 +183197,22 @@
      "sha256": "35e5d9f0ed6eeb1d",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://web.archive.org/web/20250320083905/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/436-Manulife-US-All-Cap-Equity-Fund-En.pdf",
+     "bytes": 118160,
+     "sha256": "a8a67814de6bc19c",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-03-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -182884,11 +183231,22 @@
      "sha256": "24a735ef7da44933",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20251107161206/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/4165-Manulife-US-Dividend-Income-Fund-En.pdf",
+     "bytes": 116661,
+     "sha256": "a8be41f2f3f910ee",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-11-07"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -182930,11 +183288,22 @@
      "sha256": "776e652280052e2b",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-12-31",
+     "tax_year": 2023,
+     "url": "https://web.archive.org/web/20250320215606/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/518U-Manulife-US-Dollar-Strategic-Income-Fund-En.pdf",
+     "bytes": 117590,
+     "sha256": "aa1717487de8c6d4",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2025-03-20"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2023
    ]
   },
   {
@@ -183022,11 +183391,22 @@
      "sha256": "df5443d388d22870",
      "confidence": 15,
      "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-12-31",
+     "tax_year": 2024,
+     "url": "https://web.archive.org/web/20260114125942/https://www.manulifeim.com/content/dam/mim-ca/landing-page/product/pdf/541u-manulife-us-dollar-us-mid-cap-equity-fund-en.pdf",
+     "bytes": 115202,
+     "sha256": "ea7aac36c319defb",
+     "confidence": 15,
+     "fmt": "pdf",
+     "archived": "2026-01-14"
     }
    ],
    "duplicates_hidden": 0,
    "years": [
-    2025
+    2025,
+    2024
    ]
   },
   {
@@ -194842,7 +195222,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "BlueBay European High Yield Bond Fund (Canada) \u2013 Series F",
+   "name": "BlueBay European High Yield Bond Fund (Canada) - Series F",
    "tickers": [
     "RBF5636"
    ],
@@ -195092,7 +195472,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "BlueBay Global Investment Grade Corporate Bond Fund (Canada) \u2013 Series F",
+   "name": "BlueBay Global Investment Grade Corporate Bond Fund (Canada) - Series F",
    "tickers": [
     "RBF9179"
    ],
@@ -196666,7 +197046,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "PH&N U.S. Multi-Style All-Cap Equity Fund \u2013 Series F",
+   "name": "PH&N U.S. Multi-Style All-Cap Equity Fund - Series F",
    "tickers": [
     "RBF5380"
    ],
@@ -196796,7 +197176,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC $U.S. Core Plus Bond Pool \u2013 Series F",
+   "name": "RBC $U.S. Core Plus Bond Pool - Series F",
    "tickers": [
     "RBF1083"
    ],
@@ -197292,6 +197672,71 @@
    ]
   },
   {
+   "id": "rbc-gam::rbc-balanced-fund-series-f",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Balanced Fund - Series F",
+   "tickers": [
+    "RBF604"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf604_e.pdf",
+     "bytes": 156842,
+     "sha256": "8fe53e8d9d9f7feb",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf604_e.pdf",
+     "bytes": 145395,
+     "sha256": "1e528aed7e80fc0e",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF604_e.pdf",
+     "bytes": 315882,
+     "sha256": "2ae93d9ff087c1c6",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf604_e.pdf",
+     "bytes": 112917,
+     "sha256": "09503ed4a5decf63",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-06-30",
+     "tax_year": 2021,
+     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf604_e.pdf",
+     "bytes": 110565,
+     "sha256": "b403a2b056379438",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
    "id": "rbc-gam::rbc-balanced-fund-series-ft5",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
@@ -197402,57 +197847,57 @@
    ]
   },
   {
-   "id": "rbc-gam::rbc-balanced-fund-series-f",
+   "id": "rbc-gam::rbc-balanced-growth-income-fund-series-ft5",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Balanced Fund \u2013 Series F",
+   "name": "RBC Balanced Growth & Income Fund - Series FT5",
    "tickers": [
-    "RBF604"
+    "RBF698"
    ],
    "statements": [
     {
      "period_end": "2025-06-30",
      "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf604_e.pdf",
-     "bytes": 156842,
-     "sha256": "8fe53e8d9d9f7feb",
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf698_e.pdf",
+     "bytes": 164927,
+     "sha256": "8f9d71c24d8f9563",
      "confidence": 14,
      "fmt": "pdf"
     },
     {
      "period_end": "2024-06-30",
      "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf604_e.pdf",
-     "bytes": 145395,
-     "sha256": "1e528aed7e80fc0e",
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf698_e.pdf",
+     "bytes": 152525,
+     "sha256": "35470fe3e496586f",
      "confidence": 14,
      "fmt": "pdf"
     },
     {
      "period_end": "2023-06-30",
      "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF604_e.pdf",
-     "bytes": 315882,
-     "sha256": "2ae93d9ff087c1c6",
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF698_e.pdf",
+     "bytes": 321789,
+     "sha256": "314f56e64eaf53fe",
      "confidence": 14,
      "fmt": "pdf"
     },
     {
      "period_end": "2022-06-30",
      "tax_year": 2022,
-     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf604_e.pdf",
-     "bytes": 112917,
-     "sha256": "09503ed4a5decf63",
+     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf698_e.pdf",
+     "bytes": 113835,
+     "sha256": "f196ffa1d128d721",
      "confidence": 14,
      "fmt": "pdf"
     },
     {
      "period_end": "2021-06-30",
      "tax_year": 2021,
-     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf604_e.pdf",
-     "bytes": 110565,
-     "sha256": "b403a2b056379438",
+     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf698_e.pdf",
+     "bytes": 108590,
+     "sha256": "06491ead99b5256e",
      "confidence": 14,
      "fmt": "pdf"
     }
@@ -197524,71 +197969,6 @@
     }
    ],
    "duplicates_hidden": 5,
-   "years": [
-    2025,
-    2024,
-    2023,
-    2022,
-    2021
-   ]
-  },
-  {
-   "id": "rbc-gam::rbc-balanced-growth-income-fund-series-ft5",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Balanced Growth & Income Fund \u2013 Series FT5",
-   "tickers": [
-    "RBF698"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf698_e.pdf",
-     "bytes": 164927,
-     "sha256": "8f9d71c24d8f9563",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf698_e.pdf",
-     "bytes": 152525,
-     "sha256": "35470fe3e496586f",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF698_e.pdf",
-     "bytes": 321789,
-     "sha256": "314f56e64eaf53fe",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2022-06-30",
-     "tax_year": 2022,
-     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf698_e.pdf",
-     "bytes": 113835,
-     "sha256": "f196ffa1d128d721",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2021-06-30",
-     "tax_year": 2021,
-     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf698_e.pdf",
-     "bytes": 108590,
-     "sha256": "06491ead99b5256e",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
    "years": [
     2025,
     2024,
@@ -197829,6 +198209,71 @@
    ]
   },
   {
+   "id": "rbc-gam::rbc-canadian-dividend-fund-series-ft8",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Canadian Dividend Fund - Series FT8",
+   "tickers": [
+    "RBF1607"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf1607_e.pdf",
+     "bytes": 152074,
+     "sha256": "deff640d9631e2b7",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf1607_e.pdf",
+     "bytes": 136625,
+     "sha256": "62aeb052d692f0e1",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF1607_e.pdf",
+     "bytes": 107797,
+     "sha256": "89915dbeda596876",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf1607_e.pdf",
+     "bytes": 107759,
+     "sha256": "597391394b95415e",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-06-30",
+     "tax_year": 2021,
+     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf1607_e.pdf",
+     "bytes": 107718,
+     "sha256": "9655138123ee422e",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
    "id": "rbc-gam::rbc-canadian-dividend-fund-series-ft5",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
@@ -197880,71 +198325,6 @@
      "url": "https://www.rbcgam.com/documents/pfic/2021/rbf670_e.pdf",
      "bytes": 107723,
      "sha256": "974833415c26bb82",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024,
-    2023,
-    2022,
-    2021
-   ]
-  },
-  {
-   "id": "rbc-gam::rbc-canadian-dividend-fund-series-ft8",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Canadian Dividend Fund \u2013 Series FT8",
-   "tickers": [
-    "RBF1607"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf1607_e.pdf",
-     "bytes": 152074,
-     "sha256": "deff640d9631e2b7",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf1607_e.pdf",
-     "bytes": 136625,
-     "sha256": "62aeb052d692f0e1",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF1607_e.pdf",
-     "bytes": 107797,
-     "sha256": "89915dbeda596876",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2022-06-30",
-     "tax_year": 2022,
-     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf1607_e.pdf",
-     "bytes": 107759,
-     "sha256": "597391394b95415e",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2021-06-30",
-     "tax_year": 2021,
-     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf1607_e.pdf",
-     "bytes": 107718,
-     "sha256": "9655138123ee422e",
      "confidence": 14,
      "fmt": "pdf"
     }
@@ -199902,7 +200282,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Global Dividend Growth Fund \u2013 Series F",
+   "name": "RBC Global Dividend Growth Fund - Series F",
    "tickers": [
     "RBF5414",
     "RBF627"
@@ -200411,66 +200791,11 @@
    ]
   },
   {
-   "id": "rbc-gam::rbc-global-equity-leaders-fund-series-ft5",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Global Equity Leaders Fund - Series FT5",
-   "tickers": [
-    "RBF1909"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf1909_e.pdf",
-     "bytes": 155609,
-     "sha256": "c81eb1545c286efe",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf1909_e.pdf",
-     "bytes": 140187,
-     "sha256": "391509dbc92c05d4",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF1909_e.pdf",
-     "bytes": 107782,
-     "sha256": "c82b314888d421ed",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2022-06-30",
-     "tax_year": 2022,
-     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf1909_e.pdf",
-     "bytes": 107788,
-     "sha256": "58e4c532c38d571d",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024,
-    2023,
-    2022
-   ]
-  },
-  {
    "id": "rbc-gam::rbc-global-equity-leaders-fund-series-f",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Global Equity Leaders Fund \u2013 Series F",
+   "name": "RBC Global Equity Leaders Fund - Series F",
    "tickers": [
     "RBF1109",
     "RBF1119"
@@ -200523,6 +200848,61 @@
     }
    ],
    "duplicates_hidden": 3,
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022
+   ]
+  },
+  {
+   "id": "rbc-gam::rbc-global-equity-leaders-fund-series-ft5",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Global Equity Leaders Fund - Series FT5",
+   "tickers": [
+    "RBF1909"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf1909_e.pdf",
+     "bytes": 155609,
+     "sha256": "c81eb1545c286efe",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf1909_e.pdf",
+     "bytes": 140187,
+     "sha256": "391509dbc92c05d4",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF1909_e.pdf",
+     "bytes": 107782,
+     "sha256": "c82b314888d421ed",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf1909_e.pdf",
+     "bytes": 107788,
+     "sha256": "58e4c532c38d571d",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
    "years": [
     2025,
     2024,
@@ -200735,7 +201115,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC High Yield Bond Fund \u2013 Series F",
+   "name": "RBC High Yield Bond Fund - Series F",
    "tickers": [
     "RBF696"
    ],
@@ -201437,6 +201817,86 @@
    ]
   },
   {
+   "id": "rbc-gam::rbc-long-short-north-american-equity-fund-series-f-jun24",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Long/Short North American Equity Fund - Series F_JUN24",
+   "tickers": [
+    "RBF12406"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf12406_e.pdf",
+     "bytes": 158973,
+     "sha256": "90039878f80bedbc",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf12406_e.pdf",
+     "bytes": 143491,
+     "sha256": "bf19d48eb41e1bfb",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024
+   ]
+  },
+  {
+   "id": "rbc-gam::rbc-long-short-north-american-equity-fund-series-f-mar22",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Long/Short North American Equity Fund - Series F_MAR22",
+   "tickers": [
+    "RBF12203"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf12203_e.pdf",
+     "bytes": 156798,
+     "sha256": "84af59902b380353",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf12203_e.pdf",
+     "bytes": 141346,
+     "sha256": "34daa161d6576e68",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF12203_e.pdf",
+     "bytes": 107960,
+     "sha256": "8042f7e7cfe49c58",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023
+   ]
+  },
+  {
    "id": "rbc-gam::rbc-long-short-north-american-equity-fund-series-f-oct21",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
@@ -201619,86 +202079,6 @@
    "years": [
     2025,
     2024
-   ]
-  },
-  {
-   "id": "rbc-gam::rbc-long-short-north-american-equity-fund-series-f-jun24",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Long/Short North American Equity Fund \u2013 Series F_JUN24",
-   "tickers": [
-    "RBF12406"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf12406_e.pdf",
-     "bytes": 158973,
-     "sha256": "90039878f80bedbc",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf12406_e.pdf",
-     "bytes": 143491,
-     "sha256": "bf19d48eb41e1bfb",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024
-   ]
-  },
-  {
-   "id": "rbc-gam::rbc-long-short-north-american-equity-fund-series-f-mar22",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Long/Short North American Equity Fund \u2013 Series F_MAR22",
-   "tickers": [
-    "RBF12203"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf12203_e.pdf",
-     "bytes": 156798,
-     "sha256": "84af59902b380353",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf12203_e.pdf",
-     "bytes": 141346,
-     "sha256": "34daa161d6576e68",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF12203_e.pdf",
-     "bytes": 107960,
-     "sha256": "8042f7e7cfe49c58",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024,
-    2023
    ]
   },
   {
@@ -201901,7 +202281,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Monthly Income Bond Fund \u2013 Series F",
+   "name": "RBC Monthly Income Bond Fund - Series F",
    "tickers": [
     "RBF695"
    ],
@@ -203464,6 +203844,71 @@
    ]
   },
   {
+   "id": "rbc-gam::rbc-select-balanced-portfolio-series-ft5",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Select Balanced Portfolio - Series FT5",
+   "tickers": [
+    "RBF5658"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf5658_e.pdf",
+     "bytes": 186317,
+     "sha256": "7339ed9809a8662b",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf5658_e.pdf",
+     "bytes": 180688,
+     "sha256": "5f29a1d28dedb561",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF5658_e.pdf",
+     "bytes": 321827,
+     "sha256": "3d1ebd2b0a26e56e",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf5658_e.pdf",
+     "bytes": 126064,
+     "sha256": "088ec06a6d78fa35",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-06-30",
+     "tax_year": 2021,
+     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf5658_e.pdf",
+     "bytes": 107728,
+     "sha256": "0ff7c59379dca0a4",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
    "id": "rbc-gam::rbc-select-balanced-portfolio-series-f",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
@@ -203530,71 +203975,6 @@
     }
    ],
    "duplicates_hidden": 4,
-   "years": [
-    2025,
-    2024,
-    2023,
-    2022,
-    2021
-   ]
-  },
-  {
-   "id": "rbc-gam::rbc-select-balanced-portfolio-series-ft5",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Select Balanced Portfolio \u2013 Series FT5",
-   "tickers": [
-    "RBF5658"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf5658_e.pdf",
-     "bytes": 186317,
-     "sha256": "7339ed9809a8662b",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf5658_e.pdf",
-     "bytes": 180688,
-     "sha256": "5f29a1d28dedb561",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF5658_e.pdf",
-     "bytes": 321827,
-     "sha256": "3d1ebd2b0a26e56e",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2022-06-30",
-     "tax_year": 2022,
-     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf5658_e.pdf",
-     "bytes": 126064,
-     "sha256": "088ec06a6d78fa35",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2021-06-30",
-     "tax_year": 2021,
-     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf5658_e.pdf",
-     "bytes": 107728,
-     "sha256": "0ff7c59379dca0a4",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
    "years": [
     2025,
     2024,
@@ -203902,76 +204282,11 @@
    ]
   },
   {
-   "id": "rbc-gam::rbc-select-very-conservative-portfolio-series-ft5",
-   "family": "rbc-gam",
-   "family_name": "RBC Global Asset Management / PH&N",
-   "country": "CA",
-   "name": "RBC Select Very Conservative Portfolio - Series FT5",
-   "tickers": [
-    "RBF5664"
-   ],
-   "statements": [
-    {
-     "period_end": "2025-06-30",
-     "tax_year": 2025,
-     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf5664_e.pdf",
-     "bytes": 179904,
-     "sha256": "c641df8579ac9f2e",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2024-06-30",
-     "tax_year": 2024,
-     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf5664_e.pdf",
-     "bytes": 170723,
-     "sha256": "53317a4ec85c12c9",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2023-06-30",
-     "tax_year": 2023,
-     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF5664_e.pdf",
-     "bytes": 322276,
-     "sha256": "e9f13111f787a9a9",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2022-06-30",
-     "tax_year": 2022,
-     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf5664_e.pdf",
-     "bytes": 122366,
-     "sha256": "e3cc0f7944ffa3aa",
-     "confidence": 14,
-     "fmt": "pdf"
-    },
-    {
-     "period_end": "2021-06-30",
-     "tax_year": 2021,
-     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf5664_e.pdf",
-     "bytes": 107781,
-     "sha256": "7305d520ce78fda1",
-     "confidence": 14,
-     "fmt": "pdf"
-    }
-   ],
-   "duplicates_hidden": 0,
-   "years": [
-    2025,
-    2024,
-    2023,
-    2022,
-    2021
-   ]
-  },
-  {
    "id": "rbc-gam::rbc-select-very-conservative-portfolio-series-f",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Select Very Conservative Portfolio \u2013 Series F",
+   "name": "RBC Select Very Conservative Portfolio - Series F",
    "tickers": [
     "RBF5515",
     "RBF664"
@@ -204051,6 +204366,71 @@
    ]
   },
   {
+   "id": "rbc-gam::rbc-select-very-conservative-portfolio-series-ft5",
+   "family": "rbc-gam",
+   "family_name": "RBC Global Asset Management / PH&N",
+   "country": "CA",
+   "name": "RBC Select Very Conservative Portfolio - Series FT5",
+   "tickers": [
+    "RBF5664"
+   ],
+   "statements": [
+    {
+     "period_end": "2025-06-30",
+     "tax_year": 2025,
+     "url": "https://www.rbcgam.com/documents/pfic/2025/rbf5664_e.pdf",
+     "bytes": 179904,
+     "sha256": "c641df8579ac9f2e",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2024-06-30",
+     "tax_year": 2024,
+     "url": "https://www.rbcgam.com/documents/pfic/2024/rbf5664_e.pdf",
+     "bytes": 170723,
+     "sha256": "53317a4ec85c12c9",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2023-06-30",
+     "tax_year": 2023,
+     "url": "https://www.rbcgam.com/documents/pfic/2023/RBF5664_e.pdf",
+     "bytes": 322276,
+     "sha256": "e9f13111f787a9a9",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2022-06-30",
+     "tax_year": 2022,
+     "url": "https://www.rbcgam.com/documents/pfic/2022/rbf5664_e.pdf",
+     "bytes": 122366,
+     "sha256": "e3cc0f7944ffa3aa",
+     "confidence": 14,
+     "fmt": "pdf"
+    },
+    {
+     "period_end": "2021-06-30",
+     "tax_year": 2021,
+     "url": "https://www.rbcgam.com/documents/pfic/2021/rbf5664_e.pdf",
+     "bytes": 107781,
+     "sha256": "7305d520ce78fda1",
+     "confidence": 14,
+     "fmt": "pdf"
+    }
+   ],
+   "duplicates_hidden": 0,
+   "years": [
+    2025,
+    2024,
+    2023,
+    2022,
+    2021
+   ]
+  },
+  {
    "id": "rbc-gam::rbc-short-term-global-bond-fund-series-f",
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
@@ -204110,7 +204490,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC Strategic Income Bond Fund \u2013 Series F",
+   "name": "RBC Strategic Income Bond Fund - Series F",
    "tickers": [
     "RBF682"
    ],
@@ -204250,7 +204630,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC U.S. Dividend Fund \u2013 Series FT5",
+   "name": "RBC U.S. Dividend Fund - Series FT5",
    "tickers": [
     "RBF5539"
    ],
@@ -204501,7 +204881,7 @@
    "family": "rbc-gam",
    "family_name": "RBC Global Asset Management / PH&N",
    "country": "CA",
-   "name": "RBC U.S. Index Fund \u2013 Series F",
+   "name": "RBC U.S. Index Fund - Series F",
    "tickers": [
     "RBF5737"
    ],
@@ -217764,7 +218144,7 @@
      "url": "https://www.td.com/content/dam/tdcom/canada/tdam/en/investor/pdf/pfic/mftpficcplusse-2023.pdf",
      "bytes": 206353,
      "sha256": "ac4e5d27a6614422",
-     "confidence": 13,
+     "confidence": 15,
      "fmt": "pdf"
     },
     {
@@ -226502,139 +226882,138 @@
    "name": "Mackenzie Investments",
    "mode": "static",
    "hub": "https://www.mackenzieinvestments.com/en/legal-and-privacy/passive-foreign-investment-company-statements",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 209,
    "candidates": 209,
    "message": "hub needed browser",
    "derived_names": 0,
-   "from_cache": 194,
-   "requests": 15,
-   "unchanged": 3,
-   "seconds": 18
+   "from_cache": 196,
+   "requests": 13,
+   "unchanged": 4,
+   "seconds": 19
   },
   {
    "id": "tdam",
    "name": "TD Asset Management",
    "mode": "static",
    "hub": "https://www.td.com/ca/en/asset-management/resources/pfic-reporting",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 417,
    "candidates": 417,
    "message": "",
    "derived_names": 0,
-   "from_cache": 395,
-   "requests": 22,
+   "from_cache": 404,
+   "requests": 13,
    "unchanged": 0,
-   "seconds": 8
+   "seconds": 5
   },
   {
    "id": "vanguard-ca",
    "name": "Vanguard Investments Canada",
    "mode": "static",
    "hub": "https://www.vanguard.ca/en/tools-and-resources/tax-centre",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 182,
    "candidates": 188,
    "message": "",
    "derived_names": 0,
    "skipped_old": 148,
-   "from_cache": 180,
-   "requests": 8,
-   "unchanged": 0,
-   "seconds": 3
+   "from_cache": 170,
+   "requests": 18,
+   "unchanged": 1,
+   "seconds": 6
   },
   {
    "id": "russell-ca",
    "name": "Russell Investments Canada",
    "mode": "static",
    "hub": "https://russellinvestments.com/content/ri/ca/en/legal/pfic.html",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 242,
    "candidates": 242,
    "message": "",
    "derived_names": 0,
-   "from_cache": 225,
-   "requests": 17,
+   "from_cache": 230,
+   "requests": 12,
    "unchanged": 0,
-   "seconds": 6
+   "seconds": 5
   },
   {
    "id": "ci-gam",
    "name": "CI Global Asset Management",
    "mode": "static",
    "hub": "https://funds.cifinancial.com/en/funds/pfic-documents",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 12595,
    "candidates": 12649,
    "message": "",
    "derived_names": 0,
    "skipped_old": 136,
-   "from_cache": 12080,
-   "requests": 569,
+   "from_cache": 12049,
+   "requests": 600,
    "unchanged": 0,
-   "seconds": 199
+   "seconds": 210
   },
   {
    "id": "mawer",
    "name": "Mawer Investment Management",
    "mode": "static",
    "hub": "https://www.mawer.com/documents",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 53,
    "candidates": 53,
    "message": "",
    "derived_names": 0,
-   "from_cache": 52,
-   "requests": 1,
-   "unchanged": 0,
-   "seconds": 1
+   "from_cache": 50,
+   "requests": 3,
+   "unchanged": 2,
+   "seconds": 2
   },
   {
    "id": "cibc",
    "name": "CIBC Asset Management",
    "mode": "static",
    "hub": "https://www.cibc.com/en/personal-banking/investments/mutual-funds/reporting-and-governance/etf-pfic-annual-statement.html",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
-   "statements": 29,
+   "statements": 37,
    "candidates": 20,
    "message": "",
    "derived_names": 0,
-   "from_cache": 19,
-   "requests": 3,
+   "from_cache": 17,
+   "requests": 11,
    "unchanged": 0,
-   "archived": 9,
-   "seconds": 1,
-   "detail": "8 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
+   "archived": 17,
+   "seconds": 1
   },
   {
    "id": "blackrock-ishares-ca",
    "name": "BlackRock / iShares Canada",
    "mode": "static",
    "hub": "https://www.blackrock.com/ca/investors/en/resources/tax-information-centre",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 288,
    "candidates": 864,
    "message": "",
    "derived_names": 72,
-   "from_cache": 820,
-   "requests": 44,
+   "from_cache": 814,
+   "requests": 50,
    "unchanged": 14,
-   "seconds": 16
+   "seconds": 18
   },
   {
    "id": "capitalgroup-ca",
    "name": "Capital Group Canada",
    "mode": "static",
    "hub": "https://www.capitalgroup.com/advisor/ca/en/service/tax-centre.html",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 16,
    "candidates": 16,
@@ -226646,115 +227025,115 @@
    "name": "Fidelity Investments Canada",
    "mode": "static",
    "hub": "https://www.fidelity.ca/en/pfic_etf_statements/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 213,
    "candidates": 213,
    "message": "",
    "derived_names": 0,
    "skipped_old": 36,
-   "from_cache": 200,
-   "requests": 13,
+   "from_cache": 205,
+   "requests": 8,
    "unchanged": 0,
-   "seconds": 5
+   "seconds": 3
   },
   {
    "id": "ia-clarington",
    "name": "iA Clarington Investments",
    "mode": "static",
    "hub": "https://iaclarington.com/applicationsandforms/pficstatements",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 80,
    "candidates": 80,
    "message": "links only - the documents are not fetched: iaclarington.com/robots.txt disallows /docs/, where every statement is kept",
-   "seconds": 0
+   "seconds": 1
   },
   {
    "id": "renaissance",
    "name": "Renaissance Investments (CIBC)",
    "mode": "static",
    "hub": "https://www.renaissanceinvestments.ca/reporting-governance/pfic",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 473,
    "candidates": 473,
    "message": "",
    "derived_names": 0,
-   "from_cache": 448,
-   "requests": 25,
-   "unchanged": 5,
-   "seconds": 9
+   "from_cache": 443,
+   "requests": 30,
+   "unchanged": 11,
+   "seconds": 11
   },
   {
    "id": "hamilton-etfs",
    "name": "Hamilton ETFs",
    "mode": "browser",
    "hub": "https://hamiltonetfs.com/tax-information/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 58,
    "candidates": 3,
    "message": "",
-   "seconds": 21
+   "seconds": 37
   },
   {
    "id": "rbc-gam",
    "name": "RBC Global Asset Management / PH&N",
    "mode": "browser",
    "hub": "https://www.rbcgam.com/en/ca/products/pfic-reporting",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 921,
    "candidates": 921,
    "message": "",
    "derived_names": 0,
-   "from_cache": 875,
-   "requests": 46,
+   "from_cache": 881,
+   "requests": 40,
    "unchanged": 0,
-   "seconds": 34
+   "seconds": 32
   },
   {
    "id": "bmo-gam",
    "name": "BMO Global Asset Management",
    "mode": "static",
    "hub": "https://bmogam.com/ca-en/resources/legal-and-regulatory-documents/pfic/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 217,
    "candidates": 217,
    "message": "hub needed curl",
    "derived_names": 0,
    "skipped_old": 2,
-   "from_cache": 196,
-   "requests": 21,
+   "from_cache": 200,
+   "requests": 17,
    "unchanged": 0,
-   "seconds": 68
+   "seconds": 67
   },
   {
    "id": "manulife-im",
    "name": "Manulife Investment Management",
    "mode": "browser",
    "hub": "https://www.manulifeim.com/retail/ca/en/regulatory/passive-foreign-investment-company-pfic",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
-   "statements": 61,
+   "statements": 84,
    "candidates": 61,
    "message": "",
    "derived_names": 0,
-   "from_cache": 53,
-   "requests": 8,
+   "from_cache": 55,
+   "requests": 43,
    "unchanged": 0,
-   "seconds": 45,
-   "archived": 0,
-   "detail": "43 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
+   "seconds": 66,
+   "archived": 23,
+   "detail": "7 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
   },
   {
    "id": "globalx-ca",
    "name": "Global X Investments Canada (formerly Horizons)",
    "mode": "browser",
    "hub": "https://www.globalx.ca/pfic",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 2,
    "candidates": 2,
@@ -226762,34 +227141,33 @@
    "derived_names": 0,
    "delisted": 1,
    "from_cache": 1,
-   "pdf_transport": "curl",
    "requests": 1,
    "unchanged": 0,
-   "seconds": 50
+   "seconds": 15
   },
   {
    "id": "purpose",
    "name": "Purpose Investments",
    "mode": "static",
    "hub": "https://www.purposeinvest.com/funds",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 81,
    "candidates": 81,
    "message": "hub needed browser",
    "derived_names": 0,
    "delisted": 2,
-   "from_cache": 70,
-   "requests": 11,
-   "unchanged": 10,
-   "seconds": 1420
+   "from_cache": 71,
+   "requests": 10,
+   "unchanged": 9,
+   "seconds": 1444
   },
   {
    "id": "sunlife-gi",
    "name": "Sun Life Global Investments",
    "mode": "static",
    "hub": "https://www.sunlifeglobalinvestments.com/en/resources/regulatory-documents/#regulatorydocuments-id-4",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "request",
    "statements": 0,
    "candidates": 0,
@@ -226801,7 +227179,7 @@
    "name": "PIMCO Canada",
    "mode": "browser",
    "hub": "https://www.pimco.com/ca/en/resources/tax-center",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "manual",
    "statements": 0,
    "candidates": 0,
@@ -226813,7 +227191,7 @@
    "name": "Dimensional Fund Advisors Canada",
    "mode": "static",
    "hub": "https://www.dimensional.com/ca-en/document-center",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "empty",
    "statements": 19,
    "candidates": 19,
@@ -226821,17 +227199,17 @@
    "detail": "document API answered with 253468 bytes but no statement links",
    "derived_names": 0,
    "delisted": 19,
-   "from_cache": 19,
-   "requests": 0,
-   "unchanged": 0,
-   "seconds": 3
+   "from_cache": 17,
+   "requests": 2,
+   "unchanged": 1,
+   "seconds": 1
   },
   {
    "id": "evolve",
    "name": "Evolve ETFs",
    "mode": "static",
    "hub": "https://evolveetfs.com/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 6,
    "candidates": 6,
@@ -226847,7 +227225,7 @@
    "name": "Bridgehouse Asset Managers (incl. GQG Partners funds)",
    "mode": "static",
    "hub": "https://www.bridgehousecanada.com/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -226859,23 +227237,23 @@
    "name": "Dynamic Funds (1832 Asset Management)",
    "mode": "static",
    "hub": "https://dynamic.ca/en/regulatory/statutory-documents-applications-and-forms/pfic-irs.html",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 379,
    "candidates": 493,
    "message": "",
    "derived_names": 0,
-   "from_cache": 483,
-   "requests": 10,
-   "unchanged": 9,
-   "seconds": 4
+   "from_cache": 479,
+   "requests": 14,
+   "unchanged": 13,
+   "seconds": 6
   },
   {
    "id": "franklin-templeton-ca",
    "name": "Franklin Templeton Canada",
    "mode": "static",
    "hub": "https://www.franklintempleton.ca/en-ca/resources/forms/pfic-annual-information-statements",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 67,
    "candidates": 67,
@@ -226887,18 +227265,18 @@
    "name": "NEI Investments (Aviso)",
    "mode": "static",
    "hub": "https://www.neiinvestments.com/investment-products/fund-resources/fund-financials.html",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 48,
    "candidates": 41,
    "message": "",
    "derived_names": 0,
    "skipped_old": 4,
-   "from_cache": 37,
-   "requests": 4,
-   "unchanged": 3,
+   "from_cache": 41,
+   "requests": 0,
+   "unchanged": 0,
    "archived": 7,
-   "seconds": 4,
+   "seconds": 3,
    "detail": "75 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
   },
   {
@@ -226906,39 +227284,39 @@
    "name": "Starlight Capital",
    "mode": "static",
    "hub": "https://starlightcapital.com/en/prices/documents?category=Tax+Information",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 27,
    "candidates": 27,
    "message": "",
    "derived_names": 0,
-   "from_cache": 27,
-   "requests": 0,
+   "from_cache": 24,
+   "requests": 3,
    "unchanged": 0,
-   "seconds": 2
+   "seconds": 5
   },
   {
    "id": "ninepoint",
    "name": "Ninepoint Partners",
    "mode": "static",
    "hub": "https://www.ninepoint.com/pfic-annual-information-statements/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 25,
    "candidates": 25,
    "message": "",
    "derived_names": 0,
-   "from_cache": 22,
-   "requests": 3,
-   "unchanged": 2,
-   "seconds": 1
+   "from_cache": 21,
+   "requests": 4,
+   "unchanged": 3,
+   "seconds": 2
   },
   {
    "id": "nbi",
    "name": "National Bank Investments",
    "mode": "static",
    "hub": "https://www.nbinvestments.ca/regulatory-documents/pfic-statements.html",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 475,
    "candidates": 475,
@@ -226947,22 +227325,22 @@
    "from_cache": 448,
    "requests": 27,
    "unchanged": 0,
-   "seconds": 11
+   "seconds": 10
   },
   {
    "id": "sprott",
    "name": "Sprott",
    "mode": "static",
    "hub": "https://sprott.com/investment-strategies/exchange-listed-products/physical-bullion-funds/tax-guide/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 28,
    "candidates": 33,
    "message": "",
    "derived_names": 0,
-   "from_cache": 31,
-   "requests": 2,
-   "unchanged": 1,
+   "from_cache": 33,
+   "requests": 0,
+   "unchanged": 0,
    "seconds": 1,
    "archived": 0,
    "detail": "5 archived copies of earlier years still to read - the Internet Archive serves only so many at a time"
@@ -226972,19 +227350,19 @@
    "name": "Lysander Funds",
    "mode": "static",
    "hub": "https://www.lysanderfunds.com/passive-foreign-investment-company-pfic/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 5,
    "candidates": 5,
    "message": "links only - the documents are not fetched: lysanderfunds.com/robots.txt disallows every .pdf file",
-   "seconds": 0
+   "seconds": 1
   },
   {
    "id": "desjardins",
    "name": "Desjardins Funds",
    "mode": "static",
    "hub": "https://www.fondsdesjardins.com/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 3,
    "candidates": 6,
@@ -227000,39 +227378,39 @@
    "name": "Guardian Capital",
    "mode": "static",
    "hub": "https://www.guardiancapital.com/investmentsolutions/reg-documents/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 5,
    "candidates": 5,
    "message": "",
    "derived_names": 0,
-   "from_cache": 4,
-   "requests": 1,
+   "from_cache": 5,
+   "requests": 0,
    "unchanged": 0,
-   "seconds": 4
+   "seconds": 3
   },
   {
    "id": "harvest",
    "name": "Harvest ETFs",
    "mode": "static",
    "hub": "https://harvestportfolios.com/products/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "ok",
    "statements": 114,
    "candidates": 213,
    "message": "",
    "derived_names": 0,
-   "from_cache": 203,
-   "requests": 10,
-   "unchanged": 9,
-   "seconds": 62
+   "from_cache": 205,
+   "requests": 8,
+   "unchanged": 7,
+   "seconds": 72
   },
   {
    "id": "agf",
    "name": "AGF Investments",
    "mode": "static",
    "hub": "https://www.agf.com/ca/en/resources/tax-information/index.jsp",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -227044,7 +227422,7 @@
    "name": "Invesco Canada",
    "mode": "static",
    "hub": "https://www.invesco.com/ca/en/insights/all-about-PFIC-rules.html",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -227056,7 +227434,7 @@
    "name": "Scotia Global Asset Management (ScotiaFunds, Scotia ETFs)",
    "mode": "static",
    "hub": "https://www.scotiafunds.com/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -227068,7 +227446,7 @@
    "name": "Fiera Capital",
    "mode": "static",
    "hub": "https://www.fieracapital.com/en/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -227080,7 +227458,7 @@
    "name": "Beutel Goodman",
    "mode": "static",
    "hub": "https://www.beutelgoodman.com/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -227092,7 +227470,7 @@
    "name": "Picton Mahoney Asset Management",
    "mode": "static",
    "hub": "https://www.pictonmahoney.com/",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "none",
    "statements": 0,
    "candidates": 0,
@@ -227104,7 +227482,7 @@
    "name": "FERIQUE Fund Management",
    "mode": "static",
    "hub": "https://www.ferique.com/en",
-   "checked": "2026-11-16",
+   "checked": "2026-11-17",
    "status": "none",
    "statements": 0,
    "candidates": 0,
