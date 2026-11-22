@@ -80,14 +80,10 @@ and it is not an archive.
 `web/data/hosts.json`, which the crawler regenerates from the index every night;
 the reply must really be a PDF; and other websites cannot use it.
 
-> `worker/worker.js` + `worker/wrangler.toml` are the *old* stand-alone proxy
-> (`qef-pdf-proxy`). Its list of allowed hosts was kept by hand and went stale,
-> which is why ZIPs failed for six managers. The page now only falls back to it
-> if `/pdf` is missing. Once `/pdf` is seen working on the live site, the old
-> Worker can be deleted from Cloudflare.
->
-> **Only `wrangler.toml` at the repo root belongs to the site.** If Cloudflare
-> ever offers a pull request renaming it to `qef-pdf-proxy`, decline it.
+> It replaced a stand-alone proxy, `qef-pdf-proxy`, whose list of allowed
+> hosts was kept by hand and went stale - ZIPs failed for six managers. That
+> Worker was deleted from Cloudflare in November 2026. If Cloudflare ever
+> offers a pull request renaming `wrangler.toml` to `qef-pdf-proxy`, decline it.
 
 ### The Contact form
 

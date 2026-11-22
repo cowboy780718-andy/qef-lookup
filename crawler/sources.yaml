@@ -406,6 +406,13 @@ families:
     mode: static
     fye: "12-31"
     hub: https://www.dimensional.com/ca-en/document-center
+    # Shown on the Source health tab but never raised as an alert: seen from
+    # GitHub's US-based servers the document list comes back without its
+    # statements on some nights (by visitor country, it seems). Nothing can be
+    # done about that from here, and the statements already held are kept.
+    known_issue: >-
+      some nights lists nothing when read from GitHub's US servers; statements
+      already collected are kept
     caveat: >-
       Dimensional posts one statement per fund and replaces it each year, so
       only the latest year is available here. Earlier years have to be

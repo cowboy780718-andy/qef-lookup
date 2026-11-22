@@ -10,9 +10,6 @@
 # worker/site.js. Files under ./web are served directly and never reach it -
 # only requests that match no file do - so the site stays a static site.
 #
-# (worker/worker.js and worker/wrangler.toml are the OLD stand-alone proxy,
-# "qef-pdf-proxy". The page only falls back to it if /pdf is unavailable.)
-
 name = "qef-lookup"
 main = "worker/site.js"
 compatibility_date = "2025-01-01"

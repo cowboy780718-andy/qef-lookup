@@ -2950,6 +2950,13 @@ def main() -> int:
         if access in NOT_CRAWLED:
             h["status"] = access
             h["message"] = (by_id[h["id"]].get("guidance") or h.get("message") or "").strip()
+        # A failure we know about and cannot fix: still shown, never alerted
+        # on - an alert that fires every night for the same thing gets ignored,
+        # and then so does the one that matters.
+        known = (by_id.get(h["id"], {}).get("known_issue") or "").strip()
+        h.pop("known_issue", None)
+        if known and h["status"] in NEEDS_ATTENTION:
+            h["known_issue"] = known
 
     # Carry forward families this run did not successfully crawl.
     #
@@ -3049,7 +3056,8 @@ def main() -> int:
         for msg, n in sorted(_pdf_errors.items(), key=lambda kv: -kv[1]):
             print(f"  {n:>5}x  {msg}")
 
-    broken = [h for h in merged_health if h["status"] in NEEDS_ATTENTION]
+    broken = [h for h in merged_health
+              if h["status"] in NEEDS_ATTENTION and not h.get("known_issue")]
     if broken:
         print(f"\nneeds attention ({len(broken)}):")
         for h in broken:

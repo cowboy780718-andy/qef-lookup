@@ -159,8 +159,10 @@ jobs:
             catch { return; }
             // "blocked" belongs here. It was left out at first, so BlackRock
             // sat blocked for weeks without this report ever mentioning it.
+            // ...but not a failure recorded as known and unfixable
+            // (`known_issue` in sources.yaml): it is on the Source health tab.
             const broken = (idx.health||[]).filter(h =>
-              ['down','error','empty','blocked'].includes(h.status));
+              ['down','error','empty','blocked'].includes(h.status) && !h.known_issue);
             const title = 'Crawler: sources need attention';
             const existing = (await github.rest.issues.listForRepo({
               owner: context.repo.owner, repo: context.repo.repo,

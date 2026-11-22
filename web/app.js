@@ -460,7 +460,7 @@ function renderHealth() {
       <span class="dot ${esc(x.status)}" title="${esc(x.status)}"></span>
       <span class="hname">${esc(x.name)}</span>
       <span class="hnum">${NOT_CRAWLED.has(x.status) ? "" : `${x.statements}/${x.candidates}`}</span>
-      <span class="hmsg"><b>${esc(label[x.status] || x.status)}</b>${x.message ? " — " + esc(x.message) : ""}${
+      <span class="hmsg"><b>${esc(label[x.status] || x.status)}</b>${x.known_issue ? " (known: " + esc(x.known_issue) + ")" : ""}${x.message ? " — " + esc(x.message) : ""}${
         x.requests != null ? ` <span class="hstat" title="How the last crawl got these: statements answered from the cache, requests actually sent to the manager, and how long it took">(${x.from_cache ?? 0} cached, ${x.requests} request${x.requests === 1 ? "" : "s"}${x.seconds != null ? `, ${x.seconds}s` : ""})</span>` : ""}</span>
       <a href="${esc(pageOf(familyById(x.id)) || x.hub)}" target="_blank" rel="noopener">source</a>
     </div>`).join("");
@@ -567,9 +567,8 @@ function loadJsZip() {
 
 /**
  * Where to fetch statements through. Browsers will not let a page read a PDF
- * from another site, so the request goes via the site's own /pdf address. The
- * older stand-alone proxy is kept as a fallback for when this page is not
- * being served by the Worker (a local preview, for instance).
+ * from another site, so the request goes via the site's own /pdf address
+ * (worker/site.js; tools/dev.py serves it locally too).
  */
 let fetchViaPromise = null;
 function fetchVia() {
@@ -578,7 +577,6 @@ function fetchVia() {
       const r = await fetch("pdf/health", { cache: "no-store" });
       if (r.ok && (await r.json()).ok) return (u) => `pdf?u=${encodeURIComponent(u)}`;
     } catch { /* fall through */ }
-    if (CFG.PDF_PROXY) return (u) => `${CFG.PDF_PROXY}/?u=${encodeURIComponent(u)}`;
     return null;
   })();
   return fetchViaPromise;
