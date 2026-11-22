@@ -11,12 +11,45 @@
 <body>
 
 <header class="topbar">
-  <div class="wrap">
-    <h1>QEF Statement Lookup</h1>
-    <p class="sub">PFIC Annual Information Statements for Form 8621 &mdash; search, select, download in bulk.</p>
-    <div class="stats" id="stats"><span class="muted">Loading index&hellip;</span></div>
+  <div class="wrap headrow">
+    <div class="headmain">
+      <h1>QEF Statement Lookup</h1>
+      <p class="sub">PFIC Annual Information Statements for Form 8621 &mdash; search, select, download in bulk.</p>
+      <div class="stats" id="stats"><span class="muted">Loading index&hellip;</span></div>
+    </div>
+    <!-- Shown only once the form is set up (see /contact/health). -->
+    <button id="contactbtn" class="contactbtn" type="button" hidden>Contact</button>
   </div>
 </header>
+
+<dialog id="contact" class="contact" aria-labelledby="contacttitle">
+  <form id="contactform" novalidate>
+    <div class="contacthead">
+      <h2 id="contacttitle">Contact</h2>
+      <button type="button" class="ghost closex" id="contactclose" aria-label="Close">&times;</button>
+    </div>
+    <p class="hint">Questions, a fund that is missing, a wrong statement &mdash; your message
+      goes straight to the person who runs this site.</p>
+    <label for="cname">Name</label>
+    <input id="cname" name="name" type="text" autocomplete="name" maxlength="200" required>
+    <label for="cemail">Email</label>
+    <input id="cemail" name="email" type="email" autocomplete="email" maxlength="254" required>
+    <label for="cmsg">Message</label>
+    <textarea id="cmsg" name="message" rows="9" maxlength="20000" required></textarea>
+    <div class="hint" id="ccount">0 / 20,000 characters</div>
+    <!-- Not for people: hidden from view and from screen readers. A script
+         that fills in every field fills this one too, and is ignored. -->
+    <div class="hp" aria-hidden="true">
+      <label for="cweb">Website</label>
+      <input id="cweb" name="website" type="text" tabindex="-1" autocomplete="off">
+    </div>
+    <p id="cstatus" class="cstatus" role="status"></p>
+    <div class="contactfoot">
+      <span class="hint">Your details are emailed to the site owner and not stored on this site.</span>
+      <button type="submit" class="primary" id="csend">Send</button>
+    </div>
+  </form>
+</dialog>
 
 <main class="wrap">
 
@@ -162,7 +195,10 @@
         </p>
         <p>
           <strong>Privacy.</strong> This site sets no cookies, runs no analytics,
-          and stores nothing about you or your searches. Documents you drop in are
+          and stores nothing about you or your searches. If you use the Contact
+          form, your name, email address and message are emailed to the site
+          owner (sent through the email service Resend) and are not kept on
+          this site. Documents you drop in are
           read inside your own browser and are never uploaded &mdash; there is no
           server to upload them to.
         </p>

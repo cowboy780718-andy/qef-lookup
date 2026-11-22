@@ -282,3 +282,30 @@ button.ghost { background: none; color: var(--ink-2); }
 .guide h3 .who { font-weight: 600; }
 .stmt .archived { margin-left: 6px; padding: 1px 7px; border-radius: 999px; font-size: .74rem;
   font-weight: 600; background: var(--chip); color: var(--warn); white-space: nowrap; cursor: help; }
+
+/* ---------- contact ---------- */
+.headrow { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.headmain { min-width: 0; }
+.contactbtn { flex: none; margin-top: 2px; background: var(--panel); color: var(--accent);
+  border: 1px solid var(--accent); font-weight: 600; }
+.contactbtn:hover { background: var(--accent); color: var(--accent-ink); }
+dialog.contact { width: min(620px, calc(100vw - 32px)); max-height: calc(100vh - 32px);
+  border: 1px solid var(--line); border-radius: 12px; padding: 0;
+  background: var(--panel); color: var(--ink); box-shadow: 0 18px 60px rgba(0,0,0,.25); }
+dialog.contact::backdrop { background: rgba(10, 14, 20, .45); }
+.contact form { padding: 18px 20px 20px; }
+.contacthead { display: flex; justify-content: space-between; align-items: center; }
+.contacthead h2 { margin: 0; font-size: 1.15rem; }
+.closex { font-size: 1.4rem; line-height: 1; padding: 2px 10px; border: none; }
+.contact label { margin-top: 14px; }
+.contact input[type=text], .contact input[type=email] {
+  width: 100%; padding: 9px 11px; border: 1px solid var(--line); border-radius: 7px;
+  background: var(--bg); color: var(--ink); font-size: .95rem; }
+.contact textarea { resize: vertical; min-height: 160px; font: inherit; }
+.contact .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.contactfoot { display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  margin-top: 10px; flex-wrap: wrap; }
+.contactfoot .hint { margin: 0; flex: 1 1 260px; }
+.cstatus { min-height: 1.2em; margin: 10px 0 0; font-size: .9rem; }
+.cstatus.good { color: var(--ok); font-weight: 600; }
+.cstatus.bad { color: var(--bad); }

@@ -193,3 +193,96 @@ test("an archived copy is served only when it is a copy of a document from an in
   assert.equal(upstreamCalls.length, 1);
 });
 
+// --------------------------------------------------------------------------
+// Contact form
+// --------------------------------------------------------------------------
+
+const MAIL_ENV = { ...makeEnv(), RESEND_API_KEY: "re_test", CONTACT_TO: "owner@example.invalid" };
+const post = (body, { env = MAIL_ENV, headers = {} } = {}) => worker.fetch(new Request(`${SITE}/contact`, {
+  method: "POST", headers: { "Content-Type": "application/json", Origin: SITE, ...headers },
+  body: typeof body === "string" ? body : JSON.stringify(body),
+}), env, ctx);
+const GOOD = { name: "Pat Lee", email: "pat@example.com", message: "Hello.\nA question about XSH." };
+
+test("the Contact form is reported as not set up until both secrets exist", async () => {
+  for (const env of [makeEnv(), { ...makeEnv(), RESEND_API_KEY: "k" }, { ...makeEnv(), CONTACT_TO: "a@b.c" }]) {
+    const r = await worker.fetch(new Request(`${SITE}/contact/health`), env, ctx);
+    assert.equal((await r.json()).ok, false);
+  }
+  const r = await worker.fetch(new Request(`${SITE}/contact/health`), MAIL_ENV, ctx);
+  const h = await r.json();
+  assert.equal(h.ok, true);
+  assert.equal(h.limits.message, 20000);
+  assert.equal(JSON.stringify(h).includes("owner@"), false);    // the address is never given out
+  stubUpstream(() => new Response("{}", { status: 200 }));
+  assert.equal((await post(GOOD, { env: makeEnv() })).status, 503);
+  assert.equal(upstreamCalls.length, 0);
+});
+
+test("a message is emailed to the owner, with the visitor's address to reply to", async () => {
+  stubUpstream(() => new Response(JSON.stringify({ id: "x" }), { status: 200 }));
+  const r = await post(GOOD);
+  assert.equal(r.status, 200);
+  assert.equal((await r.json()).ok, true);
+  assert.equal(upstreamCalls.length, 1);
+  const call = upstreamCalls[0];
+  assert.equal(call.url, "https://api.resend.com/emails");
+  assert.equal(call.init.headers.Authorization, "Bearer re_test");
+  const sent = JSON.parse(call.init.body);
+  assert.deepEqual(sent.to, ["owner@example.invalid"]);
+  assert.equal(sent.reply_to, "pat@example.com");
+  assert.match(sent.subject, /Pat Lee/);
+  assert.match(sent.text, /Name: +Pat Lee/);
+  assert.match(sent.text, /Email: +pat@example\.com/);
+  assert.match(sent.text, /A question about XSH\./);
+});
+
+test("a message of 1,000 words goes through; one over 20,000 characters does not", async () => {
+  stubUpstream(() => new Response("{}", { status: 200 }));
+  const words = Array.from({ length: 1000 }, (_, i) => `word${i}`).join(" ");
+  assert.equal((await post({ ...GOOD, message: words })).status, 200);
+  assert.equal((await post({ ...GOOD, message: "x".repeat(20001) })).status, 400);
+  assert.equal(upstreamCalls.length, 1);
+});
+
+test("missing or malformed fields are refused and nothing is sent", async () => {
+  stubUpstream(() => new Response("{}", { status: 200 }));
+  for (const body of [{ ...GOOD, name: "" }, { ...GOOD, email: "not-an-address" },
+                      { ...GOOD, email: "a@b" }, { ...GOOD, message: "   " }, "{not json"]) {
+    const r = await post(body);
+    assert.equal(r.status, 400, JSON.stringify(body));
+  }
+  assert.equal(upstreamCalls.length, 0);
+});
+
+test("a filled-in hidden field is treated as a script: it is told ok, and nothing is sent", async () => {
+  stubUpstream(() => new Response("{}", { status: 200 }));
+  const r = await post({ ...GOOD, website: "http://spam.example" });
+  assert.equal(r.status, 200);
+  assert.equal(upstreamCalls.length, 0);
+});
+
+test("other websites cannot post to the form", async () => {
+  stubUpstream(() => new Response("{}", { status: 200 }));
+  assert.equal((await post(GOOD, { headers: { Origin: "https://elsewhere.example" } })).status, 403);
+  assert.equal((await post(GOOD, { headers: { "Sec-Fetch-Site": "cross-site" } })).status, 403);
+  const get = await worker.fetch(new Request(`${SITE}/contact`), MAIL_ENV, ctx);
+  assert.equal(get.status, 405);
+  assert.equal(upstreamCalls.length, 0);
+});
+
+test("a header injected through the name cannot reach the subject line", async () => {
+  stubUpstream(() => new Response("{}", { status: 200 }));
+  await post({ ...GOOD, name: "Pat\r\nBcc: victim@example.com" });
+  const sent = JSON.parse(upstreamCalls[0].init.body);
+  assert.equal(/[\r\n]/.test(sent.subject), false);
+  assert.equal(sent.bcc, undefined);
+});
+
+test("when the mail service fails, the visitor is told so", async () => {
+  stubUpstream(() => new Response(JSON.stringify({ message: "invalid key" }), { status: 401 }));
+  const r = await post(GOOD);
+  assert.equal(r.status, 502);
+  assert.equal(JSON.stringify(await r.json()).includes("invalid key"), false);
+});
+

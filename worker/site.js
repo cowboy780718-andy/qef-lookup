@@ -7,7 +7,12 @@
  *
  *     /pdf?u=<statement url>
  *
- * Why it exists: fund company servers do not send CORS headers, so a web page
+ * and one more, the Contact form (see serveContact, below):
+ *
+ *     /contact          POST name, email, message -> emailed to the site owner
+ *     /contact/health   whether the form is set up
+ *
+ * Why /pdf exists: fund company servers do not send CORS headers, so a web page
  * is not allowed to read their PDFs to bundle them into a ZIP. This fetches a
  * statement on the page's behalf and hands it back from our own address.
  *
@@ -171,10 +176,132 @@ async function servePdf(request, env, ctx, url) {
   return resp;
 }
 
+// --------------------------------------------------------------------------
+// Contact form
+// --------------------------------------------------------------------------
+//
+// A visitor writes to the site owner without the owner's address ever
+// appearing on the site or in this repository (which is public). The address
+// and the key of the mail service live in Cloudflare as Worker secrets:
+//
+//     CONTACT_TO       where messages go
+//     RESEND_API_KEY   key for resend.com, which sends them
+//     CONTACT_FROM     optional; without a domain of your own, Resend sends
+//                      from onboarding@resend.dev, to your own address only
+//
+// Until both of the first two are set, /contact/health says so and the page
+// does not show the Contact button at all.
+//
+// Nothing is stored. The message is passed to Resend and the answer passed
+// back; the visitor's address goes in Reply-To, so answering is one click.
+
+export const CONTACT_LIMITS = { name: 200, email: 254, message: 20000 };
+const CONTACT_GAP_S = 30;            // one message per visitor per half minute
+const RESEND_URL = "https://api.resend.com/emails";
+const EMAIL_RE = /^[^\s@<>(),;:"]+@[^\s@<>(),;:"]+\.[^\s@<>(),;:"]{2,}$/;
+
+const contactReady = (env) => Boolean(env.RESEND_API_KEY && env.CONTACT_TO);
+
+async function serveContact(request, env, ctx) {
+  if (request.method !== "POST") return json({ error: "method not allowed" }, 405);
+  // Only our own page may post here: browsers label a post from another site.
+  const origin = request.headers.get("Origin");
+  if (request.headers.get("Sec-Fetch-Site") === "cross-site" ||
+      (origin && origin !== new URL(request.url).origin)) {
+    return json({ error: "this form only accepts messages from the QEF Lookup site" }, 403);
+  }
+  if (!contactReady(env)) return json({ error: "the contact form is not set up yet" }, 503);
+
+  let body;
+  try {
+    const raw = await request.text();
+    if (raw.length > 64 * 1024) return json({ error: "message too long" }, 413);
+    body = JSON.parse(raw);
+  } catch {
+    return json({ error: "malformed request" }, 400);
+  }
+  const name = String(body?.name ?? "").trim();
+  const email = String(body?.email ?? "").trim();
+  const message = String(body?.message ?? "").replace(/\r\n/g, "\n").trim();
+
+  // A field a person cannot see. Something that fills it in is a script:
+  // tell it all went well, and send nothing.
+  if (String(body?.website ?? "").trim()) return json({ ok: true });
+
+  if (!name || name.length > CONTACT_LIMITS.name) {
+    return json({ error: `Please give a name (up to ${CONTACT_LIMITS.name} characters).` }, 400);
+  }
+  if (email.length > CONTACT_LIMITS.email || !EMAIL_RE.test(email)) {
+    return json({ error: "Please give an email address you can be reached at." }, 400);
+  }
+  if (!message) return json({ error: "Please write a message." }, 400);
+  if (message.length > CONTACT_LIMITS.message) {
+    return json({ error: `The message is over ${CONTACT_LIMITS.message.toLocaleString("en")} characters.` }, 400);
+  }
+
+  // One message per visitor every half minute: enough for a person, and
+  // a cap on anyone trying to flood the owner's inbox.
+  const ip = request.headers.get("CF-Connecting-IP") || "";
+  const cache = typeof caches !== "undefined" ? caches.default : null;
+  const gateKey = ip && new Request(`https://contact-gate.invalid/${encodeURIComponent(ip)}`);
+  if (cache && gateKey && await cache.match(gateKey)) {
+    return json({ error: "Please wait a moment before sending another message." }, 429);
+  }
+
+  const oneLine = (s) => s.replace(/[\r\n\t]+/g, " ").slice(0, 120);
+  const sent = new Date().toISOString().replace("T", " ").slice(0, 16) + " UTC";
+  const text = [
+    `Name:    ${name}`,
+    `Email:   ${email}`,
+    `Sent:    ${sent}`,
+    "",
+    message,
+    "",
+    "--",
+    "Sent from the Contact form on QEF Statement Lookup. Reply to this email to answer.",
+  ].join("\n");
+
+  if (env.CONTACT_DRY_RUN) {           // the local dev server: nothing leaves the machine
+    console.log(`[contact, not sent]\n${text}`);
+    return json({ ok: true });
+  }
+
+  let upstream;
+  try {
+    upstream = await fetch(RESEND_URL, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: env.CONTACT_FROM || "QEF Statement Lookup <onboarding@resend.dev>",
+        to: [env.CONTACT_TO],
+        reply_to: email,
+        subject: `QEF Lookup - message from ${oneLine(name)}`,
+        text,
+      }),
+    });
+  } catch {
+    return json({ error: "The message could not be sent. Please try again later." }, 502);
+  }
+  if (!upstream.ok) {
+    // The visitor needs to know it failed, not why; the owner can see the
+    // reason in Resend's own log.
+    return json({ error: "The message could not be sent. Please try again later." }, 502);
+  }
+  if (cache && gateKey) {
+    ctx.waitUntil(cache.put(gateKey, new Response("1", {
+      headers: { "Cache-Control": `max-age=${CONTACT_GAP_S}` } })));
+  }
+  return json({ ok: true });
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname === "/pdf") return servePdf(request, env, ctx, url);
+    if (url.pathname === "/contact") return serveContact(request, env, ctx);
+    if (url.pathname === "/contact/health") {
+      return json({ ok: contactReady(env), limits: CONTACT_LIMITS });
+    }
     if (url.pathname === "/pdf/health") {
       const hosts = await allowedHosts(env, request);
       return json({ ok: hosts.size > 0, hosts: hosts.size });

@@ -62,6 +62,7 @@ GitHub Actions (nightly)  ->  crawler/crawl.py  ->  web/data/index.json  ->  git
 | Crawler | GitHub Actions, nightly | Nothing to deploy - it runs from the repo |
 | Site | Cloudflare Worker `qef-lookup` | Automatically, on every push to `master` |
 | Download helper (`/pdf`) | Part of the same Worker | With the site |
+| Contact form (`/contact`) | Part of the same Worker | With the site; needs two secrets (below) |
 
 The loop: crawler runs -> commits a refreshed index -> the push triggers a
 Cloudflare build -> the live site updates. Nothing is uploaded by hand.
@@ -87,6 +88,27 @@ the reply must really be a PDF; and other websites cannot use it.
 >
 > **Only `wrangler.toml` at the repo root belongs to the site.** If Cloudflare
 > ever offers a pull request renaming it to `qef-pdf-proxy`, decline it.
+
+### The Contact form
+
+A visitor can write to the site owner without the owner's address appearing
+anywhere - not on the page, and not in this repository, which is public. The
+message is sent by [Resend](https://resend.com) (free: 100 emails a day,
+3,000 a month), with the visitor's address as Reply-To. Nothing is stored.
+
+It stays switched off - the button does not even appear - until two secrets
+are set on the `qef-lookup` Worker in Cloudflare (Workers & Pages ->
+qef-lookup -> Settings -> Variables and Secrets, type **Secret**):
+
+| Secret | Value |
+|---|---|
+| `RESEND_API_KEY` | An API key from resend.com (API Keys -> Create, "Sending access") |
+| `CONTACT_TO` | The address messages go to - the one the Resend account was opened with |
+
+Without a domain of your own, Resend sends from `onboarding@resend.dev` and
+only to the address its account was opened with, which is exactly this use.
+Spam is kept down by a hidden field scripts fill in, a same-site check and one
+message per visitor per 30 seconds.
 
 ---
 

@@ -47,7 +47,10 @@ async function assetResponse(request) {
   });
 }
 
-const env = { ASSETS: { fetch: assetResponse } };
+// The Contact form runs, but in dry-run mode: a message is printed here
+// instead of being emailed.
+const env = { ASSETS: { fetch: assetResponse }, RESEND_API_KEY: "dry-run",
+              CONTACT_TO: "nobody@example.invalid", CONTACT_DRY_RUN: "1" };
 const ctx = { waitUntil(p) { Promise.resolve(p).catch(() => {}); } };
 
 http.createServer(async (req, res) => {
@@ -57,7 +60,10 @@ http.createServer(async (req, res) => {
     for (const [k, v] of Object.entries(req.headers)) {
       if (typeof v === "string") headers.set(k, v);
     }
-    const request = new Request(url, { method: req.method, headers });
+    const chunks = [];
+    for await (const c of req) chunks.push(c);
+    const body = ["GET", "HEAD"].includes(req.method) ? undefined : Buffer.concat(chunks);
+    const request = new Request(url, { method: req.method, headers, body });
     // Same order as Cloudflare: a matching file wins, the Worker gets the rest.
     const isFile = await assetFor(new URL(url).pathname);
     const response = isFile ? await assetResponse(request) : await worker.fetch(request, env, ctx);

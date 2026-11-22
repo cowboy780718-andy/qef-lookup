@@ -3,8 +3,8 @@
  *
  * Everything here runs in the reader's browser. Client documents dropped onto
  * the page are parsed locally with PDF.js and never leave the machine; the only
- * network calls are for the static index and, when bundling a ZIP, the
- * statements themselves. There is no server-side session and nothing about a
+ * network calls are for the static index, when bundling a ZIP, the statements
+ * themselves, and a message the visitor chooses to send with the Contact form. There is no server-side session and nothing about a
  * lookup is logged.
  *
  * The logic that decides WHAT matches and WHAT gets downloaded lives in
@@ -695,6 +695,73 @@ function setSelected(fund, stmts, on) {
   }
 }
 
+// --------------------------------------------------------------------------
+// contact form
+// --------------------------------------------------------------------------
+
+/**
+ * The Contact button appears only when the site says the form is set up, so a
+ * visitor never fills in a form that cannot be sent.
+ */
+async function wireContact() {
+  const dlg = $("contact"), form = $("contactform"), status = $("cstatus");
+  const msg = $("cmsg"), send = $("csend");
+  let limits = { message: 20000 };
+  try {
+    const r = await fetch("contact/health", { cache: "no-store" });
+    const h = r.ok ? await r.json() : null;
+    if (!h || !h.ok) return;
+    limits = { ...limits, ...(h.limits || {}) };
+  } catch { return; }
+  msg.maxLength = limits.message;
+  const count = () => {
+    $("ccount").textContent =
+      `${msg.value.length.toLocaleString("en")} / ${limits.message.toLocaleString("en")} characters`;
+  };
+  msg.addEventListener("input", count);
+  count();
+
+  const btn = $("contactbtn");
+  btn.hidden = false;
+  btn.addEventListener("click", () => {
+    status.textContent = ""; status.className = "cstatus";
+    dlg.showModal();
+    $("cname").focus();
+  });
+  $("contactclose").addEventListener("click", () => dlg.close());
+  // A click on the dimmed backdrop closes it, as it does almost everywhere.
+  dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = {
+      name: $("cname").value.trim(), email: $("cemail").value.trim(),
+      message: msg.value.trim(), website: $("cweb").value,
+    };
+    const say = (text, cls) => { status.textContent = text; status.className = `cstatus ${cls}`; };
+    if (!data.name || !data.email || !data.message) return say("Please fill in all three fields.", "bad");
+    if (!$("cemail").checkValidity()) return say("Please check the email address.", "bad");
+    send.disabled = true;
+    say("Sending…", "");
+    try {
+      const r = await fetch("contact", {
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data),
+      });
+      const out = await r.json().catch(() => ({}));
+      if (r.ok && out.ok) {
+        form.reset(); count();
+        say("Thank you — your message has been sent.", "good");
+      } else {
+        say(out.error || "The message could not be sent. Please try again later.", "bad");
+      }
+    } catch {
+      say("The message could not be sent. Please check your connection and try again.", "bad");
+    } finally {
+      send.disabled = false;
+    }
+  });
+}
+
 function wire() {
   let t;
   $("q").addEventListener("input", (e) => {
@@ -791,6 +858,8 @@ function wire() {
       }
     });
   });
+
+  wireContact();
 
   const drop = $("drop"), file = $("file");
   drop.addEventListener("click", () => file.click());
